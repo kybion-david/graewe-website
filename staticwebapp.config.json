@@ -1,0 +1,33 @@
+{
+  "routes": [
+    { "route": "/unternehmen/wer-ist-graewe.html", "redirect": "/de/unternehmen/wer-ist-graewe", "statusCode": 301 },
+    { "route": "/unternehmen/was-macht-graewe.html", "redirect": "/de/unternehmen/was-macht-graewe", "statusCode": 301 },
+    { "route": "/unternehmen/wofuer-steht-graewe.html", "redirect": "/de/unternehmen/wofuer-steht-graewe", "statusCode": 301 },
+    { "route": "/unternehmen/die-graewe-gruppe.html", "redirect": "/de/unternehmen/die-graewe-gruppe", "statusCode": 301 },
+    { "route": "/produkte/rohrextrusion.html", "redirect": "/de/produkte/rohrextrusion", "statusCode": 301 },
+    { "route": "/produkte/profilextrusion.html", "redirect": "/de/produkte/profilextrusion", "statusCode": 301 },
+    { "route": "/produkte/plattenextrusion.html", "redirect": "/de/produkte/plattenextrusion", "statusCode": 301 },
+    { "route": "/success-stories.html", "redirect": "/de/success-stories", "statusCode": 301 },
+    { "route": "/gebrauchtmaschinen.html", "redirect": "/de/gebrauchtmaschinen", "statusCode": 301 },
+    { "route": "/aktuelles.html", "redirect": "/de/aktuelles", "statusCode": 301 },
+    { "route": "/produktrechner.html", "redirect": "/de/produktrechner", "statusCode": 301 },
+    { "route": "/downloads.html", "redirect": "/de/downloads", "statusCode": 301 },
+    { "route": "/team.html", "redirect": "/de/team", "statusCode": 301 },
+    { "route": "/kontakt.html", "redirect": "/de/kontakt", "statusCode": 301 },
+    { "route": "/stellenanzeigen.html", "redirect": "/de/stellenanzeigen", "statusCode": 301 },
+    { "route": "/impressum.html", "redirect": "/de/impressum", "statusCode": 301 },
+    { "route": "/datenschutz.html", "redirect": "/de/datenschutz", "statusCode": 301 },
+    { "route": "/index.php", "redirect": "/de", "statusCode": 301 }
+  ],
+  "responseOverrides": {
+    "404": {
+      "rewrite": "/de"
+    }
+  },
+  "globalHeaders": {
+    "X-Content-Type-Options": "nosniff",
+    "X-Frame-Options": "SAMEORIGIN",
+    "Referrer-Policy": "strict-origin-when-cross-origin",
+    "Permissions-Policy": "camera=(), microphone=(), geolocation=()"
+  }
+}
