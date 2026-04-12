@@ -1,0 +1,10 @@
+subscription_id = "00000000-0000-0000-0000-000000000000"
+project_name    = "graewe-website"
+environment     = "prod"
+location        = "westeurope"
+swa_sku_tier    = "Standard"
+swa_sku_size    = "Standard"
+
+# Set these once DNS is ready
+# custom_domain = "www.graewe.com"
+# apex_domain   = "graewe.com"
