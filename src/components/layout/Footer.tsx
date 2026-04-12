@@ -39,13 +39,15 @@ export function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 py-12">
           {/* Company info */}
           <div>
-            <Image
-              src="/images/logo/graewe-logo.jpg"
-              alt="GRAEWE"
-              width={160}
-              height={44}
-              className="h-auto w-[140px] brightness-0 invert mb-5"
-            />
+            <div className="mb-5 inline-block rounded-md bg-white p-2 shadow-sm">
+              <Image
+                src="/images/logo/graewe-logo.jpg"
+                alt="GRAEWE"
+                width={200}
+                height={55}
+                className="h-auto w-[min(100%,180px)]"
+              />
+            </div>
             <p className="text-grey-400 text-sm leading-relaxed mb-4">
               GRAEWE GmbH Maschinenbau
               <br />
