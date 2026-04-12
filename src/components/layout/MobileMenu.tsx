@@ -29,52 +29,73 @@ export function MobileMenu({
     };
   }, [isOpen]);
 
-  if (!isOpen) return null;
-
   return (
-    <div className="fixed inset-0 z-[100] lg:hidden">
-      <div className="absolute inset-0 bg-black/50" onClick={onClose} />
-      <div className="absolute right-0 top-0 h-full w-80 max-w-[85vw] bg-white overflow-y-auto shadow-2xl">
-        <div className="flex items-center justify-between p-4 border-b border-grey-200">
-          <span className="text-lg font-bold text-dark">GRAEWE</span>
-          <button onClick={onClose} className="p-2 hover:bg-grey-100 rounded" aria-label="Close menu">
-            <svg className="w-6 h-6 text-dark" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+    <div
+      className={`fixed inset-0 z-[100] lg:hidden transition-opacity duration-300 ${
+        isOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+      }`}
+    >
+      <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={onClose} />
+      <div
+        className={`absolute right-0 top-0 h-full w-80 max-w-[85vw] bg-white overflow-y-auto shadow-2xl transition-transform duration-300 ease-out ${
+          isOpen ? "translate-x-0" : "translate-x-full"
+        }`}
+      >
+        {/* Header */}
+        <div className="flex items-center justify-between p-5 border-b border-grey-200">
+          <span className="text-lg font-bold text-dark tracking-tight">GRAEWE</span>
+          <button
+            onClick={onClose}
+            className="p-2 hover:bg-grey-100 rounded-lg transition-colors"
+            aria-label="Close menu"
+          >
+            <svg className="w-5 h-5 text-dark" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>
         </div>
 
-        <nav className="p-4 space-y-1">
+        {/* Navigation */}
+        <nav className="p-5">
+          <p className="text-xs font-bold text-grey-400 uppercase tracking-widest mb-2">
+            Unternehmen
+          </p>
           {companyLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
               onClick={onClose}
-              className="block py-2 px-3 text-sm text-text-muted hover:text-dark hover:bg-grey-100 rounded transition-colors"
+              className="block py-2.5 px-3 text-sm text-text-muted hover:text-dark hover:bg-grey-100 rounded-lg transition-colors"
             >
               {link.label}
             </Link>
           ))}
 
-          <div className="pt-3 mt-3 border-t border-grey-200" />
+          <div className="my-4 border-t border-grey-200" />
+
+          <p className="text-xs font-bold text-grey-400 uppercase tracking-widest mb-2">
+            Produkte
+          </p>
           {productLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
               onClick={onClose}
-              className="block py-2 px-3 text-sm font-bold text-accent-dark hover:bg-grey-100 rounded transition-colors"
+              className="flex items-center gap-2 py-2.5 px-3 text-sm font-semibold text-dark hover:bg-accent/10 rounded-lg transition-colors"
             >
+              <span className="w-2 h-2 bg-accent rounded-full shrink-0" />
               {link.label}
             </Link>
           ))}
 
-          <div className="pt-3 mt-3 border-t border-grey-200" />
+          <div className="my-4 border-t border-grey-200" />
+
           {mainLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
               onClick={onClose}
-              className="block py-2 px-3 text-sm text-dark hover:bg-grey-100 rounded transition-colors font-medium"
+              className="block py-2.5 px-3 text-sm text-dark hover:bg-grey-100 rounded-lg transition-colors font-medium"
             >
               {link.label}
             </Link>

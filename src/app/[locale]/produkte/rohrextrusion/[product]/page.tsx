@@ -48,9 +48,9 @@ export default async function PipeExtrusionProductPage({
   const images = getProductImages(CATEGORY, product);
 
   return (
-    <div className="py-12">
+    <div className="py-12 lg:py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col lg:flex-row gap-8">
+        <div className="flex flex-col lg:flex-row gap-10">
           <ProductSidebar />
           <div className="flex-1">
             {detail ? (
@@ -61,10 +61,11 @@ export default async function PipeExtrusionProductPage({
               />
             ) : (
               <>
-                <h1 className="text-3xl font-bold text-dark mb-6">
+                <h1 className="text-3xl md:text-4xl font-bold text-dark mb-2">
                   {t(`subcategories.${sub.translationKey}`)}
                 </h1>
-                <div className="bg-grey-100 rounded-lg p-8 text-center text-text-muted">
+                <div className="w-12 h-1 bg-accent mb-8" />
+                <div className="bg-grey-100 rounded-xl p-8 text-center text-text-muted">
                   <p>Product details coming soon.</p>
                 </div>
               </>

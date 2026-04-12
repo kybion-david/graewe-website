@@ -19,47 +19,57 @@ export function ProductSidebar() {
   ];
 
   return (
-    <aside className="w-full lg:w-64 shrink-0">
-      <nav className="sticky top-4 space-y-5">
-        {categories.map(({ key, navKey }) => {
-          const isCategoryActive = pathname.includes(`/produkte/${key}`);
-          return (
-            <div key={key}>
-              <Link
-                href={`/produkte/${key}`}
-                className={`font-bold text-sm block py-1 transition-colors flex items-center gap-1.5 ${
-                  isCategoryActive ? "text-accent-dark" : "text-dark hover:text-accent-dark"
-                }`}
-              >
-                <svg className="w-3 h-3 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                </svg>
-                {tNav(navKey)}
-              </Link>
-              {isCategoryActive && (
-                <ul className="mt-1 ml-5 space-y-0.5 text-sm border-l border-grey-300 pl-3">
-                  {productCategories[key].map((sub) => {
-                    const isActive = pathname === `/produkte/${key}/${sub.slug}`;
-                    return (
-                      <li key={sub.slug}>
-                        <Link
-                          href={`/produkte/${key}/${sub.slug}`}
-                          className={`block py-1 transition-colors ${
-                            isActive
-                              ? "text-dark font-medium"
-                              : "text-text-muted hover:text-dark"
-                          }`}
-                        >
-                          {t(`subcategories.${sub.translationKey}`)}
-                        </Link>
-                      </li>
-                    );
-                  })}
-                </ul>
-              )}
-            </div>
-          );
-        })}
+    <aside className="w-full lg:w-72 shrink-0">
+      <nav className="sticky top-24 space-y-1">
+        <div className="bg-grey-100 rounded-xl p-5">
+          <p className="text-xs font-bold text-grey-400 uppercase tracking-widest mb-4">
+            {tNav("products")}
+          </p>
+
+          {categories.map(({ key, navKey }) => {
+            const isCategoryActive = pathname.includes(`/produkte/${key}`);
+            return (
+              <div key={key} className="mb-3 last:mb-0">
+                <Link
+                  href={`/produkte/${key}`}
+                  className={`flex items-center gap-2 py-2 px-3 rounded-lg text-sm font-semibold transition-all duration-200 ${
+                    isCategoryActive
+                      ? "bg-accent text-dark"
+                      : "text-dark hover:bg-grey-200"
+                  }`}
+                >
+                  <span
+                    className={`w-2 h-2 rounded-full shrink-0 transition-colors ${
+                      isCategoryActive ? "bg-dark" : "bg-grey-300"
+                    }`}
+                  />
+                  {tNav(navKey)}
+                </Link>
+                {isCategoryActive && (
+                  <ul className="mt-1 ml-7 space-y-0.5">
+                    {productCategories[key].map((sub) => {
+                      const isActive = pathname === `/produkte/${key}/${sub.slug}`;
+                      return (
+                        <li key={sub.slug}>
+                          <Link
+                            href={`/produkte/${key}/${sub.slug}`}
+                            className={`block py-1.5 px-3 text-sm rounded-md transition-all duration-200 ${
+                              isActive
+                                ? "text-dark font-medium bg-white shadow-sm"
+                                : "text-text-muted hover:text-dark hover:bg-white/50"
+                            }`}
+                          >
+                            {t(`subcategories.${sub.translationKey}`)}
+                          </Link>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                )}
+              </div>
+            );
+          })}
+        </div>
       </nav>
     </aside>
   );

@@ -21,11 +21,12 @@ export default async function DatenschutzPage({
   const t = await getTranslations({ locale, namespace: "legal" });
 
   return (
-    <div className="max-w-4xl mx-auto py-16 px-4">
-      <h1 className="text-3xl md:text-4xl font-bold text-dark mb-10">
+    <div className="max-w-4xl mx-auto py-16 lg:py-20 px-4 sm:px-6 lg:px-8">
+      <h1 className="text-3xl md:text-4xl font-bold text-dark mb-2">
         Datenschutzerklärung
       </h1>
-      <div className="space-y-6 text-text leading-relaxed">
+      <div className="w-16 h-1 bg-accent mb-10" />
+      <div className="space-y-8 text-text leading-relaxed">
         <p>
           Der Schutz Ihrer personenbezogenen Daten bei der Erhebung,
           Verarbeitung und Nutzung anlässlich Ihres Besuchs auf unserer Homepage
@@ -39,7 +40,7 @@ export default async function DatenschutzPage({
         </p>
 
         <section>
-          <h2 className="text-xl font-semibold text-dark mb-3">
+          <h2 className="text-lg font-bold text-dark mb-3">
             1. Erhebung und Verarbeitung von Daten
           </h2>
           <p>
@@ -69,7 +70,7 @@ export default async function DatenschutzPage({
         </section>
 
         <section>
-          <h2 className="text-xl font-semibold text-dark mb-3">
+          <h2 className="text-lg font-bold text-dark mb-3">
             2. Nutzung und Weitergabe personenbezogener Daten
           </h2>
           <p>
@@ -97,7 +98,7 @@ export default async function DatenschutzPage({
         </section>
 
         <section>
-          <h2 className="text-xl font-semibold text-dark mb-3">3. Cookies</h2>
+          <h2 className="text-lg font-bold text-dark mb-3">3. Cookies</h2>
           <p>
             Die Internetseiten verwenden an mehreren Stellen so genannte
             Cookies. Sie dienen dazu, unser Angebot nutzerfreundlicher,
@@ -111,7 +112,7 @@ export default async function DatenschutzPage({
         </section>
 
         <section>
-          <h2 className="text-xl font-semibold text-dark mb-3">
+          <h2 className="text-lg font-bold text-dark mb-3">
             4. Links zu anderen Webseiten
           </h2>
           <p>
@@ -121,7 +122,7 @@ export default async function DatenschutzPage({
         </section>
 
         <section>
-          <h2 className="text-xl font-semibold text-dark mb-3">
+          <h2 className="text-lg font-bold text-dark mb-3">
             5. Elektronischer Newsletter
           </h2>
           <p>
@@ -139,7 +140,7 @@ export default async function DatenschutzPage({
         </section>
 
         <section>
-          <h2 className="text-xl font-semibold text-dark mb-3">
+          <h2 className="text-lg font-bold text-dark mb-3">
             6. Auskunftsrecht
           </h2>
           <p>
@@ -149,7 +150,7 @@ export default async function DatenschutzPage({
         </section>
 
         <section>
-          <h2 className="text-xl font-semibold text-dark mb-3">
+          <h2 className="text-lg font-bold text-dark mb-3">
             Sicherheitshinweis
           </h2>
           <p>

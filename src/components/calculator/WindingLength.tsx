@@ -43,8 +43,11 @@ export function WindingLengthCalc() {
 
   return (
     <div className="space-y-8">
-      <div className="bg-grey-100 rounded-lg p-6">
-        <h3 className="font-semibold text-dark mb-4">{t("inputs")}</h3>
+      <div className="bg-grey-100 rounded-xl p-6">
+        <h3 className="font-bold text-dark mb-4 flex items-center gap-2">
+          <span className="w-1 h-5 bg-accent rounded-full" />
+          {t("inputs")}
+        </h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <InputField label={t("pipeDiameter")} value={pipeDiameter} onChange={setPipeDiameter} />
           <InputField label={t("innerDiameter")} value={innerDiameter} onChange={setInnerDiameter} />
@@ -111,8 +114,8 @@ function LengthResultSection({
   t: ReturnType<typeof useTranslations>;
 }) {
   return (
-    <div className="bg-white border border-grey-300 rounded-lg p-6">
-      <h4 className="font-semibold text-dark mb-4">{title}</h4>
+    <div className="bg-white border border-grey-200 rounded-xl p-6 shadow-sm">
+      <h4 className="font-bold text-dark mb-4">{title}</h4>
       <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
         <div>
           <p className="text-xs text-text-muted">{t("windingLengthResult")}</p>

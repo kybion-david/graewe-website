@@ -33,32 +33,34 @@ export default async function WhatDoesGraeweStandForPage({
   ];
 
   return (
-    <div className="py-16">
+    <div className="py-16 lg:py-20">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <p className="text-accent font-medium mb-4">
+        <p className="text-accent font-bold text-sm tracking-wide uppercase mb-3">
           {t("whatDoesGraeweStandFor.breadcrumb")}
         </p>
-        <h1 className="text-3xl md:text-4xl font-bold text-dark mb-4">
+        <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-dark mb-2">
           {t("whatDoesGraeweStandFor.title")}
         </h1>
-        <h2 className="text-xl text-text-muted mb-8">
+        <div className="w-16 h-1 bg-accent mb-6" />
+        <h2 className="text-xl text-text-muted leading-relaxed mb-10">
           {t("whatDoesGraeweStandFor.subtitle")}
         </h2>
-        <div className="prose prose-lg max-w-none space-y-4 text-text mb-10">
+
+        <div className="space-y-5 text-text leading-relaxed text-[17px] mb-12">
           <p>{t("whatDoesGraeweStandFor.p1")}</p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
           {galleryImages.map((src, idx) => (
             <div
               key={idx}
-              className="relative aspect-[4/3] rounded-lg overflow-hidden bg-grey-100"
+              className="group relative aspect-[4/3] rounded-lg overflow-hidden bg-grey-100"
             >
               <Image
                 src={src}
                 alt={`GRAEWE ${idx + 1}`}
                 fill
-                className="object-cover"
+                className="object-cover transition-transform duration-500 group-hover:scale-105"
                 sizes="(max-width: 768px) 50vw, 25vw"
               />
             </div>

@@ -21,13 +21,17 @@ export default async function ImpressumPage({
   const t = await getTranslations({ locale, namespace: "legal" });
 
   return (
-    <div className="max-w-4xl mx-auto py-16 px-4">
-      <h1 className="text-3xl md:text-4xl font-bold text-dark mb-10">
+    <div className="max-w-4xl mx-auto py-16 lg:py-20 px-4 sm:px-6 lg:px-8">
+      <h1 className="text-3xl md:text-4xl font-bold text-dark mb-2">
         {t("imprint")}
       </h1>
-      <div className="space-y-6 text-text leading-relaxed">
-        <section>
-          <h2 className="text-xl font-semibold text-dark mb-3">Anschrift</h2>
+      <div className="w-16 h-1 bg-accent mb-10" />
+      <div className="space-y-8 text-text leading-relaxed">
+        <section className="bg-grey-100 rounded-xl p-6">
+          <h2 className="text-lg font-bold text-dark mb-3 flex items-center gap-2">
+            <span className="w-1 h-5 bg-accent rounded-full" />
+            Anschrift
+          </h2>
           <p>
             GRAEWE GmbH
             <br />
@@ -46,8 +50,9 @@ export default async function ImpressumPage({
           </p>
         </section>
 
-        <section>
-          <h2 className="text-xl font-semibold text-dark mb-3">
+        <section className="bg-grey-100 rounded-xl p-6">
+          <h2 className="text-lg font-bold text-dark mb-3 flex items-center gap-2">
+            <span className="w-1 h-5 bg-accent rounded-full" />
             Geschäftsführung
           </h2>
           <p>
@@ -63,7 +68,7 @@ export default async function ImpressumPage({
         </section>
 
         <section>
-          <h2 className="text-xl font-semibold text-dark mb-3">
+          <h2 className="text-lg font-bold text-dark mb-3">
             Urheberrechtshinweise
           </h2>
           <p>
@@ -78,7 +83,7 @@ export default async function ImpressumPage({
         </section>
 
         <section>
-          <h2 className="text-xl font-semibold text-dark mb-3">
+          <h2 className="text-lg font-bold text-dark mb-3">
             Datenschutzbestimmungen
           </h2>
           <p>
@@ -90,7 +95,7 @@ export default async function ImpressumPage({
         </section>
 
         <section>
-          <h2 className="text-xl font-semibold text-dark mb-3">
+          <h2 className="text-lg font-bold text-dark mb-3">
             Datensicherheit
           </h2>
           <p>
@@ -101,7 +106,7 @@ export default async function ImpressumPage({
         </section>
 
         <section>
-          <h2 className="text-xl font-semibold text-dark mb-3">
+          <h2 className="text-lg font-bold text-dark mb-3">
             Eingesetzte Technologien
           </h2>
           <p>
@@ -115,7 +120,7 @@ export default async function ImpressumPage({
         </section>
 
         <section>
-          <h2 className="text-xl font-semibold text-dark mb-3">Protokolle</h2>
+          <h2 className="text-lg font-bold text-dark mb-3">Protokolle</h2>
           <p>
             Wir protokollieren die Zugriffe auf unseren HTTP-Server wie
             allgemein üblich. Unsere Protokolle beinhalten jeweils Datum und
@@ -130,7 +135,7 @@ export default async function ImpressumPage({
         </section>
 
         <section>
-          <h2 className="text-xl font-semibold text-dark mb-3">Cookies</h2>
+          <h2 className="text-lg font-bold text-dark mb-3">Cookies</h2>
           <p>
             Cookies sind Informationen, die automatisch nach strengen Regeln und
             mit für Sie überprüfbaren Inhalten auf Ihrem Rechner abgelegt
@@ -141,7 +146,7 @@ export default async function ImpressumPage({
         </section>
 
         <section>
-          <h2 className="text-xl font-semibold text-dark mb-3">
+          <h2 className="text-lg font-bold text-dark mb-3">
             Haftungsausschluss
           </h2>
           <p>
