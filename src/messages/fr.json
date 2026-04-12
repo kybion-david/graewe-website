@@ -1,0 +1,272 @@
+{
+  "meta": {
+    "title": "GRAEWE GmbH – Technologie d’extrusion et construction mécanique",
+    "description": "GRAEWE est une marque recherchée dans le domaine de la technologie d’extrusion. Planification, développement, fabrication et montage de machines d’extrusion."
+  },
+  "nav": {
+    "company": "Entreprise",
+    "products": "Produits",
+    "successStories": "Témoignages clients",
+    "news": "Actualités",
+    "calculator": "Calculateur produit",
+    "usedMachines": "Machines d’occasion",
+    "downloads": "Téléchargements",
+    "team": "Équipe",
+    "contact": "Contact",
+    "jobs": "Offres d’emploi",
+    "whoIsGraewe": "Qui est Graewe ?",
+    "whatDoesGraewe": "Que fait Graewe ?",
+    "whatDoesGraeweStandFor": "Que représente Graewe ?",
+    "graeweGroup": "Le groupe Graewe",
+    "pipeExtrusion": "Extrusion de tubes",
+    "profileExtrusion": "Extrusion de profilés",
+    "sheetExtrusion": "Extrusion de plaques"
+  },
+  "hero": {
+    "slide1": {
+      "title": "Graewe est une marque recherchée dans le domaine de la technologie d’extrusion.",
+      "subtitle": "Parce que nous savons concrétiser les idées."
+    },
+    "slide2": {
+      "title": "Graewe est une marque recherchée dans le domaine de la technologie d’extrusion.",
+      "subtitle": "Parce que nous savons concrétiser les idées."
+    },
+    "slide3": {
+      "title": "Nous savons concrétiser les idées.",
+      "subtitle": "PLEINEMENT ENGAGÉS, EXÉCUTION PARFAITE"
+    },
+    "slide4": {
+      "title": "Graewe est une marque recherchée dans le domaine de la technologie d’extrusion.",
+      "subtitle": "Parce que nous savons concrétiser les idées."
+    },
+    "slide5": {
+      "title": "Graewe est une marque recherchée dans le domaine de la technologie d’extrusion.",
+      "subtitle": "Parce que nous savons concrétiser les idées."
+    }
+  },
+  "home": {
+    "pipeExtrusionDesc": "L’extrusion de tubes et de canalisations est notre cœur de métier",
+    "profileExtrusionDesc": "Nos machines servent à la fabrication de profilés",
+    "sheetExtrusionDesc": "Les lignes de plaques Graewe sont adaptées aux exigences de l’application",
+    "newsTitle": "Actualités",
+    "noNews": "Aucune actualité pour le moment.",
+    "learnMore": "En savoir plus"
+  },
+  "company": {
+    "whoIsGraewe": {
+      "breadcrumb": "Qui est Graewe ?",
+      "title": "Graewe est une marque recherchée dans le domaine de la technologie d’extrusion.",
+      "subtitle": "Parce que nous savons concrétiser les idées.",
+      "p1": "Depuis plus de 40 ans, nous sommes un moteur essentiel de l’industrie moderne des matières plastiques dans la planification, le développement, la fabrication et le montage d’installations, de machines et de machines de relève. Grâce à des concepts et solutions créatifs et efficaces, nous sommes devenus l’un des principaux fournisseurs de machines d’extrusion sur le marché mondial.",
+      "p2": "Nos clients apprécient tout particulièrement les concepts et solutions individualisés et orientés bénéfice que nous mettons en œuvre avec compétence et un excellent rapport qualité-prix.",
+      "p3": "Le succès de nos produits et services, ainsi que celui de nos clients et partenaires, confirme notre engagement en faveur d’une réflexion et d’une action constamment orientées client."
+    },
+    "whatDoesGraewe": {
+      "breadcrumb": "Que fait Graewe ?",
+      "title": "Graewe est un partenaire compétent pour l’industrie moderne des matières plastiques.",
+      "subtitle": "Parce que nous avons la bonne solution pour presque chaque application.",
+      "p1": "La gamme de produits Graewe est aussi variée que les tâches à maîtriser dans l’industrie de transformation des plastiques.",
+      "p2": "Vous trouverez chez nous un savoir-faire spécifique dans le domaine de la technologie des machines pour tubes, profilés et plaques.",
+      "p3": "La flexibilité et la fiabilité de la technologie sont des garanties grâce auxquelles Graewe s’est forgé une réputation ces dernières années. Qu’il s’agisse de multifonctionnalité particulière, de solutions gain de place ou de cahiers des charges très spécifiques : vous profitez toujours de solutions sur mesure Graewe."
+    },
+    "whatDoesGraeweStandFor": {
+      "breadcrumb": "Que représente Graewe ?",
+      "title": "Graewe représente la rentabilité, la flexibilité et la fiabilité.",
+      "subtitle": "Parce que l’efficacité économique passe avant tout pour nos clients.",
+      "p1": "Nous livrons des machines adaptables aux besoins individuels tout en évitant les coûts superflus — avec des débits élevés, des coûts de maintenance et d’entretien réduits, une longue durée de vie avec des performances d’exploitation optimales, une fiabilité de procédé et des délais de développement courts."
+    },
+    "graeweGroup": {
+      "breadcrumb": "Le groupe Graewe",
+      "title": "Le groupe Graewe",
+      "subtitle": "Un réseau solide pour vos exigences.",
+      "p1": "La société GRAEWE GmbH a été fondée en 1981 et développe, conçoit et fabrique des équipements en aval d'extrusion pour la production de tubes et de profilés.",
+      "p2": "Nous nous occupons également de l'achat et de la vente de machines d'occasion pour l'industrie plastique. La société next, Neuenburger Extrusionstechnik GmbH, a été fondée à cet effet."
+    }
+  },
+  "products": {
+    "pipeExtrusion": {
+      "title": "Extrusion de tubes",
+      "description": "L’extrusion de tubes et de canalisations est notre cœur de métier. Les applications sont aussi diverses que les innovations de nos clients.",
+      "examples": "Exemples :",
+      "examplesList": [
+        "Applications automobile",
+        "Tubes médicaux",
+        "Tubes composites aluminium",
+        "Tubes de chauffage",
+        "Tubes d’irrigation goutte à goutte",
+        "Tubes de réseau de chaleur",
+        "Tubes d’assainissement",
+        "Tubes d’égout",
+        "Tubes d’eau potable",
+        "Tubes de gaz"
+      ]
+    },
+    "profileExtrusion": {
+      "title": "Extrusion de profilés",
+      "description": "Nos machines servent à la fabrication de profilés. Nous proposons des solutions sur mesure pour l’extrusion de profilés.",
+      "usedAs": "Nos machines sont utilisées dans la fabrication de profilés tels que :",
+      "usedAsList": ["Profilés de fenêtres, principaux et secondaires", "Petits profilés", "Profilés techniques"],
+      "applications": "Les domaines d'application sont aussi variés que les innovations de nos clients :",
+      "applicationsList": ["Industrie du meuble", "Industrie du bâtiment", "Publicité", "Industrie automobile", "Emballage"]
+    },
+    "sheetExtrusion": {
+      "title": "Extrusion de plaques",
+      "description": "Les installations de plaques de Graewe sont adaptées aux exigences des applications. Cela permet une utilisation optimale de la technologie disponible.",
+      "p2": "Notre pensée et notre travail orientés vers le client se reflètent dans le succès de nos produits et services. Mais aussi dans le succès durable de nos clients et partenaires."
+    },
+    "subcategories": {
+      "extruder": "Extrudeuse",
+      "calibrationBaths": "Bacs d’étalonnage et de refroidissement",
+      "haul-offs": "Tireuses",
+      "cuttingDevices": "Dispositifs de coupe",
+      "automaticWinders": "Enrouleurs automatiques",
+      "semiAutomaticWinders": "Enrouleurs semi-automatiques",
+      "socketMachines": "Machines à embouts",
+      "specialMachines": "Machines spéciales",
+      "calibrationTables": "Tables d’étalonnage",
+      "winders": "Enrouleurs",
+      "longitudinalCutting": "Coupe longitudinale",
+      "transverseCutting": "Coupe transversale",
+      "sheetStackers": "Empileurs de feuilles"
+    },
+    "contactPerson": "Interlocuteur"
+  },
+  "successStories": {
+    "title": "Témoignages clients",
+    "testimonials": {
+      "maplast": {
+        "company": "Maplast S.A",
+        "text": "It is not easy to find an honest source in the world specially for used equipment and when I started to look for second hand extrusion machines in Europe and I searched all around but finally I was very lucky since I choosed Graewe from the start, they gave me that good feeling to go ahead from the start considering that I was in South America and I was not able to fly to Europe all the time so I needed a company I could rely on blind which is not easy since there are many pirates out there in the market only looking at your pocket. This happened quite a long time ago and along the years besides the commercial link we have established a close personal relationship so I can totally rely on their technical capacity and honesty and in some cases when they do not have what you need they will help you to find a source without any further interest at all. Graewe is the kind of company hard to find you can deal directly with the owners, the respond quickly to your requirements big or small, technically capable, fair prices, responsible, honest. I would give them the highest 5 star rating. Finally my very personal opinion is that behind all this there is a fantastic family with all the required values to make them one of the best companies in Germany on whatever plastic business you start or plan to develop.",
+        "author": "David Lebed",
+        "location": "Guayaquil, Ecuador"
+      },
+      "asg": {
+        "company": "ASG Plastics Factories",
+        "text": "Throughout the past few years in doing business with Graewe/Next machines, they were never short of exceeding our expectations. Their professional team were very punctual and never compromised the quality of their delivered goods. Personally, the flexibility of the management team and their understanding to the needs of the customers were paramount. Costumed solutions were always available which made things much easier in buying decisions. It has always been a pleasure buying from Graewe and will always be.",
+        "author": "Ahmed A. Alsharif, Chairman & CEO",
+        "location": "Abdullatif Alsharif Group"
+      }
+    }
+  },
+  "usedMachines": {
+    "title": "Machines d’occasion",
+    "subtitle": "… l’investissement judicieux pour une extrusion optimale.",
+    "intro": "Les machines d’extrusion représentent un investissement majeur pour toute entreprise — une machine neuve n’est pas toujours la meilleure solution. Pour vous aider à répondre au mieux à toutes vos exigences, il y a next : nous vous proposons des installations d’extrusion d’occasion dans les meilleures conditions.",
+    "reasonsTitle": "De nombreux arguments plaident en faveur de machines d’occasion next professionnelles :",
+    "reasons": [
+      "Remplacement rapide en cas de panne machine",
+      "Pontage à court terme",
+      "Prix d’achat plus bas",
+      "Disponibilité rapide"
+    ],
+    "overhaulsTitle": "next révise et remet à neuf l’ensemble",
+    "overhaulsText": "Toutes les machines d’occasion chez next sont minutieusement contrôlées et remises à neuf — c’est notre garantie envers vous, et elle vient de la meilleure maison. Derrière next, plus de 25 ans de savoir-faire en extrusion de GRAEWE, le fournisseur expérimenté de technologies d’extrusion innovantes.",
+    "catalogLink": "Catalogue machines d’occasion",
+    "nextAddress": "next GmbH\nMax-Planck-Str. 1+2\nDE-79395 Neuenburg"
+  },
+  "calculator": {
+    "title": "Calculateur produit",
+    "intro": "La satisfaction de nos clients est notre référence. Il nous importe donc que vous bénéficiez d’une qualité de service exemplaire. Où que vous soyez dans le monde, nous vous aidons sans délai.",
+    "windingPosition": "Position finale d’enroulement",
+    "windingLength": "Longueur d’enroulement",
+    "inputs": "Vos données",
+    "pipeDiameter": "Diamètre du tube d [mm]",
+    "length": "Longueur L [m]",
+    "innerDiameter": "Diamètre intérieur DI [mm]",
+    "outerDiameter": "Diamètre extérieur DE [mm]",
+    "pipesPerLayer": "Tubes par couche [nombre]",
+    "bundleWidth": "Largeur du paquet W [mm]",
+    "bundleHeight": "Hauteur du paquet H [mm]",
+    "unevenLayers": "Schéma d’enroulement / Couches inégales",
+    "evenLayersOffset": "Schéma d’enroulement / Décalage couches paires",
+    "layerCount": "Nombre de couches i [nombre]",
+    "pipesLastLayer": "Tubes sur la dernière couche ni [nombre]",
+    "rotationCount": "Nombre de rotations r [nombre]",
+    "windingLengthResult": "Longueur d’enroulement [m]",
+    "disclaimer": "Les longueurs d’enroulement calculées peuvent varier jusqu’à 10 %. Nous déclinons toute responsabilité quant à l’exactitude des résultats.",
+    "calculate": "Calculer",
+    "reset": "Réinitialiser"
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Votre demande nous importe",
+    "sendMessage": "Envoyez-nous un message",
+    "name": "Nom",
+    "firstName": "Prénom",
+    "email": "E-mail",
+    "phone": "Téléphone",
+    "message": "Message",
+    "requiredField": "Champ obligatoire",
+    "submit": "Envoyer",
+    "successMessage": "Votre message a bien été envoyé.",
+    "errorMessage": "Une erreur s’est produite. Veuillez réessayer.",
+    "address": "Adresse",
+    "addressLines": "GRAEWE GmbH Maschinenbau\nMax Planck-Straße 1-3\n79395 Neuenburg am Rhein"
+  },
+  "team": {
+    "title": "Équipe",
+    "address": "Adresse",
+    "service": "Service",
+    "spareParts": "Pièces de rechange",
+    "usedMachines": "Machines d’occasion",
+    "jobs": "Emplois"
+  },
+  "downloads": {
+    "title": "Téléchargements",
+    "noDownloads": "Aucun téléchargement disponible pour le moment."
+  },
+  "jobs": {
+    "title": "Offres d’emploi",
+    "noJobs": "Aucune offre d’emploi disponible pour le moment."
+  },
+  "news": {
+    "title": "Actualités",
+    "readMore": "lire la suite",
+    "articlePlaceholder": "Le contenu intégral de l’article apparaîtra ici — texte provisoire.",
+    "items": [
+      {
+        "slug": "kalibriertische-profilextrusion",
+        "title": "Tables d’étalonnage pour l’extrusion de profilés",
+        "excerpt": "Offre élargie : tables d’étalonnage de précision pour des applications profilées exigeantes — adaptées à votre ligne d’extrusion."
+      },
+      {
+        "slug": "portfolio-erweiterung",
+        "title": "Élargissement du portefeuille",
+        "excerpt": "GRAEWE élargit sa gamme et offre à ses clients encore plus de flexibilité pour l’extrusion de tubes, profilés et plaques."
+      },
+      {
+        "slug": "bauboom-nachfrage",
+        "title": "Le boom de la construction stimule la demande",
+        "excerpt": "Une forte activité dans le bâtiment soutient la demande de tubes et profilés en matière plastique — nos clients augmentent leurs capacités de production."
+      },
+      {
+        "slug": "produktionshallen-erweitert",
+        "title": "Extension des halls de production",
+        "excerpt": "Investissement en surfaces supplémentaires : davantage de capacité pour la fabrication et le montage sur le site de Neuenburg."
+      },
+      {
+        "slug": "jubilaeum",
+        "title": "Anniversaire",
+        "excerpt": "Des années de technologie d’extrusion réussie — nous remercions nos clients et partenaires pour leur confiance."
+      }
+    ]
+  },
+  "legal": {
+    "imprint": "Mentions légales",
+    "privacy": "Politique de confidentialité",
+    "sitemap": "Plan du site",
+    "cookies": "Cookies"
+  },
+  "footer": {
+    "productCalculator": "Calculateur produit",
+    "contact": "Contact",
+    "imprint": "Mentions légales",
+    "privacy": "Politique de confidentialité",
+    "sitemap": "Plan du site",
+    "cookies": "Cookies",
+    "phone": "+49 (0) 7631 7944-0"
+  },
+  "common": {
+    "backToTop": "Haut de page"
+  }
+}

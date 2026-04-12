@@ -1,0 +1,272 @@
+{
+  "meta": {
+    "title": "GRAEWE GmbH — технологии экструзии и машиностроение",
+    "description": "GRAEWE — востребованный бренд в мире технологий экструзии. Планирование, разработка, производство и монтаж экструзионных установок и машин."
+  },
+  "nav": {
+    "company": "Компания",
+    "products": "Продукция",
+    "successStories": "Истории успеха",
+    "news": "Новости",
+    "calculator": "Продуктовый калькулятор",
+    "usedMachines": "Подержанные машины",
+    "downloads": "Загрузки",
+    "team": "Команда",
+    "contact": "Контакты",
+    "jobs": "Вакансии",
+    "whoIsGraewe": "Кто такая Graewe?",
+    "whatDoesGraewe": "Чем занимается Graewe?",
+    "whatDoesGraeweStandFor": "В чём ценности Graewe?",
+    "graeweGroup": "Группа Graewe",
+    "pipeExtrusion": "Экструзия труб",
+    "profileExtrusion": "Экструзия профилей",
+    "sheetExtrusion": "Экструзия листа"
+  },
+  "hero": {
+    "slide1": {
+      "title": "Graewe — востребованный бренд в мире технологий экструзии.",
+      "subtitle": "Потому что мы умеем превращать идеи в реальность."
+    },
+    "slide2": {
+      "title": "Graewe — востребованный бренд в мире технологий экструзии.",
+      "subtitle": "Потому что мы умеем превращать идеи в реальность."
+    },
+    "slide3": {
+      "title": "Мы умеем превращать идеи в реальность.",
+      "subtitle": "ПОЛНАЯ ОТДАЧА, БЕЗУПРЕЧНОЕ ИСПОЛНЕНИЕ"
+    },
+    "slide4": {
+      "title": "Graewe — востребованный бренд в мире технологий экструзии.",
+      "subtitle": "Потому что мы умеем превращать идеи в реальность."
+    },
+    "slide5": {
+      "title": "Graewe — востребованный бренд в мире технологий экструзии.",
+      "subtitle": "Потому что мы умеем превращать идеи в реальность."
+    }
+  },
+  "home": {
+    "pipeExtrusionDesc": "Экструзия труб и трубок — наша специализация",
+    "profileExtrusionDesc": "Наши машины применяются при производстве профилей",
+    "sheetExtrusionDesc": "Листовые системы Graewe подстраиваются под требования применения",
+    "newsTitle": "Новости",
+    "noNews": "Новостей пока нет.",
+    "learnMore": "Подробнее"
+  },
+  "company": {
+    "whoIsGraewe": {
+      "breadcrumb": "Кто такая Graewe?",
+      "title": "Graewe — востребованный бренд в мире технологий экструзии.",
+      "subtitle": "Потому что мы умеем превращать идеи в реальность.",
+      "p1": "Более 40 лет мы являемся одной из движущих сил современной полимерной отрасли в планировании, разработке, производстве и монтаже заводов, машин и последующих поколений оборудования. Благодаря творческим и эффективным концепциям и решениям мы выросли в одного из ведущих поставщиков экструзионных машин на мировом рынке.",
+      "p2": "Наши заказчики особенно ценят индивидуальные, ориентированные на выгоду концепции и решения, которые мы грамотно реализуем при отличном соотношении цены и качества.",
+      "p3": "Успех нашей продукции и услуг, а также успех наших клиентов и партнёров подтверждает нашу приверженность последовательно клиентоориентированному мышлению и действиям."
+    },
+    "whatDoesGraewe": {
+      "breadcrumb": "Чем занимается Graewe?",
+      "title": "Graewe — компетентный партнёр для современной полимерной промышленности.",
+      "subtitle": "Потому что у нас есть подходящее решение почти для любой задачи.",
+      "p1": "Ассортимент Graewe так же разнообразен, как задачи, которые необходимо решать в переработке пластмасс.",
+      "p2": "У нас вы найдёте особые компетенции в области машиностроения для труб, профилей и листа.",
+      "p3": "Гибкость и надёжность технологии — это гарантии, с которыми Graewe зарекомендовала себя в последние годы. Нужна ли особая многофункциональность, компактные решения или очень специфический профиль требований — вы всегда получите индивидуальные результаты от Graewe."
+    },
+    "whatDoesGraeweStandFor": {
+      "breadcrumb": "В чём ценности Graewe?",
+      "title": "Graewe означает рентабельность, гибкость и надёжность.",
+      "subtitle": "Потому что для наших клиентов на первом месте экономическая эффективность.",
+      "p1": "Мы поставляем машины, которые можно адаптировать к индивидуальным потребностям без лишних затрат — с высокой производительностью, низкими затратами на обслуживание и сервис, длительным сроком службы при оптимальной работе, стабильностью процесса и короткими сроками разработки."
+    },
+    "graeweGroup": {
+      "breadcrumb": "Группа Graewe",
+      "title": "Группа Graewe",
+      "subtitle": "Сильная сеть для ваших задач.",
+      "p1": "Компания GRAEWE GmbH была основана в 1981 году и занимается разработкой, проектированием и производством последующего экструзионного оборудования для производства труб и профилей.",
+      "p2": "Мы также занимаемся покупкой и продажей подержанных машин для пластмассовой промышленности. Для этой цели была создана компания next, Neuenburger Extrusionstechnik GmbH."
+    }
+  },
+  "products": {
+    "pipeExtrusion": {
+      "title": "Экструзия труб",
+      "description": "Экструзия труб и трубок — наша специализация. Области применения так же разнообразны, как инновации наших заказчиков.",
+      "examples": "Примеры:",
+      "examplesList": [
+        "Автомобильная отрасль",
+        "Медицинские трубки",
+        "Алюминиево-полимерные композитные трубы",
+        "Трубы для отопления",
+        "Трубы капельного орошения",
+        "Трубы теплоснабжения",
+        "Дренажные трубы",
+        "Канализационные трубы",
+        "Трубы для питьевой воды",
+        "Газопроводные трубы"
+      ]
+    },
+    "profileExtrusion": {
+      "title": "Экструзия профилей",
+      "description": "Наши машины применяются при производстве профилей. Мы предлагаем индивидуальные решения для экструзии профилей.",
+      "usedAs": "Наши машины используются при производстве профилей:",
+      "usedAsList": ["Оконные профили, основные и вспомогательные", "Малые профили", "Технические профили"],
+      "applications": "Области применения столь же разнообразны, как и инновации наших клиентов:",
+      "applicationsList": ["Мебельная промышленность", "Строительная промышленность", "Реклама", "Автомобильная промышленность", "Упаковка"]
+    },
+    "sheetExtrusion": {
+      "title": "Экструзия листа",
+      "description": "Листовые установки Graewe адаптируются к требованиям конкретных областей применения. Это обеспечивает оптимальное использование доступных технологий.",
+      "p2": "Наше клиентоориентированное мышление и работа отражаются в успехе наших продуктов и услуг. А также в долгосрочном успехе наших клиентов и партнёров."
+    },
+    "subcategories": {
+      "extruder": "Экструдер",
+      "calibrationBaths": "Калибровочные и охлаждающие ванны",
+      "haul-offs": "Волочилки",
+      "cuttingDevices": "Устройства резки",
+      "automaticWinders": "Автоматические намотчики",
+      "semiAutomaticWinders": "Полуавтоматические намотчики",
+      "socketMachines": "Раструбные машины",
+      "specialMachines": "Специальные машины",
+      "calibrationTables": "Калибровочные столы",
+      "winders": "Намотчики",
+      "longitudinalCutting": "Продольная резка",
+      "transverseCutting": "Поперечная резка",
+      "sheetStackers": "Укладчики листов"
+    },
+    "contactPerson": "Контактное лицо"
+  },
+  "successStories": {
+    "title": "Истории успеха",
+    "testimonials": {
+      "maplast": {
+        "company": "Maplast S.A",
+        "text": "It is not easy to find an honest source in the world specially for used equipment and when I started to look for second hand extrusion machines in Europe and I searched all around but finally I was very lucky since I choosed Graewe from the start, they gave me that good feeling to go ahead from the start considering that I was in South America and I was not able to fly to Europe all the time so I needed a company I could rely on blind which is not easy since there are many pirates out there in the market only looking at your pocket. This happened quite a long time ago and along the years besides the commercial link we have established a close personal relationship so I can totally rely on their technical capacity and honesty and in some cases when they do not have what you need they will help you to find a source without any further interest at all. Graewe is the kind of company hard to find you can deal directly with the owners, the respond quickly to your requirements big or small, technically capable, fair prices, responsible, honest. I would give them the highest 5 star rating. Finally my very personal opinion is that behind all this there is a fantastic family with all the required values to make them one of the best companies in Germany on whatever plastic business you start or plan to develop.",
+        "author": "David Lebed",
+        "location": "Guayaquil, Ecuador"
+      },
+      "asg": {
+        "company": "ASG Plastics Factories",
+        "text": "Throughout the past few years in doing business with Graewe/Next machines, they were never short of exceeding our expectations. Their professional team were very punctual and never compromised the quality of their delivered goods. Personally, the flexibility of the management team and their understanding to the needs of the customers were paramount. Costumed solutions were always available which made things much easier in buying decisions. It has always been a pleasure buying from Graewe and will always be.",
+        "author": "Ahmed A. Alsharif, Chairman & CEO",
+        "location": "Abdullatif Alsharif Group"
+      }
+    }
+  },
+  "usedMachines": {
+    "title": "Подержанные машины",
+    "subtitle": "..разумная инвестиция для оптимальной экструзии.",
+    "intro": "Экструзионные машины — крупная инвестиция для любой компании, и новая машина не всегда лучшее решение. Чтобы вы могли оптимально закрыть все задачи, есть next: мы предлагаем подержанные экструзионные системы на лучших условиях.",
+    "reasonsTitle": "Много веских аргументов в пользу профессиональных подержанных машин next:",
+    "reasons": [
+      "Быстрая замена при выходе оборудования из строя",
+      "Краткосрочное закрытие потребности",
+      "Более низкая цена приобретения",
+      "Быстрая доступность"
+    ],
+    "overhaulsTitle": "next капитально обслуживает всё",
+    "overhaulsText": "Все подержанные машины у next тщательно проверяются и восстанавливаются — это наша гарантия для вас и знак качества с проверенного источника. За next стоят более 25 лет экструзионного ноу-хау GRAEWE, опытного поставщика инновационных технологий экструзии.",
+    "catalogLink": "Каталог подержанных машин",
+    "nextAddress": "next GmbH\nMax-Planck-Str. 1+2\nDE-79395 Neuenburg"
+  },
+  "calculator": {
+    "title": "Продуктовый калькулятор",
+    "intro": "Довольные клиенты — критерий, по которому мы оцениваем себя. Поэтому для нас важно, чтобы вы получали высочайшее качество сервиса. Где бы вы ни находились, мы поможем вам без промедления.",
+    "windingPosition": "Конечное положение намотки",
+    "windingLength": "Длина намотки",
+    "inputs": "Ваши исходные данные",
+    "pipeDiameter": "Диаметр трубы d [мм]",
+    "length": "Длина L [м]",
+    "innerDiameter": "Внутренний диаметр ID [мм]",
+    "outerDiameter": "Наружный диаметр OD [мм]",
+    "pipesPerLayer": "Труб в слое [шт.]",
+    "bundleWidth": "Ширина пакета W [мм]",
+    "bundleHeight": "Высота пакета H [мм]",
+    "unevenLayers": "Схема намотки / нечётные слои",
+    "evenLayersOffset": "Схема намотки / смещение чётных слоёв",
+    "layerCount": "Число слоёв i [шт.]",
+    "pipesLastLayer": "Труб на последнем слое ni [шт.]",
+    "rotationCount": "Число оборотов r [шт.]",
+    "windingLengthResult": "Длина намотки [м]",
+    "disclaimer": "Расчётная длина намотки может отличаться до 10 %. Мы не несём ответственности за точность результатов.",
+    "calculate": "Рассчитать",
+    "reset": "Сброс"
+  },
+  "contact": {
+    "title": "Контакты",
+    "subtitle": "Ваш запрос для нас важен",
+    "sendMessage": "Напишите нам",
+    "name": "Фамилия",
+    "firstName": "Имя",
+    "email": "Электронная почта",
+    "phone": "Телефон",
+    "message": "Сообщение",
+    "requiredField": "Обязательное поле",
+    "submit": "Отправить",
+    "successMessage": "Сообщение успешно отправлено.",
+    "errorMessage": "Произошла ошибка. Попробуйте ещё раз.",
+    "address": "Адрес",
+    "addressLines": "GRAEWE GmbH Maschinenbau\nMax Planck-Straße 1-3\n79395 Neuenburg am Rhein"
+  },
+  "team": {
+    "title": "Команда",
+    "address": "Адрес",
+    "service": "Сервис",
+    "spareParts": "Запасные части",
+    "usedMachines": "Подержанные машины",
+    "jobs": "Вакансии"
+  },
+  "downloads": {
+    "title": "Загрузки",
+    "noDownloads": "В данный момент файлов для загрузки нет."
+  },
+  "jobs": {
+    "title": "Вакансии",
+    "noJobs": "На данный момент открытых вакансий нет."
+  },
+  "news": {
+    "title": "Новости",
+    "readMore": "читать далее",
+    "articlePlaceholder": "Полный текст статьи появится здесь — заглушка.",
+    "items": [
+      {
+        "slug": "kalibriertische-profilextrusion",
+        "title": "Калибровочные столы для экструзии профилей",
+        "excerpt": "Расширение линейки: точные калибровочные столы для требовательных профильных применений — под вашу экструзионную линию."
+      },
+      {
+        "slug": "portfolio-erweiterung",
+        "title": "Расширение портфеля",
+        "excerpt": "GRAEWE расширяет ассортимент и даёт заказчикам ещё больше гибкости в экструзии труб, профилей и листа."
+      },
+      {
+        "slug": "bauboom-nachfrage",
+        "title": "Строительный бум стимулирует спрос",
+        "excerpt": "Высокая строительная активность поддерживает спрос на пластиковые трубы и профили — наши клиенты наращивают производство."
+      },
+      {
+        "slug": "produktionshallen-erweitert",
+        "title": "Производственные цеха расширены",
+        "excerpt": "Инвестиции в дополнительные площади: больше мощностей для производства и сборки на площадке в Нойенбурге."
+      },
+      {
+        "slug": "jubilaeum",
+        "title": "Юбилей",
+        "excerpt": "Годы успешных технологий экструзии — благодарим клиентов и партнёров за доверие."
+      }
+    ]
+  },
+  "legal": {
+    "imprint": "Правовая информация",
+    "privacy": "Политика конфиденциальности",
+    "sitemap": "Карта сайта",
+    "cookies": "Файлы cookie"
+  },
+  "footer": {
+    "productCalculator": "Продуктовый калькулятор",
+    "contact": "Контакты",
+    "imprint": "Правовая информация",
+    "privacy": "Политика конфиденциальности",
+    "sitemap": "Карта сайта",
+    "cookies": "Файлы cookie",
+    "phone": "+49 (0) 7631 7944-0"
+  },
+  "common": {
+    "backToTop": "Наверх"
+  }
+}
