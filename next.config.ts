@@ -9,7 +9,7 @@ const nextConfig: NextConfig = {
   output: isGitHubPages ? "export" : "standalone",
   basePath: isGitHubPages ? "/graewe-website" : "",
   images: isGitHubPages
-    ? { unoptimized: true }
+    ? { loader: "custom", loaderFile: "./src/lib/image-loader.ts" }
     : { formats: ["image/avif", "image/webp"] },
   trailingSlash: isGitHubPages,
 };

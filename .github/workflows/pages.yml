@@ -31,6 +31,7 @@ jobs:
         run: npx next build
         env:
           GITHUB_PAGES: "true"
+          NEXT_PUBLIC_BASE_PATH: "/graewe-website"
 
       - uses: actions/upload-pages-artifact@v3
         with:

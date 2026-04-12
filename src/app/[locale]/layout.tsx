@@ -26,8 +26,8 @@ export async function generateMetadata({
     description: messages.meta.description,
     metadataBase: new URL("https://www.graewe.com"),
     icons: {
-      icon: "/images/logo/favicon-32x32.png",
-      apple: "/images/logo/apple-touch-icon.png",
+      icon: `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/images/logo/favicon-32x32.png`,
+      apple: `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/images/logo/apple-touch-icon.png`,
     },
     openGraph: {
       title: messages.meta.title,
