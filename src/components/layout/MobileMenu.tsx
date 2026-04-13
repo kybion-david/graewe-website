@@ -64,7 +64,6 @@ export function MobileMenu({
             <Link
               key={link.href}
               href={link.href}
-              onClick={onClose}
               className="block py-2.5 px-3 text-sm text-text-muted hover:text-dark hover:bg-grey-100 rounded-lg transition-colors"
             >
               {link.label}
@@ -80,7 +79,6 @@ export function MobileMenu({
             <Link
               key={link.href}
               href={link.href}
-              onClick={onClose}
               className="flex items-center gap-2 py-2.5 px-3 text-sm font-semibold text-dark hover:bg-accent/10 rounded-lg transition-colors"
             >
               <span className="w-2 h-2 bg-accent rounded-full shrink-0" />
@@ -94,7 +92,6 @@ export function MobileMenu({
             <Link
               key={link.href}
               href={link.href}
-              onClick={onClose}
               className="block py-2.5 px-3 text-sm text-dark hover:bg-grey-100 rounded-lg transition-colors font-medium"
             >
               {link.label}

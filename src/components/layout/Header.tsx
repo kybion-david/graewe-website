@@ -3,12 +3,13 @@
 import { useState, useEffect, useRef } from "react";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
-import { Link } from "@/i18n/navigation";
+import { Link, usePathname } from "@/i18n/navigation";
 import { LanguageSwitcher } from "@/components/ui/LanguageSwitcher";
 import { MobileMenu } from "./MobileMenu";
 
 export function Header() {
   const t = useTranslations("nav");
+  const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
@@ -23,6 +24,9 @@ export function Header() {
 
   useEffect(() => {
     function handleClickOutside(e: MouseEvent) {
+      if (window.innerWidth < 1024) {
+        return;
+      }
       if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
         setMenuOpen(false);
       }
@@ -32,6 +36,10 @@ export function Header() {
     }
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [menuOpen]);
+
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [pathname]);
 
   const companyLinks = [
     { href: "/unternehmen/wer-ist-graewe", label: t("whoIsGraewe") },
