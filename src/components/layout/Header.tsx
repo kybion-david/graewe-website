@@ -117,7 +117,7 @@ export function Header() {
 
             {/* Desktop dropdown menu */}
             <div
-              className={`absolute top-full right-0 w-full transition-all duration-300 ease-out origin-top ${
+              className={`hidden lg:block absolute top-full right-0 w-full transition-all duration-300 ease-out origin-top ${
                 menuOpen
                   ? "opacity-100 scale-y-100 pointer-events-auto"
                   : "opacity-0 scale-y-95 pointer-events-none"
@@ -188,18 +188,17 @@ export function Header() {
                 </div>
               </div>
             </div>
+            {/* Mobile menu */}
+            <MobileMenu
+              isOpen={menuOpen}
+              onClose={() => setMenuOpen(false)}
+              companyLinks={companyLinks}
+              productLinks={productLinks}
+              mainLinks={mainLinks}
+            />
           </div>
         </div>
       </div>
-
-      {/* Mobile menu */}
-      <MobileMenu
-        isOpen={menuOpen}
-        onClose={() => setMenuOpen(false)}
-        companyLinks={companyLinks}
-        productLinks={productLinks}
-        mainLinks={mainLinks}
-      />
     </header>
   );
 }
