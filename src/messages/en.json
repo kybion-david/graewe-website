@@ -214,7 +214,41 @@
   },
   "downloads": {
     "title": "Downloads",
-    "noDownloads": "No downloads available at this time."
+    "subtitle": "Product Brochures & Data Sheets",
+    "downloadPdf": "Download PDF",
+    "noDownloads": "No downloads available at this time.",
+    "items": [
+      {
+        "title": "Belt & Caterpillar Haul-Offs",
+        "file": "/downloads/LAY_Band-und-Raupenabzuege_Graewe_161019_WEBANSICHT.pdf",
+        "size": "500 KB"
+      },
+      {
+        "title": "Sheet Extrusion",
+        "file": "/downloads/LAY_Plattenextrusion_Graewe_161019_ANSICHT.pdf",
+        "size": "1.3 MB"
+      },
+      {
+        "title": "Pipe & Profile Winders",
+        "file": "/downloads/LAY_Rohr-und-Profilwickler_Graewe_161019_WEBANSICHT.pdf",
+        "size": "589 KB"
+      },
+      {
+        "title": "Cutting Devices",
+        "file": "/downloads/LAY_Trenneinrichtungen_Graewe_161019_WEBANSICHT.pdf",
+        "size": "355 KB"
+      },
+      {
+        "title": "Vacuum Calibration",
+        "file": "/downloads/LAY_Vakuumkalibrierung_Graewe_161019_WEBANSICHT.pdf",
+        "size": "679 KB"
+      },
+      {
+        "title": "Fully Automatic Winders",
+        "file": "/downloads/LAY_Vollautomatische-Wickler_Graewe_161019_WEBANSICHT.pdf",
+        "size": "579 KB"
+      }
+    ]
   },
   "jobs": {
     "title": "Job Openings",
