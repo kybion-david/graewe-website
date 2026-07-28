@@ -1,0 +1,13 @@
+---
+description: i18n and translation file conventions
+globs: src/messages/**/*.json,src/i18n/**/*.ts,src/components/**/*.tsx,src/app/**/*.tsx
+alwaysApply: false
+---
+
+# Internationalization
+
+- Locales: `de` (default), `en`, `fr`, `ru`, `es` — `localeDetection` is off; `/` → `/de`.
+- All user-facing strings live in `src/messages/{locale}.json`. Never hardcode copy in components.
+- When adding or renaming a key, update **all five** locale files in the same change.
+- Use `@/i18n/navigation` (`Link`, `useRouter`, `usePathname`, `redirect`) for locale-aware routing — not `next/link` or `next/navigation`.
+- German URL slugs are canonical across locales (`/en/produkte/...`, not translated paths).

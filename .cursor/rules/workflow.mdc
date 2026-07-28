@@ -1,0 +1,27 @@
+---
+description: Git isolation, branching, and PR workflow for every change
+alwaysApply: true
+---
+
+# Workflow
+
+Before any code or docs change:
+
+1. Create a **new git worktree** from `origin/main` (do not edit the shared main checkout if another agent may use it).
+2. Use a dedicated branch: `feature/*`, `fix/*`, `chore/*`, or `docs/*`.
+3. Never commit to `main`.
+
+When the work is ready for humans:
+
+4. Run `npm run type-check`, `npm run lint`, `npm run test` (and e2e if nav/i18n/calculator/contact changed).
+5. Push the branch and open a **PR to `main`** for review.
+6. Do not merge or force-push to `main` unless explicitly asked.
+
+If the change affects how the repo works, update `SPEC.md` in the same PR.
+
+```bash
+# Example isolation
+git fetch origin main
+git worktree add -b feature/foo ../graewe-website-foo origin/main
+# then work only inside that worktree
+```
