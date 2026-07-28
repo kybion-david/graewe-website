@@ -1,0 +1,13 @@
+---
+description: Component, UI, and brand token conventions
+globs: src/components/**/*.tsx,src/app/globals.css
+alwaysApply: false
+---
+
+# Components & brand
+
+- One component per file; filename matches the export (PascalCase). Prefer named exports.
+- Reuse `src/components/ui/*` (`Button`, `Card`, `SectionHeader`, `Breadcrumb`, `LanguageSwitcher`) before inventing new primitives.
+- Colors: `text-dark` for headings; `bg-accent` + `text-dark` for yellow CTAs (never white-on-yellow); `text-text-muted`, `bg-grey-100`, `bg-bg-footer` for surfaces.
+- Preserve existing layout patterns (header MENÜ drawer, product sidebar, footer structure) unless the task is a redesign.
+- Product data/slugs: `src/lib/products.ts`; rich product copy: `src/lib/productContent.ts`; images: `src/lib/productImages.ts`.

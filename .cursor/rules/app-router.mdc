@@ -1,0 +1,23 @@
+---
+description: App Router page and layout conventions
+globs: src/app/**/*.tsx,src/app/**/*.ts
+alwaysApply: false
+---
+
+# App Router pages
+
+- Always `await params` (and `searchParams` when used):
+  ```tsx
+  export default async function Page({
+    params,
+  }: {
+    params: Promise<{ locale: string }>;
+  }) {
+    const { locale } = await params;
+    // ...
+  }
+  ```
+- Prefer Server Components; add `"use client"` only for interactivity.
+- Export `generateMetadata` on pages that need distinct titles/descriptions; pull copy from messages.
+- Keep routes under `src/app/[locale]/` unless adding a non-localized API route under `src/app/api/`.
+- Named exports for helpers; default export only for the page/layout Next requires.
