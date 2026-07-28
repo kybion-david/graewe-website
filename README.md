@@ -24,9 +24,12 @@ Open [http://localhost:3000](http://localhost:3000) — you'll be redirected to 
 | `npm run test:watch` | Run unit tests in watch mode |
 | `npm run test:e2e` | Run E2E tests (Playwright) |
 
-## Architecture
+## Architecture & AI agents
 
-See [PROJECT.md](./PROJECT.md) for the full project document with architecture decisions, content migration checklist, and implementation phases.
+- **[`SPEC.md`](./SPEC.md)** — living source of truth (current stack, layout, conventions). Start here.
+- **[`AGENTS.md`](./AGENTS.md)** — mandatory workflow for AI assistants (worktree → branch → PR).
+- **[`PROJECT.md`](./PROJECT.md)** — historical vision, phases, brand audit, calculator formulas.
+- **`.cursor/rules/`** — Cursor rules loaded automatically (workflow, i18n, App Router, components, testing).
 
 ### Key Directories
 

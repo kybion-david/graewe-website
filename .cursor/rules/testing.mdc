@@ -1,0 +1,12 @@
+---
+description: Testing expectations for calculator, forms, and critical flows
+globs: src/lib/**/*.ts,src/components/calculator/**/*.tsx,src/components/contact/**/*.tsx,tests/**/*
+alwaysApply: false
+---
+
+# Testing
+
+- Calculator logic in `src/lib/calculator.ts` must stay pure and covered by Vitest in `tests/unit/`.
+- New interactive behavior (forms, calculator UI, language switcher, nav) needs a unit and/or Playwright test — prefer behavior over implementation details.
+- Pure content page copy does not need dedicated tests; navigation/i18n e2e covers reachability.
+- Before finishing interactive work: `npm run test`. For nav/i18n/calculator/contact: also `npm run test:e2e`.

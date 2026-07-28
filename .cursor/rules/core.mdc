@@ -1,0 +1,14 @@
+---
+description: Always-on project orientation and quality bar
+alwaysApply: true
+---
+
+# Core
+
+At the start of a task, read `SPEC.md` then `AGENTS.md`. Prefer `SPEC.md` over `PROJECT.md` when they conflict.
+
+This is **Next.js 16** — do not assume older App Router APIs. Check `node_modules/next/dist/docs/` before unfamiliar Next usage. `params`/`searchParams` are Promises; proxy is `src/proxy.ts`.
+
+Keep diffs focused. Do not expand into Phase 5 (3D, shop, portal, CMS) unless requested.
+
+Done means: types + lint + unit tests clean, and `SPEC.md` updated if conventions/architecture changed.

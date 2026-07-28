@@ -307,7 +307,10 @@ graewe-website/
 ├── vitest.config.ts
 ├── playwright.config.ts
 ├── package.json
-├── PROJECT.md                       # This document
+├── SPEC.md                          # Living source of truth for agents/contributors
+├── AGENTS.md                        # Mandatory AI workflow (worktree → branch → PR)
+├── .cursor/rules/                   # Cursor agent rules
+├── PROJECT.md                       # This document (historical / deep reference)
 └── README.md                        # Setup & development instructions
 ```
 
@@ -507,10 +510,10 @@ Email: info@next-machines.com
 - Components: one component per file, file name matches component name (PascalCase).
 
 ### Git Workflow
-- `main` branch is production.
-- Feature branches: `feature/<short-description>`.
+- `main` branch is production — never commit directly to it.
+- Every change starts in an **isolated git worktree** + dedicated branch (`feature/`, `fix/`, `chore/`, `docs/`). See `AGENTS.md`.
 - Commit messages: imperative mood, concise ("Add product calculator", "Fix mobile nav overflow").
-- PRs require passing CI (lint + type-check + tests) before merge.
+- When ready, open a PR against `main`. CI must pass (lint + type-check + tests) before merge.
 
 ### Environment Variables
 ```env
@@ -522,16 +525,18 @@ NEXT_PUBLIC_ANALYTICS_ID=  # Plausible/Umami site ID
 ```
 
 ### AI Assistant Instructions
-This project is designed to be AI-friendly. When working on this codebase:
-- Read `PROJECT.md` (this file) first for full context.
-- Content lives in `src/messages/` (JSON translation files) — edit content there, not in components.
+This project is designed to be AI-friendly. **Operational instructions live in `SPEC.md` + `AGENTS.md`** (and `.cursor/rules/`). Prefer those over this section when they disagree — this document is historical/reference.
+
+When working on this codebase:
+- Read `SPEC.md` first, then `AGENTS.md` (worktree → branch → PR workflow is mandatory).
+- Content lives in `src/messages/` (JSON translation files) — edit content there, not in components. Update all five locales.
 - Calculator logic is in `src/lib/calculator.ts` — pure functions, easy to test.
 - Product data (categories, subcategories, slugs) is in `src/lib/products.ts`.
 - The `src/components/ui/` directory contains reusable primitives; use them rather than creating one-off styled elements.
 - **Colors**: Use `text-dark` for headings (not `text-primary`), `text-accent` for yellow highlights, `bg-grey-100` for light backgrounds, `bg-dark`/`bg-bg-footer` for dark sections. See `globals.css` for all tokens.
 - **Next.js 16**: `params` is a `Promise` — always `await params`. Middleware is `proxy.ts` not `middleware.ts`.
 - Always run `npm run type-check` and `npm run test` before considering work complete.
-- The site must work in all 5 languages — when adding UI text, add translation keys to all message files (DE and EN are fully translated; FR/RU/ES are English copies for now).
+- Update `SPEC.md` in the same PR when architecture or conventions change.
 
 ---
 
