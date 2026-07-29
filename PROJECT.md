@@ -461,7 +461,7 @@ Preserve the existing URL patterns for SEO continuity. The Next.js `[locale]` dy
 - [ ] Gebrauchtmaschinen — text + link to next-machines.com
 - [ ] Downloads — all downloadable documents
 - [ ] Team — department contact info (Service, Ersatzteile, Gebrauchtmaschinen, Jobs)
-- [ ] Kontakt — address, phone, fax, email, map embed
+- [x] Kontakt — address, phone, fax, email, map embed
 - [ ] Impressum — full legal text
 - [ ] Datenschutz — full privacy policy text
 - [ ] Stellenanzeigen — job postings

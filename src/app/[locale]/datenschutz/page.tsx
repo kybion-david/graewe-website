@@ -75,6 +75,7 @@ export default async function DatenschutzPage({
             {t("linksTitle")}
           </h2>
           <p>{t("linksBody")}</p>
+          <p className="mt-3">{t("linksMapBody")}</p>
         </section>
 
         <section>

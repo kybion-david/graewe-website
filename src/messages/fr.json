@@ -225,7 +225,12 @@
     "captchaError": "Échec de la vérification de sécurité. Veuillez réessayer.",
     "rateLimitError": "Trop de demandes. Veuillez patienter quelques minutes et réessayer.",
     "address": "Adresse",
-    "addressLines": "GRAEWE GmbH Maschinenbau\nMax-Planck-Straße 1-3\n79395 Neuenburg am Rhein"
+    "addressLines": "GRAEWE GmbH Maschinenbau\nMax-Planck-Straße 1-3\n79395 Neuenburg am Rhein",
+    "mapTitle": "Accès",
+    "mapAlt": "Extrait de carte : emplacement de GRAEWE GmbH à Neuenburg am Rhein",
+    "mapAttribution": "Données cartographiques © contributeurs OpenStreetMap",
+    "openOsm": "Ouvrir dans OpenStreetMap",
+    "openGoogle": "Ouvrir dans Google Maps"
   },
   "team": {
     "title": "Équipe",
@@ -608,6 +613,7 @@
     "cookiesLink": "page Cookies",
     "linksTitle": "4. Liens vers d’autres sites",
     "linksBody": "Pour les liens vers d’autres sites web, nous n’assumons aucune responsabilité quant à leur contenu.",
+    "linksMapBody": "Sur la page de contact, nous affichons une carte statique hébergée localement (données OpenStreetMap) de notre site. Aucun service cartographique tiers n’est chargé à l’ouverture de la page. Ce n’est que lorsque vous cliquez sur un lien vers OpenStreetMap ou Google Maps que vous quittez notre site ; la politique de confidentialité du fournisseur concerné s’applique alors.",
     "newsletterTitle": "5. Newsletter électronique",
     "newsletterBody": "Si vous souhaitez vous abonner à notre newsletter électronique, nous avons besoin pour des raisons légales de votre adresse e-mail ainsi que de la confirmation que vous êtes le titulaire de l’adresse e-mail indiquée et que vous acceptez de recevoir la newsletter électronique. Les données sont collectées uniquement dans le but de vous envoyer la newsletter et de documenter notre autorisation à cet effet. Aucune transmission des données à des tiers n’a lieu. Vous pouvez révoquer à tout moment l’abonnement à la newsletter et votre consentement au stockage de l’adresse e-mail.",
     "infoRightsTitle": "6. Droit d’accès",

@@ -225,7 +225,12 @@
     "captchaError": "La comprobación de seguridad ha fallado. Inténtelo de nuevo.",
     "rateLimitError": "Demasiadas solicitudes. Espere unos minutos e inténtelo de nuevo.",
     "address": "Dirección",
-    "addressLines": "GRAEWE GmbH Maschinenbau\nMax-Planck-Straße 1-3\n79395 Neuenburg am Rhein"
+    "addressLines": "GRAEWE GmbH Maschinenbau\nMax-Planck-Straße 1-3\n79395 Neuenburg am Rhein",
+    "mapTitle": "Cómo llegar",
+    "mapAlt": "Extracto del mapa: ubicación de GRAEWE GmbH en Neuenburg am Rhein",
+    "mapAttribution": "Datos del mapa © colaboradores de OpenStreetMap",
+    "openOsm": "Abrir en OpenStreetMap",
+    "openGoogle": "Abrir en Google Maps"
   },
   "team": {
     "title": "Equipo",
@@ -608,6 +613,7 @@
     "cookiesLink": "página de cookies",
     "linksTitle": "4. Enlaces a otros sitios web",
     "linksBody": "No asumimos responsabilidad por el contenido de los enlaces a otros sitios web.",
+    "linksMapBody": "En la página de contacto mostramos una imagen de mapa estática alojada localmente (datos de OpenStreetMap) de nuestra ubicación. No se cargan servicios de mapas de terceros al abrir la página. Solo al hacer clic en un enlace a OpenStreetMap o Google Maps abandona nuestro sitio web y se aplica la política de privacidad del proveedor correspondiente.",
     "newsletterTitle": "5. Boletín electrónico",
     "newsletterBody": "Si desea suscribirse a nuestro boletín electrónico, necesitamos por razones legales su dirección de correo electrónico, así como la confirmación de que usted es el titular de la dirección indicada y acepta recibir el boletín electrónico. Los datos se recogen solo con el fin de enviarle el boletín y documentar nuestra autorización al respecto. No se ceden datos a terceros. Puede revocar en cualquier momento la suscripción al boletín y su consentimiento al almacenamiento de la dirección de correo electrónico.",
     "infoRightsTitle": "6. Derecho de información",
