@@ -123,6 +123,14 @@ export default async function DatenschutzPage({
             Für Links zu anderen Webseiten übernehmen wir für deren Inhalte
             keine Haftung.
           </p>
+          <p className="mt-3">
+            Auf der Kontaktseite zeigen wir eine lokal gehostete, statische
+            Kartenabbildung (OpenStreetMap-Daten) unseres Standorts. Es werden
+            keine Kartendienste von Drittanbietern beim Seitenaufruf geladen.
+            Erst wenn Sie einen Link zu OpenStreetMap oder Google Maps
+            anklicken, verlassen Sie unsere Website und es gelten die
+            Datenschutzbestimmungen des jeweiligen Anbieters.
+          </p>
         </section>
 
         <section>

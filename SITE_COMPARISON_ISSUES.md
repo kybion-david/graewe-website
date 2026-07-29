@@ -295,13 +295,14 @@ Old site checked live on graewe.com.
 ---
 
 ### ISSUE-017 — Contact page missing map (if still desired)
-- **Status:** Open
+- **Status:** Done
+- **Note:** Decision: yes (per `PROJECT.md` Kontakt checklist). Privacy-friendly static OSM map image on `/kontakt` with OSM + Google Maps outbound links; no third-party map scripts on page load. Datenschutz §4 notes the static map + external links. Files: `ContactMap.tsx`, `contactLocation.ts`, `public/images/contact/location-map.png`, messages, `datenschutz/page.tsx`.
 - **Category:** Missing feature
 - **Problem:** `PROJECT.md` content checklist includes map embed for Kontakt. Live kontakt page shows address block; confirm whether a map was expected. New kontakt has form + address only.
 - **Likely files:** `src/app/[locale]/kontakt/page.tsx`
 - **Acceptance criteria:**
-  - [ ] Stakeholder decision recorded.
-  - [ ] If yes: privacy-friendly map (or static map image + link to OpenStreetMap/Google) with Datenschutz update if needed.
+  - [x] Stakeholder decision recorded.
+  - [x] If yes: privacy-friendly map (or static map image + link to OpenStreetMap/Google) with Datenschutz update if needed.
 
 ---
 

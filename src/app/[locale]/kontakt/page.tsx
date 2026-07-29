@@ -1,6 +1,7 @@
 import { setRequestLocale, getTranslations } from "next-intl/server";
 import type { Metadata } from "next";
 import { ContactForm } from "@/components/contact/ContactForm";
+import { ContactMap } from "@/components/contact/ContactMap";
 
 export async function generateMetadata({
   params,
@@ -79,6 +80,7 @@ export default async function KontaktPage({
                 </p>
               </div>
             </div>
+            <ContactMap />
           </div>
         </div>
       </div>

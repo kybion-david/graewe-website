@@ -219,7 +219,14 @@
     "captchaError": "La comprobación de seguridad ha fallado. Inténtelo de nuevo.",
     "rateLimitError": "Demasiadas solicitudes. Espere unos minutos e inténtelo de nuevo.",
     "address": "Dirección",
-    "addressLines": "GRAEWE GmbH Maschinenbau\nMax-Planck-Straße 1-3\n79395 Neuenburg am Rhein"
+    "addressLines": "GRAEWE GmbH Maschinenbau
+Max-Planck-Straße 1-3
+79395 Neuenburg am Rhein",
+    "mapTitle": "Cómo llegar",
+    "mapAlt": "Extracto del mapa: ubicación de GRAEWE GmbH en Neuenburg am Rhein",
+    "mapAttribution": "Datos del mapa © colaboradores de OpenStreetMap",
+    "openOsm": "Abrir en OpenStreetMap",
+    "openGoogle": "Abrir en Google Maps"
   },
   "team": {
     "title": "Equipo",
