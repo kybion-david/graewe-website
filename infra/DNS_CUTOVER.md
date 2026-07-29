@@ -12,6 +12,8 @@ Migrate DNS from the current TYPO3-based hosting to Azure Static Web Apps with z
 - [ ] Terraform has been applied with `custom_domain` and `apex_domain` variables set
 - [ ] 301 redirects for old TYPO3 URL patterns are configured (see below)
 - [ ] TTL on current DNS records has been lowered to 300s (5 minutes) at least 48 hours before cutover
+- [ ] **Contact email (ISSUE-032):** GitHub secret `RESEND_API_KEY` set; vars `CONTACT_EMAIL_TO` / `CONTACT_EMAIL_FROM` set (or defaults `info@graewe.com` / `website@graewe.com`); Resend domain + from-address verified
+- [ ] **Contact email E2E:** Submit the staging `/de/kontakt` form and confirm delivery in the `CONTACT_EMAIL_TO` inbox (reply-to = visitor address)
 
 ## DNS Records to Create
 

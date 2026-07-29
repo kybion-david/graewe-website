@@ -98,7 +98,7 @@ CI (`.github/workflows/deploy.yml`) gates on type-check, lint, and unit tests.
 
 ## 7. Environment
 
-Copy `.env.example` → `.env.local`. Without `RESEND_API_KEY`, contact submissions log to console (expected in local/dev). Contact spam protection: Cloudflare Turnstile (`NEXT_PUBLIC_TURNSTILE_SITE_KEY` + `TURNSTILE_SECRET_KEY`) plus honeypot + per-IP rate limit in `src/lib/contactSpam.ts`. Without Turnstile keys, the widget is omitted and only honeypot/rate-limit run.
+Copy `.env.example` → `.env.local`. **Contact email requires `RESEND_API_KEY`** — without it the API returns `503` / `email_unavailable` and the form shows an error (never a fake success). Set production secrets in GitHub (`RESEND_API_KEY`) and vars (`CONTACT_EMAIL_TO`, `CONTACT_EMAIL_FROM`); see cutover checklist in `infra/DNS_CUTOVER.md`. Contact spam protection: Cloudflare Turnstile (`NEXT_PUBLIC_TURNSTILE_SITE_KEY` + `TURNSTILE_SECRET_KEY`) plus honeypot + per-IP rate limit in `src/lib/contactSpam.ts`. Without Turnstile keys, the widget is omitted and only honeypot/rate-limit run.
 
 **Analytics:** None at launch. Do not add Plausible, Umami, etracker, Google Analytics, or similar without also adding consent (if required) and updating Datenschutz + `/cookies`. There is no `NEXT_PUBLIC_ANALYTICS_ID` (or equivalent) env var.
 

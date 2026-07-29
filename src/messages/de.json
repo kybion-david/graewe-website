@@ -246,6 +246,7 @@
     "submit": "Absenden",
     "successMessage": "Ihre Nachricht wurde erfolgreich gesendet.",
     "errorMessage": "Es ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.",
+    "emailUnavailable": "Das Kontaktformular ist vorübergehend nicht verfügbar. Bitte schreiben Sie uns direkt an info@graewe.com.",
     "captchaLabel": "Sicherheitsprüfung",
     "captchaRequired": "Bitte bestätigen Sie die Sicherheitsprüfung.",
     "captchaError": "Die Sicherheitsprüfung ist fehlgeschlagen. Bitte versuchen Sie es erneut.",

@@ -246,6 +246,7 @@
     "submit": "Envoyer",
     "successMessage": "Votre message a bien été envoyé.",
     "errorMessage": "Une erreur s’est produite. Veuillez réessayer.",
+    "emailUnavailable": "Le formulaire de contact est temporairement indisponible. Veuillez nous écrire directement à info@graewe.com.",
     "captchaLabel": "Vérification de sécurité",
     "captchaRequired": "Veuillez terminer la vérification de sécurité.",
     "captchaError": "Échec de la vérification de sécurité. Veuillez réessayer.",

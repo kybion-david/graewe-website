@@ -246,6 +246,7 @@
     "submit": "Enviar",
     "successMessage": "Su mensaje se ha enviado correctamente.",
     "errorMessage": "Se ha producido un error. Inténtelo de nuevo.",
+    "emailUnavailable": "El formulario de contacto no está disponible temporalmente. Escríbanos directamente a info@graewe.com.",
     "captchaLabel": "Comprobación de seguridad",
     "captchaRequired": "Complete la comprobación de seguridad.",
     "captchaError": "La comprobación de seguridad ha fallado. Inténtelo de nuevo.",

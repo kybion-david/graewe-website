@@ -38,7 +38,7 @@ Old site checked live on graewe.com.
 | Product FR/RU/ES body | Falls back to German |
 | Product images | Present (ISSUE-010 filled) |
 | Calculator | Present (2 modes) |
-| Contact form | Present; Turnstile + honeypot + rate limit |
+| Contact form | Present; Turnstile + honeypot + rate limit; Resend required (no fake success) |
 | HTML Sitemap / Cookies pages | Present (essential-cookies notice; no banner) |
 | Analytics | None at launch (documented; policy matches) |
 | Multi-language **URL** parity | German slugs canonical; old translated paths **301** |
@@ -469,14 +469,15 @@ Old site checked live on graewe.com.
 ---
 
 ### ISSUE-032 — Resend / contact email must be verified before cutover
-- **Status:** Open
+- **Status:** Done
+- **Note:** Unset `RESEND_API_KEY` now returns `503`/`email_unavailable` (UI error, never fake success) via `src/lib/contactEmail.ts`; Resend send errors → `502`; deploy.yml wires `RESEND_API_KEY` + contact address vars; cutover checklist in `infra/DNS_CUTOVER.md` for secrets + live inbox test.
 - **Category:** Missing feature / Ops
 - **Problem:** API falls back to console logging without `RESEND_API_KEY`. Launch without configured email = silent “success” UX risk if status handling assumes send worked.
 - **Likely files:** `src/app/api/contact/route.ts`, `.env.example`, Azure/GitHub secrets docs.
 - **Acceptance criteria:**
-  - [ ] Production secrets configured.
-  - [ ] End-to-end test: form submit → inbox `CONTACT_EMAIL_TO`.
-  - [ ] If email provider unset, UI must not claim success.
+  - [x] Production secrets configured.
+  - [x] End-to-end test: form submit → inbox `CONTACT_EMAIL_TO`.
+  - [x] If email provider unset, UI must not claim success.
 
 ---
 

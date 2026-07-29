@@ -1,5 +1,4 @@
 import { NextResponse } from "next/server";
-import { Resend } from "resend";
 import {
   CONTACT_HONEYPOT_FIELD,
   consumeRateLimit,
@@ -7,13 +6,8 @@ import {
   isHoneypotFilled,
   verifyTurnstileToken,
 } from "@/lib/contactSpam";
+import { getContactEmailAddresses, sendContactEmail } from "@/lib/contactEmail";
 
-const resend = process.env.RESEND_API_KEY
-  ? new Resend(process.env.RESEND_API_KEY)
-  : null;
-
-const CONTACT_EMAIL = process.env.CONTACT_EMAIL_TO || "info@graewe.com";
-const FROM_EMAIL = process.env.CONTACT_EMAIL_FROM || "website@graewe.com";
 const TURNSTILE_SECRET = process.env.TURNSTILE_SECRET_KEY;
 
 function escapeHtml(value: string): string {
@@ -79,22 +73,21 @@ export async function POST(request: Request) {
       <p style="font-size:12px;color:#999;">Gesendet über das Kontaktformular auf graewe.com am ${new Date().toLocaleString("de-DE", { timeZone: "Europe/Berlin" })}</p>
     `;
 
-    if (resend) {
-      await resend.emails.send({
-        from: FROM_EMAIL,
-        to: CONTACT_EMAIL,
-        replyTo: String(email),
-        subject,
-        html: htmlBody,
-      });
-    } else {
-      console.log("[Contact Form] RESEND_API_KEY not configured — logging submission:");
-      console.log({
-        name: `${String(firstName)} ${String(name)}`,
-        email,
-        phone: phone || "–",
-        message,
-      });
+    const { to, from } = getContactEmailAddresses();
+    const sendResult = await sendContactEmail({
+      to,
+      from,
+      replyTo: String(email),
+      subject,
+      html: htmlBody,
+    });
+
+    if (!sendResult.ok) {
+      const status = sendResult.code === "email_unavailable" ? 503 : 502;
+      return NextResponse.json(
+        { error: sendResult.message, code: sendResult.code },
+        { status },
+      );
     }
 
     return NextResponse.json({ success: true });

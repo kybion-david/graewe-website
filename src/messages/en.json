@@ -246,6 +246,7 @@
     "submit": "Submit",
     "successMessage": "Your message has been sent successfully.",
     "errorMessage": "An error occurred. Please try again.",
+    "emailUnavailable": "The contact form is temporarily unavailable. Please email us directly at info@graewe.com.",
     "captchaLabel": "Security check",
     "captchaRequired": "Please complete the security check.",
     "captchaError": "Security check failed. Please try again.",
