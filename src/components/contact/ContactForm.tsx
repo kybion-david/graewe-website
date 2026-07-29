@@ -28,7 +28,9 @@ function RequiredMark() {
 export function ContactForm() {
   const t = useTranslations("contact");
   const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
-  const [errorCode, setErrorCode] = useState<"generic" | "captcha" | "rate_limited">("generic");
+  const [errorCode, setErrorCode] = useState<
+    "generic" | "captcha" | "rate_limited" | "email_unavailable"
+  >("generic");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
   const [turnstileResetKey, setTurnstileResetKey] = useState(0);
@@ -85,6 +87,8 @@ export function ContactForm() {
         setErrorCode("captcha");
       } else if (res.status === 429 || payload?.code === "rate_limited") {
         setErrorCode("rate_limited");
+      } else if (payload?.code === "email_unavailable") {
+        setErrorCode("email_unavailable");
       } else {
         setErrorCode("generic");
       }
@@ -107,7 +111,9 @@ export function ContactForm() {
       ? t("captchaError")
       : errorCode === "rate_limited"
         ? t("rateLimitError")
-        : t("errorMessage");
+        : errorCode === "email_unavailable"
+          ? t("emailUnavailable")
+          : t("errorMessage");
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="relative space-y-5" noValidate>

@@ -410,7 +410,7 @@ Extracted from the live site and encoded in `globals.css` as CSS custom properti
 
 ### Phase 4: Pre-Launch Polish & Integrations ✅ COMPLETED
 
-1. ✅ Contact form email sending wired up with **Resend** SDK — graceful fallback to console logging when `RESEND_API_KEY` is not set.
+1. ✅ Contact form email sending wired up with **Resend** SDK — without `RESEND_API_KEY` the API returns `503` / `email_unavailable` (no fake success; see ISSUE-032).
 2. ✅ **FR, RU, ES translations** — UI chrome, nav, and most page copy are native in all five locales (verified rendering). Remaining content nuances are listed under §8 (news article bodies, success-story customer quotes).
 3. ✅ **Accessibility**: skip-to-content link, `aria-expanded` / `aria-label` on menu and language switcher, `role="banner"`, semantic `<nav>` for menu, global `:focus-visible` outline style.
 4. ✅ **Contrast fix**: all yellow (`bg-accent`) buttons now use `text-dark` instead of `text-white` for WCAG AA compliance.
