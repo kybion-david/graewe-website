@@ -369,7 +369,7 @@ Extracted from the live site and encoded in `globals.css` as CSS custom properti
 ### Phase 1: Foundation (MVP — Static Pages) ✅ COMPLETED
 
 1. ✅ Initialized Next.js 16 project with TypeScript, Tailwind CSS 4, and ESLint.
-2. ✅ Set up `next-intl` with DE as default locale; 5 translation files (DE fully translated, EN translated, FR/RU/ES placeholder copies of EN).
+2. ✅ Set up `next-intl` with DE as default locale; 5 translation files (initially DE/EN native, FR/RU/ES as EN placeholders — later replaced in Phase 4; see i18n notes under §8).
 3. ✅ Built the layout shell: Header (GRAEWE logo, DE dropdown, yellow MENÜ button), Footer (dark bg, product links, legal links), mobile menu.
 4. ✅ Built the Homepage: hero carousel with 5 slides + actual product images, three product category cards, Produktrechner teaser.
 5. ✅ Built the Unternehmen section (4 static content pages with full DE/EN text).
@@ -411,10 +411,10 @@ Extracted from the live site and encoded in `globals.css` as CSS custom properti
 ### Phase 4: Pre-Launch Polish & Integrations ✅ COMPLETED
 
 1. ✅ Contact form email sending wired up with **Resend** SDK — graceful fallback to console logging when `RESEND_API_KEY` is not set.
-2. ✅ **FR, RU, ES translations** — all three now have proper native translations (verified rendering).
+2. ✅ **FR, RU, ES translations** — UI chrome, nav, and most page copy are native in all five locales (verified rendering). Remaining content nuances are listed under §8 (news article bodies, success-story customer quotes).
 3. ✅ **Accessibility**: skip-to-content link, `aria-expanded` / `aria-label` on menu and language switcher, `role="banner"`, semantic `<nav>` for menu, global `:focus-visible` outline style.
 4. ✅ **Contrast fix**: all yellow (`bg-accent`) buttons now use `text-dark` instead of `text-white` for WCAG AA compliance.
-5. ✅ All 5 locales verified: pages return 200, correct `lang` attribute, correct translated content.
+5. ✅ All 5 locales verified: pages return 200, correct `lang` attribute, locale-appropriate chrome and primary copy.
 
 ### Phase 5: Post-Launch Enhancements
 Not in initial scope, but the architecture explicitly supports:
@@ -448,26 +448,41 @@ Preserve the existing URL patterns for SEO continuity. The Next.js `[locale]` dy
 
 ## 8. Content Migration Checklist
 
-- [ ] Homepage hero text and carousel images (5 slides)
-- [ ] Wer ist Graewe? — full text content
-- [ ] Was macht Graewe? — full text content
-- [ ] Wofür steht Graewe? — full text content
-- [ ] Die Graewe Gruppe — full text content
-- [ ] Rohrextrusion overview + 8 product sub-pages (text + images)
-- [ ] Profilextrusion overview + 6 product sub-pages (text + images)
-- [ ] Plattenextrusion overview + 5 product sub-pages (text + images)
-- [ ] Success Stories — 2 testimonials (Maplast S.A., ASG Plastics)
-- [ ] Aktuelles — all news articles (at least 5 known)
-- [ ] Gebrauchtmaschinen — text + link to next-machines.com
-- [ ] Downloads — all downloadable documents
-- [ ] Team — department contact info (Service, Ersatzteile, Gebrauchtmaschinen, Jobs)
-- [x] Kontakt — address, phone, fax, email, map embed
-- [ ] Impressum — full legal text
-- [ ] Datenschutz — full privacy policy text
-- [ ] Stellenanzeigen — job postings
-- [ ] All product images per category
-- [ ] Logo files (all variants)
-- [ ] Favicon
+Status as of 2026-07-29 (aligned with `SITE_COMPARISON_ISSUES.md` / launch rebuild).
+
+- [x] Homepage hero text and carousel images (5 slides) — unique copy per slide in all 5 locales; images under `public/images/hero/`
+- [x] Wer ist Graewe? — full text content
+- [x] Was macht Graewe? — full text content
+- [x] Wofür steht Graewe? — full text content
+- [x] Die Graewe Gruppe — full text content
+- [x] Rohrextrusion overview + 8 product sub-pages (text + images)
+- [x] Profilextrusion overview + 6 product sub-pages (text + images)
+- [x] Plattenextrusion overview + 5 product sub-pages (text + images)
+- [x] Success Stories — 2 testimonials (Maplast S.A., ASG Plastics) — original English customer quotes kept in all locales (optional native translations still open as ISSUE-021)
+- [x] Aktuelles — 5 articles with bodies + images; DE/EN native where available; FR/RU/ES (and some EN) show German body with `news.germanOriginalNotice` when untranslated
+- [x] Gebrauchtmaschinen — text + link to next-machines.com
+- [x] Downloads — product brochures under `public/downloads/`
+- [x] Team — department contact info (Service, Ersatzteile, Gebrauchtmaschinen, Jobs)
+- [x] Kontakt — address, phone, fax, email + privacy-friendly static map image / OSM + Google links (`ContactMap`; no third-party embed)
+- [x] Impressum — full legal text in all 5 locales (`imprintPage.*`); non-DE notes that DE is legally binding
+- [x] Datenschutz — full privacy policy text in all 5 locales (`privacyPage.*`); same DE-binding note
+- [x] Stellenanzeigen — 3 openings with listing + detail pages; apply copy in all 5 locales
+- [x] All product images per category — including previously empty extruder / sondermaschinen galleries
+- [x] Logo files (all variants) — `public/images/logo/`
+- [x] Favicon — `src/app/favicon.ico` + logo favicons
+
+### i18n notes (reconciled)
+
+| Area | Status |
+|------|--------|
+| UI chrome / nav / forms | Native in `de`, `en`, `fr`, `ru`, `es` |
+| Product detail bodies | Native in all 5 locales via `src/lib/productContent/{locale}.json` (unknown locales fall back to `de`) |
+| Imprint / privacy | Localized bodies in all 5 locales; DE is the binding legal text |
+| News article bodies | DE (+ EN where migrated); other locales may show German + notice |
+| Success-story quotes | English originals in every locale (customer quotes); optional translation = ISSUE-021 |
+| URL slugs | German path segments for all locales; old translated EN/FR/RU/ES paths 301 via `legacyRedirects.ts` |
+
+Phase 1 initially shipped FR/RU/ES as EN placeholder copies; that is **no longer** the current state for UI or product/legal copy. Do not treat Phase 1 wording as the live i18n inventory — use this section and `SPEC.md` instead.
 
 ---
 
@@ -603,4 +618,4 @@ The existing calculator has two modes that need to be reimplemented:
 
 ## Summary
 
-This project transforms the GRAEWE corporate website from a CMS-dependent platform into a modern, owned Next.js 16 application deployed to Azure Static Web Apps. **Phases 1–4 are complete and the site is launch-ready.** The site faithfully reproduces the original design with the GRAEWE brand yellow (#ffd600), includes all pages with full i18n support (DE, EN, FR, RU, ES — all properly translated), interactive features (Produktrechner with two calculator modes, contact form with Resend email integration), SEO (sitemap, JSON-LD, Open Graph), accessibility (skip-to-content, ARIA labels, focus styles, WCAG AA contrast), and full deployment infrastructure (Terraform for Azure SWA + GitHub Actions CI/CD + DNS cutover plan + 301 redirects from old TYPO3 URLs). Phase 5 opens the door to post-launch innovations like 3D product demos and e-commerce. The architecture is deliberately simple and file-based, making it maintainable by a small team and fully accessible to AI development assistants.
+This project transforms the GRAEWE corporate website from a CMS-dependent platform into a modern, owned Next.js 16 application deployed to Azure Static Web Apps. **Phases 1–4 are complete and the site is launch-ready.** The site faithfully reproduces the original design with the GRAEWE brand yellow (#ffd600), includes all migrated pages (see §8 checklist), and provides five-locale i18n for UI, products, and legal pages (with the remaining content nuances noted in §8), interactive features (Produktrechner with two calculator modes, contact form with Resend email integration), SEO (sitemap, JSON-LD, Open Graph), accessibility (skip-to-content, ARIA labels, focus styles, WCAG AA contrast), and full deployment infrastructure (Terraform for Azure SWA + GitHub Actions CI/CD + DNS cutover plan + 301 redirects from old TYPO3 URLs). Phase 5 opens the door to post-launch innovations like 3D product demos and e-commerce. The architecture is deliberately simple and file-based, making it maintainable by a small team and fully accessible to AI development assistants.

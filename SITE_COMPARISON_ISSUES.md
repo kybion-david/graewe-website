@@ -420,12 +420,13 @@ Old site checked live on graewe.com.
 ---
 
 ### ISSUE-028 — `PROJECT.md` content checklist still unchecked / contradictory
-- **Status:** Open
+- **Status:** Done
+- **Note:** §8 checklist marked complete with real status notes; Phase 1/4 + Summary i18n wording reconciled; added i18n inventory table (news DE/EN + notice, success quotes still EN = ISSUE-021).
 - **Category:** Polish
 - **Problem:** Phases marked complete / “launch-ready”, but Section 8 checklist boxes remain unchecked and some notes still say FR/RU/ES are EN copies.
 - **Acceptance criteria:**
-  - [ ] Checklist updated to reflect real migration status (especially news, jobs, images, legal i18n).
-  - [ ] Contradictory i18n notes reconciled.
+  - [x] Checklist updated to reflect real migration status (especially news, jobs, images, legal i18n).
+  - [x] Contradictory i18n notes reconciled.
 
 ---
 
