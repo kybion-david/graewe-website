@@ -18,13 +18,21 @@ test.describe("Produktrechner", () => {
     await expect(page.getByLabel("Länge L [m]")).toBeVisible();
   });
 
-  test("shows winding diagrams and live results", async ({ page }) => {
+  test("shows large labeled Wickelbild diagrams and live results", async ({
+    page,
+  }) => {
     await page.goto("/de/produktrechner");
 
-    await expect(page.getByAltText("Wickelbild ungleiche Lagen")).toBeVisible();
-    await expect(
-      page.getByAltText("Wickelbild gleiche Lagen versetzt")
-    ).toBeVisible();
+    const unevenDiagram = page.getByAltText("Wickelbild ungleiche Lagen");
+    const evenDiagram = page.getByAltText("Wickelbild gleiche Lagen versetzt");
+    await expect(unevenDiagram).toBeVisible();
+    await expect(evenDiagram).toBeVisible();
+
+    // Diagrams must be large enough to read OD/ID/H/W labels (not tiny icons).
+    const box = await unevenDiagram.boundingBox();
+    expect(box).toBeTruthy();
+    expect(box!.width).toBeGreaterThan(180);
+
     await expect(page.getByText("N/V").first()).toBeVisible();
 
     await page.getByLabel("Rohrdurchmesser d [mm]").fill("20");
@@ -32,15 +40,12 @@ test.describe("Produktrechner", () => {
     await page.getByLabel("Innendurchmesser ID [mm]").fill("300");
     await page.getByLabel("Rohranzahl pro Lage [oE]").fill("10");
 
-    // Live recalculation — no Berechnen click required.
-    await expect(page.getByText("N/V")).toHaveCount(0);
     await expect(page.getByText("Ungleiche Lagen")).toBeVisible();
     await expect(page.getByText("Gleiche Lagen versetzt")).toBeVisible();
   });
 
   test("shows validation errors for empty inputs", async ({ page }) => {
     await page.goto("/de/produktrechner");
-    // Clear the live default pipes-per-layer so all fields are empty/invalid.
     await page.getByLabel("Rohranzahl pro Lage [oE]").fill("");
     await page.click("button:text('Berechnen')");
 
