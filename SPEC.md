@@ -163,7 +163,7 @@ npm run test
 
 Run `npm run test:e2e` when changing navigation, i18n, calculator, or contact flows.
 
-CI (`.github/workflows/deploy.yml`) gates on type-check, lint, and unit tests. Azure upload runs on `main` (and on PRs labeled `swa-preview` only).
+CI (`.github/workflows/deploy.yml`) gates on type-check, lint, unit tests, and Playwright e2e (Desktop Chrome plus Mobile Chrome / 320 px projects for overflow + mobile drawer specs). Azure upload runs on `main` (and on PRs labeled `swa-preview` only).
 
 ## 7. Environment
 
