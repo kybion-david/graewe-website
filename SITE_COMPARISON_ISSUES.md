@@ -52,7 +52,7 @@ Old site checked live on graewe.com.
 
 ### ISSUE-001 — Active job openings missing
 - **Status:** Done
-- **Note:** Migrated 3 openings with listing + `/stellenanzeigen/[slug]` details, HR/apply copy in all 5 locales (`src/lib/jobs.ts` + `jobs.*` messages); TYPO3 `stellendetails?job=` IDs 9/8/42 permanently redirect. Online portal left to ISSUE-022 (email apply path only).
+- **Note:** Migrated 3 openings with listing + `/stellenanzeigen/[slug]` details, HR/apply copy in all 5 locales (`src/lib/jobs.ts` + `jobs.*` messages); TYPO3 `stellendetails?job=` IDs 9/8/42 permanently redirect. Applications are email-only (ISSUE-022).
 - **Category:** Content gap / Missing feature
 - **Problem:** Live site lists 3 open positions with detail pages and HR contact. New site only shows empty state: “Derzeit sind keine Stellenanzeigen verfügbar.”
 - **Evidence (old):** https://www.graewe.com/stellenanzeigen  
@@ -353,11 +353,13 @@ Old site checked live on graewe.com.
 ---
 
 ### ISSUE-022 — Job application “online portal” not represented
-- **Status:** Open
+- **Status:** Done
+- **Decision:** Email-only for launch. Live “Onlineportal” is **not** an external career URL — on listing pages the word has no `href`; on job details it is the TYPO3 on-site form “JETZT ONLINE BEWERBEN” (`bewerberformular-512`). Do not rebuild that form for launch. Apply CTAs stay mailto / HR email in `jobs.*` messages.
+- **Note:** Rebuild copy already has no portal wording; documented so agents do not reintroduce an application form without an explicit request.
 - **Category:** Missing feature
 - **Problem:** Live Stellenanzeigen mentions preferring applications via online portal or email. Rebuild has no portal link / application flow.
 - **Acceptance criteria:**
-  - [ ] Confirm whether portal still exists; if yes, link it from jobs pages; if no, remove that instruction and keep email apply path only.
+  - [x] Confirm whether portal still exists; if yes, link it from jobs pages; if no, remove that instruction and keep email apply path only.
 
 ---
 
