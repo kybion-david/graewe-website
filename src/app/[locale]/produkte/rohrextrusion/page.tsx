@@ -10,7 +10,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "products" });
-  return pageMetadata(t("pipeExtrusion.title"), t("pipeExtrusion.description"));
+  return pageMetadata(t("pipeExtrusion.title"), t("pipeExtrusion.description"), locale, "/produkte/rohrextrusion");
 }
 
 export default async function PipeExtrusionPage({

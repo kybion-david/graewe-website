@@ -10,7 +10,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "calculator" });
-  return pageMetadata(t("title"), t("intro"));
+  return pageMetadata(t("title"), t("intro"), locale, "/produktrechner");
 }
 
 export default async function ProduktrechnerPage({

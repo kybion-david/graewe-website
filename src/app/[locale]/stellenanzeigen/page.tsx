@@ -12,7 +12,7 @@ export async function generateMetadata({
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "jobs" });
   const intro = t.raw("intro") as string[];
-  return pageMetadata(t("title"), intro[1] ?? t("introTitle"));
+  return pageMetadata(t("title"), intro[1] ?? t("introTitle"), locale, "/stellenanzeigen");
 }
 
 export default async function JobsPage({

@@ -21,13 +21,24 @@ describe("truncateMetaDescription", () => {
 });
 
 describe("pageMetadata", () => {
-  it("sets title, description and openGraph description", () => {
-    const meta = pageMetadata("Team", "Ansprechpartner bei GRAEWE.");
+  it("sets title, description, openGraph, and locale alternates", () => {
+    const meta = pageMetadata(
+      "Team",
+      "Ansprechpartner bei GRAEWE.",
+      "en",
+      "/team",
+    );
     expect(meta.title).toBe("Team");
     expect(meta.description).toBe("Ansprechpartner bei GRAEWE.");
     expect(meta.openGraph).toMatchObject({
       title: "Team",
       description: "Ansprechpartner bei GRAEWE.",
+    });
+    expect(meta.alternates?.canonical).toBe("/en/team");
+    expect(meta.alternates?.languages).toMatchObject({
+      de: "/de/team",
+      en: "/en/team",
+      "x-default": "/de/team",
     });
   });
 });

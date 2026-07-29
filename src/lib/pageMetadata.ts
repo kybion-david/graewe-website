@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import type { ProductDetail } from "@/lib/productContent";
+import { buildLocaleAlternates } from "@/lib/seo";
 
 /** Trim and ellipsize for meta description length (~SERP display). */
 export function truncateMetaDescription(text: string, maxLength = 160): string {
@@ -12,13 +13,22 @@ export function truncateMetaDescription(text: string, maxLength = 160): string {
   return `${cut.trimEnd()}…`;
 }
 
-/** Page title + description, including Open Graph override of the layout default. */
-export function pageMetadata(title: string, description: string): Metadata {
+/**
+ * Page title + description + locale alternates (canonical / hreflang),
+ * including Open Graph override of the layout default.
+ */
+export function pageMetadata(
+  title: string,
+  description: string,
+  locale: string,
+  path: string = "",
+): Metadata {
   const desc = truncateMetaDescription(description);
   return {
     title,
     description: desc,
     openGraph: { title, description: desc },
+    alternates: buildLocaleAlternates(locale, path),
   };
 }
 

@@ -8,6 +8,7 @@ import { getProductImages } from "@/lib/productImages";
 import { getProductDetail } from "@/lib/productContent";
 import { locales } from "@/i18n/routing";
 import { pageMetadata, productMetaDescription } from "@/lib/pageMetadata";
+import { buildLocaleAlternates } from "@/lib/seo";
 
 const CATEGORY = "profilextrusion" as const;
 
@@ -29,13 +30,18 @@ export async function generateMetadata({
   const { locale, product } = await params;
   const t = await getTranslations({ locale, namespace: "products" });
   const sub = productCategories[CATEGORY].find((s) => s.slug === product);
-  if (!sub) return { title: "Product" };
+  if (!sub) {
+    return {
+      title: "Product",
+      alternates: buildLocaleAlternates(locale, `/produkte/profilextrusion/${product}`),
+    };
+  }
   const title = t(`subcategories.${sub.translationKey}`);
   const detail = getProductDetail(locale, CATEGORY, product);
   const description = detail
     ? productMetaDescription(detail)
     : t("profileExtrusion.description");
-  return pageMetadata(title, description);
+  return pageMetadata(title, description, locale, `/produkte/profilextrusion/${product}`);
 }
 
 export default async function ProfileExtrusionProductPage({

@@ -25,6 +25,8 @@ export async function generateMetadata({
   return pageMetadata(
     item?.title ?? t("title"),
     item?.summary ?? intro[1] ?? t("title"),
+    locale,
+    `/stellenanzeigen/${slug}`,
   );
 }
 

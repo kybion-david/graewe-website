@@ -123,6 +123,8 @@ public/images/        # Static assets by section
 | News articles (slugs / TYPO3 IDs / images) | `src/lib/news.ts` + `public/images/news/` |
 | News copy (titles, excerpts, bodies) | `src/messages/{locale}.json` → `news.*` |
 | Legacy URL → canonical redirects | `src/lib/legacyRedirects.ts` |
+| Per-page meta title/description | `src/lib/pageMetadata.ts` |
+| Canonical + hreflang helpers | `src/lib/seo.ts` (`buildLocaleAlternates`, `getSiteUrl`) |
 
 Do **not** hardcode user-facing strings in components. Add keys to **all five** locale files.
 
@@ -170,7 +172,7 @@ Copy `.env.example` → `.env.local`. **Contact email requires `RESEND_API_KEY`*
 
 - Pages: home, unternehmen (4), produkte (overview + 3 categories + 19 products), success stories, aktuelles (+ articles), produktrechner, gebrauchtmaschinen, downloads, team, kontakt, stellenanzeigen (+ job detail pages), impressum, datenschutz (bodies in `imprintPage` / `privacyPage` for all locales; DE legally binding), sitemap (HTML), cookies (essential-only; no analytics / no consent banner)
 - Interactive: Produktrechner (modern UI with labeled Wickelbild diagrams, live calc, validation), contact form (Resend + Turnstile/honeypot/rate-limit)
-- SEO: `generateMetadata`, Open Graph, JSON-LD, `next-sitemap` (no third-party analytics)
+- SEO: `generateMetadata` via `pageMetadata` (per-page title/description) plus `alternates.canonical` + `alternates.languages` (five locales + `x-default`→`de`) from `src/lib/seo.ts`; `metadataBase` from `NEXT_PUBLIC_SITE_URL`; Open Graph; JSON-LD; `next-sitemap` with `alternateRefs` (no third-party analytics)
 - A11y: skip link, ARIA on menu/language switcher, focus-visible, contrast-safe yellow buttons
 - Deploy: Azure SWA Terraform + GH Actions only (no GitHub Pages export)
 

@@ -13,6 +13,8 @@ export async function generateMetadata({
   return pageMetadata(
     t("profileExtrusion.title"),
     t("profileExtrusion.description"),
+    locale,
+    "/produkte/profilextrusion",
   );
 }
 

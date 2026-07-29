@@ -13,6 +13,8 @@ export async function generateMetadata({
   return pageMetadata(
     t("whatDoesGraeweStandFor.breadcrumb"),
     t("whatDoesGraeweStandFor.p1"),
+    locale,
+    "/unternehmen/wofuer-steht-graewe",
   );
 }
 

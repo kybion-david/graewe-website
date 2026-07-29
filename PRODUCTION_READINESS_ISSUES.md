@@ -127,16 +127,17 @@ Recorded so nobody re-audits them:
 ## P1 — Bugs, accessibility, SEO
 
 ### ISSUE-041 — No canonical URLs and no `hreflang` alternates on any page
-- **Status:** Open
+- **Status:** Done
 - **Category:** SEO
 - **Problem:** The site publishes the same content under five locale prefixes but emits **zero** `<link rel="canonical">` and **zero** `<link rel="alternate" hreflang>`. Search engines have no signal linking `/de/kontakt` ↔ `/en/kontakt` ↔ `/ru/kontakt`, and no canonical to collapse duplicates. On a cutover from an established TYPO3 domain this is a material ranking risk.
 - **Evidence:** measured `link[rel=canonical]` and `link[rel=alternate][hreflang]` counts in the rendered DOM of `/de`, `/de/produktrechner`, `/de/produkte/rohrextrusion/extruder`, `/de/team`, `/de/kontakt`, `/ru` — **`canonical: 0, hreflang: 0` on all six**. `grep -rn "alternates\|canonical\|hreflang" src/app/` returns nothing. `next-sitemap.config.js` has no `alternateRefs`.
 - **Likely files:** `src/app/[locale]/layout.tsx`, each `generateMetadata`, `next-sitemap.config.js`
 - **Acceptance criteria:**
-  - [ ] Every page emits `alternates.canonical` for its own absolute URL.
-  - [ ] Every page emits `alternates.languages` for all five locales plus `x-default` → `de`.
-  - [ ] `next-sitemap` emits `alternateRefs`.
-  - [ ] `metadataBase` derives from `NEXT_PUBLIC_SITE_URL` rather than the hardcoded `https://www.graewe.com` in `layout.tsx`, so preview environments don't advertise production URLs.
+  - [x] Every page emits `alternates.canonical` for its own absolute URL.
+  - [x] Every page emits `alternates.languages` for all five locales plus `x-default` → `de`.
+  - [x] `next-sitemap` emits `alternateRefs`.
+  - [x] `metadataBase` derives from `NEXT_PUBLIC_SITE_URL` rather than the hardcoded `https://www.graewe.com` in `layout.tsx`, so preview environments don't advertise production URLs.
+- **Note:** Added `src/lib/seo.ts`; `pageMetadata` emits canonical + hreflang per locale/path; layout `metadataBase` from env; `next-sitemap` transform emits absolute `alternateRefs`.
 
 ---
 
