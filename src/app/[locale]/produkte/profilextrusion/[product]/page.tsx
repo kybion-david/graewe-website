@@ -66,7 +66,7 @@ export default async function ProfileExtrusionProductPage({
                 </h1>
                 <div className="w-12 h-1 bg-accent mb-8" />
                 <div className="bg-grey-100 rounded-xl p-8 text-center text-text-muted">
-                  <p>Product details coming soon.</p>
+                  <p>{t("detailsComingSoon")}</p>
                 </div>
               </>
             )}

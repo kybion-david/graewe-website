@@ -140,7 +140,8 @@
       "transverseCutting": "Quertrenn-Einrichtungen",
       "sheetStackers": "Plattenstapler"
     },
-    "contactPerson": "Ansprechpartner"
+    "contactPerson": "Ansprechpartner",
+    "detailsComingSoon": "Produktdetails folgen in Kürze."
   },
   "successStories": {
     "title": "Success Stories",

@@ -140,7 +140,8 @@
       "transverseCutting": "Corte transversal",
       "sheetStackers": "Apiladores de láminas"
     },
-    "contactPerson": "Persona de contacto"
+    "contactPerson": "Persona de contacto",
+    "detailsComingSoon": "Detalles del producto próximamente."
   },
   "successStories": {
     "title": "Casos de éxito",

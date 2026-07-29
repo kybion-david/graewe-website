@@ -140,7 +140,8 @@
       "transverseCutting": "Transverse Cutting",
       "sheetStackers": "Sheet Stackers"
     },
-    "contactPerson": "Contact person"
+    "contactPerson": "Contact person",
+    "detailsComingSoon": "Product details coming soon."
   },
   "successStories": {
     "title": "Success Stories",
