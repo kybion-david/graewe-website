@@ -709,5 +709,12 @@
     "title": "Seite nicht gefunden",
     "description": "Die angeforderte Seite existiert nicht oder wurde verschoben.",
     "backHome": "Zur Startseite"
+  },
+  "error": {
+    "code": "Fehler",
+    "title": "Etwas ist schiefgelaufen",
+    "description": "Ein unerwarteter Fehler ist aufgetreten. Bitte versuchen Sie es erneut oder kehren Sie zur Startseite zurück.",
+    "retry": "Erneut versuchen",
+    "backHome": "Zur Startseite"
   }
 }

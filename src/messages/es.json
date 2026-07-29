@@ -714,5 +714,12 @@
     "title": "Página no encontrada",
     "description": "La página solicitada no existe o se ha movido.",
     "backHome": "Volver al inicio"
+  },
+  "error": {
+    "code": "Error",
+    "title": "Algo salió mal",
+    "description": "Se produjo un error inesperado. Inténtelo de nuevo o vuelva a la página de inicio.",
+    "retry": "Intentar de nuevo",
+    "backHome": "Volver al inicio"
   }
 }

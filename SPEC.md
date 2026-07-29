@@ -137,6 +137,7 @@ Product detail bodies live in `src/lib/productContent/{de,en,fr,ru,es}.json`. `g
 - `localeDetection: false` — `/` always **HTTP-redirects** (307) to `/de` via `src/proxy.ts` (next-intl). `src/app/page.tsx` uses `redirect()` from `next/navigation` as the same fallback when the proxy does not run — never a meta-refresh stub. Bare `/` is excluded from `next-sitemap`.
 - Old TYPO3 / translated-locale URLs: 301 via `src/lib/legacyRedirects.ts` in `src/proxy.ts`. `staticwebapp.config.json` holds security headers only (Azure 20 KB config limit). See `infra/DNS_CUTOVER.md`.
 - Unknown paths: dedicated 404 pages — do **not** rewrite 404 → homepage in SWA config
+- Runtime errors: `src/app/[locale]/error.tsx` (localized fallback inside locale layout; Next 16 `unstable_retry`) and `src/app/global-error.tsx` (root last-resort; own `<html>`/`<body>`, copy from messages via pathname locale)
 - Use `@/i18n/navigation` (`Link`, `useRouter`, `usePathname`) — not `next/link` / `next/navigation` — for locale-aware routing
 
 ## 5. Design tokens (use these, not ad-hoc colors)
@@ -174,13 +175,8 @@ Copy `.env.example` → `.env.local`. **Contact email requires `RESEND_API_KEY`*
 
 - Pages: home, unternehmen (4), produkte (overview + 3 categories + 19 products), success stories, aktuelles (+ articles), produktrechner, gebrauchtmaschinen, downloads, team, kontakt, stellenanzeigen (+ job detail pages), impressum, datenschutz (bodies in `imprintPage` / `privacyPage` for all locales; DE legally binding), sitemap (HTML), cookies (essential-only; no analytics / no consent banner)
 - Interactive: Produktrechner (modern UI with labeled Wickelbild diagrams, live calc, validation), contact form (Resend + Turnstile/honeypot/rate-limit)
-<<<<<<< HEAD
 - SEO: `generateMetadata` via `pageMetadata` (per-page title/description) plus `alternates.canonical` + `alternates.languages` (five locales + `x-default`→`de`) from `src/lib/seo.ts`; `metadataBase` from `NEXT_PUBLIC_SITE_URL`; Open Graph; JSON-LD; `next-sitemap` with `alternateRefs` (no third-party analytics)
-- A11y: skip link, ARIA on menu/language switcher, focus-visible, contrast-safe yellow buttons
-=======
-- SEO: `generateMetadata`, Open Graph, JSON-LD, `next-sitemap` (no third-party analytics)
 - A11y: skip link, ARIA on menu/language switcher, focus-visible, contrast-safe yellow buttons; contact field errors use text + icon + `aria-invalid`/`aria-describedby` (not colour alone); submit banners use `role="status"` / `role="alert"`
->>>>>>> 3772cb7 (Fix contact form colour-only validation errors)
 - Deploy: Azure SWA Terraform + GH Actions only (no GitHub Pages export)
 
 ## 9. Spec maintenance (required)
