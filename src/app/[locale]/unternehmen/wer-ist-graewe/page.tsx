@@ -1,6 +1,7 @@
 import { setRequestLocale, getTranslations } from "next-intl/server";
 import type { Metadata } from "next";
 import Image from "next/image";
+import { pageMetadata } from "@/lib/pageMetadata";
 
 export async function generateMetadata({
   params,
@@ -9,7 +10,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "company" });
-  return { title: t("whoIsGraewe.breadcrumb") };
+  return pageMetadata(t("whoIsGraewe.breadcrumb"), t("whoIsGraewe.p1"));
 }
 
 export default async function WhoIsGraewePage({

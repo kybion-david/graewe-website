@@ -12,6 +12,7 @@ import {
   type NewsBodyBlock,
   type NewsItem,
 } from "@/lib/news";
+import { pageMetadata } from "@/lib/pageMetadata";
 
 export async function generateStaticParams() {
   return locales.flatMap((locale) =>
@@ -28,7 +29,10 @@ export async function generateMetadata({
   const t = await getTranslations({ locale, namespace: "news" });
   const items = t.raw("items") as NewsItem[];
   const item = findNewsItem(items, slug);
-  return { title: item?.title ?? t("title") };
+  return pageMetadata(
+    item?.title ?? t("title"),
+    item?.excerpt ?? t("metaDescription"),
+  );
 }
 
 function NewsBody({ blocks }: { blocks: NewsBodyBlock[] }) {

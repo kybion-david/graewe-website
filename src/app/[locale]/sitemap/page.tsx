@@ -6,6 +6,7 @@ import {
   categoryTranslationKeys,
   type ProductCategory,
 } from "@/lib/products";
+import { pageMetadata } from "@/lib/pageMetadata";
 
 export async function generateMetadata({
   params,
@@ -14,7 +15,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "sitemapPage" });
-  return { title: t("title") };
+  return pageMetadata(t("title"), t("metaDescription"));
 }
 
 const companyLinks = [

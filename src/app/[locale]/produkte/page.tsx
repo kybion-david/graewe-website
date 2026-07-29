@@ -7,6 +7,7 @@ import {
   categoryTranslationKeys,
   type ProductCategory,
 } from "@/lib/products";
+import { pageMetadata } from "@/lib/pageMetadata";
 
 const categoryOrder: ProductCategory[] = [
   "rohrextrusion",
@@ -27,10 +28,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "products" });
-  return {
-    title: t("overview.metaTitle"),
-    description: t("overview.intro"),
-  };
+  return pageMetadata(t("overview.metaTitle"), t("overview.intro"));
 }
 
 export default async function ProductsOverviewPage({

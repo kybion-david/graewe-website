@@ -1,6 +1,7 @@
 import { setRequestLocale, getTranslations } from "next-intl/server";
 import type { Metadata } from "next";
 import { ProductSidebar } from "@/components/layout/ProductSidebar";
+import { pageMetadata } from "@/lib/pageMetadata";
 
 export async function generateMetadata({
   params,
@@ -9,7 +10,10 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "products" });
-  return { title: t("profileExtrusion.title") };
+  return pageMetadata(
+    t("profileExtrusion.title"),
+    t("profileExtrusion.description"),
+  );
 }
 
 export default async function ProfileExtrusionPage({

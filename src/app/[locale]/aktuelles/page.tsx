@@ -7,6 +7,7 @@ import {
   getNewsImages,
   type NewsItem,
 } from "@/lib/news";
+import { pageMetadata } from "@/lib/pageMetadata";
 
 export async function generateMetadata({
   params,
@@ -15,7 +16,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "news" });
-  return { title: t("title") };
+  return pageMetadata(t("title"), t("metaDescription"));
 }
 
 export default async function AktuellesPage({

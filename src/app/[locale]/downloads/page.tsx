@@ -1,5 +1,6 @@
 import { setRequestLocale, getTranslations } from "next-intl/server";
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/pageMetadata";
 
 type DownloadItem = { title: string; file: string; size: string };
 
@@ -10,7 +11,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "downloads" });
-  return { title: t("title") };
+  return pageMetadata(t("title"), t("metaDescription"));
 }
 
 export default async function DownloadsPage({

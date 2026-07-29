@@ -1,7 +1,23 @@
-import { setRequestLocale } from "next-intl/server";
+import { setRequestLocale, getTranslations } from "next-intl/server";
+import type { Metadata } from "next";
 import { HeroCarousel } from "@/components/home/HeroCarousel";
 import { ProductCategories } from "@/components/home/ProductCategories";
 import { NewsTeaser } from "@/components/home/NewsTeaser";
+import { truncateMetaDescription } from "@/lib/pageMetadata";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "meta" });
+  const description = truncateMetaDescription(t("description"));
+  return {
+    description,
+    openGraph: { description },
+  };
+}
 
 export default async function HomePage({
   params,

@@ -7,6 +7,7 @@ import { productCategories } from "@/lib/products";
 import { getProductImages } from "@/lib/productImages";
 import { getProductDetail } from "@/lib/productContent";
 import { locales } from "@/i18n/routing";
+import { pageMetadata, productMetaDescription } from "@/lib/pageMetadata";
 
 const CATEGORY = "plattenextrusion" as const;
 
@@ -29,7 +30,12 @@ export async function generateMetadata({
   const t = await getTranslations({ locale, namespace: "products" });
   const sub = productCategories[CATEGORY].find((s) => s.slug === product);
   if (!sub) return { title: "Product" };
-  return { title: t(`subcategories.${sub.translationKey}`) };
+  const title = t(`subcategories.${sub.translationKey}`);
+  const detail = getProductDetail(locale, CATEGORY, product);
+  const description = detail
+    ? productMetaDescription(detail)
+    : t("sheetExtrusion.description");
+  return pageMetadata(title, description);
 }
 
 export default async function SheetExtrusionProductPage({

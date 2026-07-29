@@ -48,6 +48,7 @@ export function HeroCarousel() {
 
   return (
     <section className="bg-gradient-to-b from-white to-grey-100 relative overflow-hidden">
+      <h1 className="sr-only">{t("h1")}</h1>
       <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Desktop / Tablet layout */}
         <div className="relative min-h-[520px] lg:min-h-[560px] hidden sm:flex items-center">
