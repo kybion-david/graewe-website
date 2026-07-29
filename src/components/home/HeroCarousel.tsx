@@ -177,6 +177,7 @@ function SlideArrows({
   onNext: () => void;
   size: "desktop" | "mobile";
 }) {
+  const t = useTranslations("hero");
   const buttonClass =
     size === "desktop"
       ? "w-10 h-10 bg-dark text-white flex items-center justify-center hover:bg-accent hover:text-dark transition-all duration-200"
@@ -188,7 +189,7 @@ function SlideArrows({
         type="button"
         onClick={onPrev}
         className={buttonClass}
-        aria-label="Previous slide"
+        aria-label={t("previousSlide")}
       >
         <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
           <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
@@ -198,7 +199,7 @@ function SlideArrows({
         type="button"
         onClick={onNext}
         className={buttonClass}
-        aria-label="Next slide"
+        aria-label={t("nextSlide")}
       >
         <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
           <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
@@ -219,6 +220,7 @@ function SlideDots({
   onGoTo: (idx: number) => void;
   size: "desktop" | "mobile";
 }) {
+  const t = useTranslations("hero");
   const barClass =
     size === "desktop"
       ? "relative h-1 w-8 bg-grey-300 overflow-hidden rounded-full"
@@ -232,7 +234,7 @@ function SlideDots({
           type="button"
           onClick={() => onGoTo(idx)}
           className={barClass}
-          aria-label={`Go to slide ${idx + 1}`}
+          aria-label={t("goToSlide", { n: idx + 1 })}
         >
           <div
             className="absolute inset-y-0 left-0 bg-accent rounded-full transition-all duration-100"

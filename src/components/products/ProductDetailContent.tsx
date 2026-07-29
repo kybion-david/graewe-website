@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import type { ProductDetail } from "@/lib/productContent";
 
@@ -16,6 +17,7 @@ export function ProductDetailContent({
   images,
   contactLabel,
 }: ProductDetailContentProps) {
+  const t = useTranslations("common");
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
 
   return (
@@ -66,7 +68,7 @@ export function ProductDetailContent({
       {images.length > 0 && (
         <div className="mt-10">
           <p className="text-xs font-bold text-grey-400 uppercase tracking-widest mb-4">
-            Galerie
+            {t("gallery")}
           </p>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
             {images.map((src, idx) => (
@@ -108,7 +110,7 @@ export function ProductDetailContent({
           <button
             className="absolute top-4 right-4 text-white/80 hover:text-white transition-colors"
             onClick={() => setSelectedImage(null)}
-            aria-label="Close"
+            aria-label={t("close")}
           >
             <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -119,7 +121,7 @@ export function ProductDetailContent({
             <button
               className="absolute left-4 text-white/80 hover:text-white transition-colors"
               onClick={(e) => { e.stopPropagation(); setSelectedImage(selectedImage - 1); }}
-              aria-label="Previous image"
+              aria-label={t("previousImage")}
             >
               <svg className="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
@@ -131,7 +133,7 @@ export function ProductDetailContent({
             <button
               className="absolute right-4 text-white/80 hover:text-white transition-colors"
               onClick={(e) => { e.stopPropagation(); setSelectedImage(selectedImage + 1); }}
-              aria-label="Next image"
+              aria-label={t("nextImage")}
             >
               <svg className="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />

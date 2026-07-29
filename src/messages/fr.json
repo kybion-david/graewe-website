@@ -17,6 +17,9 @@
     "jobs": "Offres d’emploi",
     "menu": "MENU",
     "menuAria": "Menu de navigation",
+    "closeMenu": "Fermer le menu",
+    "mainNavigation": "Navigation principale",
+    "breadcrumbAria": "Fil d’Ariane",
     "whoIsGraewe": "Qui est Graewe ?",
     "whatDoesGraewe": "Que fait Graewe ?",
     "whatDoesGraeweStandFor": "Que représente Graewe ?",
@@ -46,7 +49,10 @@
     "slide5": {
       "title": "Graewe est une marque recherchée dans le domaine de la technologie d’extrusion.",
       "subtitle": "Parce que nous savons concrétiser les idées."
-    }
+    },
+    "previousSlide": "Diapositive précédente",
+    "nextSlide": "Diapositive suivante",
+    "goToSlide": "Aller à la diapositive {n}"
   },
   "home": {
     "pipeExtrusionDesc": "L’extrusion de tubes et de canalisations est notre cœur de métier",
@@ -687,7 +693,13 @@
     "phone": "+49 (0) 7631 7944-0"
   },
   "common": {
-    "backToTop": "Haut de page"
+    "backToTop": "Haut de page",
+    "skipToContent": "Aller au contenu",
+    "selectLanguage": "Choisir la langue",
+    "close": "Fermer",
+    "previousImage": "Image précédente",
+    "nextImage": "Image suivante",
+    "gallery": "Galerie"
   },
   "notFound": {
     "title": "Page introuvable",

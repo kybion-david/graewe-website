@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { usePathname, useRouter } from "@/i18n/navigation";
 import { locales, type Locale } from "@/i18n/routing";
 import { useDismissibleOverlay } from "@/hooks/useDismissibleOverlay";
@@ -15,6 +15,7 @@ const localeLabels: Record<Locale, string> = {
 };
 
 export function LanguageSwitcher() {
+  const t = useTranslations("common");
   const locale = useLocale() as Locale;
   const pathname = usePathname();
   const router = useRouter();
@@ -40,7 +41,7 @@ export function LanguageSwitcher() {
         onClick={() => setOpen(!open)}
         aria-expanded={open}
         aria-haspopup="true"
-        aria-label="Select language"
+        aria-label={t("selectLanguage")}
         className="flex items-center gap-1 sm:gap-1.5 text-sm font-semibold text-dark hover:text-dark-muted transition-colors px-1.5 sm:px-2 py-1.5 rounded-md hover:bg-grey-100"
       >
         <svg className="hidden sm:block w-4 h-4 text-grey-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5} aria-hidden="true">

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, type RefObject } from "react";
+import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { useDismissibleOverlay } from "@/hooks/useDismissibleOverlay";
 
@@ -21,6 +22,7 @@ export function MobileMenu({
   mainLinks,
   triggerRef,
 }: MobileMenuProps) {
+  const t = useTranslations("nav");
   const panelRef = useRef<HTMLDivElement>(null);
 
   useDismissibleOverlay(panelRef, {
@@ -57,7 +59,7 @@ export function MobileMenu({
         }`}
         role="dialog"
         aria-modal={isOpen}
-        aria-label="Menu"
+        aria-label={t("menuAria")}
       >
         {/* Header */}
         <div className="flex items-center justify-between p-5 border-b border-grey-200">
@@ -65,7 +67,7 @@ export function MobileMenu({
           <button
             onClick={onClose}
             className="p-2 hover:bg-grey-100 rounded-lg transition-colors"
-            aria-label="Close menu"
+            aria-label={t("closeMenu")}
           >
             <svg className="w-5 h-5 text-dark" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -76,7 +78,7 @@ export function MobileMenu({
         {/* Navigation */}
         <nav className="p-5">
           <p className="text-xs font-bold text-grey-400 uppercase tracking-widest mb-2">
-            Unternehmen
+            {t("company")}
           </p>
           {companyLinks.map((link) => (
             <Link
@@ -91,7 +93,7 @@ export function MobileMenu({
           <div className="my-4 border-t border-grey-200" />
 
           <p className="text-xs font-bold text-grey-400 uppercase tracking-widest mb-2">
-            Produkte
+            {t("products")}
           </p>
           {productLinks.map((link) => (
             <Link
