@@ -21,7 +21,8 @@ function localizedPath(locale, pathWithoutLocale) {
 module.exports = {
   siteUrl,
   generateRobotsTxt: true,
-  exclude: ["/api/*"],
+  // Bare `/` only redirects to `/de` — do not list the stub as a crawl target.
+  exclude: ["/api/*", "/"],
   transform: async (config, path) => {
     const pathWithoutLocale = stripLocalePrefix(path);
     const alternateRefs = [
