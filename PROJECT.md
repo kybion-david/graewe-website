@@ -597,22 +597,41 @@ Dev dependencies:
 
 ## 12. Produktrechner — Calculator Specification
 
-The existing calculator has two modes that need to be reimplemented:
+The Produktrechner has two modes. Formulas in `src/lib/calculator.ts` match the live
+graewe.com TYPO3 script `Graewe_Productcalculator` (ported 2026-07-29). Unit tests in
+`tests/unit/calculator.test.ts` assert golden samples captured from the live site.
 
 ### Mode 1: Wickelendposition (Winding End Position)
 **Inputs**: Rohrdurchmesser (pipe diameter) `d` [mm], Länge (length) `L` [m], Innendurchmesser (inner diameter) `ID` [mm], Rohranzahl pro Lage (pipes per layer) [count]
 
 **Outputs** (two winding patterns):
-- Ungleiche Lagen (uneven layers): Lageanzahl, Rohranzahl auf letzter Lage, Rotationsanzahl, Bundbreite, Bundhöhe, Außendurchmesser
+- Ungleiche Lagen (uneven layers): Lageanzahl, Rohranzahl auf letzter Lage (`ni / mi`), Rotationsanzahl, Bundbreite, Bundhöhe, Außendurchmesser
 - Gleiche Lagen versetzt (even layers offset): Same output fields
+
+Live quirks preserved for parity: Wickelendposition uses `π = 3.1415`; helix pitch
+`√((π·D)² + d²)`; hex packing height with `√3/2`; pipe counts step by `0.25`.
 
 ### Mode 2: Wickellänge (Winding Length)
 **Inputs**: Rohrdurchmesser `d` [mm], Innendurchmesser `ID` [mm], Außendurchmesser `OD` [mm], Bundbreite `W` [mm]
 
 **Outputs** (two winding patterns):
-- Wickellänge [m], Außendurchmesser OD [mm], Bundbreite W [mm]
+- Wickellänge [m] (rounded to mm then ÷1000), achieved Außendurchmesser OD [mm], snapped Bundbreite W [mm]
 
-**Note**: Results can deviate up to 10%. Implement the calculation logic as pure TypeScript functions in `src/lib/calculator.ts` with comprehensive unit tests. The exact formulas should be reverse-engineered from the existing calculator or provided by GRAEWE engineering.
+**Disclaimer** (must remain visible): Results can deviate up to 10%. No liability for accuracy.
+
+### Golden sample (live site, 2026-07-29)
+
+Wickelendposition `d=20, L=100, ID=300, CPL=10`:
+| Pattern | i | ni/mi | r | W | H | OD |
+|---------|---|-------|---|---|---|-----|
+| Ungleiche | 8 | 6.25 / 9 | 73.25 | 200 | 141 | 582 |
+| Gleiche versetzt | 8 | 4 / 10 | 74 | 210 | 141 | 582 |
+
+Wickellänge `d=20, ID=300, OD=500, W=200`:
+| Pattern | WL [m] | OD | W |
+|---------|--------|----|---|
+| Ungleiche | 58.71 | 479 | 200 |
+| Gleiche versetzt | 55.041 | 479 | 190 |
 
 ---
 

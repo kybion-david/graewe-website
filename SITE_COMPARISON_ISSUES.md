@@ -456,14 +456,15 @@ Old site checked live on graewe.com.
 ---
 
 ### ISSUE-031 — Verify calculator numeric parity vs live site
-- **Status:** Open
+- **Status:** Done
+- **Note:** Ported live `Graewe_Productcalculator` formulas into `src/lib/calculator.ts`; golden samples + Vitest parity tests in `tests/unit/calculator.test.ts`; `ni / mi` display; disclaimer unchanged; documented in `PROJECT.md` §12.
 - **Category:** Bug
 - **Problem:** Formulas were reverse-engineered; PROJECT warns results may differ. Needs a golden-test table vs live Produktrechner outputs for both modes / both winding patterns.
 - **Likely files:** `src/lib/calculator.ts`, `tests/unit/*`
 - **Acceptance criteria:**
-  - [ ] Documented sample inputs with expected outputs from live site.
-  - [ ] Unit tests assert parity (within intentional rounding).
-  - [ ] Disclaimer remains visible.
+  - [x] Documented sample inputs with expected outputs from live site.
+  - [x] Unit tests assert parity (within intentional rounding).
+  - [x] Disclaimer remains visible.
 
 ---
 

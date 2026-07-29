@@ -7,7 +7,10 @@ export interface WindingPositionInput {
 
 export interface WindingPatternResult {
   layerCount: number;
+  /** Pipes wound on the last (partial) layer (`ni`). */
   pipesLastLayer: number;
+  /** Max pipes for that layer pattern (`mi`); live UI shows `ni / mi`. */
+  pipesOnFullLayer: number;
   rotationCount: number;
   bundleWidth: number;
   bundleHeight: number;
@@ -59,6 +62,12 @@ export type ValidationFailure<K extends string> = {
 export type ValidationResult<T, K extends string> =
   | ValidationSuccess<T>
   | ValidationFailure<K>;
+
+/** Live TYPO3 calculator uses 3.1415 (not Math.PI) for Wickelendposition. */
+const WEP_PI = 3.1415;
+const HEX_OFFSET = Math.sqrt(3) / 2;
+/** Pipe-count step used when accumulating helix length on a layer. */
+const PIPE_STEP = 0.25;
 
 function parsePositiveNumber(
   raw: string
@@ -137,105 +146,217 @@ export function validateWindingLengthInput(
   };
 }
 
+function helixLengthMm(meanDiameter: number, pipeDiameter: number): number {
+  return Math.sqrt(
+    Math.pow(WEP_PI * meanDiameter, 2) + Math.pow(pipeDiameter, 2)
+  );
+}
+
+function hexPackHeight(pipeDiameter: number, layerCount: number): number {
+  return Math.round(
+    pipeDiameter + (layerCount - 1) * pipeDiameter * HEX_OFFSET
+  );
+}
+
+function hexPackOuterDiameter(
+  innerDiameter: number,
+  pipeDiameter: number,
+  layerCount: number
+): number {
+  return Math.round(
+    innerDiameter +
+      2 * (pipeDiameter + (layerCount - 1) * pipeDiameter * HEX_OFFSET)
+  );
+}
+
+/**
+ * Wickelbild / Ungleiche Lagen (live `calculateWEP_BB1`).
+ * Odd layers fill up to `pipesPerLayer`, even layers up to `pipesPerLayer - 1`.
+ */
 export function calculateWindingPositionUneven(
   input: WindingPositionInput
 ): WindingPatternResult {
-  const { pipeDiameter, length, innerDiameter, pipesPerLayer } = input;
-  const d = pipeDiameter;
-  const totalPipeLength = length * 1000; // m to mm
-  const circumferenceAtCenter = Math.PI * (innerDiameter + d);
-  const pipeLengthPerRotation = pipesPerLayer * d;
-  const totalRotations = totalPipeLength / circumferenceAtCenter;
-  const rotationsPerLayer = pipesPerLayer;
-  const layerCount = Math.ceil(totalRotations / rotationsPerLayer);
-  const remainingRotations = totalRotations - (layerCount - 1) * rotationsPerLayer;
-  const pipesLastLayer = Math.ceil(remainingRotations);
-  const rotationCount = Math.round(totalRotations);
-  const bundleWidth = pipesPerLayer * d;
-  const bundleHeight = layerCount * d;
-  const outerDiameter = innerDiameter + 2 * layerCount * d;
+  const { pipeDiameter: ND, length: L, innerDiameter: RD, pipesPerLayer: CPL } =
+    input;
+
+  let layerCount = 1;
+  let rotationCount = 0;
+  let pipesLastLayer = 0;
+  let pipesOnFullLayer = CPL;
+  let lengthAccumulated = 0;
+  let lengthIfLayerFull = 0;
+  const targetLengthMm = L * 1000;
+
+  do {
+    const meanDiameter =
+      RD + ND + 2 * (layerCount - 1) * (ND * HEX_OFFSET);
+    const layerHelix = helixLengthMm(meanDiameter, ND);
+    pipesLastLayer = 0;
+
+    if (layerCount % 2 !== 0) {
+      do {
+        pipesLastLayer += PIPE_STEP;
+        rotationCount += PIPE_STEP;
+        lengthAccumulated =
+          lengthIfLayerFull + pipesLastLayer * layerHelix;
+      } while (
+        !(pipesLastLayer >= CPL || lengthAccumulated >= targetLengthMm)
+      );
+      lengthIfLayerFull += CPL * layerHelix;
+      pipesOnFullLayer = CPL;
+    } else {
+      do {
+        pipesLastLayer += PIPE_STEP;
+        rotationCount += PIPE_STEP;
+        lengthAccumulated =
+          lengthIfLayerFull + pipesLastLayer * layerHelix;
+      } while (
+        !(
+          pipesLastLayer >= CPL - 1 ||
+          lengthAccumulated >= targetLengthMm
+        )
+      );
+      lengthIfLayerFull += (CPL - 1) * layerHelix;
+      pipesOnFullLayer = CPL - 1;
+    }
+
+    if (!(lengthAccumulated >= targetLengthMm)) {
+      layerCount += 1;
+    }
+  } while (!(lengthAccumulated >= targetLengthMm));
 
   return {
     layerCount,
-    pipesLastLayer: Math.max(1, pipesLastLayer),
+    pipesLastLayer,
+    pipesOnFullLayer,
     rotationCount,
-    bundleWidth: Math.round(bundleWidth * 10) / 10,
-    bundleHeight: Math.round(bundleHeight * 10) / 10,
-    outerDiameter: Math.round(outerDiameter * 10) / 10,
+    bundleWidth: ND * CPL,
+    bundleHeight: hexPackHeight(ND, layerCount),
+    outerDiameter: hexPackOuterDiameter(RD, ND, layerCount),
   };
 }
 
+/**
+ * Wickelbild / Gleiche Lagen versetzt (live `calculateWEP_BB05`).
+ * Every layer targets `pipesPerLayer`; bundle width includes a half-pipe offset.
+ */
 export function calculateWindingPositionEven(
   input: WindingPositionInput
 ): WindingPatternResult {
-  const { pipeDiameter, length, innerDiameter, pipesPerLayer } = input;
-  const d = pipeDiameter;
-  const totalPipeLength = length * 1000;
-  const offsetFactor = Math.sqrt(3) / 2;
-  const circumferenceAtCenter = Math.PI * (innerDiameter + d);
-  const totalRotations = totalPipeLength / circumferenceAtCenter;
-  const rotationsPerLayer = pipesPerLayer;
-  const layerCount = Math.ceil(totalRotations / rotationsPerLayer);
-  const remainingRotations = totalRotations - (layerCount - 1) * rotationsPerLayer;
-  const pipesLastLayer = Math.ceil(remainingRotations);
-  const rotationCount = Math.round(totalRotations);
-  const bundleWidth = pipesPerLayer * d + d / 2;
-  const bundleHeight = d + (layerCount - 1) * d * offsetFactor;
-  const outerDiameter = innerDiameter + 2 * (d + (layerCount - 1) * d * offsetFactor);
+  const { pipeDiameter: ND, length: L, innerDiameter: RD, pipesPerLayer: CPL } =
+    input;
+
+  let layerCount = 1;
+  let rotationCount = 0;
+  let pipesLastLayer = 0;
+  let lengthAccumulated = 0;
+  let lengthIfLayerFull = 0;
+  const targetLengthMm = L * 1000;
+
+  do {
+    const meanDiameter =
+      RD + ND + 2 * (layerCount - 1) * (ND * HEX_OFFSET);
+    const layerHelix = helixLengthMm(meanDiameter, ND);
+    pipesLastLayer = 0;
+
+    do {
+      pipesLastLayer += PIPE_STEP;
+      rotationCount += PIPE_STEP;
+      lengthAccumulated = lengthIfLayerFull + pipesLastLayer * layerHelix;
+    } while (
+      !(pipesLastLayer >= CPL || lengthAccumulated >= targetLengthMm)
+    );
+
+    lengthIfLayerFull += CPL * layerHelix;
+
+    if (!(lengthAccumulated >= targetLengthMm)) {
+      layerCount += 1;
+    }
+  } while (!(lengthAccumulated >= targetLengthMm));
 
   return {
     layerCount,
-    pipesLastLayer: Math.max(1, pipesLastLayer),
+    pipesLastLayer,
+    pipesOnFullLayer: CPL,
     rotationCount,
-    bundleWidth: Math.round(bundleWidth * 10) / 10,
-    bundleHeight: Math.round(bundleHeight * 10) / 10,
-    outerDiameter: Math.round(outerDiameter * 10) / 10,
+    bundleWidth: ND * (CPL + 0.5),
+    bundleHeight: hexPackHeight(ND, layerCount),
+    outerDiameter: hexPackOuterDiameter(RD, ND, layerCount),
   };
 }
 
+function helixLengthMmWl(meanDiameter: number, pipeDiameter: number): number {
+  return Math.sqrt(
+    Math.pow(Math.PI * meanDiameter, 2) + Math.pow(pipeDiameter, 2)
+  );
+}
+
+/**
+ * Wickellänge / Ungleiche Lagen (live `calculateWL_BB1`).
+ * Alternating full / full−1 pipe counts; returns achieved OD and snapped width.
+ */
 export function calculateWindingLengthUneven(
   input: WindingLengthInput
 ): WindingLengthResult {
-  const { pipeDiameter, innerDiameter, outerDiameter, bundleWidth } = input;
-  const d = pipeDiameter;
-  const layerCount = Math.floor((outerDiameter - innerDiameter) / (2 * d));
-  const pipesPerLayer = Math.floor(bundleWidth / d);
-  let totalLength = 0;
+  const {
+    pipeDiameter: ND,
+    innerDiameter: ID,
+    outerDiameter: OD,
+    bundleWidth: W,
+  } = input;
 
-  for (let i = 0; i < layerCount; i++) {
-    const currentDiameter = innerDiameter + d + 2 * i * d;
-    const circumference = Math.PI * currentDiameter;
-    totalLength += circumference * pipesPerLayer;
-  }
+  const pipesPerLayer = Math.floor(W / ND);
+  let totalLengthMm = 0;
+  let layer = 1;
+  let meanDiameter = ID;
+  let nextMean = ID;
+
+  do {
+    const idPlusPipe = ID + ND;
+    meanDiameter = idPlusPipe + 2 * (layer - 1) * (ND * HEX_OFFSET);
+    nextMean = idPlusPipe + 2 * layer * (ND * HEX_OFFSET);
+    const pipesThisLayer = layer % 2 === 1 ? pipesPerLayer : pipesPerLayer - 1;
+    totalLengthMm += helixLengthMmWl(meanDiameter, ND) * pipesThisLayer;
+    layer += 1;
+  } while (!(nextMean + ND > OD));
 
   return {
-    windingLength: Math.round((totalLength / 1000) * 10) / 10,
-    outerDiameter,
-    bundleWidth,
+    windingLength: Math.round(totalLengthMm) / 1000,
+    outerDiameter: Math.round(meanDiameter + ND),
+    bundleWidth: pipesPerLayer * ND,
   };
 }
 
+/**
+ * Wickellänge / Gleiche Lagen versetzt (live `calculateWL_BB05`).
+ * Constant pipe count with half-pipe width offset.
+ */
 export function calculateWindingLengthEven(
   input: WindingLengthInput
 ): WindingLengthResult {
-  const { pipeDiameter, innerDiameter, outerDiameter, bundleWidth } = input;
-  const d = pipeDiameter;
-  const offsetFactor = Math.sqrt(3) / 2;
-  const availableHeight = (outerDiameter - innerDiameter) / 2;
-  const layerCount = Math.floor((availableHeight - d) / (d * offsetFactor)) + 1;
-  const pipesPerLayer = Math.floor(bundleWidth / d);
-  let totalLength = 0;
+  const {
+    pipeDiameter: ND,
+    innerDiameter: ID,
+    outerDiameter: OD,
+    bundleWidth: W,
+  } = input;
 
-  for (let i = 0; i < layerCount; i++) {
-    const currentDiameter = innerDiameter + d + 2 * i * d * offsetFactor;
-    const circumference = Math.PI * currentDiameter;
-    const currentPipes = i % 2 === 0 ? pipesPerLayer : pipesPerLayer - 1;
-    totalLength += circumference * Math.max(1, currentPipes);
-  }
+  const pipesPerLayer = Math.floor(W / ND - 0.5);
+  let totalLengthMm = 0;
+  let layer = 1;
+  let meanDiameter = ID;
+  let nextMean = ID;
+
+  do {
+    meanDiameter = ID + ND + 2 * (layer - 1) * (ND * HEX_OFFSET);
+    nextMean = ID + ND + 2 * layer * (ND * HEX_OFFSET);
+    totalLengthMm += helixLengthMmWl(meanDiameter, ND) * pipesPerLayer;
+    layer += 1;
+  } while (!(nextMean + ND > OD));
 
   return {
-    windingLength: Math.round((totalLength / 1000) * 10) / 10,
-    outerDiameter,
-    bundleWidth,
+    windingLength: Math.round(totalLengthMm) / 1000,
+    outerDiameter: Math.round(meanDiameter + ND),
+    bundleWidth: pipesPerLayer * ND + ND / 2,
   };
 }
