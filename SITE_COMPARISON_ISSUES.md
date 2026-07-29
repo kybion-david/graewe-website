@@ -343,12 +343,13 @@ Old site checked live on graewe.com.
 ---
 
 ### ISSUE-021 — Success story quotes not localized for FR/RU/ES
-- **Status:** Open
+- **Status:** Done
+- **Note:** Translated Maplast + ASG testimonials in `src/messages/{fr,ru,es}.json`; DE/EN keep original English customer quotes (as on live site).
 - **Category:** i18n / Content gap
 - **Problem:** Non-EN locales largely reuse English testimonial text for Maplast / ASG.
 - **Likely files:** `src/messages/{fr,ru,es}.json` → `successStories.testimonials`
 - **Acceptance criteria:**
-  - [ ] Testimonials translated (or DE/EN shown with language note).
+  - [x] Testimonials translated (or DE/EN shown with language note).
 
 ---
 
