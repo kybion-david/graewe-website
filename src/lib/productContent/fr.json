@@ -1,0 +1,647 @@
+{
+  "rohrextrusion": {
+    "extruder": {
+      "title": "Extrudeuse pour l’extrusion de tubes",
+      "sections": [
+        {
+          "content": "GRAEWE ne fabrique pas elle-même d’extrudeuses ni d’outillages d’extrusion, mais travaille en étroite collaboration avec de nombreux fabricants d’extrudeuses renommés et peut ainsi vous fournir des lignes de production complètes. Par l’intermédiaire de notre filiale next, nous disposons également en permanence d’extrudeuses d’occasion entièrement reconditionnées et d’extrudeuses comme neuves."
+        }
+      ],
+      "cta": {
+        "text": "N’hésitez pas à nous consulter si nécessaire.",
+        "link": "/team"
+      }
+    },
+    "kalibrier-und-kuehlbaeder": {
+      "title": "Bacs d’étalonnage et de refroidissement (bacs à vide et bacs à eau)",
+      "sections": [
+        {
+          "content": "Utilisés pour l’étalonnage et le refroidissement de tubes en matières thermoplastiques par aspersion. Le refroidissement par aspersion empêche la formation d’une couche limite d’eau et offre ainsi une efficacité de refroidissement nettement supérieure à celle du refroidissement par immersion. De plus, aucune force de flottabilité ne peut déformer le tube. Tous les bacs peuvent néanmoins également fonctionner par immersion."
+        },
+        {
+          "content": "Des manchons ou des disques d’étalonnage sont disponibles comme outillages d’étalonnage ; des rouleaux, des disques d’étalonnage ou des demi-coquilles d’étalonnage peuvent être utilisés pour soutenir les tubes."
+        },
+        {
+          "heading": "Extras :",
+          "items": [
+            "Exécution à une ou deux chambres",
+            "Acier avec revêtement anticorrosion ou",
+            "Acier inoxydable",
+            "Réglage en hauteur et réglage latéral",
+            "Nombreux accessoires disponibles",
+            "Longueurs spéciales facilement réalisables",
+            "Rouleaux de support à réglage centralisé depuis l’extérieur",
+            "Large choix d’outillages d’étalonnage",
+            "Manchons d’étalonnage réglables",
+            "Couvercles en aluminium ou en verre spécial"
+          ]
+        },
+        {
+          "heading": "Avantages en un coup d’œil :",
+          "items": [
+            "Température de l’eau régulée par une alimentation en eau fraîche commandée par thermostat, d’où une faible consommation d’eau",
+            "Régulation du niveau pour maintenir un niveau d’eau constant",
+            "Circuits de vide et de refroidissement séparés",
+            "Grande efficacité de refroidissement grâce à des pompes et tuyauteries largement dimensionnées",
+            "Buses à cône plein pour une performance de refroidissement optimale",
+            "Contrôleur de débit avec indicateur à flotteur",
+            "Bonne accessibilité grâce à un dispositif simple de pivotement",
+            "Remplacement facile du filtre grâce au système de dérivation, même en cours de production",
+            "Réglage longitudinal sur rails pour une stabilité accrue",
+            "Faibles niveaux sonore et vibratoire grâce à l’utilisation d’amortisseurs de vibrations"
+          ]
+        }
+      ]
+    },
+    "abzuege": {
+      "title": "Tireuses pour l’extrusion de tubes",
+      "sections": [
+        {
+          "heading": "Tireuses à bandes",
+          "content": "Les tireuses à bandes assurent la traction continue des tubes et des profilés. Elles se distinguent par une synchronisation particulièrement précise, même à des vitesses de production élevées. Les bandes sont entraînées par un ou plusieurs servomoteurs. La hauteur des supports de bandes peut être réglée mécaniquement ou pneumatiquement. Les bandes peuvent être fournies avec différents revêtements."
+        },
+        {
+          "heading": "Tireuses à chenilles",
+          "content": "Les tireuses à deux chenilles peuvent être utilisées pour les tubes ou les profilés, selon le type de patins. Les tireuses à plusieurs chenilles servent à la traction des tubes. Les supports de chenilles inférieurs sont réglés mécaniquement ou électriquement. Les supports de chenilles supérieurs sont montés oscillants et appliqués pneumatiquement."
+        },
+        {
+          "heading": "Extras",
+          "items": [
+            "Tireuses de précision avec servomoteurs AC sans entretien",
+            "Régulation de l’équilibrage de pression pour tubes et profilés sensibles",
+            "Épaississement périodique de la paroi des tubes en PVC",
+            "Commande à distance",
+            "Bandes de tirage avec gorge en V rectifiée",
+            "Courroies Poly-V",
+            "Dispositif électronique de mesure de longueur",
+            "Synchronisation avec l’ordinateur de process",
+            "Dispositifs de coupe rapportés",
+            "Treuils à câble pour le démarrage"
+          ]
+        },
+        {
+          "heading": "Avantages en un coup d’œil :",
+          "items": [
+            "Construction robuste",
+            "Utilisation simple",
+            "Bandes facilement remplaçables",
+            "Bonne accessibilité",
+            "Interrupteurs de sécurité",
+            "Guidages à faible friction",
+            "Technique d’entraînement nécessitant peu d’entretien",
+            "Affichage numérique de la vitesse",
+            "Précision de synchronisation de +/- 0.01%",
+            "Entraînements directs durables (entraînements individuels)",
+            "Grandes longueurs de contact",
+            "Bonne transmission des forces de traction",
+            "Systèmes de changement rapide des patins de tirage",
+            "Construction conforme aux normes UVV et CE en vigueur"
+          ]
+        }
+      ]
+    },
+    "trenneinrichtungen": {
+      "title": "Dispositifs de coupe pour l’extrusion de tubes",
+      "sections": [
+        {
+          "heading": "Scies de tronçonnage",
+          "content": "Scies sous table à commande pneumatique pour la coupe de tubes et de profilés en matières thermoplastiques. Lors du démarrage de la ligne d’extrusion, la scie est facilement accessible grâce au dispositif de pivotement du double serrage supérieur. Des mors de serrage adaptés au diamètre ou au profil garantissent une coupe à angle droit."
+        },
+        {
+          "heading": "Machines de coupe et de chanfreinage",
+          "content": "Machines destinées à la coupe et au chanfreinage de tubes en plastique au moyen d’outils de coupe rotatifs. Ces dispositifs de coupe se distinguent par un processus silencieux et sans poussière. Un serrage central spécial du tube, à réglage rapide, permet d’obtenir des temps de changement de format très courts."
+        },
+        {
+          "heading": "Équipements complémentaires",
+          "items": [
+            "Coupe sans copeaux par molette de coupe",
+            "Entraînement du chariot par servomoteur pour une précision de coupe maximale",
+            "Avance discontinue pour fragmenter les copeaux",
+            "Chanfreinage intérieur",
+            "Machine hors ligne avec magasin pour le traitement de petites longueurs",
+            "Machines à fonctionnement centrifuge pour la coupe de tubes à paroi mince"
+          ]
+        },
+        {
+          "heading": "Scies de tronçonnage de précision",
+          "content": "Les scies de tronçonnage de précision GRAEWE sont utilisées pour les vitesses d’extrusion élevées, les faibles longueurs de coupe et les tolérances serrées sur la longueur de coupe. Le chariot de scie suit l’extrudat de manière synchrone en position et en vitesse grâce à un servomoteur. Il est ainsi possible d’obtenir une répétabilité de coupe extrêmement élevée."
+        },
+        {
+          "heading": "Couteau de coupe",
+          "content": "Couteaux à commande pneumatique ou hydraulique pour la coupe sans copeaux de tubes ou de profilés."
+        },
+        {
+          "heading": "Servocoupe",
+          "content": "Coupe volante, sans copeaux et sans bavures, au moyen d’une lame rotative montée directement sur l’arbre moteur."
+        },
+        {
+          "heading": "Avantages en un coup d’œil :",
+          "items": [
+            "Précision de coupe exceptionnelle",
+            "Faible consommation d’énergie",
+            "Faible niveau sonore grâce à l’utilisation d’outils de coupe spéciaux et à l’encapsulage de la machine",
+            "Changement d’outil facile"
+          ]
+        },
+        {
+          "heading": "Scies de tronçonnage et scies planétaires",
+          "items": [
+            "Coupe nette et précise",
+            "Lames de scie à longue durée de vie",
+            "Aspiration des copeaux hautement efficace"
+          ]
+        },
+        {
+          "heading": "Machines de coupe et de chanfreinage, servocoupe",
+          "items": [
+            "Coupe sans copeaux et sans bavures",
+            "Temps de changement de format courts grâce au serrage central",
+            "Système sans usure",
+            "Cadence de coupe élevée"
+          ]
+        }
+      ]
+    },
+    "vollautomatische-wickler": {
+      "title": "Enrouleurs entièrement automatiques pour l’extrusion de tubes",
+      "sections": [
+        {
+          "heading": "Domaines d’application",
+          "content": "Les enrouleurs doubles entièrement automatiques sont utilisés sur les lignes d’extrusion à haut rendement et à vitesse élevée. Les enrouleurs entièrement automatiques à un poste sont employés pour les plages de vitesse faibles à moyennes ou dans les installations de rebobinage. Grâce à leur conception compacte, nos enrouleurs n’occupent qu’une faible surface au sol et s’intègrent facilement à toute ligne de production. Par rapport aux enrouleurs semi-automatiques, le gain de productivité atteint généralement plus de 50 %."
+        },
+        {
+          "heading": "Solutions standard",
+          "content": "Une gamme complète de machines est disponible pour les applications les plus diverses :",
+          "items": [
+            "Enrouleurs automatiques pour le cerclage des couronnes par feuillard",
+            "Enrouleurs automatiques pour l’emballage sous film des couronnes",
+            "Enrouleurs combinés film/cerclage",
+            "Enrouleurs pour l’emballage radial des couronnes sous film",
+            "Enrouleurs automatiques pour le conditionnement direct des couronnes dans des cartons"
+          ]
+        },
+        {
+          "heading": "Solutions spéciales",
+          "content": "Des solutions spéciales ont été développées pour les tubes d’irrigation goutte à goutte, tuyaux d’arrosage, tubes médicaux, tubes annelés, tubes composites en aluminium et profilés."
+        },
+        {
+          "heading": "Extras",
+          "items": [
+            "Systèmes d’étiquetage",
+            "Dispositifs d’empilage des couronnes sur palettes",
+            "Réglage centralisé du diamètre du noyau et de la largeur de la couronne",
+            "Systèmes d’accumulation",
+            "Danseurs à ultrasons",
+            "Dispositifs de mesure de longueur"
+          ]
+        },
+        {
+          "heading": "Avantages en un coup d’œil :",
+          "items": [
+            "Servomoteurs sans entretien",
+            "Bras de bobine à réglage continu en diamètre et en largeur",
+            "Guidage précis de la pose par vis à billes et servomoteur",
+            "Transfert automatique du produit d’un poste d’enroulement à l’autre sans perte de temps (enrouleur double)",
+            "Coupe automatique de l’extrudat",
+            "Cerclage automatique de la couronne enroulée, au choix avec 2/3/4/6 cerclages",
+            "Cerclage couche par couche possible (enrouleur à un poste)",
+            "Éjection automatique de la couronne terminée",
+            "Commande centralisée par pupitre avec affichage LED et navigation par menus",
+            "Affichage en clair des textes d’aide et des messages d’erreur"
+          ]
+        }
+      ]
+    },
+    "halbautomatische-wickler": {
+      "title": "Enrouleurs pour l’extrusion de tubes",
+      "sections": [
+        {
+          "content": "Conçus pour l’enroulement précis de tubes, tuyaux et profilés en plastique. Les bras de bobine sont réglables en continu en diamètre et en largeur selon la section de couronne souhaitée. Pour faciliter le retrait de la couronne, les barres avant se rabattent pneumatiquement tandis que le noyau se rétracte. L’entraînement est assuré par un moteur triphasé qui peut, en option, être régulé par un danseur ou par la force de traction. Le dispositif de pose est synchronisé avec la vitesse d’entraînement de l’enrouleur et réglable en continu."
+        },
+        {
+          "heading": "Options",
+          "items": [
+            "Dimensions spéciales des bras de bobine",
+            "Dispositif de pincement de l’extrémité du tube",
+            "Dispositifs de mesure de longueur",
+            "Danseurs à ultrasons",
+            "Danseurs d’accumulation",
+            "Roues de déplacement",
+            "Guidage de pose de précision par vis à billes et servomoteur",
+            "Entraînements d’enroulement renforcés",
+            "Pupitre de commande avec navigation par menus et gestion des données produit",
+            "Dispositif de coupe intégré"
+          ]
+        },
+        {
+          "heading": "Avantages en un coup d’œil :",
+          "items": [
+            "Construction stable",
+            "Composants durables nécessitant peu d’entretien",
+            "Dimensions compactes",
+            "Bobinage régulier grâce à une technique d’entraînement de dernière génération",
+            "Capots de protection",
+            "Une vaste gamme d’équipements spéciaux permet d’adapter ces enrouleurs aux différentes exigences des clients."
+          ]
+        }
+      ]
+    },
+    "muffenmaschinen": {
+      "title": "Machines à embouts pour l’extrusion de tubes",
+      "sections": [
+        {
+          "content": "Utilisées pour la fabrication de raccordements de tubes. Différents modèles sont disponibles pour les applications les plus diverses."
+        },
+        {
+          "heading": "Systèmes d’emboîture :",
+          "items": [
+            "Emboîtures à coller pour tubes d’évacuation",
+            "Emboîtures à joint pour tubes d’évacuation avec mandrin de soufflage",
+            "Emboîtures à joint pour tubes d’évacuation avec mandrin à bague en caoutchouc dur",
+            "Emboîtures à joint pour tubes sous pression avec mandrin expansible"
+          ]
+        },
+        {
+          "content": "Machines de soudage par friction pour la fixation d’emboîtures selon le procédé de soudage par friction. Machines de moulage par injection pour le surmoulage direct des emboîtures."
+        },
+        {
+          "heading": "Extras :",
+          "items": [
+            "Machines entièrement automatiques et semi-automatiques",
+            "Automate programmable avec pupitre opérateur et gestion des recettes"
+          ]
+        },
+        {
+          "heading": "Avantages en un coup d’œil :",
+          "items": [
+            "Rendement élevé",
+            "Utilisation simple et sûre",
+            "Changement d’outil rapide",
+            "Maintenance et entretien faciles",
+            "Système de refroidissement efficace",
+            "Chauffage infrarouge optimisé"
+          ]
+        }
+      ]
+    },
+    "sondermaschinen": {
+      "title": "Machines spéciales pour l’extrusion de tubes",
+      "sections": [
+        {
+          "content": "Depuis la création de notre entreprise, nous avons fabriqué, en collaboration avec nos clients, une grande variété de machines spéciales adaptées individuellement à leurs besoins."
+        },
+        {
+          "content": "Mettez-nous au défi : votre machine spéciale fait peut-être déjà partie de nos standards."
+        },
+        {
+          "heading": "Exemples :",
+          "items": [
+            "Goulottes basculantes, dispositifs de dépose, convoyeurs à rouleaux",
+            "Machines de refente de tubes",
+            "Machines d’usinage des extrémités de tubes",
+            "Enrouleurs de tubes, machines spéciales et machines à fileter",
+            "Retourneurs de tubes",
+            "Machines de palettisation et d’emballage",
+            "Lignes d’extrusion multibrins"
+          ]
+        }
+      ]
+    }
+  },
+  "profilextrusion": {
+    "extruder": {
+      "title": "Extrudeuse pour l’extrusion de profilés",
+      "sections": [
+        {
+          "content": "GRAEWE ne fabrique pas elle-même d’extrudeuses ni d’outillages d’extrusion, mais travaille en étroite collaboration avec de nombreux fabricants d’extrudeuses renommés et peut ainsi vous fournir des lignes de production complètes. Par l’intermédiaire de notre filiale next, nous disposons également en permanence d’extrudeuses d’occasion entièrement reconditionnées et d’extrudeuses comme neuves."
+        }
+      ],
+      "cta": {
+        "text": "N’hésitez pas à nous consulter si nécessaire.",
+        "link": "/team"
+      }
+    },
+    "kalibriertische": {
+      "title": "Tables d’étalonnage pour l’extrusion de profilés",
+      "sections": [
+        {
+          "content": "Utilisées pour l’étalonnage et le refroidissement de profilés en matières thermoplastiques."
+        },
+        {
+          "heading": "Extras :",
+          "items": [
+            "Bâti inférieur robuste avec habillages en tôle",
+            "Châssis en acier zingué par galvanisation ou en acier inoxydable",
+            "Bac collecteur d’eau en acier inoxydable",
+            "Réglages finement ajustables, à faible jeu, en hauteur, latéralement et longitudinalement",
+            "Nombreux accessoires disponibles",
+            "Toutes les pièces en contact avec l’eau sont réalisées dans des matériaux résistants à la corrosion"
+          ]
+        },
+        {
+          "heading": "Avantages en un coup d’œil :",
+          "items": [
+            "Construction modulaire, longueurs spéciales facilement réalisables",
+            "Grandes surfaces de bridage",
+            "Nombreux raccordements d’eau et de vide",
+            "Circuits de vide et de refroidissement séparés et réglables avec précision",
+            "Contrôleur de débit avec indicateur à flotteur",
+            "Bonne accessibilité aux pompes",
+            "Réglage longitudinal sur rails pour une stabilité accrue",
+            "Faibles niveaux sonore et vibratoire grâce à l’utilisation d’amortisseurs de vibrations"
+          ]
+        }
+      ]
+    },
+    "abzuege": {
+      "title": "Tireuses pour l’extrusion de profilés",
+      "sections": [
+        {
+          "heading": "Tireuses à bandes",
+          "content": "Les tireuses à bandes assurent la traction continue des profilés. Elles se distinguent par une synchronisation particulièrement précise, même à des vitesses de production élevées. Les bandes sont entraînées par un ou plusieurs servomoteurs. La hauteur des supports de bandes peut être réglée mécaniquement ou pneumatiquement. Les bandes peuvent être fournies avec différents revêtements."
+        },
+        {
+          "heading": "Tireuses à chenilles",
+          "content": "Les tireuses à deux chenilles peuvent être utilisées pour les profilés les plus divers, selon le type de patins. Les supports de chenilles inférieurs sont réglés mécaniquement ou électriquement. Les supports de chenilles supérieurs sont montés oscillants et appliqués pneumatiquement."
+        },
+        {
+          "heading": "Extras",
+          "items": [
+            "Tireuses de précision avec servomoteurs AC sans entretien",
+            "Régulation de l’équilibrage de pression pour profilés sensibles",
+            "Commande à distance",
+            "Bandes de tirage avec forme de profil rectifiée",
+            "Courroies Poly-V",
+            "Patins de tirage disponibles en différentes largeurs",
+            "Dispositif électronique de mesure de longueur",
+            "Synchronisation avec l’ordinateur de process",
+            "Dispositifs de coupe rapportés"
+          ]
+        },
+        {
+          "heading": "Avantages en un coup d’œil :",
+          "items": [
+            "Construction robuste",
+            "Utilisation simple",
+            "Bandes facilement remplaçables",
+            "Bonne accessibilité",
+            "Interrupteurs de sécurité",
+            "Guidages à faible friction",
+            "Technique d’entraînement nécessitant peu d’entretien",
+            "Affichage numérique de la vitesse",
+            "Précision de synchronisation de +/- 0.01%",
+            "Entraînements directs durables (entraînements individuels)",
+            "Grandes longueurs de contact",
+            "Bonne transmission des forces de traction",
+            "Systèmes de changement rapide des patins de tirage",
+            "Construction conforme aux normes UVV et CE en vigueur"
+          ]
+        }
+      ]
+    },
+    "trenneinrichtungen": {
+      "title": "Dispositifs de coupe pour l’extrusion de profilés",
+      "sections": [
+        {
+          "heading": "Scies de tronçonnage",
+          "content": "Scies sous table à commande pneumatique pour la coupe de profilés en matières thermoplastiques. Lors du démarrage de la ligne d’extrusion, la scie est facilement accessible grâce au dispositif de pivotement du double serrage supérieur. Des mors de serrage adaptés au profil garantissent une coupe à angle droit."
+        },
+        {
+          "heading": "Équipements complémentaires",
+          "items": [
+            "Entraînement du chariot par servomoteur pour une précision de coupe maximale",
+            "Avance discontinue pour fragmenter les copeaux",
+            "Guides de profilés",
+            "Dispositifs de mesure de longueur"
+          ]
+        },
+        {
+          "heading": "Scies de tronçonnage de précision",
+          "content": "Les scies de tronçonnage de précision GRAEWE sont utilisées pour les vitesses d’extrusion élevées, les faibles longueurs de coupe et les tolérances serrées sur la longueur de coupe. Le chariot de scie suit l’extrudat de manière synchrone en position et en vitesse grâce à un servomoteur. Il est ainsi possible d’obtenir une répétabilité de coupe extrêmement élevée."
+        },
+        {
+          "heading": "Couteau de coupe",
+          "content": "Couteaux à commande pneumatique ou hydraulique pour la coupe sans copeaux de profilés. Il est également possible de combiner la coupe à la scie et la coupe sans copeaux."
+        },
+        {
+          "heading": "Servocoupe",
+          "content": "Coupe volante, sans copeaux et sans bavures, au moyen d’une lame rotative montée directement sur l’arbre moteur."
+        },
+        {
+          "heading": "Avantages en un coup d’œil :",
+          "items": [
+            "Précision de coupe exceptionnelle",
+            "Faible consommation d’énergie",
+            "Faible niveau sonore grâce à l’utilisation d’outils de coupe spéciaux et à l’encapsulage de la machine",
+            "Changement d’outil facile"
+          ]
+        },
+        {
+          "heading": "Servocoupe",
+          "items": [
+            "Coupe sans copeaux et sans bavures",
+            "Temps de changement de format courts grâce au serrage central",
+            "Système sans usure",
+            "Cadence de coupe élevée"
+          ]
+        }
+      ]
+    },
+    "wickler": {
+      "title": "Enrouleurs pour l’extrusion de profilés",
+      "sections": [
+        {
+          "content": "Qu’il s’agisse d’un axe d’enroulement horizontal ou vertical (enrouleur à plateau), ou encore d’enrouleurs à bobine ou à tambour, ces machines permettent l’enroulement sans tension des profilés les plus divers."
+        },
+        {
+          "heading": "Options",
+          "items": [
+            "Dimensions spéciales des bras de bobine",
+            "Dispositif de mesure de longueur",
+            "Danseurs à ultrasons",
+            "Danseurs d’accumulation",
+            "Dévidoirs de ruban adhésif",
+            "Roues de déplacement",
+            "Guidage de pose de précision par vis à billes et servomoteur",
+            "Pupitre de commande avec navigation par menus et gestion des données produit",
+            "Dispositif de coupe intégré"
+          ]
+        },
+        {
+          "heading": "Avantages en un coup d’œil :",
+          "items": [
+            "Construction stable",
+            "Composants durables nécessitant peu d’entretien",
+            "Dimensions compactes",
+            "Bobinage régulier grâce à une technique d’entraînement de dernière génération",
+            "Capots de protection"
+          ]
+        },
+        {
+          "content": "Une vaste gamme d’équipements spéciaux permet d’adapter ces enrouleurs aux exigences les plus diverses des clients."
+        }
+      ]
+    },
+    "sondermaschinen": {
+      "title": "Machines spéciales pour l’extrusion de profilés",
+      "sections": [
+        {
+          "content": "Depuis la création de notre entreprise, nous avons fabriqué, en collaboration avec nos clients, une grande variété de machines spéciales adaptées individuellement à leurs besoins."
+        },
+        {
+          "content": "Mettez-nous au défi : votre machine spéciale fait peut-être déjà partie de nos standards."
+        },
+        {
+          "heading": "Exemples :",
+          "items": [
+            "Cisailles-guillotines",
+            "Poinçonneuses",
+            "Unités de perçage",
+            "Tables basculantes"
+          ]
+        },
+        {
+          "content": "Et bien plus encore…"
+        }
+      ]
+    }
+  },
+  "plattenextrusion": {
+    "extruder": {
+      "title": "Extrudeuse pour l’extrusion de plaques",
+      "sections": [
+        {
+          "content": "GRAEWE ne fabrique pas elle-même d’extrudeuses ni d’outillages d’extrusion, mais travaille en étroite collaboration avec de nombreux fabricants d’extrudeuses renommés et peut ainsi vous fournir des lignes de production complètes. Par l’intermédiaire de notre filiale next, nous disposons également en permanence d’extrudeuses d’occasion entièrement reconditionnées et d’extrudeuses comme neuves."
+        }
+      ],
+      "cta": {
+        "text": "N’hésitez pas à nous consulter si nécessaire.",
+        "link": "/team"
+      }
+    },
+    "laengstrenn-einrichtungen": {
+      "title": "Coupe longitudinale pour l’extrusion de plaques",
+      "sections": [
+        {
+          "heading": "Scies de coupe longitudinale pour 2, 3 ou 4 coupes",
+          "items": [
+            "Entraînements à vitesse réglable",
+            "Avance à commande hydraulique",
+            "Aspiration efficace des poussières",
+            "Capots d’aspiration mobiles"
+          ]
+        },
+        {
+          "heading": "Fraiseuses de coupe longitudinale",
+          "items": [
+            "Pour la coupe de plaques de forte épaisseur au moyen de fraises à doigts à grande vitesse",
+            "Qualité de coupe exceptionnelle",
+            "Plus aucune adhérence des copeaux",
+            "Aspiration efficace des copeaux"
+          ]
+        },
+        {
+          "heading": "Couteaux de coupe longitudinale pour plaques jusqu’à 15 mm d’épaisseur (coupe à la lame)",
+          "items": [
+            "Changement de format rapide",
+            "Remplacement possible en cours de production",
+            "Couteaux rotatifs entraînés pour une coupe sans copeaux",
+            "Géométrie de coupe réglable de multiples façons"
+          ]
+        }
+      ]
+    },
+    "quertrenn-einrichtungen": {
+      "title": "Coupe transversale pour l’extrusion de plaques",
+      "sections": [
+        {
+          "heading": "Cisailles fixes ou mobiles",
+          "items": [
+            "Avec bandes transporteuses intégrées",
+            "Coupes sans copeaux",
+            "Cadence élevée"
+          ]
+        },
+        {
+          "content": "Cisailles pivotantes pour la fabrication de plaques trapézoïdales"
+        },
+        {
+          "heading": "Combinaisons d’une cisaille et d’une scie de coupe transversale rapportée",
+          "items": [
+            "Flexibilité maximale"
+          ]
+        },
+        {
+          "heading": "Scies de coupe transversale pour plaques jusqu’à 3000 mm de largeur et 40 mm d’épaisseur",
+          "items": [
+            "Entraînements à vitesse réglable pour définir la vitesse de coupe optimale",
+            "Réglage précis de la perpendicularité de coupe",
+            "Aspiration efficace des poussières",
+            "Barres de serrage respectueuses du produit",
+            "Tolérance précise sur la longueur de coupe : +/- 0.5mm",
+            "Paramètres produit mémorisables",
+            "Doigts à rouleaux imbriqués soutenant le produit sur toute sa longueur",
+            "En alternative, chaînes à rouleaux ou bandes transporteuses télescopiques motorisées pour le soutien",
+            "Longueurs de coupe d’essai",
+            "Lame de scie avec refroidissement intensif par air ou liquide de refroidissement",
+            "Protecteurs"
+          ]
+        },
+        {
+          "heading": "Fraiseuses de coupe transversale pour plaques jusqu’à 60 mm d’épaisseur",
+          "items": [
+            "Pour la coupe de plaques de forte épaisseur au moyen de fraises à doigts à grande vitesse",
+            "Qualité de coupe exceptionnelle",
+            "Plus aucune adhérence des copeaux",
+            "Aspiration efficace des copeaux"
+          ]
+        }
+      ]
+    },
+    "plattenstapler": {
+      "title": "Empileurs de feuilles pour l’extrusion de plaques",
+      "sections": [
+        {
+          "content": "Empileurs automatiques de plaques par aspiration"
+        },
+        {
+          "heading": "Pour l’empilage précis de plaques en plastique",
+          "items": [
+            "Empilage simple ou multiple",
+            "Transport délicat des plaques",
+            "Formation de lots ou coupe centrale",
+            "Systèmes d’alignement latéral et longitudinal",
+            "Empilage précis au niveau des bords",
+            "Temps de cycle courts",
+            "Précision et rapidité",
+            "Latéralement ou dans le sens de l’extrusion",
+            "En option avec axe Z pour l’empilage sur palettes ou directement sur des tables élévatrices à ciseaux"
+          ]
+        },
+        {
+          "content": "Systèmes de convoyage pour le changement automatique des palettes."
+        }
+      ]
+    },
+    "sondermaschinen": {
+      "title": "Machines spéciales pour l’extrusion de plaques",
+      "sections": [
+        {
+          "content": "Depuis la création de notre entreprise, nous avons fabriqué, en collaboration avec nos clients, une grande variété de machines spéciales adaptées individuellement à l’extrusion de plaques."
+        },
+        {
+          "content": "Mettez-nous au défi : votre machine spéciale fait peut-être déjà partie de nos standards."
+        },
+        {
+          "heading": "Exemples :",
+          "items": [
+            "Dispositifs de dépose",
+            "Convoyeurs à rouleaux",
+            "Tables cintrées antipoussière",
+            "Convoyeurs de palettes"
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -220,13 +220,13 @@ Old site checked live on graewe.com.
   - [x] Lightbox still works.
 
 ### ISSUE-011 — Product detail body missing for FR / RU / ES
-- **Status:** Open
+- **Status:** Done
 - **Category:** i18n / Content gap
 - **Problem:** `src/lib/productContent.ts` has structured product copy for `de` and `en` only. `getProductDetail()` falls back to German for other locales — French/Russian/Spanish product pages show German prose under a FR/RU/ES chrome.
-- **Likely files:** `src/lib/productContent.ts` (or split locale files).
+- **Likely files:** `src/lib/productContent/` (`de|en|fr|ru|es.json` + `index.ts`).
 - **Acceptance criteria:**
-  - [ ] FR/RU/ES product pages show native (or professionally translated) body text.
-  - [ ] Fallback behavior documented if intentional interim.
+  - [x] FR/RU/ES product pages show native (or professionally translated) body text.
+  - [x] Fallback behavior documented if intentional interim. (Unknown locales still fall back to `de`; see `getProductDetail`.)
 
 ---
 

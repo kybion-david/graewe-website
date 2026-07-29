@@ -1,0 +1,647 @@
+{
+  "rohrextrusion": {
+    "extruder": {
+      "title": "Rohrextrusion Extruder",
+      "sections": [
+        {
+          "content": "Fa. Graewe stellt selber keine Extruder und Extrusionswerkzeuge her, wir arbeiten jedoch mit zahlreichen namhaften Extruderherstellern eng zusammen, und können Ihnen somit auch komplette Fertigungsanlagen liefern. Über unser Tochterunternehmen next haben wir auch ständig perfekt überholte gebrauchte und neuwertige Extruder vorrätig."
+        }
+      ],
+      "cta": {
+        "text": "Fragen Sie im Bedarfsfall einfach.",
+        "link": "/team"
+      }
+    },
+    "kalibrier-und-kuehlbaeder": {
+      "title": "Kalibrier- und Kühlbäder (Vakuumtanks und Wasserbäder)",
+      "sections": [
+        {
+          "content": "dienen zum Kalibrieren und Kühlen von Rohren aus thermoplastischen Kunststoffen mittels Sprühkühlung. Die Sprühkühlung verhindert das Ausbilden einer Wasser-Grenzschicht und besitzt damit eine wesentlich größere Kühleffizienz als die Tauchkühlung. Außerdem können keine Auftriebskräfte das Rohr deformieren. Alle Tanks können dennoch mit Tauchkühlung arbeiten."
+        },
+        {
+          "content": "Als Kalibrierwerkzeuge sind Kalibrierhülsen oder Scheibenkalibrierungen erhältlich; zur Rohrunterstützung können Rollen, Kalibrierscheiben oder Kalibrierhalbschalen verwendet werden."
+        },
+        {
+          "heading": "Extras:",
+          "items": [
+            "Ein- oder Zweikammerausführung",
+            "Antikorrosionsbeschichteter Stahl oder",
+            "Rostfreier Stahl",
+            "Höhenverstellung, Seitenverstellung",
+            "Vielfältiges Zubehör erhältlich",
+            "Sonderlängen problemlos möglich",
+            "Von außen zentral einstellbare Stützrollen",
+            "Große Auswahl unterschiedlicher Kalibrierwerkzeuge",
+            "Verstellbare Kalibrierhülsen",
+            "Deckel aus Aluminium oder Spezialglas"
+          ]
+        },
+        {
+          "heading": "Klare Vorteile auf einen Blick:",
+          "items": [
+            "Wassertemperatur über thermostatisch gesteuerte Frischwasserzufuhr geregelt. Daher niedriger Wasserverbrauch",
+            "Niveauregulierung für gleich bleibenden Wasserstand",
+            "Getrennte Vakuum- und Kühlkreisläufe",
+            "Gute Kühleffektivität durch groß dimensionierte Pumpen und Leitungen",
+            "Vollkegeldüsen für optimale Kühlleistung",
+            "Durchflussmengenregler mit Schwimmeranzeige",
+            "Gute Zugänglichkeit durch einfache Wegschwenkmöglichkeit",
+            "Einfacher Filterwechsel durch Bypass System auch während der Produktion",
+            "Längsverstellung auf Schienenbahn zur Stabilitätserhöhung",
+            "Geräusch- und vibrationsarm durch Einsatz von Schwingungsdämpfern"
+          ]
+        }
+      ]
+    },
+    "abzuege": {
+      "title": "Rohrextrusion Abzüge",
+      "sections": [
+        {
+          "heading": "Bandabzüge",
+          "content": "Bandabzüge werden zum kontinuierlichen Abziehen von Rohren und Profilen verwendet. Sie zeichnen sich durch einen besonders guten Gleichlauf, auch bei hohen Produktionsgeschwindigkeiten, aus. Der Antrieb der Bänder erfolgt über einen oder mehrere Servoantriebe. Die Bandträger können mechanisch oder pneumatisch in der Höhe verstellt werden. Die Bänder können mit einer Vielzahl verschiedener Beschichtungen geliefert werden."
+        },
+        {
+          "heading": "Raupenabzüge",
+          "content": "Zweiraupenabzüge können je nach Stollenart für Rohre oder Profile eingesetzt werden. Mehrfachraupenabzüge werden zum Abziehen von Rohren verwendet. Die Verstellung der unteren Raupenträger geschieht mechanisch oder elektrisch. Die oberen Raupenträger sind pendelnd aufgehängt und werden pneumatisch zugestellt."
+        },
+        {
+          "heading": "Extras",
+          "items": [
+            "Präzisionsabzüge mit wartungsfreien AC-Servoantrieben",
+            "Druckausgleichssteuerung für empfindliche Schläuche + Profile",
+            "Periodische Wandverdickung für Rohre aus PVC",
+            "Fernbedienung",
+            "Abzugsbänder mit geschliffener V-Rille",
+            "Poly-V-Bänder",
+            "Elektronisches Längenmeßgerät",
+            "Synchronisierung mit Prozeßrechner",
+            "Angebaute Schneideinrichtungen",
+            "Anfahrseilwinden"
+          ]
+        },
+        {
+          "heading": "Klare Vorteile auf einen Blick",
+          "items": [
+            "Robuste Bauweise",
+            "Einfache Bedienung",
+            "Leicht austauschbare Bänder",
+            "Gute Zugänglichkeit",
+            "Sicherheitsschutzschalter",
+            "Leichtgängige Führungen",
+            "Wartungsarme Antriebstechnik",
+            "Digitale Geschwindigkeitsanzeigen",
+            "Gleichlaufgenauigkeit +/- 0,01%",
+            "Langlebige Direktantriebe (Einzelantriebe)",
+            "Große Kontaktlängen",
+            "Gute Übertragung der Abzugskräfte",
+            "Schnellwechselsysteme für Abzugsstollen",
+            "Gebaut nach den gängigen UVV und CE Normen"
+          ]
+        }
+      ]
+    },
+    "trenneinrichtungen": {
+      "title": "Rohrextrusion Trenneinrichtungen",
+      "sections": [
+        {
+          "heading": "Trennsägen",
+          "content": "Pneumatisch betätigte Unterflursägen zum Trennen von Rohren und Profilen aus thermoplastischen Kunststoffen. Leichte Bedienbarkeit der Säge beim Anfahren der Extrusionslinie durch die Wegschwenkmöglichkeit der oberen Doppelklammerung. Durchmesserspezifische bzw. der Profilform angepasste Klemmbacken garantieren einen rechtwinkligen Schnitt."
+        },
+        {
+          "heading": "Trenn- und Anfasmaschinen",
+          "content": "Maschinen zum Trennen und Anfasen von Kunststoffrohren durch rotierende Schneidwerkzeuge. Diese Schneideinrichtungen zeichnen sich durch geräuscharme und staubfreie Trennvorgänge aus. Durch eine spezielle Rohrzentralklammerung mit Schnellverstellung können sehr kurze Rüstzeiten erreicht werden."
+        },
+        {
+          "heading": "Zusatzausrüstung",
+          "items": [
+            "Spanloses Trennen mittels Schneidrolle",
+            "Schlittenantrieb durch Servomotor für höchste Schnittgenauigkeit",
+            "Diskontinuierlicher Vorschub zur Spanunterbrechung",
+            "Innenanfasen",
+            "Off-Line Magazinmaschine zur Konfektionierung von Kurzlängen",
+            "Fliehkraftbetätigte Maschinen zum Trennen dünnwandiger Rohre"
+          ]
+        },
+        {
+          "heading": "Präzisionstrennsägen",
+          "content": "Bei hohen Extrusionsgeschwindigkeiten, kurzen Schnittlängen und engen Schnittlängentoleranzen finden GRAEWE Präzisionstrennsägen ihren Einsatz. Hierbei wird der Sägeschlitten dem Extrudat über Servoantrieb weg- und geschwindigkeitssynchron nachgeführt. Extrem große Schnittwiederholgenauigkeiten können erreicht werden."
+        },
+        {
+          "heading": "Cutter",
+          "content": "Pneumatisch oder hydraulisch betätigte Trennmesser zum spanlosen Trennen von Rohren oder Profilen."
+        },
+        {
+          "heading": "Servocutter",
+          "content": "Fliegender, spanloser und gratfreier Schnitt über direkt auf Motorwelle angebrachter, rotierender Klinge."
+        },
+        {
+          "heading": "Klare Vorteile auf einen Blick:",
+          "items": [
+            "Hervorragende Schnittgenauigkeiten",
+            "Geringer Energieverbrauch",
+            "Geringes Geräuschniveau durch Einsatz spezieller Trennwerkzeuge und Kapselung der Maschinen",
+            "Einfacher Werkzeugwechsel"
+          ]
+        },
+        {
+          "heading": "Trennsägen und Planetensägen",
+          "items": [
+            "Sauberer, präziser Schnitt",
+            "Langlebige Sägeblätter",
+            "Hocheffiziente Späneabsaugung"
+          ]
+        },
+        {
+          "heading": "Trenn- und Fasmaschinen, Servocutter",
+          "items": [
+            "Span- und gratfreier Schnitt",
+            "Kurze Rüstzeiten durch Zentralklammerung",
+            "Verschleißfreies System",
+            "Hohe Schnittfrequenz"
+          ]
+        }
+      ]
+    },
+    "vollautomatische-wickler": {
+      "title": "Rohrextrusion Wickler (vollautomatisch)",
+      "sections": [
+        {
+          "heading": "Anwendungsbereiche",
+          "content": "Vollautomatische Doppelwickler finden Ihre Anwendung in Hochleistungsextrusionsanlagen mit hohen Extrusionsgeschwindigkeiten. Vollautomatische Einstellenwickler dagegen werden bei niedrigen bis mittleren Geschwindigkeitsbereichen oder in Umwickelanlagen eingesetzt. Durch die kompakte Bauweise unserer Wickler haben diese nur einen geringen Raumbedarf und sind somit leicht in jede Produktionslinie einzureihen. Gegenüber halbautomatischen Wicklern wird in der Regel eine Steigerung der Produktivität von über 50% erreicht."
+        },
+        {
+          "heading": "Standardlösungen",
+          "content": "Es steht Ihnen ein umfangreiches Programm von Maschinen für die unterschiedlichsten Anwendungen zur Verfügung:",
+          "items": [
+            "Automatische Wickler zum Umreifen der Ringbunde mit Bändern",
+            "Automatische Wickler zum Einwickeln der Ringbunde in Folie",
+            "Kombinationswickler Folie/Binden",
+            "Wickler zum radialen Einwickeln der Bunde in Folie",
+            "Automatische Wickler zum Verpacken der Ringbunde direkt in Kartonschachteln"
+          ]
+        },
+        {
+          "heading": "Speziallösungen",
+          "content": "Spezielle Lösungen wurden z.B. entwickelt für: Tropferbewässerungsrohre, Gartenschläuche, medizinische Schläuche, Wellrohre, Aluminium-Verbundrohre und Profile."
+        },
+        {
+          "heading": "Extras",
+          "items": [
+            "Etikettiersysteme",
+            "Vorrichtungen zum Abstapeln der Bunde auf Paletten",
+            "Zentralverstellung des Kerndurchmessers und der Bundbreite",
+            "Speichersysteme",
+            "Ultraschalltänzer",
+            "Längenmessgeräte"
+          ]
+        },
+        {
+          "heading": "Klare Vorteile auf einen Blick:",
+          "items": [
+            "Wartungsfreie Servomotoren",
+            "Haspelarme in Durchmesser und Breite stufenlos verstellbar",
+            "Exakte Verlegung über Kugelgewindespindel und Servomotor",
+            "Automatische Übergabe des Produktes von einer Wickelstelle zur anderen ohne Zeitverlust (Doppelwickler)",
+            "Automatisches Trennen des Extrudates",
+            "Automatisches Abbinden des gewickelten Bundes, wahlweise 2/3/4/6 Abbindungen",
+            "Lagenweises Abbinden möglich (Einstellenwickler)",
+            "Automatisches Ausstoßen des fertigen Bundes",
+            "Zentrale Bedienung durch Bedientableau mit LED Display und Menüführung",
+            "Ausgabe von Hilfetexten und Fehlermeldungen im Klartext"
+          ]
+        }
+      ]
+    },
+    "halbautomatische-wickler": {
+      "title": "Rohrextrusion Wickler",
+      "sections": [
+        {
+          "content": "Ausgelegt für das präzise Aufwickeln von Kunststoffrohren, -schläuchen und -profilen. Die Haspelarme sind im Durchmesser und in der Breite entsprechend dem gewünschten Bundquerschnitt stufenlos verstellbar. Zum leichten Abnehmen des Bundes werden die vorderen Stege pneumatisch heruntergeklappt und gleichzeitig fällt der Kern ein. Der Antrieb erfolgt über einen Drehstrommotor, der wahlweise über eine Tänzersteuerung oder über Zugkraft geregelt werden kann. Die Verlegung ist mit der Drehzahl des Wickelantriebes synchronisiert und kann stufenlos verstellt werden."
+        },
+        {
+          "heading": "Optionen",
+          "items": [
+            "Sonderabmessungen der Haspelarme",
+            "Rohrendenandrückvorrichtung",
+            "Längenmessgeräte",
+            "Ultraschalltänzer",
+            "Speichertänzer",
+            "Fahrrollen",
+            "Präzisionsverlegung über Kugelgewindespindel und Servomotor",
+            "Verstärkte Wickelantriebe",
+            "Bedientableau mit Menüführung und Produktdatenverwaltung",
+            "Integrierte Schneidvorrichtung"
+          ]
+        },
+        {
+          "heading": "Klare Vorteile auf einen Blick:",
+          "items": [
+            "Stabile Konstruktion",
+            "Wartungsarme, langlebige Komponenten",
+            "Kompakte Abmessungen",
+            "Gleichmäßiges Wickelbild durch Einsatz neuester Antriebstechnologie",
+            "Schutzabdeckungen",
+            "Eine Vielzahl von Sonderausrüstungen ermöglichen es, diese Wickler an diverse Kundenanforderungen anzupassen."
+          ]
+        }
+      ]
+    },
+    "muffenmaschinen": {
+      "title": "Rohrextrusion Muffenmaschinen",
+      "sections": [
+        {
+          "content": "Dienen zur Herstellung von Rohrverbindungen. Es stehen verschiedene Typen für die unterschiedlichsten Anwendungen zur Verfügung"
+        },
+        {
+          "heading": "Muffensysteme:",
+          "items": [
+            "Klebemuffen für Abwasserrohre",
+            "Steckmuffen für Abwasserrohre mit Blasdorn",
+            "Steckmuffen für Abwasserrohre mit Hartgummiringdorn",
+            "Steckmuffen für Druckrohre mit Spreizdorn"
+          ]
+        },
+        {
+          "content": "Reibschweißmaschinen zum Anbringen von Muffen im Reibschweißverfahren Muffenspritzgießmaschinen zum direkten Anspritzen von Muffen"
+        },
+        {
+          "heading": "Extras:",
+          "items": [
+            "Vollautomatische und halbautomatische Maschinen",
+            "Speicherprogrammierbare Steuerung mit Bedienpanel und Rezepturverwaltung"
+          ]
+        },
+        {
+          "heading": "Klare Vorteile auf einen Blick:",
+          "items": [
+            "Hohe Ausstoßleistung",
+            "Einfache und sichere Bedienung",
+            "Schneller Werkzeugwechsel",
+            "Leichte Wartung und Instandhaltung",
+            "Effektives Kühlsystem",
+            "Optimierte Infrarotheizung"
+          ]
+        }
+      ]
+    },
+    "sondermaschinen": {
+      "title": "Rohrextrusion Sondermaschinen",
+      "sections": [
+        {
+          "content": "Seit unserem Bestehen haben wir in Zusammenarbeit mit unseren Kunden eine Vielzahl von individuell angepassten Spezialmaschinen gefertigt."
+        },
+        {
+          "content": "Fordern Sie uns, vielleicht ist Ihre Sondermaschine für uns bereits ein Standard."
+        },
+        {
+          "heading": "Beispiele:",
+          "items": [
+            "Kipprinnen, Ablegeinrichtungen, Rollenbahnen",
+            "Rohrschlitzmaschinen",
+            "Rohrendenbearbeitungsmaschinen",
+            "Rohrwickler - Sondermaschinen Gewindeschneidmaschinen",
+            "Rohrwender",
+            "Palettier-, und Verpackungsmaschinen",
+            "Mehrstrang-Extrusionsanlagen"
+          ]
+        }
+      ]
+    }
+  },
+  "profilextrusion": {
+    "extruder": {
+      "title": "Profilextrusion Extruder",
+      "sections": [
+        {
+          "content": "Fa. Graewe stellt selber keine Extruder und Extrusionswerkzeuge her, wir arbeiten jedoch mit zahlreichen namhaften Extruderherstellern eng zusammen, und können Ihnen somit auch komplette Fertigungsanlagen liefern. Über unser Tochterunternehmen next haben wir auch ständig perfekt überholte gebrauchte und neuwertige Extruder vorrätig."
+        }
+      ],
+      "cta": {
+        "text": "Fragen Sie im Bedarfsfall einfach an.",
+        "link": "/team"
+      }
+    },
+    "kalibriertische": {
+      "title": "Profilextrusion Kalibriertische",
+      "sections": [
+        {
+          "content": "Dienen zum Kalibrieren und Kühlen von Profilen aus Thermoplastischen Kunststoffen."
+        },
+        {
+          "heading": "Extras:",
+          "items": [
+            "Stabiles Untergestell mit Blechabdeckungen",
+            "Rahmen aus galvanisch verzinktem Stahl oder rostfreiem Edelstahl",
+            "Wasserauffangwanne aus Edelstahl",
+            "Feinfühlige, spielarme Höhen-, Seiten- und Längsverstellung",
+            "Vielfältiges Zubehör erhältlich",
+            "Sämtliche Teile im Kontakt mit Wasser aus korrosionsfreien Materialien"
+          ]
+        },
+        {
+          "heading": "Klare Vorteile auf einen Blick",
+          "items": [
+            "Modulare Bauweise, Sonderlängen problemlos möglich",
+            "Große Aufspannflächen",
+            "Zahlreiche Wasser- und Vakuumanschlüsse",
+            "Getrennte, feinfühlig einstellbare Vakuum- und Kühlkreisläufe",
+            "Durchflussmengenregler mit Schwimmeranzeige",
+            "Gute Zugänglichkeit zu den Pumpen",
+            "Längsverstellung auf Schienenbahn zur Stabilitätserhöhung",
+            "Geräusch- und vibrationsarm durch Einsatz von Schwingungsdämpfern"
+          ]
+        }
+      ]
+    },
+    "abzuege": {
+      "title": "Profilextrusion Abzüge",
+      "sections": [
+        {
+          "heading": "Bandabzüge",
+          "content": "Bandabzüge werden zum kontinuierlichen Abziehen von Profilen verwendet. Sie zeichnen sich durch einen besonders guten Gleichlauf auch bei hohen Produktionsgeschwindigkeiten aus. Der Antrieb der Bänder erfolgt über einen oder mehrere Servoantriebe. Die Bandträger können mechanisch oder pneumatisch in der Höhe verstellt werden. Die Bänder können mit einer Vielzahl verschiedener Beschichtungen geliefert werden."
+        },
+        {
+          "heading": "Raupenabzüge",
+          "content": "Zweiraupenabzüge können je nach Stollenart für unterschiedlichste Profile eingesetzt werden. Die Verstellung der unteren Raupenträger geschieht mechanisch oder elektrisch. Die oberen Raupenträger sind pendelnd aufgehängt und werden pneumatisch zugestellt."
+        },
+        {
+          "heading": "Extras",
+          "items": [
+            "Präzisionsabzüge mit wartungsfreien AC-Servoantrieben",
+            "Druckausgleichssteuerung für empfindliche Profile",
+            "Fernbedienung",
+            "Abzugsbänder mit geschliffener Profilform",
+            "Poly-V-Bänder",
+            "Abzugsstollen in verschiedenen Breiten lieferbar",
+            "Elektronisches Längenmessgerät",
+            "Synchronisierung mit Prozessrechner",
+            "Angebaute Schneideinrichtungen"
+          ]
+        },
+        {
+          "heading": "Klare Vorteile auf einen Blick:",
+          "items": [
+            "Robuste Bauweise",
+            "Einfache Bedienung",
+            "Leicht austauschbare Bänder",
+            "Gute Zugänglichkeit",
+            "Sicherheitsschutzschalter",
+            "Leichtgängige Führungen",
+            "Wartungsarme Antriebstechnik",
+            "Digitale Geschwindigkeitsanzeigen",
+            "Gleichlaufgenauigkeit +/- 0,01%",
+            "Langlebige Direktantriebe (Einzelantriebe)",
+            "Große Kontaktlängen",
+            "Gute Übertragung der Abzugskräfte",
+            "Schnellwechselsysteme für Abzugsstollen",
+            "Gebaut nach den gängigen UVV und CE Normen"
+          ]
+        }
+      ]
+    },
+    "trenneinrichtungen": {
+      "title": "Profilextrusion Trenneinrichtungen",
+      "sections": [
+        {
+          "heading": "Trennsägen",
+          "content": "Pneumatisch betätigte Unterflursägen zum Trennen von Profilen aus thermoplastischen Kunststoffen. Leichte Bedienbarkeit der Säge beim Anfahren der Extrusionslinie durch die Wegschwenkmöglichkeit der oberen Doppelklammerung. Die der Profilform angepassten Klemmbacken garantieren einen rechtwinkligen Schnitt."
+        },
+        {
+          "heading": "Zusatzausrüstung",
+          "items": [
+            "Schlittenantrieb durch Servomotor für höchste Schnittgenauigkeit",
+            "Diskontinuierlicher Vorschub zur Spanunterbrechung",
+            "Profilführungen",
+            "Längenmessgeräte"
+          ]
+        },
+        {
+          "heading": "Präzisionstrennsägen",
+          "content": "Bei hohen Extrusionsgeschwindigkeiten, kurzen Schnittlängen und engen Schnittlängentoleranzen finden GRAEWE Präzisionstrennsägen ihren Einsatz. Hierbei wird der Sägeschlitten dem Extrudat über Servoantrieb weg- und geschwindigkeitssynchron nachgeführt. Extrem große Schnittwiederholgenauigkeiten können erreicht werden."
+        },
+        {
+          "heading": "Cutter",
+          "content": "Pneumatisch oder hydraulisch betätigte Trennmesser zum spanlosen Trennen von Profilen. Auch Kombinationen von Sägeschnitt und spanlosem Schnitt sind möglich."
+        },
+        {
+          "heading": "Servocutter",
+          "content": "Fliegender, spanloser und gratfreier Schnitt über direkt auf Motorwelle angebrachter, rotierender Klinge."
+        },
+        {
+          "heading": "Klare Vorteile auf einen Blick:",
+          "items": [
+            "Hervorragende Schnittgenauigkeiten",
+            "Geringer Energieverbrauch",
+            "Geringes Geräuschniveau durch Einsatz spezieller Trennwerkzeuge und Kapselung der Maschinen",
+            "Einfacher Werkzeugwechsel"
+          ]
+        },
+        {
+          "heading": "Servocutter",
+          "items": [
+            "Span- und gratfreier Schnitt",
+            "Kurze Rüstzeiten durch Zentralklammerung",
+            "Verschleißfreies System",
+            "Hohe Schnittfrequenz"
+          ]
+        }
+      ]
+    },
+    "wickler": {
+      "title": "Profilextrusion Wickler",
+      "sections": [
+        {
+          "content": "Entweder mit horizontaler oder vertikaler Wickelachse (Tellerwickler) oder als Spulen oder Trommelwickler ausgeführt, erlauben diese Maschinen ein zugspannungsfreies Wickeln unterschiedlichster Profile."
+        },
+        {
+          "heading": "Optionen",
+          "items": [
+            "Sonderabmessungen der Haspelarme",
+            "Längenmessgerät",
+            "Ultraschalltänzer",
+            "Speichertänzer",
+            "Klebebandabroller",
+            "Fahrrollen",
+            "Präzisionsverlegung über Kugelgewindespindel und Servomotor",
+            "Bedientableau mit Menüführung und Produktdatenverwaltung",
+            "Integrierte Schneidvorrichtung"
+          ]
+        },
+        {
+          "heading": "Klare Vorteile auf einen Blick:",
+          "items": [
+            "Stabile Konstruktion",
+            "Wartungsarme, langlebige Komponenten",
+            "Kompakte Abmessungen",
+            "Gleichmäßiges Wickelbild durch Einsatz neuester Antriebstechnologie",
+            "Schutzabdeckungen"
+          ]
+        },
+        {
+          "content": "Eine Vielzahl von Sonderausrüstungen ermöglicht es, diese Wickler an die unterschiedlichsten Kundenanforderungen anzupassen."
+        }
+      ]
+    },
+    "sondermaschinen": {
+      "title": "Profilextrusion Sondermaschinen",
+      "sections": [
+        {
+          "content": "Seit unserem Bestehen haben wir in Zusammenarbeit mit unseren Kunden eine Vielzahl von individuell angepassten Spezialmaschinen gefertigt."
+        },
+        {
+          "content": "Fordern Sie uns, vielleicht ist Ihre Sondermaschine für uns bereits ein Standard."
+        },
+        {
+          "heading": "Beispiele:",
+          "items": [
+            "Guillotinen",
+            "Stanzen",
+            "Bohreinheiten",
+            "Abwurftische"
+          ]
+        },
+        {
+          "content": "Und vieles mehr..."
+        }
+      ]
+    }
+  },
+  "plattenextrusion": {
+    "extruder": {
+      "title": "Plattenextrusion Extruder",
+      "sections": [
+        {
+          "content": "Fa. Graewe stellt selber keine Extruder und Extrusionswerkzeuge her, wir arbeiten jedoch mit zahlreichen namhaften Extruderherstellern eng zusammen, und können Ihnen somit auch komplette Fertigungsanlagen liefern. Über unser Tochterunternehmen next haben wir auch ständig perfekt überholte gebrauchte und neuwertige Extruder vorrätig."
+        }
+      ],
+      "cta": {
+        "text": "Fragen Sie im Bedarfsfall einfach an.",
+        "link": "/team"
+      }
+    },
+    "laengstrenn-einrichtungen": {
+      "title": "Plattenextrusion Längstrenneinrichtungen",
+      "sections": [
+        {
+          "heading": "Längstrennsägen für 2,3 oder 4 Nutzen",
+          "items": [
+            "Drehzahlregelbare Antriebe",
+            "Hydraulisch geregelter Vorschub",
+            "Effektive Staubabsaugung",
+            "Mitfahrende Absaughauben"
+          ]
+        },
+        {
+          "heading": "Längstrennfräsen",
+          "items": [
+            "zum Trennen von Platten großer Stärke mit Hochgeschwindigkeits-Fingerfräsern",
+            "Hervorragende Schnittqualität",
+            "Kein Verkleben der Späne mehr",
+            "Effektive Späneabsaugung"
+          ]
+        },
+        {
+          "heading": "Längstrennmesser für Plattendicken bis 15 mm (Klingenschnitt)",
+          "items": [
+            "Schnelle Formatumstellung",
+            "Während der Produktion auswechselbar",
+            "Angetriebene Rollenmesser für spanlosen Schnitt",
+            "Vielfältig verstellbare Schnittgeometrie"
+          ]
+        }
+      ]
+    },
+    "quertrenn-einrichtungen": {
+      "title": "Plattenextrusion Quertrenneinrichtungen",
+      "sections": [
+        {
+          "heading": "Schlagscheren feststehend oder mitfahrend",
+          "items": [
+            "Mit integrierten Förderbändern",
+            "Spanlose Schnitte",
+            "Hohe Taktfrequenz"
+          ]
+        },
+        {
+          "content": "Schwenkende Schlagscheren um Trapezförmige Platten zu produzieren"
+        },
+        {
+          "heading": "Kombinationen aus Schlagschere mit angebauter Quertrennsäge",
+          "items": [
+            "Größtmögliche Flexibilität"
+          ]
+        },
+        {
+          "heading": "Quertrennsägen für Plattenbreiten bis 3000 mm und 40 mm Stärke",
+          "items": [
+            "Drehzahlregelbare Antriebe zum Einstellen der optimalen Schnittgeschwindigkeit",
+            "Exakte Verstellung der Schnittwinkligkeit",
+            "Effektive Staubabsaugung",
+            "Produktschonende Klemmbalken",
+            "Exakte Schnittlängentoleranz +/- 0,5mm",
+            "Produktparameter speicherbar",
+            "Ineinandergreifende Rollenfinger unterstützen das Produkt auf der ganzen Länge",
+            "Alternativ Rollenketten oder angetriebene Teleskopförderbänder zur Unterstützung",
+            "Probeschnittlängen",
+            "Sägeblatt mit Intensivkühlung durch Luft oder Kühlflüssigkeit",
+            "Schutzgitter"
+          ]
+        },
+        {
+          "heading": "Quertrennfräsen für Plattenstärken bis 60 mm",
+          "items": [
+            "Zum Trennen von Platten großer Stärke mit Hochgeschwindigkeits-Fingerfräsern",
+            "Hervorragende Schnittqualität",
+            "Kein Verkleben der Späne mehr",
+            "Effektive Späneabsaugung"
+          ]
+        }
+      ]
+    },
+    "plattenstapler": {
+      "title": "Plattenextrusion Plattenstapler",
+      "sections": [
+        {
+          "content": "Automatische Saugplattenstapler"
+        },
+        {
+          "heading": "Zum genauen Abstapeln von Kunststoffplatten",
+          "items": [
+            "Einfach oder mehrfach stapeln",
+            "Schonender Plattentransport",
+            "Pulkbildung oder Mittelschnitt",
+            "Seitliche Ausrichtung, Längsausrichtsysteme",
+            "Kantengenaues Stapeln",
+            "Kurze Taktzeiten",
+            "Präzise und schnell",
+            "Seitlich oder in Extrusionsrichtung",
+            "Wahlweise mit Z-Achse zum Stapeln auf Paletten oder direkt auf Scherenhubtische"
+          ]
+        },
+        {
+          "content": "Fördersysteme für automatischen Palettenwechsel."
+        }
+      ]
+    },
+    "sondermaschinen": {
+      "title": "Plattenextrusion Sondermaschinen",
+      "sections": [
+        {
+          "content": "Seit unserem Bestehen haben wir in Zusammenarbeit mit unseren Kunden eine Vielzahl von individuell angepassten Spezialmaschinen für die Plattenextrusion gefertigt."
+        },
+        {
+          "content": "Fordern Sie uns, vielleicht ist Ihre Sondermaschine für uns bereits ein Standard."
+        },
+        {
+          "heading": "Beispiele:",
+          "items": [
+            "Ablegeinrichtungen",
+            "Rollenbahnen",
+            "Staubogentische",
+            "Palettenförderer"
+          ]
+        }
+      ]
+    }
+  }
+}
