@@ -144,7 +144,7 @@ export function Footer() {
 
             {/* next branding */}
             <a
-              href="http://www.next-machines.com"
+              href="https://www.next-machines.com"
               target="_blank"
               rel="noopener noreferrer"
               className="group block"

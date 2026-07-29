@@ -359,14 +359,14 @@ Recorded so nobody re-audits them:
 ---
 
 ### ISSUE-044 — Partner link `next-machines.com` is served over plain HTTP
-- **Status:** Open
+- **Status:** Done — switched footer + gebrauchtmaschinen partner links to `https://www.next-machines.com` (cert verified 200/307).
 - **Category:** Security / Polish
 - **Problem:** The "next — Second Hand · First Quality" partner link points to `http://www.next-machines.com`: an unencrypted outbound link from an HTTPS page.
 - **Evidence:** `src/components/layout/Footer.tsx:147`.
 - **Likely files:** `src/components/layout/Footer.tsx`
 - **Acceptance criteria:**
-  - [ ] Link uses `https://` — confirm the target serves a valid certificate first.
-  - [ ] Grep for any other `http://` external links in `src/`.
+  - [x] Link uses `https://` — confirm the target serves a valid certificate first.
+  - [x] Grep for any other `http://` external links in `src/`.
 
 > **Do not "fix" the `tel:` link.** `src/components/layout/Footer.tsx:60` is `tel:+4976317944-0`.
 > RFC 3966 permits `-` as a *visual separator* inside `phone-digits`; dialers strip it, giving

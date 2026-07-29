@@ -85,7 +85,7 @@ export default async function UsedMachinesPage({
 
         <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-8">
           <a
-            href="http://www.next-machines.com/startseite/"
+            href="https://www.next-machines.com/startseite/"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 bg-accent text-dark font-bold px-6 py-3 hover:bg-accent-dark transition-colors"
