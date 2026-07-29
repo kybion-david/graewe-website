@@ -3,17 +3,15 @@
 import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import {
+  CONTACT_EMAIL_INVALID,
+  CONTACT_FIELD_REQUIRED,
+  contactFormSchema,
+  type ContactFormData,
+} from "@/lib/contactSchema";
 import { CONTACT_HONEYPOT_FIELD } from "@/lib/contactSpam";
 import { TurnstileWidget } from "./TurnstileWidget";
-
-interface ContactFormData {
-  name: string;
-  firstName: string;
-  email: string;
-  phone: string;
-  message: string;
-  website: string;
-}
 
 const turnstileSiteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ?? "";
 
@@ -22,6 +20,29 @@ function RequiredMark() {
     <span className="text-accent-dark" aria-hidden="true">
       *
     </span>
+  );
+}
+
+function FieldError({ id, message }: { id: string; message?: string }) {
+  if (!message) return null;
+  return (
+    <p id={id} className="mt-1.5 flex items-start gap-1.5 text-sm text-red-700" role="alert">
+      <svg
+        className="mt-0.5 h-4 w-4 shrink-0"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        strokeWidth={2}
+        aria-hidden="true"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z"
+        />
+      </svg>
+      {message}
+    </p>
   );
 }
 
@@ -42,8 +63,23 @@ export function ContactForm() {
     reset,
     formState: { errors },
   } = useForm<ContactFormData>({
-    defaultValues: { website: "" },
+    resolver: zodResolver(contactFormSchema),
+    defaultValues: {
+      name: "",
+      firstName: "",
+      email: "",
+      phone: "",
+      message: "",
+      website: "",
+    },
   });
+
+  function fieldErrorText(code: string | undefined): string | undefined {
+    if (!code) return undefined;
+    if (code === CONTACT_EMAIL_INVALID) return t("emailInvalid");
+    if (code === CONTACT_FIELD_REQUIRED) return t("fieldRequired");
+    return t("fieldRequired");
+  }
 
   async function onSubmit(data: ContactFormData) {
     setIsSubmitting(true);
@@ -74,7 +110,14 @@ export function ContactForm() {
 
       if (res.ok) {
         setSubmitStatus("success");
-        reset({ website: "" });
+        reset({
+          name: "",
+          firstName: "",
+          email: "",
+          phone: "",
+          message: "",
+          website: "",
+        });
         setTurnstileToken(null);
         setTurnstileResetKey((k) => k + 1);
         return;
@@ -115,6 +158,11 @@ export function ContactForm() {
           ? t("emailUnavailable")
           : t("errorMessage");
 
+  const nameError = fieldErrorText(errors.name?.message);
+  const firstNameError = fieldErrorText(errors.firstName?.message);
+  const emailError = fieldErrorText(errors.email?.message);
+  const messageError = fieldErrorText(errors.message?.message);
+
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="relative space-y-5" noValidate>
       {/* Honeypot — hidden from users, filled by many bots */}
@@ -140,10 +188,13 @@ export function ContactForm() {
           <input
             id="contact-name"
             aria-required="true"
+            aria-invalid={nameError ? true : undefined}
+            aria-describedby={nameError ? "contact-name-error" : undefined}
             autoComplete="family-name"
-            {...register("name", { required: true })}
-            className={errors.name ? inputError : inputNormal}
+            {...register("name")}
+            className={nameError ? inputError : inputNormal}
           />
+          <FieldError id="contact-name-error" message={nameError} />
         </div>
         <div>
           <label htmlFor="contact-firstName" className="block text-sm font-semibold text-dark mb-1.5">
@@ -152,10 +203,13 @@ export function ContactForm() {
           <input
             id="contact-firstName"
             aria-required="true"
+            aria-invalid={firstNameError ? true : undefined}
+            aria-describedby={firstNameError ? "contact-firstName-error" : undefined}
             autoComplete="given-name"
-            {...register("firstName", { required: true })}
-            className={errors.firstName ? inputError : inputNormal}
+            {...register("firstName")}
+            className={firstNameError ? inputError : inputNormal}
           />
+          <FieldError id="contact-firstName-error" message={firstNameError} />
         </div>
       </div>
 
@@ -167,10 +221,13 @@ export function ContactForm() {
           id="contact-email"
           type="email"
           aria-required="true"
+          aria-invalid={emailError ? true : undefined}
+          aria-describedby={emailError ? "contact-email-error" : undefined}
           autoComplete="email"
-          {...register("email", { required: true, pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/ })}
-          className={errors.email ? inputError : inputNormal}
+          {...register("email")}
+          className={emailError ? inputError : inputNormal}
         />
+        <FieldError id="contact-email-error" message={emailError} />
       </div>
 
       <div>
@@ -194,9 +251,12 @@ export function ContactForm() {
           id="contact-message"
           rows={5}
           aria-required="true"
-          {...register("message", { required: true })}
-          className={`${errors.message ? inputError : inputNormal} resize-y`}
+          aria-invalid={messageError ? true : undefined}
+          aria-describedby={messageError ? "contact-message-error" : undefined}
+          {...register("message")}
+          className={`${messageError ? inputError : inputNormal} resize-y`}
         />
+        <FieldError id="contact-message-error" message={messageError} />
       </div>
 
       {turnstileSiteKey ? (
@@ -210,7 +270,9 @@ export function ContactForm() {
             onToken={setTurnstileToken}
           />
           {captchaClientError && (
-            <p className="mt-2 text-sm text-red-700">{t("captchaRequired")}</p>
+            <p className="mt-2 text-sm text-red-700" role="alert">
+              {t("captchaRequired")}
+            </p>
           )}
         </div>
       ) : null}
@@ -223,16 +285,22 @@ export function ContactForm() {
       </p>
 
       {submitStatus === "success" && (
-        <div className="flex items-start gap-3 p-4 bg-green-50 border border-green-200 text-green-800 rounded-lg text-sm">
-          <svg className="w-5 h-5 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+        <div
+          role="status"
+          className="flex items-start gap-3 p-4 bg-green-50 border border-green-200 text-green-800 rounded-lg text-sm"
+        >
+          <svg className="w-5 h-5 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true">
             <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
           {t("successMessage")}
         </div>
       )}
       {submitStatus === "error" && (
-        <div className="flex items-start gap-3 p-4 bg-red-50 border border-red-200 text-red-800 rounded-lg text-sm">
-          <svg className="w-5 h-5 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+        <div
+          role="alert"
+          className="flex items-start gap-3 p-4 bg-red-50 border border-red-200 text-red-800 rounded-lg text-sm"
+        >
+          <svg className="w-5 h-5 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true">
             <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
           </svg>
           {errorMessage}
@@ -246,7 +314,7 @@ export function ContactForm() {
       >
         {isSubmitting ? (
           <>
-            <svg className="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
+            <svg className="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24" aria-hidden="true">
               <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
               <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
             </svg>
@@ -255,7 +323,7 @@ export function ContactForm() {
         ) : (
           <>
             {t("submit")}
-            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5} aria-hidden="true">
               <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
             </svg>
           </>

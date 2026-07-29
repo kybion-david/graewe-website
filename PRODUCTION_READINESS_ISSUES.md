@@ -185,16 +185,16 @@ Recorded so nobody re-audits them:
 ---
 
 ### ISSUE-039 — Contact form signals validation errors by colour only
-- **Status:** Open — **partially addressed upstream**
+- **Status:** Done — shared Zod schema + per-field error text/icons/`aria-invalid`/`aria-describedby`; success/error banners use `role="status"` / `role="alert"` (2026-07-29)
 - **Category:** A11y / UX
 - **Problem:** `aria-required` is now set on required fields (good), but React Hook Form errors still only swap a CSS class. No error text is rendered, no `aria-invalid`, no `aria-describedby`, and the success/error banners are not live regions. A screen-reader user submitting an incomplete form still gets no feedback (WCAG 3.3.1 / 4.1.3), and colour-only error signalling fails WCAG 1.4.1.
 - **Evidence:** `src/components/contact/ContactForm.tsx` — `errors.*` appears only at lines 145, 157, 172, 198, always as `className={errors.X ? inputError : inputNormal}`. `grep` for `aria-invalid|aria-describedby|role="status"|role="alert"|aria-live` in that file returns **nothing**.
 - **Related:** `zod` and `@hookform/resolvers` are still dependencies and `SPEC.md` §2 still says "React Hook Form + **Zod**", but `grep` for `zodResolver|from "zod"` across `ContactForm.tsx`, `api/contact/route.ts` and `lib/contactEmail.ts` returns nothing.
 - **Likely files:** `src/components/contact/ContactForm.tsx`, `src/app/api/contact/route.ts`, `src/messages/*.json`, `SPEC.md`
 - **Acceptance criteria:**
-  - [ ] Per-field error text in all five locales, linked via `aria-describedby`, with `aria-invalid`.
-  - [ ] Success/error banners announced (`role="status"` / `role="alert"`).
-  - [ ] Zod is either wired up (shared schema, client + API) or removed from deps and `SPEC.md`.
+  - [x] Per-field error text in all five locales, linked via `aria-describedby`, with `aria-invalid`.
+  - [x] Success/error banners announced (`role="status"` / `role="alert"`).
+  - [x] Zod is either wired up (shared schema, client + API) or removed from deps and `SPEC.md`.
 
 ---
 

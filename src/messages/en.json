@@ -256,6 +256,8 @@
     "phone": "Phone",
     "message": "Message",
     "requiredField": "Required field",
+    "fieldRequired": "This field is required.",
+    "emailInvalid": "Please enter a valid email address.",
     "submit": "Submit",
     "successMessage": "Your message has been sent successfully.",
     "errorMessage": "An error occurred. Please try again.",

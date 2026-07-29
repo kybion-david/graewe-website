@@ -256,6 +256,8 @@
     "phone": "Teléfono",
     "message": "Mensaje",
     "requiredField": "Campo obligatorio",
+    "fieldRequired": "Este campo es obligatorio.",
+    "emailInvalid": "Introduzca una dirección de correo válida.",
     "submit": "Enviar",
     "successMessage": "Su mensaje se ha enviado correctamente.",
     "errorMessage": "Se ha producido un error. Inténtelo de nuevo.",

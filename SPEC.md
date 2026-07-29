@@ -83,7 +83,7 @@ Corporate website for **GRAEWE GmbH Maschinenbau** (extrusion machinery). Replac
 | Language | TypeScript strict |
 | UI | React 19, Tailwind CSS 4, brand tokens in `src/app/globals.css` |
 | i18n | `next-intl` — routing + JSON messages |
-| Forms | React Hook Form + Zod; contact API + Resend + Turnstile |
+| Forms | React Hook Form + Zod (`src/lib/contactSchema.ts` shared by contact form + `/api/contact`); Resend + Turnstile |
 | Tests | Vitest (unit), Playwright (e2e) |
 | Deploy | Azure Static Web Apps (`standalone`) only |
 
@@ -116,6 +116,7 @@ public/images/        # Static assets by section
 | Product body content | `src/lib/productContent/` (`de\|en\|fr\|ru\|es.json` + `index.ts`) |
 | Product images map | `src/lib/productImages.ts` |
 | Calculator math | `src/lib/calculator.ts` (pure; golden-tested vs live graewe.com) |
+| Contact form validation | `src/lib/contactSchema.ts` (Zod; shared by RHF + `/api/contact`) |
 | Calculator diagrams | `public/images/calculator/{ugl,ggl}.gif` (live Wickelbild assets) |
 | Job openings (slugs / TYPO3 IDs) | `src/lib/jobs.ts` |
 | Job copy (titles, bodies, apply text) | `src/messages/{locale}.json` → `jobs.*` (email-only apply; no on-site application form) |
@@ -172,8 +173,13 @@ Copy `.env.example` → `.env.local`. **Contact email requires `RESEND_API_KEY`*
 
 - Pages: home, unternehmen (4), produkte (overview + 3 categories + 19 products), success stories, aktuelles (+ articles), produktrechner, gebrauchtmaschinen, downloads, team, kontakt, stellenanzeigen (+ job detail pages), impressum, datenschutz (bodies in `imprintPage` / `privacyPage` for all locales; DE legally binding), sitemap (HTML), cookies (essential-only; no analytics / no consent banner)
 - Interactive: Produktrechner (modern UI with labeled Wickelbild diagrams, live calc, validation), contact form (Resend + Turnstile/honeypot/rate-limit)
+<<<<<<< HEAD
 - SEO: `generateMetadata` via `pageMetadata` (per-page title/description) plus `alternates.canonical` + `alternates.languages` (five locales + `x-default`→`de`) from `src/lib/seo.ts`; `metadataBase` from `NEXT_PUBLIC_SITE_URL`; Open Graph; JSON-LD; `next-sitemap` with `alternateRefs` (no third-party analytics)
 - A11y: skip link, ARIA on menu/language switcher, focus-visible, contrast-safe yellow buttons
+=======
+- SEO: `generateMetadata`, Open Graph, JSON-LD, `next-sitemap` (no third-party analytics)
+- A11y: skip link, ARIA on menu/language switcher, focus-visible, contrast-safe yellow buttons; contact field errors use text + icon + `aria-invalid`/`aria-describedby` (not colour alone); submit banners use `role="status"` / `role="alert"`
+>>>>>>> 3772cb7 (Fix contact form colour-only validation errors)
 - Deploy: Azure SWA Terraform + GH Actions only (no GitHub Pages export)
 
 ## 9. Spec maintenance (required)
