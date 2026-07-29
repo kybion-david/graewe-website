@@ -38,7 +38,7 @@ Old site checked live on graewe.com.
 | Product FR/RU/ES body | Falls back to German |
 | Product images | **2 galleries empty** |
 | Calculator | Present (2 modes) |
-| Contact form | Present; **no captcha** |
+| Contact form | Present; Turnstile + honeypot + rate limit |
 | HTML Sitemap / Cookies pages | **Missing** |
 | Multi-language **URL** parity | **Broken** (old uses translated slugs) |
 | Redirects for cutover | **Incomplete** |
@@ -145,16 +145,17 @@ Old site checked live on graewe.com.
 ---
 
 ### ISSUE-006 — Contact form missing captcha / spam protection
-- **Status:** Open
+- **Status:** Done
+- **Note:** Cloudflare Turnstile (site + server verify) with honeypot + per-IP rate limit; captcha errors localized in all 5 locales (`src/lib/contactSpam.ts`, ContactForm, API route). Configure `NEXT_PUBLIC_TURNSTILE_SITE_KEY` + `TURNSTILE_SECRET_KEY` for production.
 - **Category:** Missing feature / Legal / compliance
 - **Problem:** Live contact form requires Captcha (`Captcha *`). New form has no captcha, honeypot, or rate limiting.
 - **Evidence (old):** https://www.graewe.com/kontakt  
 - **Evidence (new):** `src/components/contact/ContactForm.tsx`, `src/app/api/contact/route.ts`
 - **Likely files:** ContactForm, API route, env example for captcha keys.
 - **Acceptance criteria:**
-  - [ ] Spam protection comparable to live site (captcha **or** modern equivalent: Turnstile/hCaptcha + server verify).
-  - [ ] Failed verification returns clear error; no email send.
-  - [ ] Works in all locales.
+  - [x] Spam protection comparable to live site (captcha **or** modern equivalent: Turnstile/hCaptcha + server verify).
+  - [x] Failed verification returns clear error; no email send.
+  - [x] Works in all locales.
 
 ---
 
