@@ -84,7 +84,7 @@ export default async function TeamPage({
           <address className="not-italic text-dark leading-relaxed font-medium">
             GRAEWE GmbH Maschinenbau
             <br />
-            Max-Planck-Straße 1+2
+            Max-Planck-Straße 1-3
             <br />
             D-79395 Neuenburg
           </address>
