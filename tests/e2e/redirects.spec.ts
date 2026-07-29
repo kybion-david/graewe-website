@@ -48,5 +48,12 @@ test.describe("Legacy redirects", () => {
     expect(page.url()).toContain(
       "/de/produkte/rohrextrusion/kalibrier-und-kuehlbaeder",
     );
+
+    await page.goto("/en/produkte/rohrextrusion/kalibier-und-kuehlbaeder", {
+      waitUntil: "networkidle",
+    });
+    expect(page.url()).toContain(
+      "/en/produkte/rohrextrusion/kalibrier-und-kuehlbaeder",
+    );
   });
 });

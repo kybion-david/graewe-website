@@ -37,5 +37,20 @@ describe("staticwebapp.config.json", () => {
     );
     expect(routes.some((r) => r.route === "/sitemap")).toBe(true);
     expect(routes.some((r) => r.route === "/cookies")).toBe(true);
+    expect(
+      routes.some(
+        (r) =>
+          r.route === "/produkte/rohrextrusion/kalibier-und-kuehlbaeder" &&
+          r.redirect === "/de/produkte/rohrextrusion/kalibrier-und-kuehlbaeder",
+      ),
+    ).toBe(true);
+    expect(
+      routes.some(
+        (r) =>
+          r.route === "/en/produkte/rohrextrusion/kalibier-und-kuehlbaeder" &&
+          r.redirect ===
+            "/en/produkte/rohrextrusion/kalibrier-und-kuehlbaeder",
+      ),
+    ).toBe(true);
   });
 });

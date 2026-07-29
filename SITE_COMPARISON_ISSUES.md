@@ -444,7 +444,7 @@ Old site checked live on graewe.com.
 
 ### ISSUE-030 — Old DE product typo slug needs redirect
 - **Status:** Done
-- **Note:** Folded into ISSUE-004 (`legacyRedirects.ts` + SWA config).
+- **Note:** Folded into ISSUE-004 (`legacyRedirects.ts` via `src/proxy.ts`). Unit + e2e cover unprefixed DE and locale-prefixed typo paths (incl. `.html`).
 - **Category:** SEO / redirects
 - **Problem:** Live DE uses `/produkte/rohrextrusion/kalibier-und-kuehlbaeder` (typo). Rebuild correctly uses `kalibrier-und-kuehlbaeder`. Local old typo path → 404.
 - **Acceptance criteria:**
