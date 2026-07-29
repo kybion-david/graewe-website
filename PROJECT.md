@@ -162,7 +162,7 @@ Pragmatic testing — enough to catch regressions, not so much that tests become
 - **Open Graph / Twitter cards** for social sharing.
 - **JSON-LD** structured data for organization and products.
 - **Sitemap** auto-generated via `next-sitemap`.
-- **Analytics**: Plausible or Umami (privacy-friendly, GDPR-compliant) — no Google Analytics unless explicitly requested.
+- **Analytics**: None at launch (no Plausible, Umami, etracker, or Google Analytics). Datenschutz + `/cookies` state essential-only cookies and no tracking. Adding analytics later requires policy/consent updates — see `SPEC.md`.
 
 ---
 
@@ -517,11 +517,14 @@ Email: info@next-machines.com
 
 ### Environment Variables
 ```env
-# .env.example
+# .env.example (see repo root for the full file)
 NEXT_PUBLIC_SITE_URL=https://www.graewe.com
+RESEND_API_KEY=            # Resend credentials
 CONTACT_EMAIL_TO=info@graewe.com
-EMAIL_API_KEY=             # Resend or SMTP credentials
-NEXT_PUBLIC_ANALYTICS_ID=  # Plausible/Umami site ID
+CONTACT_EMAIL_FROM=website@graewe.com
+NEXT_PUBLIC_TURNSTILE_SITE_KEY=
+TURNSTILE_SECRET_KEY=
+# No analytics ID — site ships without third-party analytics
 ```
 
 ### AI Assistant Instructions
