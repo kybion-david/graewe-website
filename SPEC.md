@@ -4,6 +4,41 @@
 > Update it in the same PR whenever you change architecture, conventions, routes, or workflow.
 > Historical vision and phase notes live in [`PROJECT.md`](./PROJECT.md) — prefer this file when they disagree.
 
+## 0. Start from the current remote (do this first, every time)
+
+Many agents work this repo in parallel and `main` moves fast. A local checkout is stale far more
+often than it looks, and stale work wastes a whole session: it audits code that no longer exists,
+re-fixes what someone already fixed, and produces line numbers that point at nothing.
+
+**Before you plan, branch, or edit:**
+
+```bash
+git fetch origin main
+git log --oneline main..origin/main   # NON-EMPTY = your checkout is STALE. Stop and rebase.
+git worktree add -b <type>/<desc> ../graewe-website-<desc> origin/main
+cd ../graewe-website-<desc> && npm ci
+```
+
+Rules that follow from this — none of them optional:
+
+- **Always branch off `origin/main`, never local `main`.** The worktree command above already does.
+- **`git rev-parse main origin/main` is not a staleness check.** It tells you the two differ, not
+  which way. Use `main..origin/main` (what you are missing) and `origin/main..main` (what you have
+  that the remote does not). Assuming the wrong direction is the specific mistake that produced a
+  73-commit-stale audit on 2026-07-29.
+- **Install with `npm ci`, not `npm install`.** `npm ci` installs exactly the lockfile. A drifted
+  local `node_modules` reports lint errors and test failures that CI does not see — and hides ones
+  it does.
+- **Re-check before you finish.** If a session runs long, `git fetch origin main` again before
+  opening the PR; rebase if the remote moved.
+- **Verify claims about CI against CI**, not against your machine: `gh run list --branch main`.
+  There is more than one workflow — check each by name (`--workflow=deploy.yml`, `--workflow=pages.yml`).
+- **Kill stray dev/preview servers before running e2e.** `playwright.config.ts` sets
+  `reuseExistingServer: true`, so a leftover server from another checkout on port 3000 is silently
+  reused and produces a wall of false failures.
+
+If your findings contradict CI, assume your environment is wrong until you have proven otherwise.
+
 ## 1. Product
 
 Corporate website for **GRAEWE GmbH Maschinenbau** (extrusion machinery). Replaces the old TYPO3 site at [graewe.com](https://www.graewe.com/).

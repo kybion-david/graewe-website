@@ -6,6 +6,10 @@ Audited: 2026-07-28
 New site checked via local `npm run dev` (`http://localhost:3000`).  
 Old site checked live on graewe.com.
 
+> **Companion queue:** [`PRODUCTION_READINESS_ISSUES.md`](./PRODUCTION_READINESS_ISSUES.md) covers the
+> technical axis (build/CI, runtime bugs, mobile, a11y, SEO plumbing, security) and owns **ISSUE-034+**.
+> This file owns **ISSUE-001 – ISSUE-033**. Do not reuse IDs across the two files.
+
 ---
 
 ## How other AIs should use this document
