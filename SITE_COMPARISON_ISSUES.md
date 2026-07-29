@@ -243,7 +243,8 @@ Old site checked live on graewe.com.
 ---
 
 ### ISSUE-013 — Street address inconsistency (`1+2` vs `1-3`)
-- **Status:** Open
+- **Status:** Done
+- **Note:** Canonical GRAEWE address set to `Max-Planck-Straße 1-3` (per `PROJECT.md`); fixed Team + Impressum (`1+2`→`1-3`), normalized hyphenation in contact messages + JSON-LD; `next GmbH` remains `Max-Planck-Str. 1+2`.
 - **Category:** Bug / Content gap
 - **Problem:** Mixed addresses across the rebuild (also present on old site — still should be corrected for launch):
   - Footer / contact-ish: `Max-Planck-Straße 1-3`
@@ -252,9 +253,9 @@ Old site checked live on graewe.com.
 - **Evidence (old):** Team uses `1-3`; Impressum uses `1+2`.
 - **Likely files:** `Footer.tsx`, `team/page.tsx`, `impressum/page.tsx`, `layout.tsx` JSON-LD, `messages/*.json` address strings.
 - **Acceptance criteria:**
-  - [ ] Single canonical GRAEWE street address confirmed with stakeholders.
-  - [ ] All user-facing + schema occurrences updated consistently.
-  - [ ] `next GmbH` address (`1+2`) kept distinct if that entity differs.
+  - [x] Single canonical GRAEWE street address confirmed with stakeholders.
+  - [x] All user-facing + schema occurrences updated consistently.
+  - [x] `next GmbH` address (`1+2`) kept distinct if that entity differs.
 
 ---
 

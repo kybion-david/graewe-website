@@ -37,7 +37,7 @@ export default async function ImpressumPage({
             <br />
             Maschinenbau
             <br />
-            Max-Planck-Straße 1+2
+            Max-Planck-Straße 1-3
             <br />
             D-79395 Neuenburg
           </p>

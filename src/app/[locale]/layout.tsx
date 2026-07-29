@@ -63,7 +63,7 @@ export default async function LocaleLayout({
     description: "Planung, Entwicklung, Fertigung und Montage von Extrusionsmaschinen",
     address: {
       "@type": "PostalAddress",
-      streetAddress: "Max Planck-Straße 1-3",
+      streetAddress: "Max-Planck-Straße 1-3",
       addressLocality: "Neuenburg am Rhein",
       postalCode: "79395",
       addressCountry: "DE",

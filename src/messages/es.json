@@ -217,7 +217,7 @@
     "captchaError": "La comprobación de seguridad ha fallado. Inténtelo de nuevo.",
     "rateLimitError": "Demasiadas solicitudes. Espere unos minutos e inténtelo de nuevo.",
     "address": "Dirección",
-    "addressLines": "GRAEWE GmbH Maschinenbau\nMax Planck-Straße 1-3\n79395 Neuenburg am Rhein"
+    "addressLines": "GRAEWE GmbH Maschinenbau\nMax-Planck-Straße 1-3\n79395 Neuenburg am Rhein"
   },
   "team": {
     "title": "Equipo",
