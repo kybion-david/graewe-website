@@ -10,32 +10,43 @@ test.describe("Produktrechner", () => {
   test("can switch between calculator modes", async ({ page }) => {
     await page.goto("/de/produktrechner");
     await page.click("button:text('Wickellänge')");
-    await expect(page.locator("text=Außendurchmesser OD")).toBeVisible();
+    await expect(
+      page.getByLabel("Außendurchmesser OD [mm]")
+    ).toBeVisible();
 
     await page.click("button:text('Wickelendposition')");
-    await expect(page.locator("text=Länge L")).toBeVisible();
+    await expect(page.getByLabel("Länge L [m]")).toBeVisible();
   });
 
-  test("winding position calculates results", async ({ page }) => {
+  test("shows winding diagrams and live results", async ({ page }) => {
     await page.goto("/de/produktrechner");
 
-    await page.fill('input[type="number"]:nth-of-type(1)', "20");
-    await page.locator('input[type="number"]').nth(1).fill("100");
-    await page.locator('input[type="number"]').nth(2).fill("300");
-    await page.locator('input[type="number"]').nth(3).fill("10");
+    await expect(page.getByAltText("Wickelbild ungleiche Lagen")).toBeVisible();
+    await expect(
+      page.getByAltText("Wickelbild gleiche Lagen versetzt")
+    ).toBeVisible();
+    await expect(page.getByText("N/V").first()).toBeVisible();
 
-    await page.click("button:text('Berechnen')");
+    await page.getByLabel("Rohrdurchmesser d [mm]").fill("20");
+    await page.getByLabel("Länge L [m]").fill("100");
+    await page.getByLabel("Innendurchmesser ID [mm]").fill("300");
+    await page.getByLabel("Rohranzahl pro Lage [oE]").fill("10");
 
-    await expect(page.locator("text=Ungleiche Lagen")).toBeVisible();
-    await expect(page.locator("text=Gleiche Lagen versetzt")).toBeVisible();
+    // Live recalculation — no Berechnen click required.
+    await expect(page.getByText("N/V")).toHaveCount(0);
+    await expect(page.getByText("Ungleiche Lagen")).toBeVisible();
+    await expect(page.getByText("Gleiche Lagen versetzt")).toBeVisible();
   });
 
   test("shows validation errors for empty inputs", async ({ page }) => {
     await page.goto("/de/produktrechner");
+    // Clear the live default pipes-per-layer so all fields are empty/invalid.
+    await page.getByLabel("Rohranzahl pro Lage [oE]").fill("");
     await page.click("button:text('Berechnen')");
 
     await expect(page.getByRole("alert").first()).toBeVisible();
-    await expect(page.getByText("Dieses Feld ist erforderlich.").first()).toBeVisible();
-    await expect(page.locator("text=Ungleiche Lagen")).toHaveCount(0);
+    await expect(
+      page.getByText("Dieses Feld ist erforderlich.").first()
+    ).toBeVisible();
   });
 });
