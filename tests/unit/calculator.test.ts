@@ -4,6 +4,8 @@ import {
   calculateWindingPositionEven,
   calculateWindingLengthUneven,
   calculateWindingLengthEven,
+  validateWindingPositionInput,
+  validateWindingLengthInput,
 } from "@/lib/calculator";
 
 describe("Calculator - Winding Position (Uneven Layers)", () => {
@@ -130,5 +132,104 @@ describe("Calculator - Winding Length (Even)", () => {
     // Both should produce positive lengths
     expect(uneven.windingLength).toBeGreaterThan(0);
     expect(even.windingLength).toBeGreaterThan(0);
+  });
+});
+
+describe("Calculator - input validation", () => {
+  it("rejects empty winding position fields as required", () => {
+    const result = validateWindingPositionInput({
+      pipeDiameter: "",
+      length: "  ",
+      innerDiameter: "300",
+      pipesPerLayer: "10",
+    });
+
+    expect(result.ok).toBe(false);
+    if (result.ok) return;
+    expect(result.errors.pipeDiameter).toBe("required");
+    expect(result.errors.length).toBe("required");
+    expect(result.errors.innerDiameter).toBeUndefined();
+    expect(result.errors.pipesPerLayer).toBeUndefined();
+  });
+
+  it("rejects non-positive and non-numeric winding position values", () => {
+    const result = validateWindingPositionInput({
+      pipeDiameter: "0",
+      length: "-5",
+      innerDiameter: "abc",
+      pipesPerLayer: "10",
+    });
+
+    expect(result.ok).toBe(false);
+    if (result.ok) return;
+    expect(result.errors.pipeDiameter).toBe("positive");
+    expect(result.errors.length).toBe("positive");
+    expect(result.errors.innerDiameter).toBe("invalid");
+  });
+
+  it("accepts valid winding position input", () => {
+    const result = validateWindingPositionInput({
+      pipeDiameter: "20",
+      length: "100",
+      innerDiameter: "300",
+      pipesPerLayer: "10",
+    });
+
+    expect(result).toEqual({
+      ok: true,
+      input: {
+        pipeDiameter: 20,
+        length: 100,
+        innerDiameter: 300,
+        pipesPerLayer: 10,
+      },
+    });
+  });
+
+  it("rejects empty and non-positive winding length fields", () => {
+    const result = validateWindingLengthInput({
+      pipeDiameter: "",
+      innerDiameter: "0",
+      outerDiameter: "500",
+      bundleWidth: "-1",
+    });
+
+    expect(result.ok).toBe(false);
+    if (result.ok) return;
+    expect(result.errors.pipeDiameter).toBe("required");
+    expect(result.errors.innerDiameter).toBe("positive");
+    expect(result.errors.bundleWidth).toBe("positive");
+  });
+
+  it("requires outer diameter greater than inner diameter", () => {
+    const result = validateWindingLengthInput({
+      pipeDiameter: "20",
+      innerDiameter: "500",
+      outerDiameter: "400",
+      bundleWidth: "200",
+    });
+
+    expect(result.ok).toBe(false);
+    if (result.ok) return;
+    expect(result.errors.outerDiameter).toBe("odMustExceedId");
+  });
+
+  it("accepts valid winding length input", () => {
+    const result = validateWindingLengthInput({
+      pipeDiameter: "20",
+      innerDiameter: "300",
+      outerDiameter: "500",
+      bundleWidth: "200",
+    });
+
+    expect(result).toEqual({
+      ok: true,
+      input: {
+        pipeDiameter: 20,
+        innerDiameter: 300,
+        outerDiameter: 500,
+        bundleWidth: 200,
+      },
+    });
   });
 });

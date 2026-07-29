@@ -199,7 +199,13 @@
     "windingLengthResult": "Wickellänge [m]",
     "disclaimer": "Die errechneten Wickellängen können um bis zu 10% abweichen. Für die Richtigkeit der Ergebnisse übernehmen wir keine Gewähr.",
     "calculate": "Berechnen",
-    "reset": "Zurücksetzen"
+    "reset": "Zurücksetzen",
+    "validation": {
+      "required": "Dieses Feld ist erforderlich.",
+      "invalid": "Bitte geben Sie eine gültige Zahl ein.",
+      "positive": "Der Wert muss größer als 0 sein.",
+      "odMustExceedId": "Der Außendurchmesser muss größer als der Innendurchmesser sein."
+    }
   },
   "contact": {
     "title": "Kontakt",

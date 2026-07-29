@@ -5,8 +5,13 @@ import { useTranslations } from "next-intl";
 import {
   calculateWindingPositionUneven,
   calculateWindingPositionEven,
+  validateWindingPositionInput,
+  type CalculatorFieldError,
   type WindingPatternResult,
+  type WindingPositionFieldKey,
 } from "@/lib/calculator";
+
+type FieldErrors = Partial<Record<WindingPositionFieldKey, CalculatorFieldError>>;
 
 export function WindingPositionCalc() {
   const t = useTranslations("calculator");
@@ -14,22 +19,48 @@ export function WindingPositionCalc() {
   const [length, setLength] = useState("");
   const [innerDiameter, setInnerDiameter] = useState("");
   const [pipesPerLayer, setPipesPerLayer] = useState("");
+  const [errors, setErrors] = useState<FieldErrors>({});
   const [unevenResult, setUnevenResult] = useState<WindingPatternResult | null>(null);
   const [evenResult, setEvenResult] = useState<WindingPatternResult | null>(null);
 
-  function calculate() {
-    const d = parseFloat(pipeDiameter);
-    const l = parseFloat(length);
-    const id = parseFloat(innerDiameter);
-    const ppl = parseFloat(pipesPerLayer);
+  function fieldErrorMessage(code: CalculatorFieldError | undefined) {
+    if (!code) return undefined;
+    return t(`validation.${code}`);
+  }
 
-    if (isNaN(d) || isNaN(l) || isNaN(id) || isNaN(ppl) || d <= 0 || l <= 0 || id <= 0 || ppl <= 0) {
+  function updateField(
+    key: WindingPositionFieldKey,
+    value: string,
+    setter: (v: string) => void
+  ) {
+    setter(value);
+    if (errors[key]) {
+      setErrors((prev) => {
+        const next = { ...prev };
+        delete next[key];
+        return next;
+      });
+    }
+  }
+
+  function calculate() {
+    const validation = validateWindingPositionInput({
+      pipeDiameter,
+      length,
+      innerDiameter,
+      pipesPerLayer,
+    });
+
+    if (!validation.ok) {
+      setErrors(validation.errors);
+      setUnevenResult(null);
+      setEvenResult(null);
       return;
     }
 
-    const input = { pipeDiameter: d, length: l, innerDiameter: id, pipesPerLayer: ppl };
-    setUnevenResult(calculateWindingPositionUneven(input));
-    setEvenResult(calculateWindingPositionEven(input));
+    setErrors({});
+    setUnevenResult(calculateWindingPositionUneven(validation.input));
+    setEvenResult(calculateWindingPositionEven(validation.input));
   }
 
   function reset() {
@@ -37,32 +68,54 @@ export function WindingPositionCalc() {
     setLength("");
     setInnerDiameter("");
     setPipesPerLayer("");
+    setErrors({});
     setUnevenResult(null);
     setEvenResult(null);
   }
 
   return (
     <div className="space-y-8">
-      {/* Input fields */}
       <div className="bg-grey-100 rounded-xl p-6">
         <h3 className="font-bold text-dark mb-4 flex items-center gap-2">
           <span className="w-1 h-5 bg-accent rounded-full" />
           {t("inputs")}
         </h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <InputField label={t("pipeDiameter")} value={pipeDiameter} onChange={setPipeDiameter} />
-          <InputField label={t("length")} value={length} onChange={setLength} />
-          <InputField label={t("innerDiameter")} value={innerDiameter} onChange={setInnerDiameter} />
-          <InputField label={t("pipesPerLayer")} value={pipesPerLayer} onChange={setPipesPerLayer} />
+          <InputField
+            label={t("pipeDiameter")}
+            value={pipeDiameter}
+            onChange={(v) => updateField("pipeDiameter", v, setPipeDiameter)}
+            error={fieldErrorMessage(errors.pipeDiameter)}
+          />
+          <InputField
+            label={t("length")}
+            value={length}
+            onChange={(v) => updateField("length", v, setLength)}
+            error={fieldErrorMessage(errors.length)}
+          />
+          <InputField
+            label={t("innerDiameter")}
+            value={innerDiameter}
+            onChange={(v) => updateField("innerDiameter", v, setInnerDiameter)}
+            error={fieldErrorMessage(errors.innerDiameter)}
+          />
+          <InputField
+            label={t("pipesPerLayer")}
+            value={pipesPerLayer}
+            onChange={(v) => updateField("pipesPerLayer", v, setPipesPerLayer)}
+            error={fieldErrorMessage(errors.pipesPerLayer)}
+          />
         </div>
         <div className="flex gap-3 mt-6">
           <button
+            type="button"
             onClick={calculate}
             className="px-6 py-2.5 bg-accent text-dark rounded-lg font-bold hover:bg-accent-dark transition-colors"
           >
             {t("calculate")}
           </button>
           <button
+            type="button"
             onClick={reset}
             className="px-6 py-2.5 border border-grey-300 text-text-muted rounded-lg font-medium hover:bg-grey-200 transition-colors"
           >
@@ -71,7 +124,6 @@ export function WindingPositionCalc() {
         </div>
       </div>
 
-      {/* Results */}
       {unevenResult && (
         <ResultSection title={t("unevenLayers")} result={unevenResult} t={t} />
       )}
@@ -86,11 +138,18 @@ function InputField({
   label,
   value,
   onChange,
+  error,
 }: {
   label: string;
   value: string;
   onChange: (v: string) => void;
+  error?: string;
 }) {
+  const inputBase =
+    "w-full px-3 py-2 border rounded-lg outline-none transition-all";
+  const inputNormal = `${inputBase} border-grey-300 focus:ring-2 focus:ring-accent/30 focus:border-accent`;
+  const inputError = `${inputBase} border-red-400 focus:ring-2 focus:ring-red-200 focus:border-red-400`;
+
   return (
     <div>
       <label className="block text-sm font-medium text-text-muted mb-1">{label}</label>
@@ -98,10 +157,17 @@ function InputField({
         type="number"
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="w-full px-3 py-2 border border-grey-300 rounded-lg focus:ring-2 focus:ring-accent/30 focus:border-accent outline-none transition-all"
+        className={error ? inputError : inputNormal}
         min="0"
         step="any"
+        aria-invalid={error ? true : undefined}
+        aria-describedby={error ? `${label}-error` : undefined}
       />
+      {error && (
+        <p id={`${label}-error`} className="mt-1 text-sm text-red-600" role="alert">
+          {error}
+        </p>
+      )}
     </div>
   );
 }

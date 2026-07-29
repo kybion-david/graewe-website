@@ -199,7 +199,13 @@
     "windingLengthResult": "Longitud de bobinado [m]",
     "disclaimer": "Las longitudes de bobinado calculadas pueden desviarse hasta un 10 %. No asumimos responsabilidad por la exactitud de los resultados.",
     "calculate": "Calcular",
-    "reset": "Restablecer"
+    "reset": "Restablecer",
+    "validation": {
+      "required": "Este campo es obligatorio.",
+      "invalid": "Introduzca un número válido.",
+      "positive": "El valor debe ser mayor que 0.",
+      "odMustExceedId": "El diámetro exterior debe ser mayor que el interior."
+    }
   },
   "contact": {
     "title": "Contacto",

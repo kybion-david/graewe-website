@@ -199,7 +199,13 @@
     "windingLengthResult": "Winding length [m]",
     "disclaimer": "Calculated winding lengths may deviate by up to 10%. We assume no liability for the accuracy of the results.",
     "calculate": "Calculate",
-    "reset": "Reset"
+    "reset": "Reset",
+    "validation": {
+      "required": "This field is required.",
+      "invalid": "Please enter a valid number.",
+      "positive": "Value must be greater than 0.",
+      "odMustExceedId": "Outer diameter must be greater than inner diameter."
+    }
   },
   "contact": {
     "title": "Contact",
