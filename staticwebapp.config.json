@@ -12,12 +12,12 @@
     },
     {
       "route": "/cookies",
-      "redirect": "/de/datenschutz",
+      "redirect": "/de/cookies",
       "statusCode": 301
     },
     {
       "route": "/cookies.html",
-      "redirect": "/de/datenschutz",
+      "redirect": "/de/cookies",
       "statusCode": 301
     },
     {
@@ -33,6 +33,11 @@
     {
       "route": "/de/aktuelles.html",
       "redirect": "/de/aktuelles",
+      "statusCode": 301
+    },
+    {
+      "route": "/de/cookies.html",
+      "redirect": "/de/cookies",
       "statusCode": 301
     },
     {
@@ -88,6 +93,11 @@
     {
       "route": "/de/produktrechner.html",
       "redirect": "/de/produktrechner",
+      "statusCode": 301
+    },
+    {
+      "route": "/de/sitemap.html",
+      "redirect": "/de/sitemap",
       "statusCode": 301
     },
     {
@@ -186,13 +196,8 @@
       "statusCode": 301
     },
     {
-      "route": "/en/cookies",
-      "redirect": "/en/datenschutz",
-      "statusCode": 301
-    },
-    {
       "route": "/en/cookies.html",
-      "redirect": "/en/datenschutz",
+      "redirect": "/en/cookies",
       "statusCode": 301
     },
     {
@@ -501,13 +506,8 @@
       "statusCode": 301
     },
     {
-      "route": "/en/sitemap",
-      "redirect": "/en",
-      "statusCode": 301
-    },
-    {
       "route": "/en/sitemap.html",
-      "redirect": "/en",
+      "redirect": "/en/sitemap",
       "statusCode": 301
     },
     {
@@ -571,13 +571,8 @@
       "statusCode": 301
     },
     {
-      "route": "/es/cookies",
-      "redirect": "/es/datenschutz",
-      "statusCode": 301
-    },
-    {
       "route": "/es/cookies.html",
-      "redirect": "/es/datenschutz",
+      "redirect": "/es/cookies",
       "statusCode": 301
     },
     {
@@ -886,13 +881,8 @@
       "statusCode": 301
     },
     {
-      "route": "/es/sitemap",
-      "redirect": "/es",
-      "statusCode": 301
-    },
-    {
       "route": "/es/sitemap.html",
-      "redirect": "/es",
+      "redirect": "/es/sitemap",
       "statusCode": 301
     },
     {
@@ -926,13 +916,8 @@
       "statusCode": 301
     },
     {
-      "route": "/fr/cookies",
-      "redirect": "/fr/datenschutz",
-      "statusCode": 301
-    },
-    {
       "route": "/fr/cookies.html",
-      "redirect": "/fr/datenschutz",
+      "redirect": "/fr/cookies",
       "statusCode": 301
     },
     {
@@ -1276,13 +1261,8 @@
       "statusCode": 301
     },
     {
-      "route": "/fr/sitemap",
-      "redirect": "/fr",
-      "statusCode": 301
-    },
-    {
       "route": "/fr/sitemap.html",
-      "redirect": "/fr",
+      "redirect": "/fr/sitemap",
       "statusCode": 301
     },
     {
@@ -1656,13 +1636,8 @@
       "statusCode": 301
     },
     {
-      "route": "/ru/cookies",
-      "redirect": "/ru/datenschutz",
-      "statusCode": 301
-    },
-    {
       "route": "/ru/cookies.html",
-      "redirect": "/ru/datenschutz",
+      "redirect": "/ru/cookies",
       "statusCode": 301
     },
     {
@@ -1976,13 +1951,8 @@
       "statusCode": 301
     },
     {
-      "route": "/ru/sitemap",
-      "redirect": "/ru",
-      "statusCode": 301
-    },
-    {
       "route": "/ru/sitemap.html",
-      "redirect": "/ru",
+      "redirect": "/ru/sitemap",
       "statusCode": 301
     },
     {
@@ -1997,12 +1967,12 @@
     },
     {
       "route": "/sitemap",
-      "redirect": "/de",
+      "redirect": "/de/sitemap",
       "statusCode": 301
     },
     {
       "route": "/sitemap.html",
-      "redirect": "/de",
+      "redirect": "/de/sitemap",
       "statusCode": 301
     },
     {

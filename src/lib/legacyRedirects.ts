@@ -35,6 +35,8 @@ const DE_HUB_PATHS = [
   "stellenanzeigen",
   "impressum",
   "datenschutz",
+  "sitemap",
+  "cookies",
 ] as const;
 
 /** Old EN/RU/ES translated path → German slug path (no locale prefix). */
@@ -91,9 +93,8 @@ const EN_LIKE_PATH_MAP: Record<string, string> = {
   "success-stories": "success-stories",
   downloads: "downloads",
   team: "team",
-  // No HTML sitemap yet (ISSUE-008) — send to home until that ships
-  sitemap: "",
-  cookies: "datenschutz",
+  sitemap: "sitemap",
+  cookies: "cookies",
 };
 
 /** Old FR translated path → German slug path (no locale prefix). */
@@ -151,8 +152,8 @@ const FR_PATH_MAP: Record<string, string> = {
   "offres-demploi": "stellenanzeigen",
   "mentions-legales": "impressum",
   "vos-informations-personelles": "datenschutz",
-  sitemap: "",
-  cookies: "datenschutz",
+  sitemap: "sitemap",
+  cookies: "cookies",
 };
 
 const NEWS_DETAIL_PATHS = new Set([
@@ -244,8 +245,6 @@ function buildPathRedirectMap(): Map<string, string> {
   }
   addHtmlVariant(map, "/index", "/de");
   addHtmlVariant(map, "/index.php", "/de");
-  addHtmlVariant(map, "/sitemap", "/de");
-  addHtmlVariant(map, "/cookies", "/de/datenschutz");
   addHtmlVariant(map, "/produkte", "/de");
 
   // DE product subpages (canonical slugs) without locale

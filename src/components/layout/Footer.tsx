@@ -119,7 +119,7 @@ export function Footer() {
             </h3>
             <div className="flex gap-3 mb-8">
               <a
-                href="https://www.facebook.com/graewegmbh"
+                href="https://www.facebook.com/GraeweExtrusion/"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Facebook"
@@ -130,7 +130,7 @@ export function Footer() {
                 </svg>
               </a>
               <a
-                href="https://www.youtube.com/channel/UCgraewe"
+                href="https://www.youtube.com/user/Graewemachines/videos/"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="YouTube"
@@ -167,6 +167,8 @@ export function Footer() {
             <Link href="/kontakt" className="text-grey-500 hover:text-grey-300 transition-colors">{t("footer.contact")}</Link>
             <Link href="/impressum" className="text-grey-500 hover:text-grey-300 transition-colors">{t("footer.imprint")}</Link>
             <Link href="/datenschutz" className="text-grey-500 hover:text-grey-300 transition-colors">{t("footer.privacy")}</Link>
+            <Link href="/sitemap" className="text-grey-500 hover:text-grey-300 transition-colors">{t("footer.sitemap")}</Link>
+            <Link href="/cookies" className="text-grey-500 hover:text-grey-300 transition-colors">{t("footer.cookies")}</Link>
           </div>
         </div>
       </div>

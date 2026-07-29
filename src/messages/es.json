@@ -557,6 +557,22 @@
     "sitemap": "Mapa del sitio",
     "cookies": "Cookies"
   },
+  "sitemapPage": {
+    "title": "Mapa del sitio",
+    "intro": "Resumen del sitio web",
+    "other": "Otras páginas",
+    "legal": "Legal"
+  },
+  "cookiesPage": {
+    "title": "Cookies",
+    "intro": "Este sitio web no utiliza cookies de seguimiento, análisis ni marketing. Por ello no es necesario un banner de consentimiento de cookies.",
+    "essentialTitle": "Cookies técnicamente necesarias",
+    "essentialBody": "Si el navegador o la infraestructura de alojamiento establecen cookies técnicamente necesarias (por ejemplo, para seguridad o equilibrio de carga), se usan únicamente para el funcionamiento del sitio. No se emplean para perfiles ni publicidad.",
+    "noTrackingTitle": "Sin cookies de análisis ni publicidad",
+    "noTrackingBody": "Actualmente no utilizamos servicios como etracker, Google Analytics u otras herramientas de seguimiento similares. No se crean perfiles de uso personales mediante cookies.",
+    "privacyLead": "Para más información sobre el tratamiento de datos personales, consulte nuestra",
+    "privacyLink": "política de privacidad"
+  },
   "footer": {
     "productCalculator": "Calculadora de productos",
     "contact": "Contacto",

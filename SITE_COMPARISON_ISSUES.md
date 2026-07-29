@@ -39,11 +39,11 @@ Old site checked live on graewe.com.
 | Product images | Present (ISSUE-010 filled) |
 | Calculator | Present (2 modes) |
 | Contact form | Present; Turnstile + honeypot + rate limit |
-| HTML Sitemap / Cookies pages | **Missing** |
+| HTML Sitemap / Cookies pages | Present (essential-cookies notice; no banner) |
 | Multi-language **URL** parity | German slugs canonical; old translated paths **301** |
 | Redirects for cutover | Path + news/job query redirects in place |
 | Legal pages localized | DE body only |
-| Social YouTube link | **404** |
+| Social YouTube link | Fixed (Graewemachines) |
 
 ---
 
@@ -164,42 +164,45 @@ Old site checked live on graewe.com.
 ---
 
 ### ISSUE-007 — YouTube footer link is broken (404)
-- **Status:** Open
+- **Status:** Done
+- **Note:** Footer YouTube → `https://www.youtube.com/user/Graewemachines/videos/` (200). Facebook aligned with live site → `https://www.facebook.com/GraeweExtrusion/`.
 - **Category:** Bug
 - **Problem:** Footer links to `https://www.youtube.com/channel/UCgraewe` which returns **404**. Live site uses `https://www.youtube.com/user/Graewemachines/videos/`.
 - **Evidence (new):** `src/components/layout/Footer.tsx`
 - **Evidence (old EN homepage):** `https://www.youtube.com/user/Graewemachines/videos/`
 - **Acceptance criteria:**
-  - [ ] YouTube URL opens a valid GRAEWE channel/videos page.
-  - [ ] Facebook URL verified (old EN also references `facebook.com/GraeweExtrusion/` vs new `graewegmbh` — confirm correct official page).
+  - [x] YouTube URL opens a valid GRAEWE channel/videos page.
+  - [x] Facebook URL verified (old EN also references `facebook.com/GraeweExtrusion/` vs new `graewegmbh` — confirm correct official page).
 
 ---
 
 ## P1 — Important parity gaps & bugs
 
 ### ISSUE-008 — HTML Sitemap page missing
-- **Status:** Open
+- **Status:** Done
+- **Note:** Added `/[locale]/sitemap` listing company, product trees, service, and legal links; footer link; SWA redirects `/sitemap(.html)` → `/de/sitemap`.
 - **Category:** Missing feature
 - **Problem:** Live site has `/sitemap` (and `/en/sitemap`, etc.). New site has XML sitemap via `next-sitemap` but **no HTML sitemap route**. Footer i18n keys `footer.sitemap` / `legal.sitemap` exist but are unused; `/de/sitemap` → 404.
 - **Evidence (old):** https://www.graewe.com/sitemap
 - **Likely files:** new `src/app/[locale]/sitemap/page.tsx`, Footer legal links, redirects from old `/sitemap`.
 - **Acceptance criteria:**
-  - [ ] HTML sitemap lists main sections + product trees.
-  - [ ] Linked from footer (and matches old “Sitemap” footer entry).
-  - [ ] Available in all locales.
+  - [x] HTML sitemap lists main sections + product trees.
+  - [x] Linked from footer (and matches old “Sitemap” footer entry).
+  - [x] Available in all locales.
 
 ---
 
 ### ISSUE-009 — Cookies / consent page & banner missing
-- **Status:** Open
+- **Status:** Done
+- **Note:** Chose essential-only approach (no analytics yet): `/[locale]/cookies` page + footer link; Datenschutz §3 updated (no etracker); no consent banner until trackers are added (see ISSUE-024).
 - **Category:** Missing feature / Legal / compliance
 - **Problem:** Live footer links to Cookies (`/cookies` → opt-in UI `?showOptIn=1`). Live Datenschutz references etracker cookies. New site has no cookies route, no consent banner, and unused `footer.cookies` / `legal.cookies` keys. `/de/cookies` → 404.
 - **Decision needed:** If no tracking is used post-launch, update Datenschutz accordingly and either remove Cookies link or provide a short “we only use essential cookies” page. If analytics is added, implement consent + update policy.
 - **Likely files:** Footer, new cookies page or banner component, `src/app/[locale]/datenschutz/page.tsx`, analytics integration.
 - **Acceptance criteria:**
-  - [ ] Footer Cookies behavior matches the chosen privacy approach.
-  - [ ] Datenschutz text matches actual technologies used (no stale etracker claims if unused).
-  - [ ] If non-essential cookies/trackers exist, consent mechanism works before load.
+  - [x] Footer Cookies behavior matches the chosen privacy approach.
+  - [x] Datenschutz text matches actual technologies used (no stale etracker claims if unused).
+  - [x] If non-essential cookies/trackers exist, consent mechanism works before load.
 
 ---
 
@@ -393,12 +396,13 @@ Old site checked live on graewe.com.
 ---
 
 ### ISSUE-027 — Footer omits Sitemap + Cookies links (keys unused)
-- **Status:** Open
+- **Status:** Done
+- **Note:** Footer legal strip now includes Sitemap + Cookies (with ISSUE-008/009 pages).
 - **Category:** Missing feature / UX
 - **Problem:** Translation keys exist; footer legal strip only has Kontakt / Impressum / Datenschutz.
 - **Depends on:** ISSUE-008, ISSUE-009
 - **Acceptance criteria:**
-  - [ ] Footer matches agreed legal link set from live site.
+  - [x] Footer matches agreed legal link set from live site.
 
 ---
 

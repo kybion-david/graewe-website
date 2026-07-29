@@ -65,8 +65,8 @@ Full path list is generated (>400 routes). Representative rows:
 | `/produkte/rohrextrusion/kalibier-und-kuehlbaeder` (typo) | `/de/produkte/rohrextrusion/kalibrier-und-kuehlbaeder` |
 | `/kontakt.html` | `/de/kontakt` |
 | `/index.php` | `/de` |
-| `/sitemap` | `/de` (HTML sitemap is ISSUE-008) |
-| `/cookies` | `/de/datenschutz` |
+| `/sitemap` | `/de/sitemap` |
+| `/cookies` | `/de/cookies` |
 
 ### EN / RU / ES (translated → German slugs)
 
