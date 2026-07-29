@@ -77,29 +77,32 @@ export function Header() {
       role="banner"
     >
       <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 sm:h-20">
+        {/* Compact logo + controls so the bar fits the 288px content box at 320px (ISSUE-036). */}
+        <div className="flex items-center justify-between gap-2 h-16 sm:h-20 min-w-0">
           {/* Logo */}
-          <Link href="/" className="shrink-0 relative">
+          <Link href="/" className="shrink-0 relative min-w-0">
             <Image
               src="/images/logo/graewe-logo.jpg"
               alt="GRAEWE – Xtras for Extrusion"
               width={220}
               height={60}
               className={`h-auto transition-all duration-300 ${
-                scrolled ? "w-[150px] sm:w-[180px]" : "w-[180px] sm:w-[220px]"
+                scrolled
+                  ? "w-[120px] sm:w-[180px]"
+                  : "w-[140px] sm:w-[220px]"
               }`}
               priority
             />
           </Link>
 
           {/* Right side: language + menu */}
-          <div className="flex items-center gap-3 sm:gap-4" ref={menuRef}>
+          <div className="flex items-center gap-1.5 sm:gap-4 shrink-0" ref={menuRef}>
             <LanguageSwitcher />
             <button
               onClick={() => setMenuOpen(!menuOpen)}
               aria-expanded={menuOpen}
               aria-label={t("menuAria")}
-              className={`relative bg-accent hover:bg-accent-dark text-dark font-bold px-5 py-2.5 text-sm tracking-wider transition-all duration-200 ${
+              className={`relative bg-accent hover:bg-accent-dark text-dark font-bold px-3 sm:px-5 py-2 sm:py-2.5 text-sm tracking-wider transition-all duration-200 ${
                 menuOpen ? "bg-accent-dark" : ""
               }`}
             >
