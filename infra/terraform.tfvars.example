@@ -2,8 +2,8 @@ subscription_id = "00000000-0000-0000-0000-000000000000"
 project_name    = "graewe-website"
 environment     = "prod"
 location        = "westeurope"
-swa_sku_tier    = "Standard"
-swa_sku_size    = "Standard"
+swa_sku_tier    = "Free"
+swa_sku_size    = "Free"
 
 # Set these once DNS is ready
 # custom_domain = "www.graewe.com"

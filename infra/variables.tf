@@ -27,13 +27,13 @@ variable "location" {
 
 variable "swa_sku_tier" {
   type        = string
-  default     = "Standard"
+  default     = "Free"
   description = "Static Web App SKU tier (Free or Standard)"
 }
 
 variable "swa_sku_size" {
   type        = string
-  default     = "Standard"
+  default     = "Free"
   description = "Static Web App SKU size"
 }
 
