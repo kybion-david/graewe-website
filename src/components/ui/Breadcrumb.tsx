@@ -16,7 +16,7 @@ export function Breadcrumb({ items }: BreadcrumbProps) {
   const t = useTranslations("nav");
 
   return (
-    <nav aria-label="Breadcrumb" className="mb-6">
+    <nav aria-label={t("breadcrumbAria")} className="mb-6">
       <ol className="flex items-center gap-1.5 text-sm flex-wrap">
         <li>
           <Link href="/" className="text-grey-400 hover:text-dark transition-colors">
