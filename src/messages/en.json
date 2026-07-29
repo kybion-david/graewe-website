@@ -87,6 +87,28 @@
     }
   },
   "products": {
+    "overview": {
+      "metaTitle": "Products",
+      "title": "Range of Products",
+      "subtitle": "",
+      "intro": "Our speciality is machines for plastics extrusion on a high technological level for extrusion of pipes, extrusion of profiles and extrusion of sheet.",
+      "detailsHeading": "In detail:",
+      "detailsList": [
+        "Vacuum-, calibration- and cooling tanks",
+        "Belt and caterpillar haul-off",
+        "Cutting units",
+        "Coilers",
+        "Socketing machines",
+        "Socket injection moulding machines",
+        "Sheet stacker, sheet cutting units",
+        "Threading machines",
+        "Pipe slitting machines",
+        "Special machines"
+      ],
+      "usedMachinesNote": "You can also find many second-hand extrusion machines here.",
+      "usedMachinesLink": "View used machines",
+      "exploreCategory": "Explore category"
+    },
     "pipeExtrusion": {
       "title": "Pipe Extrusion",
       "description": "The extrusion of pipes and tubes is our specialty. The applications are as diverse as our customers' innovations.",

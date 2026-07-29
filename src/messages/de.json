@@ -87,6 +87,28 @@
     }
   },
   "products": {
+    "overview": {
+      "metaTitle": "Produkte",
+      "title": "Graewe entwickelt innovative Extrudertechnik für die Kunststoffindustrie.",
+      "subtitle": "Erfahrung und Leistung zahlen sich aus.",
+      "intro": "Unser Spezialgebiet sind Extrusionsmaschinen und -anlagen von hohem technologischen Standard für Rohrextrusion, Profilextrusion und Plattenextrusion.",
+      "detailsHeading": "Im Detail sind das:",
+      "detailsList": [
+        "Vakuum-, Kalibrier- und Kühlbäder",
+        "Band- und Raupenabzüge",
+        "Trenneinrichtungen",
+        "Rohrwickler",
+        "Muffenmaschinen",
+        "Muffenspritzgießmaschinen",
+        "Plattenstapler, Plattensägen",
+        "Gewindeschneidmaschinen",
+        "Rohrschlitzmaschinen",
+        "Sonderkonstruktionen"
+      ],
+      "usedMachinesNote": "Außerdem finden Sie bei uns ein umfangreiches Sortiment an Maschinen für die Extrusion aus zweiter Hand.",
+      "usedMachinesLink": "Zu den Gebrauchtmaschinen",
+      "exploreCategory": "Kategorie ansehen"
+    },
     "pipeExtrusion": {
       "title": "Rohrextrusion",
       "description": "Die Extrusion von Rohren und Schläuchen ist unser Spezialgebiet. Die Einsatzgebiete sind so vielfältig wie die Innovationen unserer Kunden.",

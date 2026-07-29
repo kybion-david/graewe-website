@@ -28,6 +28,15 @@ describe("legacyRedirects", () => {
     ).toBe("/de/produkte/rohrextrusion/kalibrier-und-kuehlbaeder");
   });
 
+  it("redirects product overview hubs to the new overview page", () => {
+    expect(resolveLegacyRedirect("/produkte")).toBe("/de/produkte");
+    expect(resolveLegacyRedirect("/produkte.html")).toBe("/de/produkte");
+    expect(resolveLegacyRedirect("/en/products")).toBe("/en/produkte");
+    expect(resolveLegacyRedirect("/fr/produits")).toBe("/fr/produkte");
+    expect(resolveLegacyRedirect("/ru/products")).toBe("/ru/produkte");
+    expect(resolveLegacyRedirect("/es/products")).toBe("/es/produkte");
+  });
+
   it("redirects old EN/FR translated paths to German slugs", () => {
     expect(resolveLegacyRedirect("/en/company/who-is-graewe")).toBe(
       "/en/unternehmen/wer-ist-graewe",
@@ -98,6 +107,8 @@ describe("legacyRedirects", () => {
   it("leaves canonical rebuild paths alone", () => {
     expect(resolveLegacyRedirect("/de/unternehmen/wer-ist-graewe")).toBeNull();
     expect(resolveLegacyRedirect("/en/produkte/rohrextrusion")).toBeNull();
+    expect(resolveLegacyRedirect("/de/produkte")).toBeNull();
+    expect(resolveLegacyRedirect("/en/produkte")).toBeNull();
   });
 
   it("exposes a large static path matrix for SWA", () => {
