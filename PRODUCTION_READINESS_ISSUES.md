@@ -9,7 +9,7 @@ Chrome DOM measurements at 320 px and 390 px iframe viewports, server-rendered H
 
 This is a **different axis** from [`SITE_COMPARISON_ISSUES.md`](./SITE_COMPARISON_ISSUES.md), which
 compares content/parity against the live `graewe.com`. That file owns ISSUE-001 … ISSUE-033.
-**This file continues at ISSUE-034.** Do not reuse IDs across the two files.
+**This file owns ISSUE-034 – ISSUE-057.** Do not reuse IDs across the two files.
 
 ---
 
@@ -257,18 +257,21 @@ Recorded so nobody re-audits them:
 
 ---
 
-### ISSUE-044 — Footer phone link is a malformed `tel:` URI, and `next-machines.com` is linked over plain HTTP
+### ISSUE-044 — Partner link `next-machines.com` is served over plain HTTP
 - **Status:** Open
-- **Category:** Bug / Mobile / Security
-- **Problem:**
-  1. `href="tel:+4976317944-0"` contains a hyphen mid-number. Dialers treat the visual `-0` extension inconsistently — on several Android dialers this dials `+4976317944` and drops the extension, on others the link fails to parse. Tapping the phone number is the single most likely mobile action on a manufacturer site.
-  2. The "next" partner link points to `http://www.next-machines.com` — plain HTTP from an HTTPS page. Browsers warn or upgrade inconsistently, and it is an unnecessary downgrade.
-- **Evidence:** `src/components/layout/Footer.tsx:63` (`tel:+4976317944-0`), `src/components/layout/Footer.tsx:196` (`http://www.next-machines.com`). The visible label comes from `footer.phone` and reads `+49 (0) 7631 7944-0`.
-- **Likely files:** `src/components/layout/Footer.tsx`, `src/app/[locale]/kontakt/page.tsx` and `team` page if they repeat the pattern
+- **Category:** Security / Polish
+- **Problem:** The "next — Second Hand · First Quality" partner link points to `http://www.next-machines.com`. That is an unencrypted outbound link from an HTTPS page: browsers handle the downgrade inconsistently, and there is no reason to ship it.
+- **Evidence:** `src/components/layout/Footer.tsx:196` — `href="http://www.next-machines.com"`.
+- **Likely files:** `src/components/layout/Footer.tsx`
 - **Acceptance criteria:**
-  - [ ] `tel:` hrefs contain only `+` and digits (`tel:+4976317944` plus `,0` pause if the extension must be dialled). Visible label keeps its formatting.
-  - [ ] All `tel:` links across the site audited, not just the footer.
-  - [ ] External partner link uses `https://` (verify the certificate resolves first).
+  - [ ] Link uses `https://` — confirm the target actually serves a valid certificate before switching.
+  - [ ] Grep for any other `http://` external links in `src/` and fix them together.
+
+> **Do not "fix" the `tel:` link.** `src/components/layout/Footer.tsx:63` is `tel:+4976317944-0`.
+> RFC 3966 permits `-` as a *visual separator* inside `phone-digits`; dialers strip it, giving
+> `+49 7631 7944-0` → `+49763179440` — country 49, Neuenburg 7631, PBX 7944, Durchwahl 0.
+> This is the correct main line. Rewriting it to `tel:+4976317944` **drops the trailing 0 and breaks it.**
+> If you touch it at all, only verify the digit count matches `+49763179440`.
 
 ---
 
@@ -293,6 +296,28 @@ Recorded so nobody re-audits them:
   - [ ] Every string in the table and every non-proper-noun `aria-label` reads from `next-intl`.
   - [ ] Keys added to **all five** locale files with real translations (not German fallbacks).
   - [ ] A grep for hardcoded JSX text in `src/components` and `src/app` returns only proper nouns.
+
+---
+
+### ISSUE-057 — Phones download the desktop hero image; all 10 carousel images mount at once
+- **Status:** Open
+- **Category:** Mobile / Performance
+- **Problem:** `HeroCarousel` renders its desktop layout (`hidden sm:flex`) **and** its mobile layout (`sm:hidden`) into the DOM simultaneously, each marking slide 0 as `priority`. Next therefore emits **two unconditional `<link rel="preload" as="image">` tags for the same hero PNG at two different size tiers, with no `media` attribute** — so a phone eagerly downloads the 828 px/1920 px desktop variant it will never display, on the LCP critical path. The same duplication mounts all 10 `<Image>` elements (5 unique PNGs, 190–260 KB each) at once.
+- **Evidence:** server-rendered `<head>` of `/de`:
+  ```html
+  <link rel="preload" as="image" imageSrcSet="/_next/image?url=%2Fimages%2Fhero%2Fslide-1.png&w=828&q=75 1x,
+                                              /_next/image?url=%2Fimages%2Fhero%2Fslide-1.png&w=1920&q=75 2x"/>
+  <link rel="preload" as="image" imageSrcSet="/_next/image?url=%2Fimages%2Fhero%2Fslide-1.png&w=640&q=75 1x,
+                                              /_next/image?url=%2Fimages%2Fhero%2Fslide-1.png&w=1200&q=75 2x"/>
+  ```
+  Neither carries `media`. Source: `src/components/home/HeroCarousel.tsx:49` (`hidden sm:flex` desktop block) and `:180` (`sm:hidden` mobile block); `priority={index === 0}` at `:159` and `:236`. Asset sizes: `public/images/hero/slide-{1..5}.png` = 188 KB, 223 KB, 259 KB, 207 KB, 241 KB.
+- **Related:** same duplicate-render anti-pattern as **ISSUE-056** (nav) and **ISSUE-043** (carousel a11y). Fixing the layout duplication once — one responsive layout, or CSS-only switching over a single image set — resolves the preload waste too.
+- **Likely files:** `src/components/home/HeroCarousel.tsx`
+- **Acceptance criteria:**
+  - [ ] Exactly one hero preload is emitted for a given viewport (or two with correct `media` attributes).
+  - [ ] A 390 px client does not fetch the 828/1920 px variants — verify in DevTools Network on a throttled mobile profile.
+  - [ ] Non-visible slides are not eagerly fetched.
+  - [ ] Consider re-encoding the source PNGs as WebP/AVIF: the `GITHUB_PAGES=true` export path uses a custom loader (`src/lib/image-loader.ts`) with **no** optimization, so those builds ship the raw PNGs.
 
 ---
 
@@ -389,15 +414,23 @@ Recorded so nobody re-audits them:
 
 ---
 
-### ISSUE-051 — Invalid locale in the URL can throw instead of 404-ing
-- **Status:** Open
-- **Category:** Bug
-- **Problem:** `generateMetadata` in the locale layout does `await import(\`@/messages/${locale}.json\`)` **before** any validation. `hasLocale()` is only checked in the layout component body. For an unmatched locale segment the dynamic import rejects with a module-not-found error, which surfaces as a 500 rather than the intended `notFound()`. The proxy matcher hides this for normal navigation, but any path the matcher excludes, or a direct hit on the standalone server, can reach it.
-- **Evidence:** `src/app/[locale]/layout.tsx:16-24` (import, unvalidated) vs `:49-51` (`if (!hasLocale(...)) notFound()`).
+### ISSUE-051 — Harden `generateMetadata` against an unvalidated locale (defence in depth)
+- **Status:** Open — **low confidence, not currently reachable**
+- **Category:** Bug / Hardening
+- **Problem:** `generateMetadata` in the locale layout does `await import(\`@/messages/${locale}.json\`)` **before** any validation; `hasLocale()` is only checked later, in the layout component body. An unvalidated locale reaching the import would reject with module-not-found and surface as a 500 instead of the intended `notFound()`.
+- **Evidence — tested, and it does not currently trigger.** Against a production build (`next build` + server):
+  ```
+  /xx/kontakt     -> 307  ->  /de/xx/kontakt
+  /de/xx/kontakt  -> 404
+  /fr/xx          -> 404
+  /               -> 307  ->  /de
+  ```
+  The proxy prefixes the unknown segment rather than passing it through as a locale, so `generateMetadata` is never called with `locale="xx"`. Source: `src/app/[locale]/layout.tsx:16-24` (import, unvalidated) vs `:49-51` (`hasLocale` check).
+- **Why keep it:** the ordering is only safe because of how `src/proxy.ts` happens to behave. ISSUE-054 may change the deploy topology, and the `GITHUB_PAGES` export path has no proxy at all.
 - **Likely files:** `src/app/[locale]/layout.tsx`
 - **Acceptance criteria:**
-  - [ ] `generateMetadata` validates with `hasLocale` and calls `notFound()` (or falls back to the default locale) before importing messages.
-  - [ ] `/xx/kontakt` returns a 404 page, not a server error — verified against `npm run build && npm run start`, not just dev.
+  - [ ] `generateMetadata` validates with `hasLocale` and calls `notFound()` before importing messages.
+  - [ ] The routes above still behave as listed after the change.
 
 ---
 
@@ -405,7 +438,11 @@ Recorded so nobody re-audits them:
 - **Status:** Open
 - **Category:** Bug / UX
 - **Problem:** The App Router tree defines no error or not-found boundaries. Any thrown render error in production shows Next's unstyled default error page — no GRAEWE header, footer or navigation, and no localisation. `notFound()` is already called in `layout.tsx:50` with nothing to render it.
-- **Evidence:** `find src -name "error.tsx" -o -name "not-found.tsx" -o -name "global-error.tsx"` → no matches.
+- **Evidence:** `find src -name "error.tsx" -o -name "not-found.tsx" -o -name "global-error.tsx"` → no matches. Confirmed against a **production build**: `GET /de/nichtvorhanden` returns 404 with Next's default page —
+  ```
+  <title>404: This page could not be found.</title>
+  ```
+  English, unstyled, no header, no footer, no locale awareness, on a site whose default locale is German.
 - **Related:** **ISSUE-033** (existing) covers the SWA `responseOverrides.404.rewrite = "/de"` masking. These two must be fixed together — a localized `not-found.tsx` is useless while the platform rewrites 404s to the homepage.
 - **Likely files:** new `src/app/[locale]/not-found.tsx`, `src/app/[locale]/error.tsx`, `src/app/global-error.tsx`, `staticwebapp.config.json`
 - **Acceptance criteria:**
@@ -433,12 +470,24 @@ Recorded so nobody re-audits them:
 - **Status:** Open
 - **Category:** Ops
 - **Problem:** `next.config.ts` sets `output: "standalone"` (SSR: a proxy/middleware, a dynamic `/api/contact` route, and the dynamic `stellendetails` search-param redirect). The deploy workflow hands the repo to `Azure/static-web-apps-deploy@v1` with `app_location: "/"`, `api_location: ""` and `output_location: ""`, letting Oryx run its own build. Whether that pipeline actually serves Next SSR — and whether `src/proxy.ts` runs at all — has not been confirmed on a live deployment. If the proxy does not run, `/` never redirects to `/de` and locale negotiation breaks; if the API route is not hosted, the contact form 404s.
-- **Note:** `npm run build` also does `cp -r .next/static .next/standalone/.next/ && cp -r public .next/standalone/` — verified working locally, but Oryx may invoke `next build` directly and skip the npm script wrapper.
+- **Note 1:** `npm run build` also does `cp -r .next/static .next/standalone/.next/ && cp -r public .next/standalone/` — verified working locally, but Oryx may invoke `next build` directly and skip the npm script wrapper.
+- **Note 2:** `npm run start` (`next start`) is **the wrong entry point for this config** and Next says so:
+  ```
+  ⚠ "next start" does not work with "output: standalone" configuration.
+    Use "node .next/standalone/server.js" instead.
+  ```
+  It happens to serve pages anyway, which is why nobody has noticed. This matters twice over:
+  `playwright.config.ts:21` runs `npm run build && npm run start` as its `webServer`, so **e2e tests
+  do not exercise the artifact that actually ships**; and `package.json` / `README.md` advertise
+  `npm run start` as the production command.
+- **Note 3:** `staticwebapp.config.json` sets `globalHeaders` (`X-Content-Type-Options`, `X-Frame-Options`, `Referrer-Policy`, `Permissions-Policy`) but no `Strict-Transport-Security`. Add it as part of the cutover, once HTTPS on the custom domain is confirmed working.
 - **Evidence:** `.github/workflows/deploy.yml` `deploy` job; `next.config.ts:10`; `infra/main.tf` (`sku_tier` defaults to `Standard`, so hybrid rendering is at least plan-eligible); `package.json` `build` script.
 - **Likely files:** `.github/workflows/deploy.yml`, `next.config.ts`, `staticwebapp.config.json`, `infra/main.tf`, `infra/DNS_CUTOVER.md`
 - **Acceptance criteria:**
   - [ ] A staging deploy is verified end to end: `/` → `/de` redirect, a locale switch, `POST /api/contact`, and a legacy `?tx_tanjoboffers_jobdetail[job]=9` redirect all work **on Azure**.
   - [ ] If hybrid SSR is not viable on the chosen plan, the decision (static export vs. Container Apps / App Service) is recorded in `SPEC.md` and `infra/DNS_CUTOVER.md`.
+  - [ ] `playwright.config.ts` `webServer` and the documented production command both use `node .next/standalone/server.js` (or the config drops `standalone`).
+  - [ ] `Strict-Transport-Security` added to `globalHeaders`.
   - [ ] Deploy method documented so the next agent does not have to re-derive it.
 
 ---
@@ -479,9 +528,10 @@ New evidence gathered in this pass that belongs on items already tracked in `SIT
 | 2 | 035, 054 | Contact form silently drops enquiries and the deploy path is unproven — both are launch-day failures |
 | 3 | 036, 047 | Fix small-phone overflow and add the regression guard in the same pass |
 | 4 | 041, 042, 050 | SEO plumbing must be right *before* DNS cutover, not after |
-| 5 | 037, 056, 038, 039, 043, 046, 049 | Accessibility cluster; 037+056 share a root cause, 038+039 pair naturally |
-| 6 | 040, 051, 052, 053 | Security, error handling, compliance |
-| 7 | 044, 045, 048, 055 | Content and code polish |
+| 5 | 037, 056, 043, 057 | One duplicate-render root cause across nav, carousel a11y and hero preloads — fix together |
+| 6 | 038, 039, 046, 049 | Remaining accessibility cluster; 038+039 pair naturally |
+| 7 | 040, 052, 053 | Security, error handling, compliance |
+| 8 | 044, 045, 048, 051, 055 | Polish and hardening |
 
 ---
 

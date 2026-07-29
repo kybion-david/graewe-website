@@ -11,6 +11,14 @@ You are working on the GRAEWE corporate website. Follow this file on every task.
 
 Also load matching rules under `.cursor/rules/` (workflow, coding, i18n, pages, components).
 
+## Open work queues
+
+Two issue queues track everything still to do before launch. Check both before starting, and mark
+items `Status: Done` with a one-line note when you finish one. IDs are unique across both files.
+
+- **[`SITE_COMPARISON_ISSUES.md`](./SITE_COMPARISON_ISSUES.md)** — content/parity vs the live `graewe.com` (ISSUE-001 – ISSUE-033)
+- **[`PRODUCTION_READINESS_ISSUES.md`](./PRODUCTION_READINESS_ISSUES.md)** — build/CI, runtime bugs, mobile, a11y, SEO plumbing, security (ISSUE-034 – ISSUE-057)
+
 ## Isolation & git workflow (non-negotiable)
 
 Every feature, fix, refactor, or docs change must follow this loop:
