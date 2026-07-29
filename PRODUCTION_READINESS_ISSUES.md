@@ -289,7 +289,7 @@ Recorded so nobody re-audits them:
 ---
 
 ### ISSUE-059 — An e2e test has been broken since it was written
-- **Status:** Open
+- **Status:** Done — relaxed EN `getByLabel(/^Message$/)` to `/Message/` so it matches the accessible name with RequiredMark (`Message *`); audited other anchored labels (`Telefon`/`Phone`) — optional fields, no marker, still correct. Also fixed menu test to use DE aria-label `Hauptnavigation` (was hardcoded EN `Main navigation`).
 - **Category:** Testing
 - **Problem:** `tests/e2e/navigation.spec.ts:55` asserts `enForm.getByLabel(/^Message$/)`, but the label's accessible name is `Message *` — the required marker is rendered *inside* the `<label>`. The anchored regex can never match, so this test has failed since it was written. It went unnoticed because e2e is not in the CI gate (ISSUE-047). The neighbouring `/^Phone$/` passes only because Phone is optional and therefore has no marker.
 - **Evidence:**
@@ -310,9 +310,9 @@ Recorded so nobody re-audits them:
 - **⚠️ Beware a contaminated run:** `playwright.config.ts` sets `reuseExistingServer: true`, so a stray `next start`/`next dev` on port 3000 from another checkout will be silently reused and produce a wall of false failures. Confirm nothing is on port 3000 before trusting a red run.
 - **Likely files:** `tests/e2e/navigation.spec.ts`
 - **Acceptance criteria:**
-  - [ ] The assertion matches the real accessible name (drop the anchors, or exclude the marker from the label and expose it via `aria-required` only).
-  - [ ] `npx playwright test` is 32/32 green from a clean port 3000.
-  - [ ] Audit the other anchored `getByLabel` assertions for the same trap.
+  - [x] The assertion matches the real accessible name (drop the anchors, or exclude the marker from the label and expose it via `aria-required` only).
+  - [x] `npx playwright test` is 32/32 green from a clean port 3000.
+  - [x] Audit the other anchored `getByLabel` assertions for the same trap.
 
 ---
 

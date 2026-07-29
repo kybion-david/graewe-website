@@ -52,7 +52,8 @@ test.describe("Navigation", () => {
     await expect(enForm.getByLabel(/Last Name/)).toBeVisible();
     await expect(enForm.getByLabel(/First Name/)).toBeVisible();
     await expect(enForm.getByLabel(/^Phone$/)).toBeVisible();
-    await expect(enForm.getByLabel(/^Message$/)).toBeVisible();
+    // RequiredMark is inside the <label>, so accessible name is "Message *" (ISSUE-059).
+    await expect(enForm.getByLabel(/Message/)).toBeVisible();
     await expect(enForm.getByText("Required field")).toBeVisible();
   });
 
@@ -104,7 +105,8 @@ test.describe("Navigation", () => {
   test("menu opens and shows navigation links", async ({ page }) => {
     await page.goto("/de");
     await page.click("text=MENÜ");
-    const nav = page.getByRole("navigation", { name: "Main navigation" });
+    // aria-label is localized — DE uses "Hauptnavigation", not the EN "Main navigation".
+    const nav = page.getByRole("navigation", { name: "Hauptnavigation" });
     await expect(nav.getByText("Unternehmen")).toBeVisible();
     await expect(nav.getByText("Produkte")).toBeVisible();
     await expect(nav.getByText("Kontakt")).toBeVisible();
