@@ -216,7 +216,7 @@ Recorded so nobody re-audits them:
 ---
 
 ### ISSUE-057 — Phones download the desktop hero image; all 10 carousel images mount at once
-- **Status:** Open
+- **Status:** Done — unified `HeroCarousel` into one responsive layout with a single image plane (`sizes` `(max-width: 639px) 100vw, 56vw`); only current (+ briefly outgoing) slides mount, so SSR emits one preload and phones no longer fetch the desktop 828/1920 tier. AVIF/WebP already enabled in `next.config.ts`.
 - **Category:** Mobile / Performance
 - **Problem:** `HeroCarousel` renders its desktop layout (`hidden sm:flex`, line 53) **and** its mobile layout (`sm:hidden`, line 159) simultaneously, each marking slide 0 as `priority` (lines 151 and 207). Next therefore emits **two unconditional `<link rel="preload" as="image">` tags for the same hero PNG at two size tiers, with no `media` attribute** — a phone eagerly downloads the 828/1920 px desktop variant it will never display, on the LCP path. The same duplication mounts all 10 `<Image>` elements at once.
 - **Evidence:** server-rendered `<head>` of `/de`:
@@ -228,10 +228,10 @@ Recorded so nobody re-audits them:
 - **Related:** same duplicate-render pattern as ISSUE-043. Fixing the layout duplication once resolves the preload waste too.
 - **Likely files:** `src/components/home/HeroCarousel.tsx`
 - **Acceptance criteria:**
-  - [ ] Exactly one hero preload per viewport (or two with correct `media`).
-  - [ ] A 390 px client does not fetch the 828/1920 px variants — verify in DevTools Network.
-  - [ ] Non-visible slides are not eagerly fetched.
-  - [ ] Consider WebP/AVIF sources where helpful (Azure SWA uses Next image optimization with avif/webp).
+  - [x] Exactly one hero preload per viewport (or two with correct `media`).
+  - [x] A 390 px client does not fetch the 828/1920 px variants — verify in DevTools Network.
+  - [x] Non-visible slides are not eagerly fetched.
+  - [x] Consider WebP/AVIF sources where helpful (Azure SWA uses Next image optimization with avif/webp).
 
 ---
 
