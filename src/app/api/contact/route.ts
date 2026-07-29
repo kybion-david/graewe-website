@@ -7,6 +7,7 @@ import {
   verifyTurnstileToken,
 } from "@/lib/contactSpam";
 import { getContactEmailAddresses, sendContactEmail } from "@/lib/contactEmail";
+import { parseContactFormBody } from "@/lib/contactSchema";
 
 const TURNSTILE_SECRET = process.env.TURNSTILE_SECRET_KEY;
 
@@ -29,14 +30,13 @@ export async function POST(request: Request) {
     }
 
     const body = await request.json();
-    const { name, firstName, email, phone, message, turnstileToken } = body;
 
     if (isHoneypotFilled(body[CONTACT_HONEYPOT_FIELD])) {
       // Pretend success so bots do not retry / adapt.
       return NextResponse.json({ success: true });
     }
 
-    const turnstile = await verifyTurnstileToken(turnstileToken, TURNSTILE_SECRET);
+    const turnstile = await verifyTurnstileToken(body.turnstileToken, TURNSTILE_SECRET);
     if (!turnstile.ok) {
       return NextResponse.json(
         { error: "Captcha verification failed", code: "captcha_failed" },
@@ -44,22 +44,23 @@ export async function POST(request: Request) {
       );
     }
 
-    if (!name || !firstName || !email || !message) {
-      return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
+    const parsed = parseContactFormBody(body);
+    if (!parsed.success) {
+      return NextResponse.json(
+        { error: "Invalid form data", code: "validation_failed" },
+        { status: 400 },
+      );
     }
 
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-      return NextResponse.json({ error: "Invalid email" }, { status: 400 });
-    }
+    const { name, firstName, email, phone, message } = parsed.data;
 
-    const safeName = escapeHtml(String(name));
-    const safeFirstName = escapeHtml(String(firstName));
-    const safeEmail = escapeHtml(String(email));
-    const safePhone = phone ? escapeHtml(String(phone)) : "–";
-    const safeMessage = escapeHtml(String(message));
+    const safeName = escapeHtml(name);
+    const safeFirstName = escapeHtml(firstName);
+    const safeEmail = escapeHtml(email);
+    const safePhone = phone ? escapeHtml(phone) : "–";
+    const safeMessage = escapeHtml(message);
 
-    const subject = `Kontaktanfrage von ${String(firstName)} ${String(name)}`;
+    const subject = `Kontaktanfrage von ${firstName} ${name}`;
     const htmlBody = `
       <h2>Neue Kontaktanfrage über graewe.com</h2>
       <table style="border-collapse:collapse;font-family:Arial,sans-serif;">
@@ -77,7 +78,7 @@ export async function POST(request: Request) {
     const sendResult = await sendContactEmail({
       to,
       from,
-      replyTo: String(email),
+      replyTo: email,
       subject,
       html: htmlBody,
     });

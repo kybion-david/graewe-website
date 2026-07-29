@@ -262,6 +262,8 @@
     "phone": "Telefon",
     "message": "Nachricht",
     "requiredField": "Pflichtfeld",
+    "fieldRequired": "Dieses Feld ist erforderlich.",
+    "emailInvalid": "Bitte geben Sie eine gültige E-Mail-Adresse ein.",
     "submit": "Absenden",
     "successMessage": "Ihre Nachricht wurde erfolgreich gesendet.",
     "errorMessage": "Es ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.",
