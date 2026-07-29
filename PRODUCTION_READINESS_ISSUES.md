@@ -317,15 +317,15 @@ Recorded so nobody re-audits them:
 ---
 
 ### ISSUE-049 — Product lightbox is not a real dialog
-- **Status:** Open
+- **Status:** Done — lightbox is `role="dialog" aria-modal` with `useDismissibleOverlay` (Escape, focus trap, focus return), body scroll lock, bottom nav controls (no overlap at 320px), and swipe navigation; `lightboxAria` in all 5 locales.
 - **Category:** A11y / Mobile
 - **Problem:** The gallery lightbox is a plain `div` overlay: no `role="dialog"` / `aria-modal`, no focus trap, no `Escape` handler, no body scroll lock — so on a phone the page scrolls behind the open image and there is no keyboard dismissal. No swipe gesture either, and the prev/next buttons sit at `left-4`/`right-4` over the image on narrow screens.
 - **Evidence:** `src/components/products/ProductDetailContent.tsx` — `grep` for `role="dialog"|aria-modal|Escape` returns nothing; the overlay and its controls are at `:105-140`.
 - **Likely files:** `src/components/products/ProductDetailContent.tsx`
 - **Acceptance criteria:**
-  - [ ] `role="dialog" aria-modal="true"` with an accessible name; focus moves in on open, returns to the thumbnail on close.
-  - [ ] `Escape` closes; focus trapped; body scroll locked.
-  - [ ] Controls do not overlap image content at 320 px; swipe navigation on touch.
+  - [x] `role="dialog" aria-modal="true"` with an accessible name; focus moves in on open, returns to the thumbnail on close.
+  - [x] `Escape` closes; focus trapped; body scroll locked.
+  - [x] Controls do not overlap image content at 320 px; swipe navigation on touch.
 
 ---
 

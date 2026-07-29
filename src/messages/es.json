@@ -705,7 +705,8 @@
     "close": "Cerrar",
     "previousImage": "Imagen anterior",
     "nextImage": "Imagen siguiente",
-    "gallery": "Galería"
+    "gallery": "Galería",
+    "lightboxAria": "Galería de imágenes"
   },
   "notFound": {
     "title": "Página no encontrada",
