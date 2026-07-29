@@ -340,14 +340,18 @@ Recorded so nobody re-audits them:
   The content server has rejected the request with: BadRequest
   Reason: This Static Web App already has the maximum number of staging environments
   ```
-  `infra/variables.tf` defaults `swa_sku_tier` to `Free` (commit `0dba437`), which caps staging environments at a small number, and the environments from PRs #3–#33 were never reclaimed. `deploy.yml` does have a `close_pull_request` job, but it only fires on `pull_request: closed` — environments from PRs closed before that job existed are still occupying slots. A permanently red check on every PR is how real deploy failures get missed.
+  `infra/variables.tf` defaults `swa_sku_tier` to `Free` (commit `0dba437`), which caps **concurrent** staging environments at a small number (3 on Free).
+
+  **The teardown mechanism does work** — verified on runs `30482461415` and `30483207703`, where `deploy.yml`'s `close_pull_request` job reported `Close PR = success` on merge. So this is *not* a backlog of orphaned environments; it is a concurrency cap. Do not go hunting for stale environments to reclaim.
+
+  The practical consequence is that the cap is reached whenever enough PRs are open at once, and every affected PR then shows a red `Deploy` check — which is how a real deploy failure gets waved through. Decide whether the Free SKU is right for a repo with this many parallel agents.
 - **Evidence:** `.github/workflows/deploy.yml` `deploy` job; `next.config.ts`; Oryx warning in run `30480939032`; `next start` warning reproduced locally.
 - **Likely files:** `.github/workflows/deploy.yml`, `next.config.ts`, `staticwebapp.config.json`, `playwright.config.ts`, `infra/DNS_CUTOVER.md`
 - **Acceptance criteria:**
   - [ ] A staging deploy verified end-to-end **on Azure**: `/` → `/de`, a locale switch, `POST /api/contact`, and a legacy `?tx_tanjoboffers_jobdetail[job]=9` redirect.
   - [ ] `playwright.config.ts` `webServer` and the documented production command use `node .next/standalone/server.js`.
   - [ ] `Strict-Transport-Security` added to `globalHeaders`.
-  - [ ] Stale SWA staging environments reclaimed (or the SKU raised) so the PR `Deploy` check goes green and stays meaningful.
+  - [ ] The PR `Deploy` check is green under normal parallel load — either by raising `swa_sku_tier` above `Free`, or by capping how many PRs run preview deploys — so a red check means something again.
   - [ ] Deploy method documented so the next agent need not re-derive it.
 
 ---
