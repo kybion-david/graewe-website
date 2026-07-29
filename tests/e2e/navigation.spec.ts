@@ -44,6 +44,17 @@ test.describe("Navigation", () => {
     await expect(page.locator("h1")).toContainText("Impressum");
   });
 
+  test("impressum and privacy are localized for EN", async ({ page }) => {
+    await page.goto("/en/impressum");
+    await expect(page.locator("h1")).toContainText("Legal Notice");
+    await expect(page.getByRole("heading", { name: "Address" })).toBeVisible();
+    await page.goto("/en/datenschutz");
+    await expect(page.locator("h1")).toContainText("Privacy Policy");
+    await expect(
+      page.getByText("legally binding text", { exact: false }),
+    ).toBeVisible();
+  });
+
   test("can navigate to HTML sitemap", async ({ page }) => {
     await page.goto("/de/sitemap");
     await expect(page.locator("h1")).toContainText("Sitemap");

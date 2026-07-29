@@ -42,7 +42,7 @@ Old site checked live on graewe.com.
 | HTML Sitemap / Cookies pages | Present (essential-cookies notice; no banner) |
 | Multi-language **URL** parity | German slugs canonical; old translated paths **301** |
 | Redirects for cutover | Path + news/job query redirects in place |
-| Legal pages localized | DE body only |
+| Legal pages localized | All 5 locales (DE binding) |
 | Social YouTube link | Fixed (Graewemachines) |
 
 ---
@@ -231,14 +231,15 @@ Old site checked live on graewe.com.
 ---
 
 ### ISSUE-012 — Impressum & Datenschutz not localized
-- **Status:** Open
+- **Status:** Done
 - **Category:** i18n / Legal / compliance
 - **Problem:** Legal page bodies are hardcoded German. Visiting `/fr/impressum` or `/en/impressum` still shows German sections (“Anschrift”, etc.). Live site provides localized legal/nav paths (`/en/imprint`, `/en/data-privacy`, `/fr/mentions-legales`, …).
 - **Likely files:** `src/app/[locale]/impressum/page.tsx`, `src/app/[locale]/datenschutz/page.tsx`, `src/messages/*.json`.
+- **Done note:** Moved imprint/privacy body copy into `imprintPage` / `privacyPage` message namespaces for all five locales; non-DE pages note that DE is legally binding. Legacy `/en/imprint`, `/en/data-privacy`, `/fr/mentions-legales`, `/es/data-privacy` redirects already covered by ISSUE-004/005.
 - **Acceptance criteria:**
-  - [ ] EN (minimum) legal pages readable in English.
-  - [ ] FR/RU/ES either translated or clearly link to the binding DE version with explanation.
-  - [ ] Old localized legal URLs redirect (ties to ISSUE-004/005).
+  - [x] EN (minimum) legal pages readable in English.
+  - [x] FR/RU/ES either translated or clearly link to the binding DE version with explanation.
+  - [x] Old localized legal URLs redirect (ties to ISSUE-004/005).
 
 ---
 
