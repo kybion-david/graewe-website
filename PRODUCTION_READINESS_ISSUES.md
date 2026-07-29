@@ -257,7 +257,7 @@ Recorded so nobody re-audits them:
 ---
 
 ### ISSUE-046 — Footer legal links fail contrast; `text-grey-400` fails on light surfaces
-- **Status:** Open
+- **Status:** Done
 - **Category:** A11y
 - **Problem:** Two token misuses produce sub-AA contrast.
   1. `text-grey-500` (`#6b6b6b`) on `bg-bg-footer` (`#2a2a2a`) ≈ **2.8:1** — the copyright line and the Kontakt / Impressum / Datenschutz / Sitemap / Cookies links, at `text-xs`. Needs 4.5:1.
@@ -265,9 +265,10 @@ Recorded so nobody re-audits them:
 - **Evidence:** tokens unchanged at `src/app/globals.css:18-19, 24`. Usages: `Footer.tsx:163, 167-171` (`text-grey-500`); `MobileMenu.tsx:60, 75`, `Header.tsx:149, 163, 180`, `ProductDetailContent.tsx:68` (`text-grey-400`). Measured 19–23 interactive elements under 24 px tall per page, footer links at `358x20`.
 - **Likely files:** `src/app/globals.css`, `src/components/layout/Footer.tsx`, `src/components/layout/MobileMenu.tsx`, `src/components/layout/Header.tsx`
 - **Acceptance criteria:**
-  - [ ] All body and link text reaches ≥4.5:1 against its actual background (use a checker, not the eye).
-  - [ ] Fix at token level where possible; update `SPEC.md` §5 if token values change.
-  - [ ] Footer legal links are ≥24 px tall.
+  - [x] All body and link text reaches ≥4.5:1 against its actual background (use a checker, not the eye).
+  - [x] Fix at token level where possible; update `SPEC.md` §5 if token values change.
+  - [x] Footer legal links are ≥24 px tall.
+- **Note:** Done — footer copyright/legal links use `text-grey-400` on `bg-bg-footer` (~5.4:1) with `min-h-6`; light-surface section labels use `text-text-muted` (~5.7:1). SPEC §5 documents the light/dark muted-text rule (token values unchanged — one grey cannot pass AA on both white and footer).
 
 ---
 

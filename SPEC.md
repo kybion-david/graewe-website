@@ -144,7 +144,8 @@ From `globals.css` / Tailwind theme:
 
 - Accent / CTAs: `bg-accent` + `text-dark` (never white text on yellow — WCAG)
 - Headings: `text-dark` (not inventing `text-primary`)
-- Muted text: `text-text-muted`
+- Muted text on light surfaces: `text-text-muted` (or `text-grey-500`) — never `text-grey-400` (fails AA on white)
+- Muted text on dark surfaces (`bg-bg-footer`): `text-grey-400` — never `text-grey-500` (fails AA on footer)
 - Surfaces: `bg-grey-100`, `bg-bg-hero`, `bg-bg-footer`
 - Reuse `src/components/ui/*` (`Button`, `Card`, `SectionHeader`, …) before creating one-offs
 

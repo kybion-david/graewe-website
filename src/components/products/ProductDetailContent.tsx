@@ -67,7 +67,7 @@ export function ProductDetailContent({
 
       {images.length > 0 && (
         <div className="mt-10">
-          <p className="text-xs font-bold text-grey-400 uppercase tracking-widest mb-4">
+          <p className="text-xs font-bold text-text-muted uppercase tracking-widest mb-4">
             {t("gallery")}
           </p>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
