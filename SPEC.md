@@ -53,6 +53,8 @@ public/images/        # Static assets by section
 | Product body content | `src/lib/productContent.ts` |
 | Product images map | `src/lib/productImages.ts` |
 | Calculator math | `src/lib/calculator.ts` (pure functions) |
+| Job openings (slugs / TYPO3 IDs) | `src/lib/jobs.ts` |
+| Job copy (titles, bodies, apply text) | `src/messages/{locale}.json` → `jobs.*` |
 
 Do **not** hardcode user-facing strings in components. Add keys to **all five** locale files.
 
@@ -93,7 +95,7 @@ Copy `.env.example` → `.env.local`. Without `RESEND_API_KEY`, contact submissi
 
 ## 8. Current status snapshot
 
-- Pages: home, unternehmen (4), produkte (3 categories + 19 products), success stories, aktuelles (+ articles), produktrechner, gebrauchtmaschinen, downloads, team, kontakt, stellenanzeigen, impressum, datenschutz
+- Pages: home, unternehmen (4), produkte (3 categories + 19 products), success stories, aktuelles (+ articles), produktrechner, gebrauchtmaschinen, downloads, team, kontakt, stellenanzeigen (+ job detail pages), impressum, datenschutz
 - Interactive: Produktrechner (2 modes), contact form (Resend)
 - SEO: `generateMetadata`, Open Graph, JSON-LD, `next-sitemap`
 - A11y: skip link, ARIA on menu/language switcher, focus-visible, contrast-safe yellow buttons

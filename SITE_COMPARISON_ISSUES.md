@@ -31,7 +31,7 @@ Old site checked live on graewe.com.
 | Area | New site vs graewe.com |
 |------|-------------------------|
 | Route / page structure (DE) | Mostly present |
-| Jobs (Stellenanzeigen) | **Missing live openings** |
+| Jobs (Stellenanzeigen) | Present (3 openings + detail pages) |
 | News article bodies | **Placeholders only** |
 | Homepage news teaser | **Always empty** |
 | Product DE/EN copy | Mostly good |
@@ -50,7 +50,8 @@ Old site checked live on graewe.com.
 ## P0 — Launch blockers
 
 ### ISSUE-001 — Active job openings missing
-- **Status:** Open
+- **Status:** Done
+- **Note:** Migrated 3 openings with listing + `/stellenanzeigen/[slug]` details, HR/apply copy in all 5 locales (`src/lib/jobs.ts` + `jobs.*` messages); TYPO3 `stellendetails?job=` IDs 9/8/42 permanently redirect. Online portal left to ISSUE-022 (email apply path only).
 - **Category:** Content gap / Missing feature
 - **Problem:** Live site lists 3 open positions with detail pages and HR contact. New site only shows empty state: “Derzeit sind keine Stellenanzeigen verfügbar.”
 - **Evidence (old):** https://www.graewe.com/stellenanzeigen  
@@ -62,11 +63,11 @@ Old site checked live on graewe.com.
 - **Evidence (new):** `src/app/[locale]/stellenanzeigen/page.tsx` — hardcoded empty state via `jobs.noJobs`.
 - **Likely files:** `src/app/[locale]/stellenanzeigen/page.tsx`, new `src/lib/jobs.ts` or content JSON, `src/messages/*.json`, optional `/stellenanzeigen/[slug]/page.tsx`, redirects in `staticwebapp.config.json`.
 - **Acceptance criteria:**
-  - [ ] DE page shows intro/benefits content comparable to live site.
-  - [ ] All three (or current) openings listed with working detail pages or in-page sections.
-  - [ ] HR contact and application instructions present.
-  - [ ] EN/FR/RU/ES at least show titles + how to apply (full translation preferred).
-  - [ ] Empty state only when there are truly zero jobs.
+  - [x] DE page shows intro/benefits content comparable to live site.
+  - [x] All three (or current) openings listed with working detail pages or in-page sections.
+  - [x] HR contact and application instructions present.
+  - [x] EN/FR/RU/ES at least show titles + how to apply (full translation preferred).
+  - [x] Empty state only when there are truly zero jobs.
 
 ---
 
