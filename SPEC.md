@@ -52,7 +52,7 @@ public/images/        # Static assets by section
 | Product tree / slugs | `src/lib/products.ts` |
 | Product body content | `src/lib/productContent/` (`de\|en\|fr\|ru\|es.json` + `index.ts`) |
 | Product images map | `src/lib/productImages.ts` |
-| Calculator math | `src/lib/calculator.ts` (pure functions) |
+| Calculator math | `src/lib/calculator.ts` (pure; golden-tested vs live graewe.com) |
 | Job openings (slugs / TYPO3 IDs) | `src/lib/jobs.ts` |
 | Job copy (titles, bodies, apply text) | `src/messages/{locale}.json` → `jobs.*` (email-only apply; no on-site application form) |
 | Imprint / privacy page bodies | `src/messages/{locale}.json` → `imprintPage.*` / `privacyPage.*` |

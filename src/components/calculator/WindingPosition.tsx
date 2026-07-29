@@ -186,7 +186,10 @@ function ResultSection({
       <h4 className="font-bold text-dark mb-4">{title}</h4>
       <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
         <ResultItem label={t("layerCount")} value={result.layerCount} />
-        <ResultItem label={t("pipesLastLayer")} value={result.pipesLastLayer} />
+        <ResultItem
+          label={t("pipesLastLayer")}
+          value={`${result.pipesLastLayer} / ${result.pipesOnFullLayer}`}
+        />
         <ResultItem label={t("rotationCount")} value={result.rotationCount} />
         <ResultItem label={t("bundleWidth")} value={`${result.bundleWidth} mm`} />
         <ResultItem label={t("bundleHeight")} value={`${result.bundleHeight} mm`} />

@@ -8,6 +8,172 @@ import {
   validateWindingLengthInput,
 } from "@/lib/calculator";
 
+/**
+ * Golden samples captured from live graewe.com Produktrechner
+ * (TYPO3 `Graewe_Productcalculator`, 2026-07-29).
+ *
+ * Mapping:
+ * - Uneven = Wickelbild / Ungleiche Lagen (live BB1 / WL1)
+ * - Even   = Wickelbild / Gleiche Lagen versetzt (live BB05 / WL05)
+ */
+const LIVE_WEP_SAMPLES = [
+  {
+    input: { pipeDiameter: 20, length: 100, innerDiameter: 300, pipesPerLayer: 10 },
+    uneven: {
+      layerCount: 8,
+      pipesLastLayer: 6.25,
+      pipesOnFullLayer: 9,
+      rotationCount: 73.25,
+      bundleWidth: 200,
+      bundleHeight: 141,
+      outerDiameter: 582,
+    },
+    even: {
+      layerCount: 8,
+      pipesLastLayer: 4,
+      pipesOnFullLayer: 10,
+      rotationCount: 74,
+      bundleWidth: 210,
+      bundleHeight: 141,
+      outerDiameter: 582,
+    },
+  },
+  {
+    input: { pipeDiameter: 25, length: 50, innerDiameter: 400, pipesPerLayer: 8 },
+    uneven: {
+      layerCount: 5,
+      pipesLastLayer: 2.25,
+      pipesOnFullLayer: 8,
+      rotationCount: 32.25,
+      bundleWidth: 200,
+      bundleHeight: 112,
+      outerDiameter: 623,
+    },
+    even: {
+      layerCount: 5,
+      pipesLastLayer: 0.5,
+      pipesOnFullLayer: 8,
+      rotationCount: 32.5,
+      bundleWidth: 212.5,
+      bundleHeight: 112,
+      outerDiameter: 623,
+    },
+  },
+  {
+    input: { pipeDiameter: 16, length: 200, innerDiameter: 250, pipesPerLayer: 12 },
+    uneven: {
+      layerCount: 13,
+      pipesLastLayer: 10.25,
+      pipesOnFullLayer: 12,
+      rotationCount: 148.25,
+      bundleWidth: 192,
+      bundleHeight: 182,
+      outerDiameter: 615,
+    },
+    even: {
+      layerCount: 13,
+      pipesLastLayer: 5.75,
+      pipesOnFullLayer: 12,
+      rotationCount: 149.75,
+      bundleWidth: 200,
+      bundleHeight: 182,
+      outerDiameter: 615,
+    },
+  },
+  {
+    input: { pipeDiameter: 32, length: 75, innerDiameter: 500, pipesPerLayer: 6 },
+    uneven: {
+      layerCount: 7,
+      pipesLastLayer: 2.25,
+      pipesOnFullLayer: 6,
+      rotationCount: 35.25,
+      bundleWidth: 192,
+      bundleHeight: 198,
+      outerDiameter: 897,
+    },
+    even: {
+      layerCount: 6,
+      pipesLastLayer: 5.75,
+      pipesOnFullLayer: 6,
+      rotationCount: 35.75,
+      bundleWidth: 208,
+      bundleHeight: 171,
+      outerDiameter: 841,
+    },
+  },
+] as const;
+
+const LIVE_WL_SAMPLES = [
+  {
+    input: {
+      pipeDiameter: 20,
+      innerDiameter: 300,
+      outerDiameter: 500,
+      bundleWidth: 200,
+    },
+    uneven: { windingLength: 58.71, outerDiameter: 479, bundleWidth: 200 },
+    even: { windingLength: 55.041, outerDiameter: 479, bundleWidth: 190 },
+  },
+  {
+    input: {
+      pipeDiameter: 25,
+      innerDiameter: 400,
+      outerDiameter: 700,
+      bundleWidth: 250,
+    },
+    uneven: { windingLength: 95.297, outerDiameter: 667, bundleWidth: 250 },
+    even: { windingLength: 90.475, outerDiameter: 667, bundleWidth: 237.5 },
+  },
+  {
+    input: {
+      pipeDiameter: 16,
+      innerDiameter: 250,
+      outerDiameter: 450,
+      bundleWidth: 192,
+    },
+    uneven: { windingLength: 88.855, outerDiameter: 448, bundleWidth: 192 },
+    even: { windingLength: 84.467, outerDiameter: 448, bundleWidth: 184 },
+  },
+  {
+    input: {
+      pipeDiameter: 32,
+      innerDiameter: 500,
+      outerDiameter: 800,
+      bundleWidth: 224,
+    },
+    uneven: { windingLength: 66.655, outerDiameter: 786, bundleWidth: 224 },
+    even: { windingLength: 60.595, outerDiameter: 786, bundleWidth: 208 },
+  },
+] as const;
+
+describe("Calculator - live site parity (Wickelendposition)", () => {
+  it.each(LIVE_WEP_SAMPLES)(
+    "matches live outputs for d=$input.pipeDiameter L=$input.length",
+    ({ input, uneven, even }) => {
+      expect(calculateWindingPositionUneven(input)).toEqual(uneven);
+      expect(calculateWindingPositionEven(input)).toEqual(even);
+    }
+  );
+});
+
+describe("Calculator - live site parity (Wickellänge)", () => {
+  it.each(LIVE_WL_SAMPLES)(
+    "matches live outputs for d=$input.pipeDiameter OD=$input.outerDiameter",
+    ({ input, uneven, even }) => {
+      const unevenResult = calculateWindingLengthUneven(input);
+      const evenResult = calculateWindingLengthEven(input);
+
+      expect(unevenResult.outerDiameter).toBe(uneven.outerDiameter);
+      expect(unevenResult.bundleWidth).toBe(uneven.bundleWidth);
+      expect(unevenResult.windingLength).toBeCloseTo(uneven.windingLength, 3);
+
+      expect(evenResult.outerDiameter).toBe(even.outerDiameter);
+      expect(evenResult.bundleWidth).toBe(even.bundleWidth);
+      expect(evenResult.windingLength).toBeCloseTo(even.windingLength, 3);
+    }
+  );
+});
+
 describe("Calculator - Winding Position (Uneven Layers)", () => {
   it("calculates basic winding position for uneven layers", () => {
     const result = calculateWindingPositionUneven({
@@ -25,7 +191,7 @@ describe("Calculator - Winding Position (Uneven Layers)", () => {
     expect(result.outerDiameter).toBeGreaterThan(result.bundleHeight);
   });
 
-  it("outer diameter is inner diameter plus twice the bundle height", () => {
+  it("outer diameter uses hex-packed radius from inner diameter", () => {
     const result = calculateWindingPositionUneven({
       pipeDiameter: 25,
       length: 50,
@@ -33,8 +199,11 @@ describe("Calculator - Winding Position (Uneven Layers)", () => {
       pipesPerLayer: 8,
     });
 
-    const expectedOD = 400 + 2 * result.layerCount * 25;
-    expect(result.outerDiameter).toBeCloseTo(expectedOD, 0);
+    const offsetFactor = Math.sqrt(3) / 2;
+    const expectedOD = Math.round(
+      400 + 2 * (25 + (result.layerCount - 1) * 25 * offsetFactor)
+    );
+    expect(result.outerDiameter).toBe(expectedOD);
   });
 
   it("bundle width equals pipes per layer times pipe diameter", () => {
@@ -45,7 +214,7 @@ describe("Calculator - Winding Position (Uneven Layers)", () => {
       pipesPerLayer: 12,
     });
 
-    expect(result.bundleWidth).toBeCloseTo(12 * 16, 0);
+    expect(result.bundleWidth).toBe(12 * 16);
   });
 });
 
@@ -73,8 +242,21 @@ describe("Calculator - Winding Position (Even Layers)", () => {
     });
 
     const offsetFactor = Math.sqrt(3) / 2;
-    const expectedHeight = 20 + (result.layerCount - 1) * 20 * offsetFactor;
-    expect(result.bundleHeight).toBeCloseTo(expectedHeight, 0);
+    const expectedHeight = Math.round(
+      20 + (result.layerCount - 1) * 20 * offsetFactor
+    );
+    expect(result.bundleHeight).toBe(expectedHeight);
+  });
+
+  it("bundle width includes half-pipe offset", () => {
+    const result = calculateWindingPositionEven({
+      pipeDiameter: 20,
+      length: 100,
+      innerDiameter: 300,
+      pipesPerLayer: 10,
+    });
+
+    expect(result.bundleWidth).toBe(20 * (10 + 0.5));
   });
 });
 
@@ -88,11 +270,10 @@ describe("Calculator - Winding Length (Uneven)", () => {
     });
 
     expect(result.windingLength).toBeGreaterThan(0);
-    expect(result.outerDiameter).toBe(500);
     expect(result.bundleWidth).toBe(200);
   });
 
-  it("returns zero length when dimensions make no layers possible", () => {
+  it("still winds at least one layer when OD barely exceeds ID", () => {
     const result = calculateWindingLengthUneven({
       pipeDiameter: 100,
       innerDiameter: 300,
@@ -100,7 +281,7 @@ describe("Calculator - Winding Length (Uneven)", () => {
       bundleWidth: 200,
     });
 
-    expect(result.windingLength).toBe(0);
+    expect(result.windingLength).toBeGreaterThan(0);
   });
 });
 
@@ -114,11 +295,10 @@ describe("Calculator - Winding Length (Even)", () => {
     });
 
     expect(result.windingLength).toBeGreaterThan(0);
-    expect(result.outerDiameter).toBe(500);
-    expect(result.bundleWidth).toBe(200);
+    expect(result.bundleWidth).toBe(190);
   });
 
-  it("even layers produce slightly longer winding than uneven due to offset", () => {
+  it("both patterns produce positive winding lengths", () => {
     const input = {
       pipeDiameter: 20,
       innerDiameter: 300,
@@ -129,7 +309,6 @@ describe("Calculator - Winding Length (Even)", () => {
     const uneven = calculateWindingLengthUneven(input);
     const even = calculateWindingLengthEven(input);
 
-    // Both should produce positive lengths
     expect(uneven.windingLength).toBeGreaterThan(0);
     expect(even.windingLength).toBeGreaterThan(0);
   });
