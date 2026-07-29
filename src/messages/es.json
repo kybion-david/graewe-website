@@ -87,6 +87,28 @@
     }
   },
   "products": {
+    "overview": {
+      "metaTitle": "Productos",
+      "title": "Gama de productos",
+      "subtitle": "",
+      "intro": "Nuestra especialidad son las máquinas de extrusión de plásticos de alto nivel tecnológico para la extrusión de tubos, perfiles y placas.",
+      "detailsHeading": "En detalle:",
+      "detailsList": [
+        "Bañeras de vacío, calibrado y refrigeración",
+        "Tiradores de cinta y oruga",
+        "Unidades de corte",
+        "Enrolladores",
+        "Máquinas de manguitos",
+        "Máquinas de inyección de manguitos",
+        "Apiladores de placas, unidades de corte de placas",
+        "Máquinas de roscado",
+        "Máquinas de ranurado de tubos",
+        "Máquinas especiales"
+      ],
+      "usedMachinesNote": "También encontrará aquí un amplio surtido de máquinas de extrusión de segunda mano.",
+      "usedMachinesLink": "Ver máquinas usadas",
+      "exploreCategory": "Explorar categoría"
+    },
     "pipeExtrusion": {
       "title": "Extrusión de tubos",
       "description": "La extrusión de tubos y conductos es nuestra especialidad. Las aplicaciones son tan diversas como las innovaciones de nuestros clientes.",

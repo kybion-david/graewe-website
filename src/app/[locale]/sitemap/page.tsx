@@ -95,7 +95,12 @@ export default async function SitemapPage({
         <section>
           <h2 className="text-lg font-bold text-dark mb-3 flex items-center gap-2">
             <span className="w-1 h-5 bg-accent rounded-full" />
-            {tNav("products")}
+            <Link
+              href="/produkte"
+              className="hover:text-accent transition-colors"
+            >
+              {tNav("products")}
+            </Link>
           </h2>
           <div className="space-y-6">
             {categories.map((category) => (

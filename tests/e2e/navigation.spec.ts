@@ -14,6 +14,10 @@ test.describe("Navigation", () => {
   });
 
   test("can navigate to product pages", async ({ page }) => {
+    await page.goto("/de/produkte");
+    await expect(page).toHaveURL(/\/de\/produkte\/?$/);
+    await expect(page.locator("h1")).toBeVisible();
+
     await page.goto("/de/produkte/rohrextrusion");
     await expect(page.locator("h1")).toContainText("Rohrextrusion");
   });

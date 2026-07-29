@@ -22,9 +22,16 @@ export function ProductSidebar() {
     <aside className="w-full lg:w-72 shrink-0">
       <nav className="sticky top-24 space-y-1">
         <div className="bg-grey-100 rounded-xl p-5">
-          <p className="text-xs font-bold text-grey-400 uppercase tracking-widest mb-4">
+          <Link
+            href="/produkte"
+            className={`block text-xs font-bold uppercase tracking-widest mb-4 transition-colors ${
+              pathname === "/produkte"
+                ? "text-dark"
+                : "text-grey-400 hover:text-dark"
+            }`}
+          >
             {tNav("products")}
-          </p>
+          </Link>
 
           {categories.map(({ key, navKey }) => {
             const isCategoryActive = pathname.includes(`/produkte/${key}`);

@@ -29,6 +29,18 @@ test.describe("Legacy redirects", () => {
     expect(page.url()).toContain("/de/aktuelles/jubilaeum");
   });
 
+  test("product overview hubs redirect to locale produkte page", async ({
+    page,
+  }) => {
+    await page.goto("/produkte", { waitUntil: "networkidle" });
+    expect(page.url()).toMatch(/\/de\/produkte\/?$/);
+    await expect(page.locator("h1")).toBeVisible();
+
+    await page.goto("/en/products", { waitUntil: "networkidle" });
+    expect(page.url()).toMatch(/\/en\/produkte\/?$/);
+    await expect(page.locator("h1")).toBeVisible();
+  });
+
   test("typo calibration slug redirects to corrected path", async ({ page }) => {
     await page.goto("/produkte/rohrextrusion/kalibier-und-kuehlbaeder", {
       waitUntil: "networkidle",
