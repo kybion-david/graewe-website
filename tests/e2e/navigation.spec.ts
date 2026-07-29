@@ -33,6 +33,29 @@ test.describe("Navigation", () => {
     await expect(page.locator("form")).toBeVisible();
   });
 
+  test("contact form labels are localized (no DE English regression)", async ({
+    page,
+  }) => {
+    await page.goto("/de/kontakt");
+    const form = page.locator("form");
+    await expect(form.getByLabel(/Nachname/)).toBeVisible();
+    await expect(form.getByLabel(/Vorname/)).toBeVisible();
+    await expect(form.getByLabel(/E-Mail/)).toBeVisible();
+    await expect(form.getByLabel(/^Telefon$/)).toBeVisible();
+    await expect(form.getByLabel(/Nachricht/)).toBeVisible();
+    await expect(form.getByText("Pflichtfeld")).toBeVisible();
+    await expect(form.getByText("First Name")).toHaveCount(0);
+    await expect(form.getByText("Required field")).toHaveCount(0);
+
+    await page.goto("/en/kontakt");
+    const enForm = page.locator("form");
+    await expect(enForm.getByLabel(/Last Name/)).toBeVisible();
+    await expect(enForm.getByLabel(/First Name/)).toBeVisible();
+    await expect(enForm.getByLabel(/^Phone$/)).toBeVisible();
+    await expect(enForm.getByLabel(/^Message$/)).toBeVisible();
+    await expect(enForm.getByText("Required field")).toBeVisible();
+  });
+
   test("can navigate to calculator page", async ({ page }) => {
     await page.goto("/de/produktrechner");
     await expect(page.locator("h1")).toContainText("Produktrechner");

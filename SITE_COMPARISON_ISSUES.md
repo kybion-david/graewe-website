@@ -386,13 +386,14 @@ Old site checked live on graewe.com.
 ---
 
 ### ISSUE-025 — Contact form labels partially English on old DE page — don’t regress
-- **Status:** Open
+- **Status:** Done
+- **Note:** DE uses Nachname/Vorname/Telefon/Nachricht/Pflichtfeld (not old-site English mix); EN/FR/RU/ES verified; required `*` markers consistent + `aria-required`/label wiring; unit + e2e regression coverage.
 - **Category:** UX / i18n
 - **Problem:** Live DE kontakt shows mixed labels (“First Name”, “Phone”, “Message”). Rebuild should keep **proper German labels** on DE (and correct labels per locale) — improvement is fine, but verify all five locales.
 - **Likely files:** `src/messages/*.json` → `contact.*`, `ContactForm.tsx`
 - **Acceptance criteria:**
-  - [ ] DE labels fully German; EN fully English; etc.
-  - [ ] Required-field markers consistent.
+  - [x] DE labels fully German; EN fully English; etc.
+  - [x] Required-field markers consistent.
 
 ---
 

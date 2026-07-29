@@ -17,6 +17,14 @@ interface ContactFormData {
 
 const turnstileSiteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ?? "";
 
+function RequiredMark() {
+  return (
+    <span className="text-accent-dark" aria-hidden="true">
+      *
+    </span>
+  );
+}
+
 export function ContactForm() {
   const t = useTranslations("contact");
   const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
@@ -120,19 +128,25 @@ export function ContactForm() {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
-          <label className="block text-sm font-semibold text-dark mb-1.5">
-            {t("name")} <span className="text-accent-dark">*</span>
+          <label htmlFor="contact-name" className="block text-sm font-semibold text-dark mb-1.5">
+            {t("name")} <RequiredMark />
           </label>
           <input
+            id="contact-name"
+            aria-required="true"
+            autoComplete="family-name"
             {...register("name", { required: true })}
             className={errors.name ? inputError : inputNormal}
           />
         </div>
         <div>
-          <label className="block text-sm font-semibold text-dark mb-1.5">
-            {t("firstName")} <span className="text-accent-dark">*</span>
+          <label htmlFor="contact-firstName" className="block text-sm font-semibold text-dark mb-1.5">
+            {t("firstName")} <RequiredMark />
           </label>
           <input
+            id="contact-firstName"
+            aria-required="true"
+            autoComplete="given-name"
             {...register("firstName", { required: true })}
             className={errors.firstName ? inputError : inputNormal}
           />
@@ -140,33 +154,40 @@ export function ContactForm() {
       </div>
 
       <div>
-        <label className="block text-sm font-semibold text-dark mb-1.5">
-          {t("email")} <span className="text-accent-dark">*</span>
+        <label htmlFor="contact-email" className="block text-sm font-semibold text-dark mb-1.5">
+          {t("email")} <RequiredMark />
         </label>
         <input
+          id="contact-email"
           type="email"
+          aria-required="true"
+          autoComplete="email"
           {...register("email", { required: true, pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/ })}
           className={errors.email ? inputError : inputNormal}
         />
       </div>
 
       <div>
-        <label className="block text-sm font-semibold text-dark mb-1.5">
+        <label htmlFor="contact-phone" className="block text-sm font-semibold text-dark mb-1.5">
           {t("phone")}
         </label>
         <input
+          id="contact-phone"
           type="tel"
+          autoComplete="tel"
           {...register("phone")}
           className={inputNormal}
         />
       </div>
 
       <div>
-        <label className="block text-sm font-semibold text-dark mb-1.5">
-          {t("message")} <span className="text-accent-dark">*</span>
+        <label htmlFor="contact-message" className="block text-sm font-semibold text-dark mb-1.5">
+          {t("message")} <RequiredMark />
         </label>
         <textarea
+          id="contact-message"
           rows={5}
+          aria-required="true"
           {...register("message", { required: true })}
           className={`${errors.message ? inputError : inputNormal} resize-y`}
         />
@@ -175,7 +196,7 @@ export function ContactForm() {
       {turnstileSiteKey ? (
         <div>
           <p className="block text-sm font-semibold text-dark mb-1.5">
-            {t("captchaLabel")} <span className="text-accent-dark">*</span>
+            {t("captchaLabel")} <RequiredMark />
           </p>
           <TurnstileWidget
             key={turnstileResetKey}
@@ -189,7 +210,10 @@ export function ContactForm() {
       ) : null}
 
       <p className="text-xs text-text-muted">
-        <span className="text-accent-dark">*</span> {t("requiredField")}
+        <span className="text-accent-dark" aria-hidden="true">
+          *
+        </span>{" "}
+        {t("requiredField")}
       </p>
 
       {submitStatus === "success" && (
