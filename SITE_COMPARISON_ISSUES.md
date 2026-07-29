@@ -36,7 +36,7 @@ Old site checked live on graewe.com.
 | Homepage news teaser | **Always empty** |
 | Product DE/EN copy | Mostly good |
 | Product FR/RU/ES body | Falls back to German |
-| Product images | **2 galleries empty** |
+| Product images | Present (ISSUE-010 filled) |
 | Calculator | Present (2 modes) |
 | Contact form | Present; **no captcha** |
 | HTML Sitemap / Cookies pages | **Missing** |
@@ -199,18 +199,17 @@ Old site checked live on graewe.com.
 ---
 
 ### ISSUE-010 — Product galleries empty for 2 products
-- **Status:** Open
+- **Status:** Done
+- **Note:** Live pages also had no galleries. Filled `profilextrusion/extruder` with the shared extruder photo set (5 JPGs, same machines as Rohr/Platten extruder) and `plattenextrusion/sondermaschinen` with 5 GRAEWE special-machine photos scraped from sibling Sonder pages; wired in `productImages.ts`.
 - **Category:** Content gap / Bug
 - **Problem:** Image folders exist but contain **0 files**:
   - `public/images/products/profilextrusion/extruder/`
   - `public/images/products/plattenextrusion/sondermaschinen/`
 - **Evidence (new):** local product page `/de/produkte/profilextrusion/extruder` shows text only, no gallery.
-- **Likely files:** those image directories, `src/lib/productImages.ts`, scrape/copy from graewe.com product pages.
+- **Likely files:** those image folders, `src/lib/productImages.ts`, scrape/copy from graewe.com product pages.
 - **Acceptance criteria:**
-  - [ ] Both products show a gallery comparable to sibling products (≥1 real product photo; ideally 3–5).
-  - [ ] Lightbox still works.
-
----
+  - [x] Both products show a gallery comparable to sibling products (≥1 real product photo; ideally 3–5).
+  - [x] Lightbox still works.
 
 ### ISSUE-011 — Product detail body missing for FR / RU / ES
 - **Status:** Open

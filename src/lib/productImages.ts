@@ -36,7 +36,7 @@ export const productImages: Record<string, Record<string, string[]>> = {
     sondermaschinen: galleryJpgs("rohrextrusion", "sondermaschinen", 4),
   },
   profilextrusion: {
-    extruder: [],
+    extruder: galleryJpgs("profilextrusion", "extruder", 5),
     kalibriertische: galleryPngs("profilextrusion", "kalibriertische", 4),
     abzuege: galleryJpgs("profilextrusion", "abzuege", 4),
     trenneinrichtungen: galleryJpgs("profilextrusion", "trenneinrichtungen", 3),
@@ -52,7 +52,7 @@ export const productImages: Record<string, Record<string, string[]>> = {
     ]),
     "quertrenn-einrichtungen": galleryJpgs("plattenextrusion", "quertrenn-einrichtungen", 3),
     plattenstapler: galleryPngs("plattenextrusion", "plattenstapler", 3),
-    sondermaschinen: [],
+    sondermaschinen: galleryJpgs("plattenextrusion", "sondermaschinen", 5),
   },
 };
 
