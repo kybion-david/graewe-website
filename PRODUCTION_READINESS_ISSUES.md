@@ -335,12 +335,19 @@ Recorded so nobody re-audits them:
 - **Problem:** `next.config.ts` sets `output: "standalone"` and the app needs SSR — a proxy, a dynamic `/api/contact` route, and dynamic query-param redirects. The deploy workflow hands the repo to `Azure/static-web-apps-deploy@v1` with `app_location: "/"`, `api_location: ""`, `output_location: ""`, letting Oryx run its own build. The workflow is green, but **green means "the action uploaded something"** — nobody has confirmed the deployed site actually runs the proxy or the API route. The Oryx log even warns: `For Next.js apps, staticwebapp.config.json features are not fully supported yet!`
 - **Note 1:** `npm run start` (`next start`) is **the wrong entry point for this config**, and Next says so: `⚠ "next start" does not work with "output: standalone" configuration. Use "node .next/standalone/server.js" instead.` It serves pages anyway, which is why nobody has noticed — but `playwright.config.ts:21` uses `npm run build && npm run start` as its `webServer`, so **e2e does not exercise the artifact that ships**.
 - **Note 2:** `staticwebapp.config.json` sets `globalHeaders` but no `Strict-Transport-Security`. Add it once HTTPS on the custom domain is confirmed.
+- **Note 3 — PR preview deploys are currently broken by quota, so every PR shows a red `Deploy` check:**
+  ```
+  The content server has rejected the request with: BadRequest
+  Reason: This Static Web App already has the maximum number of staging environments
+  ```
+  `infra/variables.tf` defaults `swa_sku_tier` to `Free` (commit `0dba437`), which caps staging environments at a small number, and the environments from PRs #3–#33 were never reclaimed. `deploy.yml` does have a `close_pull_request` job, but it only fires on `pull_request: closed` — environments from PRs closed before that job existed are still occupying slots. A permanently red check on every PR is how real deploy failures get missed.
 - **Evidence:** `.github/workflows/deploy.yml` `deploy` job; `next.config.ts`; Oryx warning in run `30480939032`; `next start` warning reproduced locally.
 - **Likely files:** `.github/workflows/deploy.yml`, `next.config.ts`, `staticwebapp.config.json`, `playwright.config.ts`, `infra/DNS_CUTOVER.md`
 - **Acceptance criteria:**
   - [ ] A staging deploy verified end-to-end **on Azure**: `/` → `/de`, a locale switch, `POST /api/contact`, and a legacy `?tx_tanjoboffers_jobdetail[job]=9` redirect.
   - [ ] `playwright.config.ts` `webServer` and the documented production command use `node .next/standalone/server.js`.
   - [ ] `Strict-Transport-Security` added to `globalHeaders`.
+  - [ ] Stale SWA staging environments reclaimed (or the SKU raised) so the PR `Deploy` check goes green and stays meaningful.
   - [ ] Deploy method documented so the next agent need not re-derive it.
 
 ---
