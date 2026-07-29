@@ -87,6 +87,28 @@
     }
   },
   "products": {
+    "overview": {
+      "metaTitle": "Produits",
+      "title": "Graewe développe des techniques d’extrusion innovatrices pour l’industrie du plastique.",
+      "subtitle": "",
+      "intro": "Nous sommes spécialisés dans les machines et dispositifs d’extrusion à haute technologie : extrusion de tubes, extrusion de profilés et extrusion de plaques.",
+      "detailsHeading": "Dans le détail :",
+      "detailsList": [
+        "Bacs de calibrage sous vide et de refroidissement",
+        "Tireuses à bandes et à chenilles",
+        "Unités de coupe",
+        "Enrouleurs",
+        "Tulipeuses",
+        "Machines à surinjecter les manchons",
+        "Palettiseurs, coupes pour plaques",
+        "Fileteuses",
+        "Crépineuses",
+        "Constructions spéciales"
+      ],
+      "usedMachinesNote": "De plus vous trouverez chez nous un large assortiment de machines de seconde main pour l’extrusion.",
+      "usedMachinesLink": "Voir les machines d’occasion",
+      "exploreCategory": "Voir la catégorie"
+    },
     "pipeExtrusion": {
       "title": "Extrusion de tubes",
       "description": "L’extrusion de tubes et de canalisations est notre cœur de métier. Les applications sont aussi diverses que les innovations de nos clients.",

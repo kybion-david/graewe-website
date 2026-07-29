@@ -22,6 +22,7 @@ const DE_HUB_PATHS = [
   "unternehmen/was-macht-graewe",
   "unternehmen/wofuer-steht-graewe",
   "unternehmen/die-graewe-gruppe",
+  "produkte",
   "produkte/rohrextrusion",
   "produkte/profilextrusion",
   "produkte/plattenextrusion",
@@ -45,7 +46,7 @@ const EN_LIKE_PATH_MAP: Record<string, string> = {
   "company/what-does-graewe-do": "unternehmen/was-macht-graewe",
   "company/what-does-graewe-stand-for": "unternehmen/wofuer-steht-graewe",
   "company/graewe-group": "unternehmen/die-graewe-gruppe",
-  products: "",
+  products: "produkte",
   "products/pipe-extrusion": "produkte/rohrextrusion",
   "products/pipe-extrusion/pipe-extrusion-extruder":
     "produkte/rohrextrusion/extruder",
@@ -103,7 +104,7 @@ const FR_PATH_MAP: Record<string, string> = {
   "entreprise/que-fabrique-graewe": "unternehmen/was-macht-graewe",
   "entreprise/que-vous-apporte-graewe": "unternehmen/wofuer-steht-graewe",
   "entreprise/le-groupe-graewe": "unternehmen/die-graewe-gruppe",
-  produits: "",
+  produits: "produkte",
   "produits/extrusion-de-tubes": "produkte/rohrextrusion",
   "produits/extrusion-de-tubes/extrudeuses": "produkte/rohrextrusion/extruder",
   "produits/extrusion-de-tubes/bacs-de-calibrage-et-bacs-de-refroidissement":
@@ -245,7 +246,6 @@ function buildPathRedirectMap(): Map<string, string> {
   }
   addHtmlVariant(map, "/index", "/de");
   addHtmlVariant(map, "/index.php", "/de");
-  addHtmlVariant(map, "/produkte", "/de");
 
   // DE product subpages (canonical slugs) without locale
   for (const [category, products] of Object.entries(productCategories) as [

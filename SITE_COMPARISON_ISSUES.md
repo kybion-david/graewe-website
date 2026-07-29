@@ -309,12 +309,13 @@ Old site checked live on graewe.com.
 ---
 
 ### ISSUE-018 — Products overview route missing
-- **Status:** Open
+- **Status:** Done
+- **Note:** Added `/[locale]/produkte` overview (live-site intro + machine list + category cards); legacy `/produkte`, `/en/products`, `/fr/produits`, etc. 301 to the overview instead of homepage.
 - **Category:** Missing feature / SEO / redirects
 - **Problem:** Live site has `/en/products` (and FR `/fr/produits`, etc.). New site `/de/produkte` and `/en/products` → 404.
 - **Likely files:** optional `src/app/[locale]/produkte/page.tsx`, redirects.
 - **Acceptance criteria:**
-  - [ ] Overview page exists **or** old overview URLs 301 to a sensible destination (e.g. homepage categories / first category).
+  - [x] Overview page exists **or** old overview URLs 301 to a sensible destination (e.g. homepage categories / first category).
 
 ---
 
