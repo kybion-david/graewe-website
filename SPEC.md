@@ -54,7 +54,7 @@ public/images/        # Static assets by section
 | Product images map | `src/lib/productImages.ts` |
 | Calculator math | `src/lib/calculator.ts` (pure functions) |
 | Job openings (slugs / TYPO3 IDs) | `src/lib/jobs.ts` |
-| Job copy (titles, bodies, apply text) | `src/messages/{locale}.json` → `jobs.*` |
+| Job copy (titles, bodies, apply text) | `src/messages/{locale}.json` → `jobs.*` (email-only apply; no on-site application form) |
 | Imprint / privacy page bodies | `src/messages/{locale}.json` → `imprintPage.*` / `privacyPage.*` |
 | News articles (slugs / TYPO3 IDs / images) | `src/lib/news.ts` + `public/images/news/` |
 | News copy (titles, excerpts, bodies) | `src/messages/{locale}.json` → `news.*` |
