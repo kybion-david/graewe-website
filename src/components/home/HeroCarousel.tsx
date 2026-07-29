@@ -161,8 +161,12 @@ export function HeroCarousel() {
               </span>
             </div>
 
+            {/*
+              Stack every slide in one CSS grid cell so the tallest copy
+              reserves height. Prev/next stay put when slide lengths differ.
+            */}
             <div
-              className="relative mb-6 min-h-[80px] sm:mb-0 sm:min-h-[140px]"
+              className="relative mb-6 grid sm:mb-0"
               aria-live="polite"
               aria-atomic="true"
             >
@@ -172,10 +176,10 @@ export function HeroCarousel() {
                   role="group"
                   aria-roledescription={t("slideRoleDescription")}
                   aria-label={t("slideLabel", { n: index + 1, total: slides.length })}
-                  className={`transition-all duration-700 ease-out ${
+                  className={`col-start-1 row-start-1 transition-all duration-700 ease-out ${
                     index === current
-                      ? "opacity-100 translate-y-0 relative"
-                      : "opacity-0 translate-y-4 absolute inset-0 pointer-events-none"
+                      ? "opacity-100 translate-y-0 z-10"
+                      : "opacity-0 translate-y-4 pointer-events-none z-0"
                   }`}
                   aria-hidden={index !== current}
                 >

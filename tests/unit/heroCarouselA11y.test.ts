@@ -38,4 +38,9 @@ describe("hero carousel a11y (ISSUE-043)", () => {
     expect(source).toMatch(/aria-roledescription=\{t\("roleDescription"\)\}/);
     expect(source).toMatch(/aria-hidden=\{index !== current\}/);
   });
+
+  it("stacks slide copy in one grid cell so controls keep a stable height", () => {
+    expect(source).toMatch(/className="relative mb-6 grid sm:mb-0"/);
+    expect(source).toMatch(/col-start-1 row-start-1/);
+  });
 });
