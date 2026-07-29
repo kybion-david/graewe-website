@@ -66,8 +66,9 @@ test.describe("Navigation", () => {
   test("menu opens and shows navigation links", async ({ page }) => {
     await page.goto("/de");
     await page.click("text=MENÜ");
-    await expect(page.getByRole("banner").getByText("Unternehmen")).toBeVisible();
-    await expect(page.getByRole("banner").getByText("Produkte")).toBeVisible();
-    await expect(page.getByRole("banner").getByText("Kontakt")).toBeVisible();
+    const nav = page.getByRole("navigation", { name: "Main navigation" });
+    await expect(nav.getByText("Unternehmen")).toBeVisible();
+    await expect(nav.getByText("Produkte")).toBeVisible();
+    await expect(nav.getByText("Kontakt")).toBeVisible();
   });
 });

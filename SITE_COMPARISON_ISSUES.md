@@ -316,12 +316,13 @@ Old site checked live on graewe.com.
 ---
 
 ### ISSUE-019 — Menu button label hardcoded as “MENÜ”
-- **Status:** Open
+- **Status:** Done
+- **Note:** Header menu button + aria-label use `nav.menu` / `nav.menuAria` in all five locales (`Header.tsx` + messages).
 - **Category:** i18n / UX
 - **Problem:** Header always shows German “MENÜ” even on EN/FR/RU/ES.
 - **Evidence:** `src/components/layout/Header.tsx` (`hidden sm:inline">MENÜ</span>`).
 - **Acceptance criteria:**
-  - [ ] Label comes from messages for each locale (MENU / MENU / …).
+  - [x] Label comes from messages for each locale (MENU / MENU / …).
 
 ---
 

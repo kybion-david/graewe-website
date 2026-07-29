@@ -98,7 +98,7 @@ export function Header() {
             <button
               onClick={() => setMenuOpen(!menuOpen)}
               aria-expanded={menuOpen}
-              aria-label="Navigation menu"
+              aria-label={t("menuAria")}
               className={`relative bg-accent hover:bg-accent-dark text-dark font-bold px-5 py-2.5 text-sm tracking-wider transition-all duration-200 ${
                 menuOpen ? "bg-accent-dark" : ""
               }`}
@@ -121,7 +121,7 @@ export function Header() {
                     }`}
                   />
                 </span>
-                <span className="hidden sm:inline">MENÜ</span>
+                <span className="hidden sm:inline">{t("menu")}</span>
               </span>
             </button>
 
