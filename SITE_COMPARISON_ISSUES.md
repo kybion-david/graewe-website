@@ -428,13 +428,14 @@ Old site checked live on graewe.com.
 ---
 
 ### ISSUE-029 — Team phone formatting differs from live presentation
-- **Status:** Open
+- **Status:** Done
+- **Note:** Corrected Service display/`tel:` from `+49 (7631)794440` → `+49 (7631)79440` (`tel:+49763179440`); other departments and emails already matched live.
 - **Category:** Polish
 - **Problem:** Live team lists compact numbers like `+49 (7631)79440`; rebuild may format differently. Verify click-to-call `tel:` URIs are correct (no missing digits).
 - **Likely files:** `src/app/[locale]/team/page.tsx`
 - **Acceptance criteria:**
-  - [ ] Display + `tel:` hrefs match real numbers from live Team page.
-  - [ ] Service / Ersatzteile / Gebrauchtmaschinen / Jobs emails match live site.
+  - [x] Display + `tel:` hrefs match real numbers from live Team page.
+  - [x] Service / Ersatzteile / Gebrauchtmaschinen / Jobs emails match live site.
 
 ---
 
@@ -493,7 +494,7 @@ Old site checked live on graewe.com.
 | 4 | 008, 009, 027 | Legal/footer parity |
 | 5 | 010, 011, 012, 021 | Product/legal i18n + images |
 | 6 | 013–016, 019, 020, 024, 031 | Bugs/UX polish |
-| 7 | 017, 018, 022, 023, 025, 026, 028, 029 | Remaining parity / docs |
+| 7 | 017, 018, 022, 023, 025, 026, 028 | Remaining parity / docs |
 
 ---
 

@@ -14,8 +14,8 @@ export async function generateMetadata({
 const departments = [
   {
     key: "service" as const,
-    phone: "+49 (7631)794440",
-    telHref: "tel:+497631794440",
+    phone: "+49 (7631)79440",
+    telHref: "tel:+49763179440",
     email: "info@graewe.com",
     icon: (
       <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
