@@ -141,7 +141,7 @@ Recorded so nobody re-audits them:
 ---
 
 ### ISSUE-042 — Every page shares one identical meta description; homepage has no `<h1>`
-- **Status:** Open
+- **Status:** Done — Per-page `generateMetadata` descriptions (via `pageMetadata` / product excerpts) in all five locales; homepage has one `sr-only` `<h1>` in `HeroCarousel`.
 - **Category:** SEO / A11y
 - **Problem:** Two defects in the same area.
   1. Every URL inherits the single site-level `meta.description`; only the locale changes it, not the page. Search Console will flag this across the whole site.
@@ -159,9 +159,9 @@ Recorded so nobody re-audits them:
   ```
 - **Likely files:** `src/app/[locale]/page.tsx`, `src/components/home/HeroCarousel.tsx`, all `generateMetadata` functions, `src/messages/*.json`
 - **Acceptance criteria:**
-  - [ ] Each locale homepage has exactly one `<h1>` (visible or visually hidden).
-  - [ ] Product, category, news, job and legal pages each set a distinct translated `description`.
-  - [ ] No two indexed URLs share a description.
+  - [x] Each locale homepage has exactly one `<h1>` (visible or visually hidden).
+  - [x] Product, category, news, job and legal pages each set a distinct translated `description`.
+  - [x] No two indexed URLs share a description.
 
 ---
 

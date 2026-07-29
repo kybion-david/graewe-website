@@ -26,6 +26,7 @@
     "sheetExtrusion": "Sheet Extrusion"
   },
   "hero": {
+    "h1": "GRAEWE GmbH – Extrusion technology and mechanical engineering",
     "slide1": {
       "title": "Because we know how to turn ideas into practice.",
       "subtitle": "FULLY WOUND, PERFECTLY UNWOUND"
@@ -186,7 +187,8 @@
         "author": "Ahmed A. Alsharif, Chairman & CEO",
         "location": "Abdullatif Alsharif Group"
       }
-    }
+    },
+    "metaDescription": "Customer success stories: experiences with GRAEWE extrusion machines and used equipment worldwide."
   },
   "usedMachines": {
     "title": "Used Machines",
@@ -262,7 +264,8 @@
     "mapAlt": "Map excerpt: GRAEWE GmbH location in Neuenburg am Rhein",
     "mapAttribution": "Map data © OpenStreetMap contributors",
     "openOsm": "Open in OpenStreetMap",
-    "openGoogle": "Open in Google Maps"
+    "openGoogle": "Open in Google Maps",
+    "metaDescription": "Contact GRAEWE GmbH in Neuenburg am Rhein – enquiries about extrusion machines, service and spare parts."
   },
   "team": {
     "title": "Team",
@@ -270,7 +273,8 @@
     "service": "Service",
     "spareParts": "Spare Parts",
     "usedMachines": "Used Machines",
-    "jobs": "Jobs"
+    "jobs": "Jobs",
+    "metaDescription": "Your GRAEWE team: contacts for service, spare parts, used machines and careers."
   },
   "downloads": {
     "title": "Downloads",
@@ -308,7 +312,8 @@
         "file": "/downloads/LAY_Vollautomatische-Wickler_Graewe_161019_WEBANSICHT.pdf",
         "size": "579 KB"
       }
-    ]
+    ],
+    "metaDescription": "Download GRAEWE product brochures and datasheets – haul-offs, winders, calibration and more."
   },
   "jobs": {
     "title": "Job Openings",
@@ -600,7 +605,8 @@
           }
         ]
       }
-    ]
+    ],
+    "metaDescription": "GRAEWE news: updates on extrusion machinery, expansions and projects from Neuenburg am Rhein."
   },
   "legal": {
     "imprint": "Legal Notice",
@@ -630,7 +636,8 @@
     "cookiesTitle": "Cookies",
     "cookiesBody": "Cookies are information that is automatically stored on your computer according to strict rules and with contents that you can check. We use cookies solely to make our website more convenient for you. Cookies are not assigned to personal profiles.",
     "disclaimerTitle": "Disclaimer",
-    "disclaimerBody": "This website is continuously being developed. Although the greatest care is taken in compiling the information contained on our web pages, GRAEWE GmbH cannot guarantee that it is up to date, accurate or complete. This also applies to all links to which this website refers directly or indirectly. GRAEWE GmbH is not responsible for the content of a page reached via such a link. Only the operators of the linked pages are responsible for their content. Under no circumstances can GRAEWE GmbH be held responsible for any kind of damage arising from the use of or in connection with the use of the information provided here, whether direct or indirect damage or consequential damage, for example from loss of data. We reserve the right to change the information on our server without prior notice. All offers are non-binding and without obligation."
+    "disclaimerBody": "This website is continuously being developed. Although the greatest care is taken in compiling the information contained on our web pages, GRAEWE GmbH cannot guarantee that it is up to date, accurate or complete. This also applies to all links to which this website refers directly or indirectly. GRAEWE GmbH is not responsible for the content of a page reached via such a link. Only the operators of the linked pages are responsible for their content. Under no circumstances can GRAEWE GmbH be held responsible for any kind of damage arising from the use of or in connection with the use of the information provided here, whether direct or indirect damage or consequential damage, for example from loss of data. We reserve the right to change the information on our server without prior notice. All offers are non-binding and without obligation.",
+    "metaDescription": "Legal notice for GRAEWE GmbH Maschinenbau – address, management and legal information."
   },
   "privacyPage": {
     "title": "Privacy Policy",
@@ -662,7 +669,8 @@
     "title": "Sitemap",
     "intro": "Website overview",
     "other": "Other pages",
-    "legal": "Legal"
+    "legal": "Legal",
+    "metaDescription": "GRAEWE website sitemap – overview of products, company, news and contact pages."
   },
   "cookiesPage": {
     "title": "Cookies",

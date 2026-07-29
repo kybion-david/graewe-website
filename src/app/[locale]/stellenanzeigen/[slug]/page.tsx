@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { Link } from "@/i18n/navigation";
 import { locales } from "@/i18n/routing";
 import { JOB_SLUGS, findJobItem, isJobSlug, type JobItem } from "@/lib/jobs";
+import { pageMetadata } from "@/lib/pageMetadata";
 
 export async function generateStaticParams() {
   return locales.flatMap((locale) =>
@@ -20,7 +21,11 @@ export async function generateMetadata({
   const t = await getTranslations({ locale, namespace: "jobs" });
   const items = t.raw("items") as JobItem[];
   const item = findJobItem(items, slug);
-  return { title: item?.title ?? t("title") };
+  const intro = t.raw("intro") as string[];
+  return pageMetadata(
+    item?.title ?? t("title"),
+    item?.summary ?? intro[1] ?? t("title"),
+  );
 }
 
 function JobList({ heading, items }: { heading: string; items: string[] }) {

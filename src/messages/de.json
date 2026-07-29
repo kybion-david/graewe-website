@@ -26,6 +26,7 @@
     "sheetExtrusion": "Plattenextrusion"
   },
   "hero": {
+    "h1": "GRAEWE GmbH – Extrudertechnik und Maschinenbau",
     "slide1": {
       "title": "Denn wir wissen, wie sich Ideen in die Praxis umsetzen lassen.",
       "subtitle": "VOLL AUFGEDREHT, PERFEKT ABGEWICKELT"
@@ -186,7 +187,8 @@
         "author": "Ahmed A. Alsharif, Chairman & CEO",
         "location": "Abdullatif Alsharif Group"
       }
-    }
+    },
+    "metaDescription": "Success Stories unserer Kunden: Erfahrungen mit GRAEWE Extrusionsmaschinen und Gebrauchtanlagen weltweit."
   },
   "usedMachines": {
     "title": "Gebrauchtmaschinen",
@@ -262,7 +264,8 @@
     "mapAlt": "Kartenausschnitt: Standort der GRAEWE GmbH in Neuenburg am Rhein",
     "mapAttribution": "Kartendaten © OpenStreetMap-Mitwirkende",
     "openOsm": "Auf OpenStreetMap öffnen",
-    "openGoogle": "In Google Maps öffnen"
+    "openGoogle": "In Google Maps öffnen",
+    "metaDescription": "Kontaktieren Sie GRAEWE GmbH in Neuenburg am Rhein – Anfragen zu Extrusionsmaschinen, Service und Ersatzteilen."
   },
   "team": {
     "title": "Team",
@@ -270,7 +273,8 @@
     "service": "Service",
     "spareParts": "Ersatzteile",
     "usedMachines": "Gebrauchtmaschinen",
-    "jobs": "Jobs"
+    "jobs": "Jobs",
+    "metaDescription": "Ihr GRAEWE Team: Ansprechpartner für Service, Ersatzteile, Gebrauchtmaschinen und Jobs."
   },
   "downloads": {
     "title": "Downloads",
@@ -308,7 +312,8 @@
         "file": "/downloads/LAY_Vollautomatische-Wickler_Graewe_161019_WEBANSICHT.pdf",
         "size": "579 KB"
       }
-    ]
+    ],
+    "metaDescription": "Produktbroschüren und Datenblätter von GRAEWE zum Download – Abzüge, Wickler, Kalibrierung und mehr."
   },
   "jobs": {
     "title": "Stellenanzeigen",
@@ -590,7 +595,8 @@
           }
         ]
       }
-    ]
+    ],
+    "metaDescription": "Aktuelles von GRAEWE: Neuigkeiten zu Extrusionsmaschinen, Erweiterungen und Projekten aus Neuenburg am Rhein."
   },
   "legal": {
     "imprint": "Impressum",
@@ -620,7 +626,8 @@
     "cookiesTitle": "Cookies",
     "cookiesBody": "Cookies sind Informationen, die automatisch nach strengen Regeln und mit für Sie überprüfbaren Inhalten auf Ihrem Rechner abgelegt werden. Wir verwenden Cookies ausschließlich, um Ihnen in unserer Website mehr Bequemlichkeit bieten zu können. Eine Zuordnung von Cookies zu personenbezogenen Profilen findet nicht statt.",
     "disclaimerTitle": "Haftungsausschluss",
-    "disclaimerBody": "Diese Website wird kontinuierlich weiter entwickelt. Obwohl bei der Zusammenstellung der auf unseren Webseiten enthaltenen Informationen größte Sorgfalt angewandt wird, kann GRAEWE GmbH für die Aktualität, Richtigkeit oder Vollständigkeit keine Gewähr übernehmen. Dies gilt auch für alle Verbindungen (\"Links\"), auf die diese Website direkt oder indirekt verweist. Die GRAEWE GmbH ist für den Inhalt einer Seite, die mit einem solchen Link erreicht wird, nicht verantwortlich. Für den Inhalt der verlinkten Seiten sind ausschließlich deren Betreiber verantwortlich. In keinem Fall kann die GRAEWE GmbH etwaige Schäden irgendwelcher Art verantwortlich gemacht werden, die durch die Benutzung oder im Zusammenhang mit der Benutzung der hier bereitgestellten Informationen entstehen, seien es direkte oder indirekte Schäden bzw. Folgeschäden, die z.B. aus dem Verlust von Daten entstehen. Wir behalten uns Änderungen der Informationen auf unserem Server ohne vorherige Ankündigung vor. Alle Angebote sind freibleibend und unverbindlich."
+    "disclaimerBody": "Diese Website wird kontinuierlich weiter entwickelt. Obwohl bei der Zusammenstellung der auf unseren Webseiten enthaltenen Informationen größte Sorgfalt angewandt wird, kann GRAEWE GmbH für die Aktualität, Richtigkeit oder Vollständigkeit keine Gewähr übernehmen. Dies gilt auch für alle Verbindungen (\"Links\"), auf die diese Website direkt oder indirekt verweist. Die GRAEWE GmbH ist für den Inhalt einer Seite, die mit einem solchen Link erreicht wird, nicht verantwortlich. Für den Inhalt der verlinkten Seiten sind ausschließlich deren Betreiber verantwortlich. In keinem Fall kann die GRAEWE GmbH etwaige Schäden irgendwelcher Art verantwortlich gemacht werden, die durch die Benutzung oder im Zusammenhang mit der Benutzung der hier bereitgestellten Informationen entstehen, seien es direkte oder indirekte Schäden bzw. Folgeschäden, die z.B. aus dem Verlust von Daten entstehen. Wir behalten uns Änderungen der Informationen auf unserem Server ohne vorherige Ankündigung vor. Alle Angebote sind freibleibend und unverbindlich.",
+    "metaDescription": "Impressum der GRAEWE GmbH Maschinenbau – Anschrift, Geschäftsführung und rechtliche Hinweise."
   },
   "privacyPage": {
     "title": "Datenschutzerklärung",
@@ -652,7 +659,8 @@
     "title": "Sitemap",
     "intro": "Übersicht der Webseite",
     "other": "Weitere Seiten",
-    "legal": "Rechtliches"
+    "legal": "Rechtliches",
+    "metaDescription": "Sitemap der GRAEWE Website – Übersicht aller Seiten zu Produkten, Unternehmen, News und Kontakt."
   },
   "cookiesPage": {
     "title": "Cookies",

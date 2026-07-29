@@ -26,6 +26,7 @@
     "sheetExtrusion": "Extrusión de láminas"
   },
   "hero": {
+    "h1": "GRAEWE GmbH – Tecnología de extrusión y construcción de maquinaria",
     "slide1": {
       "title": "Porque sabemos cómo llevar las ideas a la práctica.",
       "subtitle": "TOTALMENTE ENROLLADO, PERFECTAMENTE DESENROLLADO"
@@ -186,7 +187,8 @@
         "author": "Ahmed A. Alsharif, Chairman & CEO",
         "location": "Abdullatif Alsharif Group"
       }
-    }
+    },
+    "metaDescription": "Casos de éxito de clientes: experiencias con máquinas de extrusión GRAEWE y equipos usados en todo el mundo."
   },
   "usedMachines": {
     "title": "Máquinas usadas",
@@ -262,7 +264,8 @@
     "mapAlt": "Extracto del mapa: ubicación de GRAEWE GmbH en Neuenburg am Rhein",
     "mapAttribution": "Datos del mapa © colaboradores de OpenStreetMap",
     "openOsm": "Abrir en OpenStreetMap",
-    "openGoogle": "Abrir en Google Maps"
+    "openGoogle": "Abrir en Google Maps",
+    "metaDescription": "Contacte con GRAEWE GmbH en Neuenburg am Rhein – consultas sobre máquinas de extrusión, servicio y piezas de recambio."
   },
   "team": {
     "title": "Equipo",
@@ -270,7 +273,8 @@
     "service": "Servicio",
     "spareParts": "Recambios",
     "usedMachines": "Máquinas usadas",
-    "jobs": "Empleo"
+    "jobs": "Empleo",
+    "metaDescription": "Su equipo GRAEWE: contactos para servicio, piezas de recambio, máquinas usadas y empleo."
   },
   "downloads": {
     "title": "Descargas",
@@ -308,7 +312,8 @@
         "file": "/downloads/LAY_Vollautomatische-Wickler_Graewe_161019_WEBANSICHT.pdf",
         "size": "579 KB"
       }
-    ]
+    ],
+    "metaDescription": "Descargue folletos y fichas técnicas de GRAEWE – extractores, bobinadoras, calibración y más."
   },
   "jobs": {
     "title": "Ofertas de empleo",
@@ -595,7 +600,8 @@
         ],
         "germanOriginal": true
       }
-    ]
+    ],
+    "metaDescription": "Actualidad GRAEWE: novedades sobre maquinaria de extrusión, ampliaciones y proyectos desde Neuenburg am Rhein."
   },
   "legal": {
     "imprint": "Aviso legal",
@@ -625,7 +631,8 @@
     "cookiesTitle": "Cookies",
     "cookiesBody": "Las cookies son información que se almacena automáticamente en su ordenador según reglas estrictas y con contenidos que usted puede comprobar. Utilizamos cookies exclusivamente para ofrecerle más comodidad en nuestro sitio web. No se asignan cookies a perfiles personales.",
     "disclaimerTitle": "Exención de responsabilidad",
-    "disclaimerBody": "Este sitio web se desarrolla de forma continua. Aunque se aplica el máximo cuidado al recopilar la información contenida en nuestras páginas web, GRAEWE GmbH no puede garantizar su actualidad, exactitud o integridad. Esto también se aplica a todos los enlaces a los que este sitio remite directa o indirectamente. GRAEWE GmbH no es responsable del contenido de una página alcanzada mediante dicho enlace. Del contenido de las páginas enlazadas son responsables exclusivamente sus operadores. En ningún caso podrá responsabilizarse a GRAEWE GmbH de daños de cualquier tipo derivados del uso o en relación con el uso de la información aquí proporcionada, ya sean daños directos o indirectos o daños consecuentes, p. ej. por pérdida de datos. Nos reservamos el derecho a modificar la información de nuestro servidor sin previo aviso. Todas las ofertas son sin compromiso y no vinculantes."
+    "disclaimerBody": "Este sitio web se desarrolla de forma continua. Aunque se aplica el máximo cuidado al recopilar la información contenida en nuestras páginas web, GRAEWE GmbH no puede garantizar su actualidad, exactitud o integridad. Esto también se aplica a todos los enlaces a los que este sitio remite directa o indirectamente. GRAEWE GmbH no es responsable del contenido de una página alcanzada mediante dicho enlace. Del contenido de las páginas enlazadas son responsables exclusivamente sus operadores. En ningún caso podrá responsabilizarse a GRAEWE GmbH de daños de cualquier tipo derivados del uso o en relación con el uso de la información aquí proporcionada, ya sean daños directos o indirectos o daños consecuentes, p. ej. por pérdida de datos. Nos reservamos el derecho a modificar la información de nuestro servidor sin previo aviso. Todas las ofertas son sin compromiso y no vinculantes.",
+    "metaDescription": "Aviso legal de GRAEWE GmbH Maschinenbau – dirección, gerencia e información jurídica."
   },
   "privacyPage": {
     "title": "Política de privacidad",
@@ -657,7 +664,8 @@
     "title": "Mapa del sitio",
     "intro": "Resumen del sitio web",
     "other": "Otras páginas",
-    "legal": "Legal"
+    "legal": "Legal",
+    "metaDescription": "Mapa del sitio GRAEWE – resumen de páginas de productos, empresa, noticias y contacto."
   },
   "cookiesPage": {
     "title": "Cookies",
