@@ -20,7 +20,7 @@ Corporate website for **GRAEWE GmbH Maschinenbau** (extrusion machinery). Replac
 | Language | TypeScript strict |
 | UI | React 19, Tailwind CSS 4, brand tokens in `src/app/globals.css` |
 | i18n | `next-intl` — routing + JSON messages |
-| Forms | React Hook Form + Zod; contact API + Resend |
+| Forms | React Hook Form + Zod; contact API + Resend + Turnstile |
 | Tests | Vitest (unit), Playwright (e2e) |
 | Deploy | Azure Static Web Apps (`standalone`) primary; GitHub Pages export optional |
 
@@ -93,12 +93,12 @@ CI (`.github/workflows/deploy.yml`) gates on type-check, lint, and unit tests.
 
 ## 7. Environment
 
-Copy `.env.example` → `.env.local`. Without `RESEND_API_KEY`, contact submissions log to console (expected in local/dev).
+Copy `.env.example` → `.env.local`. Without `RESEND_API_KEY`, contact submissions log to console (expected in local/dev). Contact spam protection: Cloudflare Turnstile (`NEXT_PUBLIC_TURNSTILE_SITE_KEY` + `TURNSTILE_SECRET_KEY`) plus honeypot + per-IP rate limit in `src/lib/contactSpam.ts`. Without Turnstile keys, the widget is omitted and only honeypot/rate-limit run.
 
 ## 8. Current status snapshot
 
 - Pages: home, unternehmen (4), produkte (3 categories + 19 products), success stories, aktuelles (+ articles), produktrechner, gebrauchtmaschinen, downloads, team, kontakt, stellenanzeigen (+ job detail pages), impressum, datenschutz
-- Interactive: Produktrechner (2 modes), contact form (Resend)
+- Interactive: Produktrechner (2 modes), contact form (Resend + Turnstile/honeypot/rate-limit)
 - SEO: `generateMetadata`, Open Graph, JSON-LD, `next-sitemap`
 - A11y: skip link, ARIA on menu/language switcher, focus-visible, contrast-safe yellow buttons
 - Deploy: Azure SWA Terraform + GH Actions; optional GitHub Pages path via `GITHUB_PAGES=true`

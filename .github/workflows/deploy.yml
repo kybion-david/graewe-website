@@ -58,6 +58,8 @@ jobs:
           output_location: ""
         env:
           NEXT_PUBLIC_SITE_URL: ${{ vars.SITE_URL || 'https://www.graewe.com' }}
+          NEXT_PUBLIC_TURNSTILE_SITE_KEY: ${{ vars.TURNSTILE_SITE_KEY || '' }}
+          TURNSTILE_SECRET_KEY: ${{ secrets.TURNSTILE_SECRET_KEY || '' }}
 
   # ── Close PR: tear down staging environment ─────
   close_pull_request:

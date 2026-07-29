@@ -211,6 +211,10 @@
     "submit": "Envoyer",
     "successMessage": "Votre message a bien été envoyé.",
     "errorMessage": "Une erreur s’est produite. Veuillez réessayer.",
+    "captchaLabel": "Vérification de sécurité",
+    "captchaRequired": "Veuillez terminer la vérification de sécurité.",
+    "captchaError": "Échec de la vérification de sécurité. Veuillez réessayer.",
+    "rateLimitError": "Trop de demandes. Veuillez patienter quelques minutes et réessayer.",
     "address": "Adresse",
     "addressLines": "GRAEWE GmbH Maschinenbau\nMax Planck-Straße 1-3\n79395 Neuenburg am Rhein"
   },

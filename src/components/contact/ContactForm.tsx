@@ -3,6 +3,8 @@
 import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { useForm } from "react-hook-form";
+import { CONTACT_HONEYPOT_FIELD } from "@/lib/contactSpam";
+import { TurnstileWidget } from "./TurnstileWidget";
 
 interface ContactFormData {
   name: string;
@@ -10,38 +12,77 @@ interface ContactFormData {
   email: string;
   phone: string;
   message: string;
+  website: string;
 }
+
+const turnstileSiteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ?? "";
 
 export function ContactForm() {
   const t = useTranslations("contact");
   const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
+  const [errorCode, setErrorCode] = useState<"generic" | "captcha" | "rate_limited">("generic");
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
+  const [turnstileResetKey, setTurnstileResetKey] = useState(0);
+  const [captchaClientError, setCaptchaClientError] = useState(false);
 
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm<ContactFormData>();
+  } = useForm<ContactFormData>({
+    defaultValues: { website: "" },
+  });
 
   async function onSubmit(data: ContactFormData) {
     setIsSubmitting(true);
     setSubmitStatus("idle");
+    setCaptchaClientError(false);
+    setErrorCode("generic");
+
+    if (turnstileSiteKey && !turnstileToken) {
+      setCaptchaClientError(true);
+      setIsSubmitting(false);
+      return;
+    }
 
     try {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+        body: JSON.stringify({
+          name: data.name,
+          firstName: data.firstName,
+          email: data.email,
+          phone: data.phone,
+          message: data.message,
+          [CONTACT_HONEYPOT_FIELD]: data.website,
+          turnstileToken: turnstileToken ?? undefined,
+        }),
       });
 
       if (res.ok) {
         setSubmitStatus("success");
-        reset();
-      } else {
-        setSubmitStatus("error");
+        reset({ website: "" });
+        setTurnstileToken(null);
+        setTurnstileResetKey((k) => k + 1);
+        return;
       }
+
+      const payload = (await res.json().catch(() => null)) as
+        | { code?: string }
+        | null;
+      if (payload?.code === "captcha_failed") {
+        setErrorCode("captcha");
+      } else if (res.status === 429 || payload?.code === "rate_limited") {
+        setErrorCode("rate_limited");
+      } else {
+        setErrorCode("generic");
+      }
+      setSubmitStatus("error");
     } catch {
+      setErrorCode("generic");
       setSubmitStatus("error");
     } finally {
       setIsSubmitting(false);
@@ -53,8 +94,30 @@ export function ContactForm() {
   const inputNormal = `${inputBase} border-grey-300 focus:ring-2 focus:ring-accent/30 focus:border-accent`;
   const inputError = `${inputBase} border-red-400 focus:ring-2 focus:ring-red-200 focus:border-red-400`;
 
+  const errorMessage =
+    errorCode === "captcha"
+      ? t("captchaError")
+      : errorCode === "rate_limited"
+        ? t("rateLimitError")
+        : t("errorMessage");
+
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
+    <form onSubmit={handleSubmit(onSubmit)} className="relative space-y-5" noValidate>
+      {/* Honeypot — hidden from users, filled by many bots */}
+      <div
+        className="absolute -left-[9999px] top-auto h-px w-px overflow-hidden"
+        aria-hidden="true"
+      >
+        <label htmlFor="contact-website">{CONTACT_HONEYPOT_FIELD}</label>
+        <input
+          id="contact-website"
+          type="text"
+          tabIndex={-1}
+          autoComplete="off"
+          {...register("website")}
+        />
+      </div>
+
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
           <label className="block text-sm font-semibold text-dark mb-1.5">
@@ -109,6 +172,22 @@ export function ContactForm() {
         />
       </div>
 
+      {turnstileSiteKey ? (
+        <div>
+          <p className="block text-sm font-semibold text-dark mb-1.5">
+            {t("captchaLabel")} <span className="text-accent-dark">*</span>
+          </p>
+          <TurnstileWidget
+            key={turnstileResetKey}
+            siteKey={turnstileSiteKey}
+            onToken={setTurnstileToken}
+          />
+          {captchaClientError && (
+            <p className="mt-2 text-sm text-red-700">{t("captchaRequired")}</p>
+          )}
+        </div>
+      ) : null}
+
       <p className="text-xs text-text-muted">
         <span className="text-accent-dark">*</span> {t("requiredField")}
       </p>
@@ -126,7 +205,7 @@ export function ContactForm() {
           <svg className="w-5 h-5 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
           </svg>
-          {t("errorMessage")}
+          {errorMessage}
         </div>
       )}
 
