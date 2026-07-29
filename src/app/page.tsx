@@ -1,13 +1,11 @@
+import { redirect } from "next/navigation";
 import { routing } from "@/i18n/routing";
 
+/**
+ * Fallback when the request proxy does not run. Prefer the proxy path
+ * (`src/proxy.ts` / next-intl), which already issues 307 → `/de`.
+ * `redirect()` emits a real HTTP 307 — never a meta-refresh stub.
+ */
 export default function RootPage() {
-  const target = `./${routing.defaultLocale}/`;
-  return (
-    <>
-      <meta httpEquiv="refresh" content={`0;url=${target}`} />
-      <p>
-        Redirecting to <a href={target}>{target}</a>…
-      </p>
-    </>
-  );
+  redirect(`/${routing.defaultLocale}`);
 }

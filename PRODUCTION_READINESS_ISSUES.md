@@ -376,14 +376,14 @@ Recorded so nobody re-audits them:
 ---
 
 ### ISSUE-050 — Root `/` is a `<meta http-equiv="refresh">` stub
-- **Status:** Open
+- **Status:** Done — `src/app/page.tsx` now uses `redirect()` (HTTP 307 → `/de`); bare `/` excluded from next-sitemap; SPEC §4 updated.
 - **Category:** SEO
 - **Problem:** `src/app/page.tsx` renders a meta-refresh page with visible "Redirecting to ./de/…" text. Meta refresh is a soft redirect: crawlers may index the stub, and users on a slow connection see placeholder text. The proxy handles `/` correctly on the SSR path, so this stub only surfaces in the static-export path — where it is still wrong, and where it carries no `noindex`.
 - **Evidence:** `src/app/page.tsx:7` — `<meta httpEquiv="refresh" …>`; no `robots` meta. Verified against a production build: `/` → `307` → `/de` on the SSR path.
 - **Likely files:** `src/app/page.tsx`, `next-sitemap.config.js`, `staticwebapp.config.json`
 - **Acceptance criteria:**
-  - [ ] `/` issues a real 307/308 on the deployed target, not a meta refresh.
-  - [ ] The bare-domain URL is excluded from the sitemap, or is the canonical entry that redirects.
+  - [x] `/` issues a real 307/308 on the deployed target, not a meta refresh.
+  - [x] The bare-domain URL is excluded from the sitemap, or is the canonical entry that redirects.
 
 ---
 

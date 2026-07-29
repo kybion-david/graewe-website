@@ -134,7 +134,7 @@ Product detail bodies live in `src/lib/productContent/{de,en,fr,ru,es}.json`. `g
 ## 4. Routing & URLs
 
 - Pattern: `/[locale]/...` with German slugs preserved (`/de/produkte/rohrextrusion/extruder`)
-- `localeDetection: false` — `/` always redirects to `/de`
+- `localeDetection: false` — `/` always **HTTP-redirects** (307) to `/de` via `src/proxy.ts` (next-intl). `src/app/page.tsx` uses `redirect()` from `next/navigation` as the same fallback when the proxy does not run — never a meta-refresh stub. Bare `/` is excluded from `next-sitemap`.
 - Old TYPO3 / translated-locale URLs: 301 via `src/lib/legacyRedirects.ts` in `src/proxy.ts`. `staticwebapp.config.json` holds security headers only (Azure 20 KB config limit). See `infra/DNS_CUTOVER.md`.
 - Unknown paths: dedicated 404 pages — do **not** rewrite 404 → homepage in SWA config
 - Use `@/i18n/navigation` (`Link`, `useRouter`, `usePathname`) — not `next/link` / `next/navigation` — for locale-aware routing
