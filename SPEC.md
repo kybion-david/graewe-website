@@ -37,7 +37,7 @@ src/app/[locale]/     # All pages (locale-prefixed routes)
 src/app/api/          # API routes (contact)
 src/components/       # layout | home | products | calculator | contact | ui
 src/messages/         # de|en|fr|ru|es.json — UI + page copy
-src/lib/              # calculator, products, productContent, productImages
+src/lib/              # calculator, products, productContent/, productImages
 src/i18n/             # routing, request, navigation helpers
 tests/unit|e2e/       # Vitest + Playwright
 infra/                # Azure SWA Terraform
@@ -50,7 +50,7 @@ public/images/        # Static assets by section
 |------|----------|
 | Nav, UI strings, page copy | `src/messages/{locale}.json` |
 | Product tree / slugs | `src/lib/products.ts` |
-| Product body content | `src/lib/productContent.ts` |
+| Product body content | `src/lib/productContent/` (`de\|en\|fr\|ru\|es.json` + `index.ts`) |
 | Product images map | `src/lib/productImages.ts` |
 | Calculator math | `src/lib/calculator.ts` (pure functions) |
 | Job openings (slugs / TYPO3 IDs) | `src/lib/jobs.ts` |
@@ -61,6 +61,8 @@ public/images/        # Static assets by section
 | Legacy URL → canonical redirects | `src/lib/legacyRedirects.ts` |
 
 Do **not** hardcode user-facing strings in components. Add keys to **all five** locale files.
+
+Product detail bodies live in `src/lib/productContent/{de,en,fr,ru,es}.json`. `getProductDetail()` serves the matching locale; unknown locales fall back to `de`.
 
 ## 4. Routing & URLs
 
