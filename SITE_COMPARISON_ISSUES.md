@@ -270,13 +270,14 @@ Old site checked live on graewe.com.
 ---
 
 ### ISSUE-015 — Hero carousel slide texts mostly duplicated
-- **Status:** Open
+- **Status:** Done
+- **Note:** Unique hero copy in all 5 locales, paired to imagery: coils (winding tagline), pipes, profiles, sheets, brand line (`src/messages/*.json` `hero.slide*`).
 - **Category:** Content gap / UX
 - **Problem:** Slides 1, 2, 4, 5 share identical title/subtitle in DE messages; only slide 3 differs. Live carousel also appears repetitive in places, but rebuild should migrate distinct slide copy/images intentionally rather than copy-paste.
 - **Likely files:** `src/messages/*.json` (`hero.slide*`), `public/images/hero/`, `HeroCarousel.tsx`.
 - **Acceptance criteria:**
-  - [ ] Each slide has intentional unique copy (or fewer slides if content doesn’t exist).
-  - [ ] Images and text remain paired correctly.
+  - [x] Each slide has intentional unique copy (or fewer slides if content doesn’t exist).
+  - [x] Images and text remain paired correctly.
 
 ---
 
