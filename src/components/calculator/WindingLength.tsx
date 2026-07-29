@@ -55,7 +55,7 @@ export function WindingLengthCalc() {
 
   return (
     <div className="space-y-8">
-      <div className="bg-grey-100 rounded-xl p-6">
+      <div className="bg-grey-100 rounded-xl p-4 sm:p-6">
         <h3 className="font-bold text-dark mb-4 flex items-center gap-2">
           <span className="w-1 h-5 bg-accent rounded-full" />
           {t("inputs")}
@@ -90,18 +90,18 @@ export function WindingLengthCalc() {
             error={fieldError("bundleWidth")}
           />
         </div>
-        <div className="flex gap-3 mt-6">
+        <div className="flex flex-wrap gap-3 mt-6">
           <button
             type="button"
             onClick={() => setShowErrors(true)}
-            className="px-6 py-2.5 bg-accent text-dark rounded-lg font-bold hover:bg-accent-dark transition-colors"
+            className="px-4 sm:px-6 py-2.5 bg-accent text-dark rounded-lg font-bold hover:bg-accent-dark transition-colors"
           >
             {t("calculate")}
           </button>
           <button
             type="button"
             onClick={reset}
-            className="px-6 py-2.5 border border-grey-300 text-text-muted rounded-lg font-medium hover:bg-grey-200 transition-colors"
+            className="px-4 sm:px-6 py-2.5 border border-grey-300 text-text-muted rounded-lg font-medium hover:bg-grey-200 transition-colors"
           >
             {t("reset")}
           </button>

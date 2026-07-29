@@ -34,7 +34,7 @@ export default async function ProduktrechnerPage({
         </div>
         <div className="w-12 h-1 bg-accent mb-4" />
         <p className="text-text-muted mb-8 text-lg max-w-3xl">{t("intro")}</p>
-        <div className="bg-white rounded-xl border border-grey-200 shadow-sm p-6 md:p-8">
+        <div className="bg-white rounded-xl border border-grey-200 shadow-sm p-4 sm:p-6 md:p-8">
           <Calculator />
         </div>
       </div>

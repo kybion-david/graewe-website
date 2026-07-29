@@ -27,10 +27,10 @@ export function PatternResultCard({
   fields,
 }: PatternResultCardProps) {
   return (
-    <div className="bg-white border border-grey-200 rounded-xl p-6 shadow-sm h-full flex flex-col">
+    <div className="bg-white border border-grey-200 rounded-xl p-4 sm:p-6 shadow-sm h-full flex flex-col min-w-0">
       <h4 className="font-bold text-dark mb-4">{title}</h4>
 
-      <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-6">
+      <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4 mb-6">
         {fields.map((field) => (
           <div key={field.label}>
             <p className="text-xs text-text-muted">{field.label}</p>

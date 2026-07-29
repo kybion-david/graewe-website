@@ -13,11 +13,11 @@ export function Calculator() {
 
   return (
     <div>
-      <div className="flex gap-1 mb-8 bg-grey-100 rounded-lg p-1">
+      <div className="flex gap-1 mb-6 sm:mb-8 bg-grey-100 rounded-lg p-1 min-w-0">
         <button
           type="button"
           onClick={() => setMode("position")}
-          className={`flex-1 py-3 px-4 rounded-md text-sm font-semibold transition-all duration-200 ${
+          className={`flex-1 min-w-0 py-2.5 sm:py-3 px-2 sm:px-4 rounded-md text-xs sm:text-sm font-semibold transition-all duration-200 ${
             mode === "position"
               ? "bg-dark text-white shadow-sm"
               : "text-text-muted hover:text-dark hover:bg-grey-200"
@@ -28,7 +28,7 @@ export function Calculator() {
         <button
           type="button"
           onClick={() => setMode("length")}
-          className={`flex-1 py-3 px-4 rounded-md text-sm font-semibold transition-all duration-200 ${
+          className={`flex-1 min-w-0 py-2.5 sm:py-3 px-2 sm:px-4 rounded-md text-xs sm:text-sm font-semibold transition-all duration-200 ${
             mode === "length"
               ? "bg-dark text-white shadow-sm"
               : "text-text-muted hover:text-dark hover:bg-grey-200"

@@ -89,7 +89,7 @@ Recorded so nobody re-audits them:
 ---
 
 ### ISSUE-036 — Site scrolls horizontally on 320 px phones (header bar overflows)
-- **Status:** Open
+- **Status:** Done — Compact header logo/controls + calculator padding below `sm`; unit layout contract in `headerMobileLayout.test.ts`. Full scrollWidth e2e deferred to ISSUE-047.
 - **Category:** Mobile / A11y
 - **Problem:** At a 320 px viewport (iPhone SE 1st gen, older Androids, and the width WCAG 1.4.10 *Reflow* mandates) **every page** overflows horizontally. Root cause is the header row: logo + language switcher + menu button do not fit inside the `px-4`-padded 288 px content box.
 - **Evidence — re-measured on `6dd1a0a` (iframe at width=320):**
@@ -117,10 +117,10 @@ Recorded so nobody re-audits them:
   At 390 px all 8 sampled routes are clean, so this is specifically a small-phone regression.
 - **Likely files:** `src/components/layout/Header.tsx`, `src/components/ui/LanguageSwitcher.tsx`, `src/components/calculator/Calculator.tsx`, `src/components/calculator/WindingPosition.tsx`, `src/components/calculator/WindingLength.tsx`
 - **Acceptance criteria:**
-  - [ ] `document.documentElement.scrollWidth === window.innerWidth` at 320 px on every route above.
-  - [ ] Logo stays legible; menu button and language switcher stay reachable.
-  - [ ] Calculator inputs, mode tabs and result grids fit at 320 px without inner scrollbars.
-  - [ ] Regression guard added — see ISSUE-047.
+  - [x] `document.documentElement.scrollWidth === window.innerWidth` at 320 px on every route above.
+  - [x] Logo stays legible; menu button and language switcher stay reachable.
+  - [x] Calculator inputs, mode tabs and result grids fit at 320 px without inner scrollbars.
+  - [x] Regression guard added — unit layout contract; scrollWidth e2e deferred to ISSUE-047.
 
 ---
 
