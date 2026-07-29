@@ -1,9 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useLocale } from "next-intl";
 import { usePathname, useRouter } from "@/i18n/navigation";
 import { locales, type Locale } from "@/i18n/routing";
+import { useDismissibleOverlay } from "@/hooks/useDismissibleOverlay";
 
 const localeLabels: Record<Locale, string> = {
   de: "DE",
@@ -18,6 +19,14 @@ export function LanguageSwitcher() {
   const pathname = usePathname();
   const router = useRouter();
   const [open, setOpen] = useState(false);
+  const triggerRef = useRef<HTMLButtonElement>(null);
+  const listRef = useRef<HTMLDivElement>(null);
+
+  useDismissibleOverlay(listRef, {
+    open,
+    onClose: () => setOpen(false),
+    triggerRef,
+  });
 
   function switchLocale(newLocale: Locale) {
     router.replace(pathname, { locale: newLocale });
@@ -27,8 +36,10 @@ export function LanguageSwitcher() {
   return (
     <div className="relative">
       <button
+        ref={triggerRef}
         onClick={() => setOpen(!open)}
         aria-expanded={open}
+        aria-haspopup="true"
         aria-label="Select language"
         className="flex items-center gap-1 sm:gap-1.5 text-sm font-semibold text-dark hover:text-dark-muted transition-colors px-1.5 sm:px-2 py-1.5 rounded-md hover:bg-grey-100"
       >
@@ -42,6 +53,9 @@ export function LanguageSwitcher() {
       </button>
 
       <div
+        ref={listRef}
+        inert={!open ? true : undefined}
+        aria-hidden={!open}
         className={`absolute top-full right-0 mt-1 bg-white shadow-lg border border-grey-200 rounded-lg py-1 z-50 min-w-[80px] transition-all duration-200 origin-top ${
           open
             ? "opacity-100 scale-100 pointer-events-auto"

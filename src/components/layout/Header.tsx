@@ -5,6 +5,7 @@ import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { Link, usePathname } from "@/i18n/navigation";
 import { LanguageSwitcher } from "@/components/ui/LanguageSwitcher";
+import { useDismissibleOverlay } from "@/hooks/useDismissibleOverlay";
 import { MobileMenu } from "./MobileMenu";
 
 export function Header() {
@@ -14,11 +15,23 @@ export function Header() {
   const [menuPathname, setMenuPathname] = useState(pathname);
   const [scrolled, setScrolled] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
+  const desktopMenuRef = useRef<HTMLDivElement>(null);
+  const [isDesktop, setIsDesktop] = useState(false);
 
   if (pathname !== menuPathname) {
     setMenuPathname(pathname);
     setMenuOpen(false);
   }
+
+  useEffect(() => {
+    function updateDesktop() {
+      setIsDesktop(window.matchMedia("(min-width: 1024px)").matches);
+    }
+    updateDesktop();
+    window.addEventListener("resize", updateDesktop);
+    return () => window.removeEventListener("resize", updateDesktop);
+  }, []);
 
   useEffect(() => {
     function handleScroll() {
@@ -42,6 +55,13 @@ export function Header() {
     }
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [menuOpen]);
+
+  useDismissibleOverlay(desktopMenuRef, {
+    open: menuOpen && isDesktop,
+    onClose: () => setMenuOpen(false),
+    trapFocus: true,
+    triggerRef: menuButtonRef,
+  });
 
   const companyLinks = [
     { href: "/unternehmen/wer-ist-graewe", label: t("whoIsGraewe") },
@@ -99,8 +119,10 @@ export function Header() {
           <div className="flex items-center gap-1.5 sm:gap-4 shrink-0" ref={menuRef}>
             <LanguageSwitcher />
             <button
+              ref={menuButtonRef}
               onClick={() => setMenuOpen(!menuOpen)}
               aria-expanded={menuOpen}
+              aria-haspopup="true"
               aria-label={t("menuAria")}
               className={`relative bg-accent hover:bg-accent-dark text-dark font-bold px-3 sm:px-5 py-2 sm:py-2.5 text-sm tracking-wider transition-all duration-200 ${
                 menuOpen ? "bg-accent-dark" : ""
@@ -130,6 +152,9 @@ export function Header() {
 
             {/* Desktop dropdown menu */}
             <div
+              ref={desktopMenuRef}
+              inert={!menuOpen ? true : undefined}
+              aria-hidden={!menuOpen}
               className={`hidden lg:block absolute top-full right-0 w-full transition-all duration-300 ease-out origin-top ${
                 menuOpen
                   ? "opacity-100 scale-y-100 pointer-events-auto"
@@ -203,11 +228,12 @@ export function Header() {
             </div>
             {/* Mobile menu */}
             <MobileMenu
-              isOpen={menuOpen}
+              isOpen={menuOpen && !isDesktop}
               onClose={() => setMenuOpen(false)}
               companyLinks={companyLinks}
               productLinks={productLinks}
               mainLinks={mainLinks}
+              triggerRef={menuButtonRef}
             />
           </div>
         </div>

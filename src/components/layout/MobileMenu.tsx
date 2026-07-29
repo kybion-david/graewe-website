@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef, type RefObject } from "react";
 import { Link } from "@/i18n/navigation";
+import { useDismissibleOverlay } from "@/hooks/useDismissibleOverlay";
 
 interface MobileMenuProps {
   isOpen: boolean;
@@ -9,6 +10,7 @@ interface MobileMenuProps {
   companyLinks: { href: string; label: string }[];
   productLinks: { href: string; label: string }[];
   mainLinks: { href: string; label: string }[];
+  triggerRef?: RefObject<HTMLElement | null>;
 }
 
 export function MobileMenu({
@@ -17,7 +19,17 @@ export function MobileMenu({
   companyLinks,
   productLinks,
   mainLinks,
+  triggerRef,
 }: MobileMenuProps) {
+  const panelRef = useRef<HTMLDivElement>(null);
+
+  useDismissibleOverlay(panelRef, {
+    open: isOpen,
+    onClose,
+    trapFocus: true,
+    triggerRef,
+  });
+
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
@@ -31,6 +43,9 @@ export function MobileMenu({
 
   return (
     <div
+      ref={panelRef}
+      inert={!isOpen ? true : undefined}
+      aria-hidden={!isOpen}
       className={`fixed inset-0 z-[100] lg:hidden transition-opacity duration-300 ${
         isOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
       }`}
@@ -40,6 +55,9 @@ export function MobileMenu({
         className={`absolute right-0 top-0 h-full w-80 max-w-[85vw] bg-white overflow-y-auto shadow-2xl transition-transform duration-300 ease-out ${
           isOpen ? "translate-x-0" : "translate-x-full"
         }`}
+        role="dialog"
+        aria-modal={isOpen}
+        aria-label="Menu"
       >
         {/* Header */}
         <div className="flex items-center justify-between p-5 border-b border-grey-200">

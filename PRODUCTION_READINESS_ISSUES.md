@@ -166,7 +166,7 @@ Recorded so nobody re-audits them:
 ---
 
 ### ISSUE-037 — Closed menus and dropdowns stay in the tab order
-- **Status:** Open
+- **Status:** Done — closed mobile drawer, desktop dropdown, and language list use `inert` + `aria-hidden`; `useDismissibleOverlay` handles Escape, focus return, and focus trap when open.
 - **Category:** A11y
 - **Problem:** The mobile drawer, the desktop dropdown and the language dropdown are hidden with `opacity-0 pointer-events-none` only. That removes neither the tab order nor the accessibility tree, so keyboard and screen-reader users traverse 16 invisible links on every page before reaching content.
 - **Evidence — measured on `6dd1a0a`, menu closed, at 390 px:**
@@ -177,9 +177,9 @@ Recorded so nobody re-audits them:
   Source: `src/components/layout/MobileMenu.tsx:35`, `src/components/layout/Header.tsx:133`, `src/components/ui/LanguageSwitcher.tsx:48` — all the same `opacity-0 … pointer-events-none` pattern.
 - **Likely files:** `src/components/layout/MobileMenu.tsx`, `src/components/layout/Header.tsx`, `src/components/ui/LanguageSwitcher.tsx`
 - **Acceptance criteria:**
-  - [ ] Closed overlays are out of the tab order (`inert`, `hidden`, `visibility: hidden`, or conditional render) — measured tabbable count is 0 when closed.
-  - [ ] Opening the drawer moves focus into it; `Escape` closes it and returns focus to the menu button; focus is trapped while open.
-  - [ ] Same `Escape` + focus-return behaviour for the language dropdown.
+  - [x] Closed overlays are out of the tab order (`inert`, `hidden`, `visibility: hidden`, or conditional render) — measured tabbable count is 0 when closed.
+  - [x] Opening the drawer moves focus into it; `Escape` closes it and returns focus to the menu button; focus is trapped while open.
+  - [x] Same `Escape` + focus-return behaviour for the language dropdown.
 
 ---
 
