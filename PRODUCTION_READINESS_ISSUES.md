@@ -388,15 +388,15 @@ Recorded so nobody re-audits them:
 ---
 
 ### ISSUE-052 — No `error.tsx` or `global-error.tsx`
-- **Status:** Open — **narrowed; `not-found.tsx` landed upstream**
+- **Status:** Done — added `src/app/[locale]/error.tsx` (localized, keeps header/footer) and `src/app/global-error.tsx` (last-resort; locale from pathname); verified via production `next start` throw route
 - **Category:** Bug / UX
 - **Problem:** Localized 404 pages now exist at `src/app/not-found.tsx` and `src/app/[locale]/not-found.tsx`. There is still **no error boundary anywhere**, so any thrown render error in production shows Next's unstyled default error page — no header, no footer, no localisation.
 - **Evidence:** `find src -name "error.tsx" -o -name "global-error.tsx"` → no matches (`not-found.tsx` ×2 present).
 - **Likely files:** new `src/app/[locale]/error.tsx`, `src/app/global-error.tsx`
 - **Acceptance criteria:**
-  - [ ] Branded, localized error page inside the locale layout.
-  - [ ] `global-error.tsx` as the last-resort boundary.
-  - [ ] Verified against a production build, not dev.
+  - [x] Branded, localized error page inside the locale layout.
+  - [x] `global-error.tsx` as the last-resort boundary.
+  - [x] Verified against a production build, not dev.
 
 ---
 

@@ -714,5 +714,12 @@
     "title": "Page introuvable",
     "description": "La page demandée n’existe pas ou a été déplacée.",
     "backHome": "Retour à l’accueil"
+  },
+  "error": {
+    "code": "Erreur",
+    "title": "Une erreur s’est produite",
+    "description": "Une erreur inattendue s’est produite. Veuillez réessayer ou retourner à l’accueil.",
+    "retry": "Réessayer",
+    "backHome": "Retour à l’accueil"
   }
 }
