@@ -23,7 +23,7 @@ export default async function ProduktrechnerPage({
 
   return (
     <div className="py-16 lg:py-20">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center gap-3 mb-4">
           <div className="w-10 h-10 rounded-lg bg-accent/20 flex items-center justify-center">
             <svg className="w-5 h-5 text-accent-dark" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -34,9 +34,7 @@ export default async function ProduktrechnerPage({
         </div>
         <div className="w-12 h-1 bg-accent mb-4" />
         <p className="text-text-muted mb-8 text-lg max-w-3xl">{t("intro")}</p>
-        <div className="bg-white rounded-xl border border-grey-200 shadow-sm p-6 md:p-8">
-          <Calculator />
-        </div>
+        <Calculator />
       </div>
     </div>
   );

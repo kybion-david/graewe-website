@@ -7,34 +7,52 @@ import { WindingLengthCalc } from "./WindingLength";
 
 type Mode = "position" | "length";
 
+function TabButton({
+  active,
+  onClick,
+  children,
+}: {
+  active: boolean;
+  onClick: () => void;
+  children: React.ReactNode;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className={`relative inline-flex items-center gap-2 px-5 py-2.5 text-sm font-semibold uppercase tracking-wide transition-colors ${
+        active
+          ? "bg-grey-500 text-white"
+          : "bg-grey-200 text-dark hover:bg-grey-300"
+      }`}
+    >
+      <span
+        className="inline-flex h-5 w-5 items-center justify-center bg-accent text-dark text-[10px] leading-none"
+        aria-hidden
+      >
+        ▶
+      </span>
+      {children}
+    </button>
+  );
+}
+
 export function Calculator() {
   const t = useTranslations("calculator");
   const [mode, setMode] = useState<Mode>("position");
 
   return (
     <div>
-      {/* Mode tabs */}
-      <div className="flex gap-1 mb-8 bg-grey-100 rounded-lg p-1">
-        <button
+      <div className="flex flex-wrap gap-3 mb-8">
+        <TabButton
+          active={mode === "position"}
           onClick={() => setMode("position")}
-          className={`flex-1 py-3 px-4 rounded-md text-sm font-semibold transition-all duration-200 ${
-            mode === "position"
-              ? "bg-dark text-white shadow-sm"
-              : "text-text-muted hover:text-dark hover:bg-grey-200"
-          }`}
         >
           {t("windingPosition")}
-        </button>
-        <button
-          onClick={() => setMode("length")}
-          className={`flex-1 py-3 px-4 rounded-md text-sm font-semibold transition-all duration-200 ${
-            mode === "length"
-              ? "bg-dark text-white shadow-sm"
-              : "text-text-muted hover:text-dark hover:bg-grey-200"
-          }`}
-        >
+        </TabButton>
+        <TabButton active={mode === "length"} onClick={() => setMode("length")}>
           {t("windingLength")}
-        </button>
+        </TabButton>
       </div>
 
       {mode === "position" ? <WindingPositionCalc /> : <WindingLengthCalc />}

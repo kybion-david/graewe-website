@@ -45,83 +45,63 @@ export function WindingPositionCalc() {
     ? calculateWindingPositionEven(validation.input)
     : null;
 
-  function fieldError(
-    key: WindingPositionFieldKey
-  ): string | undefined {
+  function fieldError(key: WindingPositionFieldKey): string | undefined {
     if (!showErrors || validation.ok) return undefined;
     const code = validation.errors[key] as CalculatorFieldError | undefined;
     return code ? t(`validation.${code}`) : undefined;
   }
 
-  function calculate() {
-    setShowErrors(true);
-  }
-
-  function reset() {
-    setPipeDiameter("");
-    setLength("");
-    setInnerDiameter("");
-    setPipesPerLayer(DEFAULT_PIPES_PER_LAYER);
-    setShowErrors(false);
-  }
-
   return (
-    <div className="space-y-8">
-      <div className="bg-grey-100 rounded-xl p-6">
-        <h3 className="font-bold text-dark mb-4 flex items-center gap-2">
-          <span className="w-1 h-5 bg-accent rounded-full" />
+    <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-5">
+      {/* Inputs — left column like live site */}
+      <div className="lg:col-span-3 space-y-4">
+        <h3 className="font-bold text-dark text-sm uppercase tracking-wide">
           {t("inputs")}
         </h3>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <CalculatorField
-            id="wep-pipe-diameter"
-            label={t("pipeDiameter")}
-            value={pipeDiameter}
-            onChange={setPipeDiameter}
-            error={fieldError("pipeDiameter")}
-          />
-          <CalculatorField
-            id="wep-length"
-            label={t("length")}
-            value={length}
-            onChange={setLength}
-            error={fieldError("length")}
-          />
-          <CalculatorField
-            id="wep-inner-diameter"
-            label={t("innerDiameter")}
-            value={innerDiameter}
-            onChange={setInnerDiameter}
-            error={fieldError("innerDiameter")}
-          />
-          <CalculatorField
-            id="wep-pipes-per-layer"
-            label={t("pipesPerLayer")}
-            value={pipesPerLayer}
-            onChange={setPipesPerLayer}
-            error={fieldError("pipesPerLayer")}
-            inputMode="numeric"
-          />
-        </div>
-        <div className="flex gap-3 mt-6">
-          <button
-            type="button"
-            onClick={calculate}
-            className="px-6 py-2.5 bg-accent text-dark rounded-lg font-bold hover:bg-accent-dark transition-colors"
-          >
-            {t("calculate")}
-          </button>
-          <button
-            type="button"
-            onClick={reset}
-            className="px-6 py-2.5 border border-grey-300 text-text-muted rounded-lg font-medium hover:bg-grey-200 transition-colors"
-          >
-            {t("reset")}
-          </button>
-        </div>
+        <CalculatorField
+          id="wep-pipe-diameter"
+          label={t("pipeDiameter")}
+          value={pipeDiameter}
+          onChange={setPipeDiameter}
+          error={fieldError("pipeDiameter")}
+          placeholder={CALCULATOR_EMPTY_VALUE}
+        />
+        <CalculatorField
+          id="wep-length"
+          label={t("length")}
+          value={length}
+          onChange={setLength}
+          error={fieldError("length")}
+          placeholder={CALCULATOR_EMPTY_VALUE}
+        />
+        <CalculatorField
+          id="wep-inner-diameter"
+          label={t("innerDiameter")}
+          value={innerDiameter}
+          onChange={setInnerDiameter}
+          error={fieldError("innerDiameter")}
+          placeholder={CALCULATOR_EMPTY_VALUE}
+        />
+        <CalculatorField
+          id="wep-pipes-per-layer"
+          label={t("pipesPerLayer")}
+          value={pipesPerLayer}
+          onChange={setPipesPerLayer}
+          error={fieldError("pipesPerLayer")}
+          inputMode="numeric"
+          placeholder={CALCULATOR_EMPTY_VALUE}
+        />
+        <button
+          type="button"
+          onClick={() => setShowErrors(true)}
+          className="w-full px-4 py-2.5 bg-accent text-dark font-bold uppercase text-sm hover:bg-accent-dark transition-colors"
+        >
+          {t("calculate")}
+        </button>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      {/* Two Wickelbild panels with large labeled diagrams */}
+      <div className="lg:col-span-9 grid grid-cols-1 md:grid-cols-2 gap-5">
         <PatternResultCard
           title={t("unevenLayers")}
           diagramSrc="/images/calculator/ugl.gif"
