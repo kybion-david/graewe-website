@@ -60,7 +60,7 @@ not silently leave one behind.
 - **Re-check before you finish.** If a session runs long, `git fetch origin main` again before
   opening the PR; rebase if the remote moved.
 - **Verify claims about CI against CI**, not against your machine: `gh run list --branch main`.
-  There is more than one workflow — check each by name (`--workflow=deploy.yml`, `--workflow=pages.yml`).
+  Check the deploy workflow by name (`--workflow=deploy.yml`).
 - **Kill stray dev/preview servers before running e2e.** `playwright.config.ts` sets
   `reuseExistingServer: true`, so a leftover server from another checkout on port 3000 is silently
   reused and produces a wall of false failures.
@@ -85,7 +85,7 @@ Corporate website for **GRAEWE GmbH Maschinenbau** (extrusion machinery). Replac
 | i18n | `next-intl` — routing + JSON messages |
 | Forms | React Hook Form + Zod; contact API + Resend + Turnstile |
 | Tests | Vitest (unit), Playwright (e2e) |
-| Deploy | Azure Static Web Apps (`standalone`) primary; GitHub Pages export optional |
+| Deploy | Azure Static Web Apps (`standalone`) only |
 
 **Critical Next.js 16 quirks**
 
@@ -172,7 +172,7 @@ Copy `.env.example` → `.env.local`. **Contact email requires `RESEND_API_KEY`*
 - Interactive: Produktrechner (modern UI with labeled Wickelbild diagrams, live calc, validation), contact form (Resend + Turnstile/honeypot/rate-limit)
 - SEO: `generateMetadata`, Open Graph, JSON-LD, `next-sitemap` (no third-party analytics)
 - A11y: skip link, ARIA on menu/language switcher, focus-visible, contrast-safe yellow buttons
-- Deploy: Azure SWA Terraform + GH Actions; optional GitHub Pages path via `GITHUB_PAGES=true`
+- Deploy: Azure SWA Terraform + GH Actions only (no GitHub Pages export)
 
 ## 9. Spec maintenance (required)
 
