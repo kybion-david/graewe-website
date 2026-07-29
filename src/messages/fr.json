@@ -140,7 +140,8 @@
       "transverseCutting": "Coupe transversale",
       "sheetStackers": "Empileurs de feuilles"
     },
-    "contactPerson": "Interlocuteur"
+    "contactPerson": "Interlocuteur",
+    "detailsComingSoon": "Détails du produit à venir."
   },
   "successStories": {
     "title": "Témoignages clients",

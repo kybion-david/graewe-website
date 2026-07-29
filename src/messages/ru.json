@@ -140,7 +140,8 @@
       "transverseCutting": "Поперечная резка",
       "sheetStackers": "Укладчики листов"
     },
-    "contactPerson": "Контактное лицо"
+    "contactPerson": "Контактное лицо",
+    "detailsComingSoon": "Подробности о продукте скоро появятся."
   },
   "successStories": {
     "title": "Истории успеха",

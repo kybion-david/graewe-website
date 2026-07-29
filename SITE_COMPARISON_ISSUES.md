@@ -325,12 +325,13 @@ Old site checked live on graewe.com.
 ---
 
 ### ISSUE-020 — Fallback “Product details coming soon.” is English-only
-- **Status:** Open
+- **Status:** Done
+- **Note:** Replaced hardcoded English fallback with `products.detailsComingSoon` in all five locale files; wired in Rohr-/Profil-/Plattenextrusion product detail pages.
 - **Category:** i18n / Bug
 - **Problem:** Product detail pages hardcode English fallback string if content lookup fails.
 - **Evidence:** `src/app/[locale]/produkte/*/ [product]/page.tsx`
 - **Acceptance criteria:**
-  - [ ] Fallback uses i18n key in all locales; ideally never shown for shipped products.
+  - [x] Fallback uses i18n key in all locales; ideally never shown for shipped products.
 
 ---
 
