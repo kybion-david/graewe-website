@@ -40,6 +40,7 @@ Old site checked live on graewe.com.
 | Calculator | Present (2 modes) |
 | Contact form | Present; Turnstile + honeypot + rate limit |
 | HTML Sitemap / Cookies pages | Present (essential-cookies notice; no banner) |
+| Analytics | None at launch (documented; policy matches) |
 | Multi-language **URL** parity | German slugs canonical; old translated paths **301** |
 | Redirects for cutover | Path + news/job query redirects in place |
 | Legal pages localized | All 5 locales (DE binding) |
@@ -194,7 +195,7 @@ Old site checked live on graewe.com.
 
 ### ISSUE-009 — Cookies / consent page & banner missing
 - **Status:** Done
-- **Note:** Chose essential-only approach (no analytics yet): `/[locale]/cookies` page + footer link; Datenschutz §3 updated (no etracker); no consent banner until trackers are added (see ISSUE-024).
+- **Note:** Chose essential-only approach: `/[locale]/cookies` page + footer link; Datenschutz §3 updated (no etracker); no consent banner. Launch analytics decision closed in ISSUE-023 (none).
 - **Category:** Missing feature / Legal / compliance
 - **Problem:** Live footer links to Cookies (`/cookies` → opt-in UI `?showOptIn=1`). Live Datenschutz references etracker cookies. New site has no cookies route, no consent banner, and unused `footer.cookies` / `legal.cookies` keys. `/de/cookies` → 404.
 - **Decision needed:** If no tracking is used post-launch, update Datenschutz accordingly and either remove Cookies link or provide a short “we only use essential cookies” page. If analytics is added, implement consent + update policy.
@@ -363,11 +364,12 @@ Old site checked live on graewe.com.
 ## P2 — Polish & consistency
 
 ### ISSUE-023 — Analytics not implemented (and policy may still imply tracking)
-- **Status:** Open
+- **Status:** Done
+- **Note:** Documented launch decision = **no analytics** in `SPEC.md` + `PROJECT.md`; removed planned `NEXT_PUBLIC_ANALYTICS_ID` / Plausible-Umami guidance. Datenschutz + `/cookies` already state essential-only / no etracker (ISSUE-009). Adding trackers later requires consent + policy updates.
 - **Category:** Missing feature / Legal / compliance
 - **Problem:** `PROJECT.md` planned Plausible/Umami; `NEXT_PUBLIC_ANALYTICS_ID` in env example. Live site uses etracker. New site has no analytics integration.
 - **Acceptance criteria:**
-  - [ ] Either implement privacy-friendly analytics **with consent if required**, or explicitly document “no analytics” and ensure Datenschutz matches.
+  - [x] Either implement privacy-friendly analytics **with consent if required**, or explicitly document “no analytics” and ensure Datenschutz matches.
 
 ---
 
