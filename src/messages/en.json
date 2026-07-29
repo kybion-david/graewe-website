@@ -389,32 +389,170 @@
   "news": {
     "title": "News",
     "readMore": "read more",
-    "articlePlaceholder": "Full article content will appear here — placeholder.",
+    "germanOriginalNotice": "This article is available in German.",
+    "backToList": "Back to news",
     "items": [
       {
         "slug": "kalibriertische-profilextrusion",
         "title": "Calibration tables for profile extrusion",
-        "excerpt": "Expanded offering: precision calibration tables for demanding profile applications – tailored to your extrusion line."
+        "excerpt": "A calibration table for profile extrusion is used for calibrating and cooling profiles made of thermoplastic materials.",
+        "body": [
+          {
+            "type": "p",
+            "text": "A calibration table for profile extrusion is used for calibrating and cooling profiles made of thermoplastic materials."
+          },
+          {
+            "type": "h",
+            "text": "Extras:"
+          },
+          {
+            "type": "ul",
+            "items": [
+              "metal-plated solid substructure",
+              "frame made of galvanized steel or stainless steel",
+              "drip water tank made of stainless steel",
+              "sensitive lateral, height and length adjustment with special anti-corrosive coating",
+              "all parts in contact with water made of corrosion-free materials"
+            ]
+          },
+          {
+            "type": "h",
+            "text": "Accessories:"
+          },
+          {
+            "type": "ul",
+            "items": [
+              "energy-optimized vacuum control",
+              "calibration table extension",
+              "cyclone unit",
+              "blow-off device"
+            ]
+          },
+          {
+            "type": "h",
+            "text": "Clear advantages at a glance:"
+          },
+          {
+            "type": "ul",
+            "items": [
+              "modular design, special lengths easily made to custom",
+              "large clamping areas possible",
+              "numerous water supply and vacuum connections",
+              "individual, sensitively adjustable vacuum and cooling circulation",
+              "flow regulator with float display",
+              "pumps easily accessible",
+              "longitudinal adjustment on linear rails for added stability",
+              "low noise level and vibration reduction by use of vibration dampers"
+            ]
+          }
+        ]
       },
       {
         "slug": "portfolio-erweiterung",
-        "title": "Portfolio expansion",
-        "excerpt": "GRAEWE broadens its range and offers customers even more flexibility in pipe, profile, and sheet extrusion."
+        "title": "Extended portfolio and expert knowledge",
+        "excerpt": "New collaboration with GRAEWE — extrusion downstream equipment for medium and large profiles with Thomas Neuhardt and Forsch Elektro Service.",
+        "body": [
+          {
+            "type": "p",
+            "text": "GRAEWE takes on new tasks in the domain of extrusion downstream equipment, namely the average-sized and large profiles / Thomas Neuhardt responsible for the new field of activities / GRAEWE was able to win FORSCH Elektro Service as a partner."
+          },
+          {
+            "type": "p",
+            "text": "Neuenburg, 20 September 2013: In August 2013, the Neuenburg business company GRAEWE GmbH, leading manufacturer of extrusion downstream equipment for thermoplastic pipes, profiles and sheets, launched into operations with a new team of experts. Their aim is to comprehensively expand sales and service activities in new profile extrusion downstream business."
+          },
+          {
+            "type": "p",
+            "text": "Two leading personalities were recruited for this specialist segment. Thomas Neuhardt, with GRAEWE since August, as well as Karl-Heinz Forsch from Forsch Elektro Service."
+          },
+          {
+            "type": "p",
+            "text": "Mr. Neuhardt will concentrate on construction and development. The Forsch Elektro Service team, having acquired know-how from Baston, supplier of spare parts and service for Baston/Vobau systems, has gained expert knowledge in constructive and electrotechnical extrusion."
+          },
+          {
+            "type": "p",
+            "text": "Market leader GRAEWE can now manufacture and further develop systems of the firm BASTON, which became bankrupt in 2011. Thus, service and supply can now be continued for existing customers of this company!"
+          },
+          {
+            "type": "p",
+            "text": "Initial reactions show that GRAEWE’s concept works: several large orders in the shortest possible time prove that the combination of GRAEWE’s expertise and two experienced, specialized profile extrusion experts is much in demand in the market."
+          },
+          {
+            "type": "p",
+            "text": "Technology CEO Michael Graewe considers the portfolio extension to be an important strategic decision that ensures even more the future strength of the Neuenburg machine manufacturer."
+          },
+          {
+            "type": "p",
+            "text": "Stefan Graewe puts it in concrete terms: \"We are already seeing that this additional closeness to the customer and better service fills a gap and can become an additional sales guarantee,\" commented the managing director responsible for the overall sales."
+          },
+          {
+            "type": "p",
+            "text": "In the meantime, the new team of experts is already on its way to customers and prospective clients to introduce itself and the extended range of services, personally."
+          }
+        ]
       },
       {
         "slug": "bauboom-nachfrage",
         "title": "Construction boom boosts demand",
-        "excerpt": "Strong construction activity is driving demand for plastic pipes and profiles – our customers are scaling production."
+        "excerpt": "GRAEWE GmbH has acquired a fourth production hall at its Neuenburg site.",
+        "body": [
+          {
+            "type": "p",
+            "text": "NEUENBURG AM RHEIN. Im Bereich innovativer Extrusionstechnik gehört die Neuenburger Firma Graewe GmbH zu den führenden Herstellern auf dem Weltmarkt. Sie plant, entwickelt und fertigt komplette Extrusionsanlagen, mit denen Kunststoffrohre, -profile und -platten hergestellt werden. Mit dem Kauf einer vierten Produktionshalle hat die Firma ihre Produktionsfläche um ein Drittel auf rund 18 000 Quadratmeter erweitert."
+          },
+          {
+            "type": "p",
+            "text": "Die Firma hat das gegenüberliegende 6400 Quadratmeter große Grundstück in der Fischerstraße – ehemals Pharmakonzern Biokirch – gekauft mit einer überbauten Büro- und Hallenfläche von 3000 Quadratmetern. Die Betriebserweiterung sei angesichts des stetig steigenden Auftragsvolumens eine wichtige Produktionsgrundlage und diene der Sicherung der Arbeitsplätze. Gleichzeitig sei diese Investition auch „ein klares Bekenntnis zum Standort Neuenburg“, betont Marketing-Geschäftsführer Stefan Graewe. Den Technikbereich leitet sein Bruder Michael Graewe."
+          },
+          {
+            "type": "p",
+            "text": "Vater Kurt Graewe, Seniorchef und Entwickler von mehreren Patenten, hat die Firma 1981 gegründet. Bevor der Neubau für sein Unternehmen 1987 fertig war, hat er für seinen Betrieb vorübergehend genau das Firmenareal angemietet, das er jetzt käuflich erworben hat. „So schließt sich der Kreis“, sagt Kurt Graewe. Mit zwei Leuten hat er den Aufbau damals begonnen, heute beschäftigt die Firma 85 Mitarbeiter. Graewe-Maschinen – jährlich 180 Stück – werden für Installations- und Bewässerungssysteme, für Fußbodenheizungen, Fensterprofile, aber auch in der Medizin verwendet."
+          },
+          {
+            "type": "p",
+            "text": "Neben den neuen Maschinen werden aber auch gebrauchte aufgearbeitet und verkauft. Dieser Secondhand-Service für die Kunststoffindustrie läuft über die Graewe-Tochterfirmen Next in Neuenburg und Indext in Mulhouse. Seit 2003 gibt es auch „Graewe-Fangli“ in Ningbo-Schanghai für die steigende Nachfrage im asiatischen Raum."
+          },
+          {
+            "type": "p",
+            "text": "Trotz der vollen Auftragsbücher sei der Exportanteil auf 80 Prozent gesunken, sagt Stefan Graewe, denn: „Wir profitieren vom Bauboom und der deshalb verstärkten Nachfrage in Deutschland.“"
+          },
+          {
+            "type": "p",
+            "text": "Zugenommen habe auch der Export innerhalb Europas und neben Indien, China, Ägypten, Iran und Russland sei der Verkauf nach Südamerika „im Kommen“, erklärt Stefan Graewe."
+          }
+        ],
+        "germanOriginal": true
       },
       {
         "slug": "produktionshallen-erweitert",
         "title": "Production halls expanded",
-        "excerpt": "Investment in additional floor space: more capacity for manufacturing and assembly at the Neuenburg site."
+        "excerpt": "GRAEWE/next expands production space in Neuenburg to a total of 17,800 m² across four halls.",
+        "body": [
+          {
+            "type": "p",
+            "text": "Die GRAEWE/next GmbH investiert weiter in den Standort Neuenburg. Mit dem Kauf einer weiteren Produktionshalle trägt das Unternehmen dem ungebremst steigenden Auftragsvolumen Rechnung und erweitert die Produktionsfläche in nunmehr vier Hallen um 6.800 qm Grundfläche auf insgesamt 17.800 qm. GRAEWE/next sieht die Erweiterung nicht nur als klares Bekenntnis zum Standort Neuenburg, sondern auch und vor allem als Produktionsgrundlage zur Umsetzung des Auftragswachstums."
+          },
+          {
+            "type": "p",
+            "text": "„Unsere Auftragsbücher sind voll, GRAEWE-Maschinen sind weltweit gefragt, da sie in Sachen Zuverlässigkeit, Technologie und Produktivität zur Branchenspitze zählen. Wir wollen diesen Trend nicht nur nutzen, sondern ausbauen, indem wir erweiterte Produktionskapazitäten schaffen und nutzen“, erläutert Geschäftsführer Michael Graewe. Und ergänzt, dass man schließlich auch zukünftig keinen Auftrag aus Platzgründen verlieren möchte."
+          },
+          {
+            "type": "p",
+            "text": "Stefan Graewe, für Marketing und Vertrieb verantwortlicher Geschäftsführer, rechnet mit weiteren Zuwächsen und einer noch stärkeren Internationalisierung: „Es zeigt sich steigendes Interesse vor allem von Seiten vieler Unternehmen aus jenen Staaten, die bislang ausschließlich auf den Preis geachtet haben, nun aber erkennen, dass sie bei Graewe hervorragende Qualität zu fairen Preisen bekommen. Auch für diesen Trend sind wir nun in Neuenburg bestens gerüstet.“"
+          }
+        ],
+        "source": "Source: Extrusion 2/2014 VM Verlag",
+        "germanOriginal": true
       },
       {
         "slug": "jubilaeum",
         "title": "Anniversary",
-        "excerpt": "Years of successful extrusion technology – we thank our customers and partners for their trust."
+        "excerpt": "40 years of successful extrusion technology – Celebrating 40 Years of X-tras (est. 1981).",
+        "body": [
+          {
+            "type": "p",
+            "text": "GRAEWE celebrates 40 years of extrusion technology: Celebrating 40 Years of X-tras — est. 1981."
+          }
+        ]
       }
     ]
   },

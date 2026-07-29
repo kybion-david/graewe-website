@@ -101,7 +101,7 @@ Full path list is generated (>400 routes). Representative rows:
 | `/stellenanzeigen/stellendetails?tx_tanjoboffers_jobdetail[job]=9` | `/de/stellenanzeigen/elektriker-elektroniker` |
 | `/en/job-advertisements/job-details?tx_tanjoboffers_jobdetail[job]=ID` | `/en/stellenanzeigen/{slug}` |
 
-News ID map: `22→kalibriertische-profilextrusion`, `24→portfolio-erweiterung`, `27→bauboom-nachfrage`, `28→produktionshallen-erweitert`, `40→jubilaeum`.
+News ID map: see `src/lib/news.ts` (`NEWS_LEGACY_IDS`).
 
 Job ID map: see `src/lib/jobs.ts` (`JOB_LEGACY_IDS`).
 

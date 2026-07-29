@@ -55,6 +55,8 @@ public/images/        # Static assets by section
 | Calculator math | `src/lib/calculator.ts` (pure functions) |
 | Job openings (slugs / TYPO3 IDs) | `src/lib/jobs.ts` |
 | Job copy (titles, bodies, apply text) | `src/messages/{locale}.json` → `jobs.*` |
+| News articles (slugs / TYPO3 IDs / images) | `src/lib/news.ts` + `public/images/news/` |
+| News copy (titles, excerpts, bodies) | `src/messages/{locale}.json` → `news.*` |
 | Legacy URL → canonical redirects | `src/lib/legacyRedirects.ts` |
 
 Do **not** hardcode user-facing strings in components. Add keys to **all five** locale files.

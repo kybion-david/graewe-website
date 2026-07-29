@@ -10,23 +10,8 @@
  */
 
 import { getJobSlugFromLegacyId } from "./jobs";
+import { getNewsSlugFromLegacyId } from "./news";
 import { productCategories, type ProductCategory } from "./products";
-
-/** Old TYPO3 `tx_news_pi1[news]` IDs → article slugs */
-export const NEWS_LEGACY_IDS: Record<string, string> = {
-  "22": "kalibriertische-profilextrusion",
-  "24": "portfolio-erweiterung",
-  "27": "bauboom-nachfrage",
-  "28": "produktionshallen-erweitert",
-  "40": "jubilaeum",
-};
-
-export function getNewsSlugFromLegacyId(
-  newsId: string | undefined,
-): string | undefined {
-  if (!newsId) return undefined;
-  return NEWS_LEGACY_IDS[newsId];
-}
 
 const LOCALES = ["de", "en", "fr", "ru", "es"] as const;
 type AppLocale = (typeof LOCALES)[number];

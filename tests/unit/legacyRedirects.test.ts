@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
+import { getNewsSlugFromLegacyId } from "@/lib/news";
 import {
-  getNewsSlugFromLegacyId,
   resolveLegacyRedirect,
   getLegacyPathRedirects,
 } from "@/lib/legacyRedirects";

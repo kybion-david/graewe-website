@@ -32,8 +32,8 @@ Old site checked live on graewe.com.
 |------|-------------------------|
 | Route / page structure (DE) | Mostly present |
 | Jobs (Stellenanzeigen) | Present (3 openings + detail pages) |
-| News article bodies | **Placeholders only** |
-| Homepage news teaser | **Always empty** |
+| News article bodies | Present (5 articles + images) |
+| Homepage news teaser | Present (latest 3) |
 | Product DE/EN copy | Mostly good |
 | Product FR/RU/ES body | Falls back to German |
 | Product images | Present (ISSUE-010 filled) |
@@ -72,7 +72,8 @@ Old site checked live on graewe.com.
 ---
 
 ### ISSUE-002 — News articles are placeholders (bodies not migrated)
-- **Status:** Open
+- **Status:** Done
+- **Note:** Migrated 5 article bodies + images via `src/lib/news.ts` + `news.items` (all locales); DE/EN bodies from live site, FR/RU/ES (and untranslated EN) show German body with notice; TYPO3 `news-detailansicht?news=` IDs 22/24/27/28/40 redirect. Also fixed Jubiläum “40 Jahre” excerpt (ISSUE-014).
 - **Category:** Content gap
 - **Problem:** Aktuelles listing has 5 cards (title + excerpt), but every detail page ends with placeholder text (“Artikelinhalt folgt…”). Live site has full article pages (TYPO3 news IDs 22, 24, 27, 28, 40).
 - **Evidence (new):** `src/app/[locale]/aktuelles/[slug]/page.tsx` renders `item.excerpt` + `t("articlePlaceholder")`. `src/content/news/` empty; `public/images/news/` empty.
@@ -80,23 +81,24 @@ Old site checked live on graewe.com.
 - **Slugs in rebuild:** `kalibriertische-profilextrusion`, `portfolio-erweiterung`, `bauboom-nachfrage`, `produktionshallen-erweitert`, `jubilaeum`
 - **Likely files:** news page + MDX/JSON content under `src/content/news/` (as planned in `PROJECT.md`), `src/messages/*.json` (`news.items`), images under `public/images/news/`.
 - **Acceptance criteria:**
-  - [ ] Each of the 5 articles has full body content migrated from graewe.com (DE minimum).
-  - [ ] Placeholder string removed when content exists.
-  - [ ] Article images migrated where present on old site.
-  - [ ] EN (and ideally FR/RU/ES) have usable content or a clear “available in German” notice — not fake placeholders.
+  - [x] Each of the 5 articles has full body content migrated from graewe.com (DE minimum).
+  - [x] Placeholder string removed when content exists.
+  - [x] Article images migrated where present on old site.
+  - [x] EN (and ideally FR/RU/ES) have usable content or a clear “available in German” notice — not fake placeholders.
 
 ---
 
 ### ISSUE-003 — Homepage news teaser always shows “no news”
-- **Status:** Open
+- **Status:** Done
+- **Note:** `NewsTeaser` now lists latest 3 via `getLatestNews()`; empty state only when `news.items` is empty.
 - **Category:** Bug / Content gap
 - **Problem:** Homepage middle column hardcodes empty state even though `/aktuelles` has 5 items. Live homepage shows news teasers when available.
 - **Evidence (new):** `src/components/home/NewsTeaser.tsx` comment `{/* News placeholder */}` + `t("home.noNews")`.
 - **Likely files:** `src/components/home/NewsTeaser.tsx`, shared news data helper.
 - **Acceptance criteria:**
-  - [ ] Homepage lists latest N articles (title + excerpt + link).
-  - [ ] “Keine Nachrichten verfügbar” only when the news list is empty.
-  - [ ] Matches visual role of the old homepage news column reasonably.
+  - [x] Homepage lists latest N articles (title + excerpt + link).
+  - [x] “Keine Nachrichten verfügbar” only when the news list is empty.
+  - [x] Matches visual role of the old homepage news column reasonably.
 
 ---
 
@@ -254,12 +256,13 @@ Old site checked live on graewe.com.
 ---
 
 ### ISSUE-014 — Jubiläum news excerpt incomplete / missing year
-- **Status:** Open
+- **Status:** Done
+- **Note:** Fixed with ISSUE-002 — excerpt/body now say “40 Jahre…” / “Celebrating 40 Years of X-tras (est. 1981)” and include the anniversary image.
 - **Category:** Bug / Content gap
 - **Problem:** DE excerpt starts with “Jahre erfolgreicher Extrusionstechnik…” — missing the anniversary number/year that should precede “Jahre”.
 - **Evidence:** `src/messages/de.json` → `news.items` slug `jubilaeum`.
 - **Acceptance criteria:**
-  - [ ] Excerpt and full article include the correct anniversary wording from the live article.
+  - [x] Excerpt and full article include the correct anniversary wording from the live article.
 
 ---
 
