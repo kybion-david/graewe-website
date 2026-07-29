@@ -401,11 +401,12 @@ Old site checked live on graewe.com.
 ---
 
 ### ISSUE-026 — Leftover Next.js starter assets in `public/`
-- **Status:** Open
+- **Status:** Done
+- **Note:** Removed unused starter SVGs (`file.svg`, `globe.svg`, `next.svg`, `vercel.svg`, `window.svg`) from `public/` — none were referenced in the app.
 - **Category:** Bug / Polish
 - **Problem:** Starter SVGs (`file.svg`, `globe.svg`, `next.svg`, `vercel.svg`, `window.svg`) remain in `public/` and are not part of GRAEWE brand.
 - **Acceptance criteria:**
-  - [ ] Unused starter assets removed if not referenced.
+  - [x] Unused starter assets removed if not referenced.
 
 ---
 
