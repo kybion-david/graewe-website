@@ -160,15 +160,15 @@ export function Footer() {
 
         {/* Legal links */}
         <div className="border-t border-white/10 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="text-xs text-grey-500">
+          <p className="text-xs text-grey-400">
             &copy; {new Date().getFullYear()} GRAEWE GmbH Maschinenbau
           </p>
           <div className="flex flex-wrap gap-x-6 gap-y-1 text-xs">
-            <Link href="/kontakt" className="text-grey-500 hover:text-grey-300 transition-colors">{t("footer.contact")}</Link>
-            <Link href="/impressum" className="text-grey-500 hover:text-grey-300 transition-colors">{t("footer.imprint")}</Link>
-            <Link href="/datenschutz" className="text-grey-500 hover:text-grey-300 transition-colors">{t("footer.privacy")}</Link>
-            <Link href="/sitemap" className="text-grey-500 hover:text-grey-300 transition-colors">{t("footer.sitemap")}</Link>
-            <Link href="/cookies" className="text-grey-500 hover:text-grey-300 transition-colors">{t("footer.cookies")}</Link>
+            <Link href="/kontakt" className="inline-flex items-center min-h-6 text-grey-400 hover:text-grey-300 transition-colors">{t("footer.contact")}</Link>
+            <Link href="/impressum" className="inline-flex items-center min-h-6 text-grey-400 hover:text-grey-300 transition-colors">{t("footer.imprint")}</Link>
+            <Link href="/datenschutz" className="inline-flex items-center min-h-6 text-grey-400 hover:text-grey-300 transition-colors">{t("footer.privacy")}</Link>
+            <Link href="/sitemap" className="inline-flex items-center min-h-6 text-grey-400 hover:text-grey-300 transition-colors">{t("footer.sitemap")}</Link>
+            <Link href="/cookies" className="inline-flex items-center min-h-6 text-grey-400 hover:text-grey-300 transition-colors">{t("footer.cookies")}</Link>
           </div>
         </div>
       </div>

@@ -77,7 +77,7 @@ export function MobileMenu({
 
         {/* Navigation */}
         <nav className="p-5">
-          <p className="text-xs font-bold text-grey-400 uppercase tracking-widest mb-2">
+          <p className="text-xs font-bold text-text-muted uppercase tracking-widest mb-2">
             {t("company")}
           </p>
           {companyLinks.map((link) => (
@@ -92,7 +92,7 @@ export function MobileMenu({
 
           <div className="my-4 border-t border-grey-200" />
 
-          <p className="text-xs font-bold text-grey-400 uppercase tracking-widest mb-2">
+          <p className="text-xs font-bold text-text-muted uppercase tracking-widest mb-2">
             {t("products")}
           </p>
           {productLinks.map((link) => (

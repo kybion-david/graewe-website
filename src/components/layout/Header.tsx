@@ -174,7 +174,7 @@ export function Header() {
                       <div className="grid grid-cols-2 gap-x-12 gap-y-1">
                         {/* Left column */}
                         <div>
-                          <p className="text-xs font-bold text-grey-400 uppercase tracking-widest mb-3">
+                          <p className="text-xs font-bold text-text-muted uppercase tracking-widest mb-3">
                             {t("company")}
                           </p>
                           {companyLinks.map((link) => (
@@ -188,7 +188,7 @@ export function Header() {
                             </Link>
                           ))}
 
-                          <p className="text-xs font-bold text-grey-400 uppercase tracking-widest mt-6 mb-3">
+                          <p className="text-xs font-bold text-text-muted uppercase tracking-widest mt-6 mb-3">
                             {t("products")}
                           </p>
                           {productLinks.map((link) => (
@@ -205,7 +205,7 @@ export function Header() {
 
                         {/* Right column */}
                         <div>
-                          <p className="text-xs font-bold text-grey-400 uppercase tracking-widest mb-3">
+                          <p className="text-xs font-bold text-text-muted uppercase tracking-widest mb-3">
                             &nbsp;
                           </p>
                           {mainLinks.map((link) => (
