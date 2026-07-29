@@ -53,7 +53,11 @@
     "sheetExtrusionDesc": "Листовые системы Graewe подстраиваются под требования применения",
     "newsTitle": "Новости",
     "noNews": "Новостей пока нет.",
-    "learnMore": "Подробнее"
+    "learnMore": "Подробнее",
+    "videoLabel": "Видео",
+    "videoTitle": "GRAEWE Coilers",
+    "videoPlayAria": "Воспроизвести видео GRAEWE Coilers",
+    "videoOpenExternal": "Смотреть на Vimeo"
   },
   "company": {
     "whoIsGraewe": {
