@@ -36,10 +36,10 @@ Old site checked live on graewe.com.
 | Homepage news teaser | **Always empty** |
 | Product DE/EN copy | Mostly good |
 | Product FR/RU/ES body | Falls back to German |
-| HTML Sitemap / Cookies pages | Present (essential-cookies notice; no banner) |
-| Product images | **2 galleries empty** |
+| Product images | Present (ISSUE-010 filled) |
 | Calculator | Present (2 modes) |
-| Contact form | Present; **no captcha** |
+| Contact form | Present; Turnstile + honeypot + rate limit |
+| HTML Sitemap / Cookies pages | Present (essential-cookies notice; no banner) |
 | Multi-language **URL** parity | **Broken** (old uses translated slugs) |
 | Redirects for cutover | **Incomplete** |
 | Legal pages localized | DE body only |
@@ -145,16 +145,17 @@ Old site checked live on graewe.com.
 ---
 
 ### ISSUE-006 — Contact form missing captcha / spam protection
-- **Status:** Open
+- **Status:** Done
+- **Note:** Cloudflare Turnstile (site + server verify) with honeypot + per-IP rate limit; captcha errors localized in all 5 locales (`src/lib/contactSpam.ts`, ContactForm, API route). Configure `NEXT_PUBLIC_TURNSTILE_SITE_KEY` + `TURNSTILE_SECRET_KEY` for production.
 - **Category:** Missing feature / Legal / compliance
 - **Problem:** Live contact form requires Captcha (`Captcha *`). New form has no captcha, honeypot, or rate limiting.
 - **Evidence (old):** https://www.graewe.com/kontakt  
 - **Evidence (new):** `src/components/contact/ContactForm.tsx`, `src/app/api/contact/route.ts`
 - **Likely files:** ContactForm, API route, env example for captcha keys.
 - **Acceptance criteria:**
-  - [ ] Spam protection comparable to live site (captcha **or** modern equivalent: Turnstile/hCaptcha + server verify).
-  - [ ] Failed verification returns clear error; no email send.
-  - [ ] Works in all locales.
+  - [x] Spam protection comparable to live site (captcha **or** modern equivalent: Turnstile/hCaptcha + server verify).
+  - [x] Failed verification returns clear error; no email send.
+  - [x] Works in all locales.
 
 ---
 
@@ -202,18 +203,17 @@ Old site checked live on graewe.com.
 ---
 
 ### ISSUE-010 — Product galleries empty for 2 products
-- **Status:** Open
+- **Status:** Done
+- **Note:** Live pages also had no galleries. Filled `profilextrusion/extruder` with the shared extruder photo set (5 JPGs, same machines as Rohr/Platten extruder) and `plattenextrusion/sondermaschinen` with 5 GRAEWE special-machine photos scraped from sibling Sonder pages; wired in `productImages.ts`.
 - **Category:** Content gap / Bug
 - **Problem:** Image folders exist but contain **0 files**:
   - `public/images/products/profilextrusion/extruder/`
   - `public/images/products/plattenextrusion/sondermaschinen/`
 - **Evidence (new):** local product page `/de/produkte/profilextrusion/extruder` shows text only, no gallery.
-- **Likely files:** those image directories, `src/lib/productImages.ts`, scrape/copy from graewe.com product pages.
+- **Likely files:** those image folders, `src/lib/productImages.ts`, scrape/copy from graewe.com product pages.
 - **Acceptance criteria:**
-  - [ ] Both products show a gallery comparable to sibling products (≥1 real product photo; ideally 3–5).
-  - [ ] Lightbox still works.
-
----
+  - [x] Both products show a gallery comparable to sibling products (≥1 real product photo; ideally 3–5).
+  - [x] Lightbox still works.
 
 ### ISSUE-011 — Product detail body missing for FR / RU / ES
 - **Status:** Open
