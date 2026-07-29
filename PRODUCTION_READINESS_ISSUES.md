@@ -54,7 +54,7 @@ compares content/parity against the live `graewe.com`. That file owns ISSUE-001 
 Recorded so nobody re-audits them:
 
 - `npm run lint` — **clean, zero errors and zero warnings** (after `npm ci`). `npm run type-check` — clean. `npm run test` — **68/68 passing across 10 files**. `npm run build` — succeeds.
-- `.github/workflows/deploy.yml` (Azure, "Build & Deploy") — **green on `main`** for the two most recent runs, after the lockfile repairs in PRs #32/#33. The GitHub Pages workflow is a different story — see ISSUE-058.
+- `.github/workflows/deploy.yml` (Azure, "Build & Deploy") — **green on `main`** for the two most recent runs, after the lockfile repairs in PRs #32/#33.
 - **No horizontal overflow at 390 px** — re-measured on 8 routes across DE/EN/FR/RU/ES including Cyrillic. The 320 px case is broken — see ISSUE-036.
 - **Contact form is in good shape**: 6/6 labels carry `htmlFor`, 6/6 inputs carry `id`, 5 carry `autoComplete`, `aria-required` is set, a honeypot (`contact-website`) is present, Turnstile is wired, the API escapes all user input, and it now fails closed when Resend is unconfigured. The workflow passes `RESEND_API_KEY` / `CONTACT_EMAIL_TO` / `CONTACT_EMAIL_FROM` / `TURNSTILE_*`.
 - Calculator inputs are properly labelled too (4/4 `htmlFor` + `id`) via `CalculatorField.tsx`.
@@ -66,7 +66,7 @@ Recorded so nobody re-audits them:
 ## P0 — Launch blockers
 
 ### ISSUE-058 — GitHub Pages workflow fails on every push to `main`
-- **Status:** Open
+- **Status:** Done — Removed `pages.yml` and Pages export path; Azure SWA is the only deploy target (`SPEC.md` §2).
 - **Category:** Build / CI
 - **Problem:** `.github/workflows/pages.yml` ("Deploy to GitHub Pages") has failed on **all 8 most recent runs on `main`**. The static export cannot prerender the legacy TYPO3 query-param redirect routes, because `output: "export"` forbids `await searchParams`. The export aborts, so the Pages path has been dead since those routes landed.
 - **Evidence — reproduced locally:**
@@ -82,9 +82,9 @@ Recorded so nobody re-audits them:
 - **Decision needed first:** is the Pages export still a supported target, or is Azure SWA the only one? `SPEC.md` §2 calls Pages "optional". If it is dead, delete `pages.yml` rather than leaving a permanently red pipeline that trains everyone to ignore failures.
 - **Likely files:** `.github/workflows/pages.yml`, `src/app/[locale]/aktuelles/news-detailansicht/page.tsx`, `src/app/[locale]/stellenanzeigen/stellendetails/page.tsx`, `next.config.ts`, `SPEC.md`
 - **Acceptance criteria:**
-  - [ ] Either `GITHUB_PAGES=true npm run build` succeeds, or `pages.yml` is removed and `SPEC.md` records that Azure SWA is the only target.
-  - [ ] If Pages is kept: legacy query-param redirects still work there (a static `_redirects`-style rule, or client-side handling — document which).
-  - [ ] No workflow on `main` is left in a permanently failing state.
+  - [x] Either `GITHUB_PAGES=true npm run build` succeeds, or `pages.yml` is removed and `SPEC.md` records that Azure SWA is the only target.
+  - [x] If Pages is kept: legacy query-param redirects still work there (a static `_redirects`-style rule, or client-side handling — document which). — N/A: Pages path removed.
+  - [x] No workflow on `main` is left in a permanently failing state.
 
 ---
 
@@ -230,7 +230,7 @@ Recorded so nobody re-audits them:
   - [ ] Exactly one hero preload per viewport (or two with correct `media`).
   - [ ] A 390 px client does not fetch the 828/1920 px variants — verify in DevTools Network.
   - [ ] Non-visible slides are not eagerly fetched.
-  - [ ] Consider WebP/AVIF sources: the `GITHUB_PAGES=true` path uses a custom loader with **no** optimization (see also ISSUE-058).
+  - [ ] Consider WebP/AVIF sources where helpful (Azure SWA uses Next image optimization with avif/webp).
 
 ---
 
@@ -382,7 +382,6 @@ Recorded so nobody re-audits them:
 - **Acceptance criteria:**
   - [ ] `/` issues a real 307/308 on the deployed target, not a meta refresh.
   - [ ] The bare-domain URL is excluded from the sitemap, or is the canonical entry that redirects.
-  - [ ] If the Pages export survives ISSUE-058, the stub carries `<meta name="robots" content="noindex">`.
 
 ---
 
@@ -468,4 +467,4 @@ nobody re-files them. None of these were ever merged as open items.
 - Tap-target, label and `aria` counts come from `getBoundingClientRect()` and attribute counts in the same iframes.
 - SEO figures come from `curl` against the dev server plus `grep` over the server-rendered HTML — no client JS involved, so they reflect what a crawler sees.
 - Contrast ratios are computed from the token values in `src/app/globals.css`; re-verify with a checker before changing tokens.
-- CI history via `gh run list --workflow=<file> --branch main`; the Pages failure was reproduced locally with `GITHUB_PAGES=true npx next build`.
+- CI history via `gh run list --workflow=<file> --branch main`.
