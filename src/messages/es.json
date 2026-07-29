@@ -17,6 +17,8 @@
     "jobs": "Ofertas de empleo",
     "menu": "MENÚ",
     "menuAria": "Menú de navegación",
+    "closeMenu": "Cerrar menú",
+    "mainNavigation": "Navegación principal",
     "whoIsGraewe": "¿Quién es Graewe?",
     "whatDoesGraewe": "¿Qué hace Graewe?",
     "whatDoesGraeweStandFor": "¿Qué representa Graewe?",
@@ -46,7 +48,10 @@
     "slide5": {
       "title": "Graewe es una marca muy valorada en el mundo de la tecnología de extrusión.",
       "subtitle": "Porque sabemos cómo llevar las ideas a la práctica."
-    }
+    },
+    "previousSlide": "Diapositiva anterior",
+    "nextSlide": "Diapositiva siguiente",
+    "goToSlide": "Ir a la diapositiva {n}"
   },
   "home": {
     "pipeExtrusionDesc": "La extrusión de tubos y conductos es nuestra especialidad",
@@ -687,7 +692,13 @@
     "phone": "+49 (0) 7631 7944-0"
   },
   "common": {
-    "backToTop": "Volver arriba"
+    "backToTop": "Volver arriba",
+    "skipToContent": "Saltar al contenido",
+    "selectLanguage": "Seleccionar idioma",
+    "close": "Cerrar",
+    "previousImage": "Imagen anterior",
+    "nextImage": "Imagen siguiente",
+    "gallery": "Galería"
   },
   "notFound": {
     "title": "Página no encontrada",

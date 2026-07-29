@@ -17,6 +17,8 @@
     "jobs": "Stellenanzeigen",
     "menu": "MENÜ",
     "menuAria": "Navigationsmenü",
+    "closeMenu": "Menü schließen",
+    "mainNavigation": "Hauptnavigation",
     "whoIsGraewe": "Wer ist Graewe?",
     "whatDoesGraewe": "Was macht Graewe?",
     "whatDoesGraeweStandFor": "Wofür steht Graewe?",
@@ -46,7 +48,10 @@
     "slide5": {
       "title": "Graewe ist eine begehrte Marke in der Welt der Extrudertechnik.",
       "subtitle": "Weil wir wissen, wie sich Ideen in die Praxis umsetzen lassen."
-    }
+    },
+    "previousSlide": "Vorherige Folie",
+    "nextSlide": "Nächste Folie",
+    "goToSlide": "Zur Folie {n}"
   },
   "home": {
     "pipeExtrusionDesc": "Die Extrusion von Rohren und Schläuchen ist unser Spezialgebiet",
@@ -682,7 +687,13 @@
     "phone": "+49 (0) 7631 7944-0"
   },
   "common": {
-    "backToTop": "Zurück nach oben"
+    "backToTop": "Zurück nach oben",
+    "skipToContent": "Zum Inhalt springen",
+    "selectLanguage": "Sprache wählen",
+    "close": "Schließen",
+    "previousImage": "Vorheriges Bild",
+    "nextImage": "Nächstes Bild",
+    "gallery": "Galerie"
   },
   "notFound": {
     "title": "Seite nicht gefunden",

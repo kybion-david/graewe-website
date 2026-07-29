@@ -165,7 +165,7 @@ export function Header() {
                 <div className="flex justify-end">
                   <nav
                     className="bg-white shadow-2xl border border-grey-200 w-full sm:w-auto sm:min-w-[540px] overflow-hidden"
-                    aria-label="Main navigation"
+                    aria-label={t("mainNavigation")}
                   >
                     {/* Yellow accent bar at top */}
                     <div className="h-1 bg-accent" />

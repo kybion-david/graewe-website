@@ -236,7 +236,7 @@ Recorded so nobody re-audits them:
 ---
 
 ### ISSUE-045 — Hardcoded strings still leak into all five locales
-- **Status:** Open — **partially addressed upstream**
+- **Status:** Done — remaining nav/product/carousel/layout strings and aria-labels moved into `src/messages/{de,en,fr,ru,es}.json` (nav + hero + common keys)
 - **Category:** i18n / A11y
 - **Problem:** The menu button label is now localized (`t("menu")` / `t("menuAria")` — ISSUE-019 is done), but several strings and most `aria-label`s remain hardcoded, so non-German visitors see German text and screen readers announce English labels regardless of `lang`.
 - **Evidence (visible text), verified on `6dd1a0a`:**
@@ -250,9 +250,9 @@ Recorded so nobody re-audits them:
   **Evidence (`aria-label`, English in every locale):** `MobileMenu.tsx:50` `"Close menu"`; `Header.tsx:140` `"Main navigation"`; `LanguageSwitcher.tsx:32` `"Select language"`; `HeroCarousel.tsx:95,105,220,230` `"Previous slide"` / `"Next slide"` and `:120,244` `` `Go to slide ${idx+1}` ``; `ProductDetailContent.tsx:111,122,134` `"Close"` / `"Previous image"` / `"Next image"`. (`Footer.tsx` `"Facebook"` / `"YouTube"` are proper nouns — leave them.)
 - **Likely files:** the above, plus `src/messages/{de,en,fr,ru,es}.json`
 - **Acceptance criteria:**
-  - [ ] Every string in the table and every non-proper-noun `aria-label` reads from `next-intl`.
-  - [ ] Keys added to **all five** locale files with real translations.
-  - [ ] A grep for hardcoded JSX text in `src/components` and `src/app` returns only proper nouns.
+  - [x] Every string in the table and every non-proper-noun `aria-label` reads from `next-intl`.
+  - [x] Keys added to **all five** locale files with real translations.
+  - [x] A grep for hardcoded JSX text in `src/components` and `src/app` returns only proper nouns.
 
 ---
 
