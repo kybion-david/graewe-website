@@ -30,6 +30,15 @@
   },
   "hero": {
     "h1": "GRAEWE GmbH – Extrudertechnik und Maschinenbau",
+    "carouselLabel": "Hero-Karussell",
+    "roleDescription": "Karussell",
+    "slideRoleDescription": "Folie",
+    "slideLabel": "Folie {n} von {total}",
+    "previousSlide": "Vorherige Folie",
+    "nextSlide": "Nächste Folie",
+    "goToSlide": "Zur Folie {n}",
+    "pauseAria": "Automatische Wiedergabe anhalten",
+    "playAria": "Automatische Wiedergabe starten",
     "slide1": {
       "title": "Denn wir wissen, wie sich Ideen in die Praxis umsetzen lassen.",
       "subtitle": "VOLL AUFGEDREHT, PERFEKT ABGEWICKELT"
@@ -49,10 +58,7 @@
     "slide5": {
       "title": "Graewe ist eine begehrte Marke in der Welt der Extrudertechnik.",
       "subtitle": "Weil wir wissen, wie sich Ideen in die Praxis umsetzen lassen."
-    },
-    "previousSlide": "Vorherige Folie",
-    "nextSlide": "Nächste Folie",
-    "goToSlide": "Zur Folie {n}"
+    }
   },
   "home": {
     "pipeExtrusionDesc": "Die Extrusion von Rohren und Schläuchen ist unser Spezialgebiet",

@@ -13,22 +13,53 @@ const slides = [
 ] as const;
 
 const SLIDE_DURATION = 6000;
+const PROGRESS_TICK_MS = 50;
 const TRANSITION_MS = 700;
 /** Tailwind `sm` breakpoint — keep in sync with layout classes below. */
 const SM_MIN_WIDTH = 640;
 
 const HERO_SIZES = `(max-width: ${SM_MIN_WIDTH - 1}px) 100vw, 56vw`;
 
+function PauseIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+      <rect x="6" y="5" width="4" height="14" rx="1" />
+      <rect x="14" y="5" width="4" height="14" rx="1" />
+    </svg>
+  );
+}
+
+function PlayIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M8 5.14v13.72a1 1 0 001.5.86l11-6.86a1 1 0 000-1.72l-11-6.86a1 1 0 00-1.5.86z" />
+    </svg>
+  );
+}
+
 export function HeroCarousel() {
   const t = useTranslations("hero");
   const [current, setCurrent] = useState(0);
   const [outgoing, setOutgoing] = useState<number | null>(null);
   const [progress, setProgress] = useState(0);
+  const [userPaused, setUserPaused] = useState(false);
+  const [hovered, setHovered] = useState(false);
+  const [focusWithin, setFocusWithin] = useState(false);
+  const [reducedMotion, setReducedMotion] = useState(false);
+  const [tabHidden, setTabHidden] = useState(false);
   const currentRef = useRef(current);
+  const progressRef = useRef(0);
+
+  const autoplayActive =
+    !userPaused && !hovered && !focusWithin && !reducedMotion && !tabHidden;
 
   useEffect(() => {
     currentRef.current = current;
   }, [current]);
+
+  useEffect(() => {
+    progressRef.current = progress;
+  }, [progress]);
 
   const goNext = useCallback(() => {
     setOutgoing(currentRef.current);
@@ -50,16 +81,42 @@ export function HeroCarousel() {
   }, []);
 
   useEffect(() => {
-    const timer = setInterval(goNext, SLIDE_DURATION);
-    return () => clearInterval(timer);
-  }, [goNext]);
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const syncMotion = () => setReducedMotion(mq.matches);
+    syncMotion();
+    mq.addEventListener("change", syncMotion);
+    return () => mq.removeEventListener("change", syncMotion);
+  }, []);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setProgress((prev) => Math.min(prev + 100 / (SLIDE_DURATION / 50), 100));
-    }, 50);
-    return () => clearInterval(interval);
-  }, [current]);
+    const syncVisibility = () => setTabHidden(document.hidden);
+    syncVisibility();
+    document.addEventListener("visibilitychange", syncVisibility);
+    return () => document.removeEventListener("visibilitychange", syncVisibility);
+  }, []);
+
+  useEffect(() => {
+    if (!autoplayActive) return;
+
+    const startProgress = progressRef.current;
+    const startedAt = performance.now();
+    const remainingMs = SLIDE_DURATION * (1 - startProgress / 100);
+
+    const progressInterval = setInterval(() => {
+      const elapsed = performance.now() - startedAt;
+      const totalElapsed = (startProgress / 100) * SLIDE_DURATION + elapsed;
+      setProgress(Math.min(100, (totalElapsed / SLIDE_DURATION) * 100));
+    }, PROGRESS_TICK_MS);
+
+    const advanceTimer = setTimeout(() => {
+      goNext();
+    }, remainingMs);
+
+    return () => {
+      clearInterval(progressInterval);
+      clearTimeout(advanceTimer);
+    };
+  }, [autoplayActive, current, goNext]);
 
   // Drop the outgoing slide after the crossfade so inactive images unmount.
   useEffect(() => {
@@ -73,14 +130,28 @@ export function HeroCarousel() {
       ? [current]
       : [outgoing, current];
 
+  const pauseLabel = userPaused ? t("playAria") : t("pauseAria");
+
   return (
-    <section className="bg-gradient-to-b from-white to-grey-100 relative overflow-hidden">
+    <section
+      className="bg-gradient-to-b from-white to-grey-100 relative overflow-hidden"
+      aria-roledescription={t("roleDescription")}
+      aria-label={t("carouselLabel")}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      onFocusCapture={() => setFocusWithin(true)}
+      onBlurCapture={(e) => {
+        if (!e.currentTarget.contains(e.relatedTarget as Node | null)) {
+          setFocusWithin(false);
+        }
+      }}
+    >
       <h1 className="sr-only">{t("h1")}</h1>
       <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="relative flex flex-col py-8 sm:min-h-[520px] sm:flex-row sm:items-center sm:py-0 lg:min-h-[560px]">
           {/* Text column */}
           <div className="relative z-10 order-1 max-w-[440px] shrink-0 sm:py-16">
-            <div className="flex items-center gap-3 mb-4 sm:mb-6">
+            <div className="flex items-center gap-3 mb-4 sm:mb-6" aria-hidden="true">
               <span className="text-accent font-bold text-sm tabular-nums">
                 {String(current + 1).padStart(2, "0")}
               </span>
@@ -90,10 +161,17 @@ export function HeroCarousel() {
               </span>
             </div>
 
-            <div className="relative mb-6 min-h-[80px] sm:mb-0 sm:min-h-[140px]">
+            <div
+              className="relative mb-6 min-h-[80px] sm:mb-0 sm:min-h-[140px]"
+              aria-live="polite"
+              aria-atomic="true"
+            >
               {slides.map((slide, index) => (
                 <div
                   key={slide.key}
+                  role="group"
+                  aria-roledescription={t("slideRoleDescription")}
+                  aria-label={t("slideLabel", { n: index + 1, total: slides.length })}
                   className={`transition-all duration-700 ease-out ${
                     index === current
                       ? "opacity-100 translate-y-0 relative"
@@ -113,13 +191,15 @@ export function HeroCarousel() {
 
             {/* Controls — desktop/tablet (under text) */}
             <div className="mt-10 hidden items-center gap-6 sm:flex">
-              <SlideArrows onPrev={goPrev} onNext={goNext} size="desktop" />
-              <SlideDots
-                current={current}
-                progress={progress}
-                onGoTo={goTo}
+              <SlideControls
+                onPrev={goPrev}
+                onNext={goNext}
+                userPaused={userPaused}
+                onTogglePause={() => setUserPaused((p) => !p)}
+                pauseLabel={pauseLabel}
                 size="desktop"
               />
+              <SlideDots current={current} progress={progress} onGoTo={goTo} />
             </div>
           </div>
 
@@ -140,7 +220,7 @@ export function HeroCarousel() {
                 >
                   <Image
                     src={slide.image}
-                    alt={`GRAEWE - ${t(`${slide.key}.title`)}`}
+                    alt={isCurrent ? `GRAEWE - ${t(`${slide.key}.title`)}` : ""}
                     width={800}
                     height={530}
                     sizes={HERO_SIZES}
@@ -154,13 +234,15 @@ export function HeroCarousel() {
 
           {/* Controls — mobile (below image) */}
           <div className="order-3 flex items-center justify-between sm:hidden">
-            <SlideArrows onPrev={goPrev} onNext={goNext} size="mobile" />
-            <SlideDots
-              current={current}
-              progress={progress}
-              onGoTo={goTo}
+            <SlideControls
+              onPrev={goPrev}
+              onNext={goNext}
+              userPaused={userPaused}
+              onTogglePause={() => setUserPaused((p) => !p)}
+              pauseLabel={pauseLabel}
               size="mobile"
             />
+            <SlideDots current={current} progress={progress} onGoTo={goTo} />
           </div>
         </div>
       </div>
@@ -168,13 +250,19 @@ export function HeroCarousel() {
   );
 }
 
-function SlideArrows({
+function SlideControls({
   onPrev,
   onNext,
+  userPaused,
+  onTogglePause,
+  pauseLabel,
   size,
 }: {
   onPrev: () => void;
   onNext: () => void;
+  userPaused: boolean;
+  onTogglePause: () => void;
+  pauseLabel: string;
   size: "desktop" | "mobile";
 }) {
   const t = useTranslations("hero");
@@ -185,25 +273,24 @@ function SlideArrows({
 
   return (
     <div className="flex items-center gap-1">
-      <button
-        type="button"
-        onClick={onPrev}
-        className={buttonClass}
-        aria-label={t("previousSlide")}
-      >
+      <button type="button" onClick={onPrev} className={buttonClass} aria-label={t("previousSlide")}>
         <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
           <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
         </svg>
       </button>
-      <button
-        type="button"
-        onClick={onNext}
-        className={buttonClass}
-        aria-label={t("nextSlide")}
-      >
+      <button type="button" onClick={onNext} className={buttonClass} aria-label={t("nextSlide")}>
         <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
           <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
         </svg>
+      </button>
+      <button
+        type="button"
+        onClick={onTogglePause}
+        className={buttonClass}
+        aria-label={pauseLabel}
+        aria-pressed={userPaused}
+      >
+        {userPaused ? <PlayIcon className="w-4 h-4" /> : <PauseIcon className="w-4 h-4" />}
       </button>
     </div>
   );
@@ -213,35 +300,32 @@ function SlideDots({
   current,
   progress,
   onGoTo,
-  size,
 }: {
   current: number;
   progress: number;
   onGoTo: (idx: number) => void;
-  size: "desktop" | "mobile";
 }) {
   const t = useTranslations("hero");
-  const barClass =
-    size === "desktop"
-      ? "relative h-1 w-8 bg-grey-300 overflow-hidden rounded-full"
-      : "relative h-1 w-6 bg-grey-300 overflow-hidden rounded-full";
 
   return (
-    <div className="flex gap-2">
+    <div className="flex items-center gap-1">
       {slides.map((_, idx) => (
         <button
           key={idx}
           type="button"
           onClick={() => onGoTo(idx)}
-          className={barClass}
+          className="relative flex h-6 min-w-6 items-center justify-center px-1"
           aria-label={t("goToSlide", { n: idx + 1 })}
+          aria-current={idx === current ? "true" : undefined}
         >
-          <div
-            className="absolute inset-y-0 left-0 bg-accent rounded-full transition-all duration-100"
-            style={{
-              width: idx === current ? `${progress}%` : idx < current ? "100%" : "0%",
-            }}
-          />
+          <span className="relative block h-1 w-6 sm:w-8 overflow-hidden rounded-full bg-grey-300">
+            <span
+              className="absolute inset-y-0 left-0 rounded-full bg-accent transition-all duration-100"
+              style={{
+                width: idx === current ? `${progress}%` : idx < current ? "100%" : "0%",
+              }}
+            />
+          </span>
         </button>
       ))}
     </div>

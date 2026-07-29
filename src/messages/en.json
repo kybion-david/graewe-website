@@ -30,6 +30,15 @@
   },
   "hero": {
     "h1": "GRAEWE GmbH – Extrusion technology and mechanical engineering",
+    "carouselLabel": "Hero carousel",
+    "roleDescription": "carousel",
+    "slideRoleDescription": "slide",
+    "slideLabel": "Slide {n} of {total}",
+    "previousSlide": "Previous slide",
+    "nextSlide": "Next slide",
+    "goToSlide": "Go to slide {n}",
+    "pauseAria": "Pause automatic slideshow",
+    "playAria": "Play automatic slideshow",
     "slide1": {
       "title": "Because we know how to turn ideas into practice.",
       "subtitle": "FULLY WOUND, PERFECTLY UNWOUND"
@@ -49,10 +58,7 @@
     "slide5": {
       "title": "Graewe is a sought-after brand in the world of extrusion technology.",
       "subtitle": "Because we know how to turn ideas into practice."
-    },
-    "previousSlide": "Previous slide",
-    "nextSlide": "Next slide",
-    "goToSlide": "Go to slide {n}"
+    }
   },
   "home": {
     "pipeExtrusionDesc": "The extrusion of pipes and tubes is our specialty",

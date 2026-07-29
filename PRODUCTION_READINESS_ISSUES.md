@@ -199,7 +199,7 @@ Recorded so nobody re-audits them:
 ---
 
 ### ISSUE-043 — Hero carousel auto-rotates with no pause control and 4 px-tall dots
-- **Status:** Open
+- **Status:** Done — pause/play control; autoplay stops on hover, focus-within, `document.hidden`, and `prefers-reduced-motion`; progress-dot hit areas are ≥24×24 px (`h-6 min-w-6`) with thin visual bars; carousel region + `aria-hidden` on inactive slides; strings in all 5 locales.
 - **Category:** A11y / Mobile
 - **Problem:** Three defects in one component.
   1. Advances every 6 s with no pause/stop/hide affordance, and no pause on hover or focus — WCAG 2.2.2 failure.
@@ -208,10 +208,10 @@ Recorded so nobody re-audits them:
 - **Evidence:** `src/components/home/HeroCarousel.tsx:38` (auto-advance), `:43` (50 ms progress interval), `:119` (`h-1 w-8`), `:243` (`h-1 w-6`). `grep` for `prefers-reduced|visibilitychange|paused` returns nothing. Measured on `/de` at 390 px: 40 interactive elements under 24 px tall, including six `24x4` buttons.
 - **Likely files:** `src/components/home/HeroCarousel.tsx`
 - **Acceptance criteria:**
-  - [ ] A visible pause/play control, or auto-advance removed.
-  - [ ] Auto-advance and progress interval stop on hover, on focus within the carousel, when `document.hidden`, and under `prefers-reduced-motion: reduce`.
-  - [ ] Dot controls have a ≥24×24 px hit area (padding or `::before`; the visual bar can stay thin).
-  - [ ] Off-screen slides hidden from assistive tech; region marked up as a carousel.
+  - [x] A visible pause/play control, or auto-advance removed.
+  - [x] Auto-advance and progress interval stop on hover, on focus within the carousel, when `document.hidden`, and under `prefers-reduced-motion: reduce`.
+  - [x] Dot controls have a ≥24×24 px hit area (padding or `::before`; the visual bar can stay thin).
+  - [x] Off-screen slides hidden from assistive tech; region marked up as a carousel.
 
 ---
 
