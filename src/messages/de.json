@@ -230,8 +230,13 @@
       "required": "Dieses Feld ist erforderlich.",
       "invalid": "Bitte geben Sie eine gültige Zahl ein.",
       "positive": "Der Wert muss größer als 0 sein.",
-      "odMustExceedId": "Der Außendurchmesser muss größer als der Innendurchmesser sein."
-    }
+      "odMustExceedId": "Der Außendurchmesser muss größer als der Innendurchmesser sein.",
+      "minPipesPerLayer": "Mindestens 2 Rohre pro Lage erforderlich.",
+      "bundleWidthTooNarrow": "Die Bundbreite muss mindestens dem Doppelten des Rohrdurchmessers entsprechen."
+    },
+    "diagramUnevenAlt": "Wickelbild ungleiche Lagen",
+    "diagramEvenAlt": "Wickelbild gleiche Lagen versetzt",
+    "emptyValue": "N/V"
   },
   "contact": {
     "title": "Kontakt",

@@ -230,8 +230,13 @@
       "required": "Este campo es obligatorio.",
       "invalid": "Introduzca un número válido.",
       "positive": "El valor debe ser mayor que 0.",
-      "odMustExceedId": "El diámetro exterior debe ser mayor que el interior."
-    }
+      "odMustExceedId": "El diámetro exterior debe ser mayor que el interior.",
+      "minPipesPerLayer": "Se requieren al menos 2 tubos por capa.",
+      "bundleWidthTooNarrow": "El ancho del paquete debe ser al menos el doble del diámetro del tubo."
+    },
+    "diagramUnevenAlt": "Patrón de bobinado capas impares",
+    "diagramEvenAlt": "Patrón de bobinado desplazamiento capas pares",
+    "emptyValue": "N/V"
   },
   "contact": {
     "title": "Contacto",

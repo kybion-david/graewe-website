@@ -230,8 +230,13 @@
       "required": "Ce champ est obligatoire.",
       "invalid": "Veuillez saisir un nombre valide.",
       "positive": "La valeur doit être supérieure à 0.",
-      "odMustExceedId": "Le diamètre extérieur doit être supérieur au diamètre intérieur."
-    }
+      "odMustExceedId": "Le diamètre extérieur doit être supérieur au diamètre intérieur.",
+      "minPipesPerLayer": "Au moins 2 tubes par couche sont requis.",
+      "bundleWidthTooNarrow": "La largeur du paquet doit être au moins le double du diamètre du tube."
+    },
+    "diagramUnevenAlt": "Schéma d’enroulement couches inégales",
+    "diagramEvenAlt": "Schéma d’enroulement décalage couches paires",
+    "emptyValue": "N/V"
   },
   "contact": {
     "title": "Contact",

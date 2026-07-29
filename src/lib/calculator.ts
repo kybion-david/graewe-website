@@ -35,7 +35,15 @@ export type CalculatorFieldError =
   | "required"
   | "invalid"
   | "positive"
-  | "odMustExceedId";
+  | "odMustExceedId"
+  | "minPipesPerLayer"
+  | "bundleWidthTooNarrow";
+
+/** Live TYPO3 placeholder when a result cannot be computed. */
+export const CALCULATOR_EMPTY_VALUE = "N/V";
+
+/** Live default for Rohranzahl pro Lage. */
+export const DEFAULT_PIPES_PER_LAYER = "2";
 
 export type WindingPositionFields = {
   pipeDiameter: string;
@@ -76,7 +84,8 @@ function parsePositiveNumber(
   if (trimmed === "") {
     return { ok: false, error: "required" };
   }
-  const value = Number(trimmed);
+  // Live calculator accepts German decimal commas.
+  const value = Number(trimmed.replace(",", "."));
   if (!Number.isFinite(value)) {
     return { ok: false, error: "invalid" };
   }
@@ -101,6 +110,11 @@ export function validateWindingPositionInput(
       errors[key] = result.error;
     }
   });
+
+  // Live `checkInputDataWEP`: CPL must be >= 2.
+  if (parsed.pipesPerLayer !== undefined && parsed.pipesPerLayer < 2) {
+    errors.pipesPerLayer = "minPipesPerLayer";
+  }
 
   if (Object.keys(errors).length > 0) {
     return { ok: false, errors };
@@ -134,6 +148,15 @@ export function validateWindingLengthInput(
     parsed.outerDiameter <= parsed.innerDiameter
   ) {
     errors.outerDiameter = "odMustExceedId";
+  }
+
+  // Live `checkInputDataWL`: bundle width must be at least 2× pipe diameter.
+  if (
+    parsed.pipeDiameter !== undefined &&
+    parsed.bundleWidth !== undefined &&
+    parsed.bundleWidth < 2 * parsed.pipeDiameter
+  ) {
+    errors.bundleWidth = "bundleWidthTooNarrow";
   }
 
   if (Object.keys(errors).length > 0) {

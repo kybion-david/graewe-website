@@ -3,6 +3,8 @@
 import { useState } from "react";
 import { useTranslations } from "next-intl";
 import {
+  CALCULATOR_EMPTY_VALUE,
+  DEFAULT_PIPES_PER_LAYER,
   calculateWindingPositionUneven,
   calculateWindingPositionEven,
   validateWindingPositionInput,
@@ -10,67 +12,57 @@ import {
   type WindingPatternResult,
   type WindingPositionFieldKey,
 } from "@/lib/calculator";
+import { CalculatorField } from "./CalculatorField";
+import { PatternResultCard } from "./PatternResultCard";
 
-type FieldErrors = Partial<Record<WindingPositionFieldKey, CalculatorFieldError>>;
+function formatMm(value: number | undefined) {
+  return value === undefined ? CALCULATOR_EMPTY_VALUE : `${value}`;
+}
+
+function formatPipes(result: WindingPatternResult | null) {
+  if (!result) return CALCULATOR_EMPTY_VALUE;
+  return `${result.pipesLastLayer} / ${result.pipesOnFullLayer}`;
+}
 
 export function WindingPositionCalc() {
   const t = useTranslations("calculator");
   const [pipeDiameter, setPipeDiameter] = useState("");
   const [length, setLength] = useState("");
   const [innerDiameter, setInnerDiameter] = useState("");
-  const [pipesPerLayer, setPipesPerLayer] = useState("");
-  const [errors, setErrors] = useState<FieldErrors>({});
-  const [unevenResult, setUnevenResult] = useState<WindingPatternResult | null>(null);
-  const [evenResult, setEvenResult] = useState<WindingPatternResult | null>(null);
+  const [pipesPerLayer, setPipesPerLayer] = useState(DEFAULT_PIPES_PER_LAYER);
+  const [showErrors, setShowErrors] = useState(false);
 
-  function fieldErrorMessage(code: CalculatorFieldError | undefined) {
-    if (!code) return undefined;
-    return t(`validation.${code}`);
-  }
+  const validation = validateWindingPositionInput({
+    pipeDiameter,
+    length,
+    innerDiameter,
+    pipesPerLayer,
+  });
+  const unevenResult = validation.ok
+    ? calculateWindingPositionUneven(validation.input)
+    : null;
+  const evenResult = validation.ok
+    ? calculateWindingPositionEven(validation.input)
+    : null;
 
-  function updateField(
-    key: WindingPositionFieldKey,
-    value: string,
-    setter: (v: string) => void
-  ) {
-    setter(value);
-    if (errors[key]) {
-      setErrors((prev) => {
-        const next = { ...prev };
-        delete next[key];
-        return next;
-      });
-    }
+  function fieldError(
+    key: WindingPositionFieldKey
+  ): string | undefined {
+    if (!showErrors || validation.ok) return undefined;
+    const code = validation.errors[key] as CalculatorFieldError | undefined;
+    return code ? t(`validation.${code}`) : undefined;
   }
 
   function calculate() {
-    const validation = validateWindingPositionInput({
-      pipeDiameter,
-      length,
-      innerDiameter,
-      pipesPerLayer,
-    });
-
-    if (!validation.ok) {
-      setErrors(validation.errors);
-      setUnevenResult(null);
-      setEvenResult(null);
-      return;
-    }
-
-    setErrors({});
-    setUnevenResult(calculateWindingPositionUneven(validation.input));
-    setEvenResult(calculateWindingPositionEven(validation.input));
+    setShowErrors(true);
   }
 
   function reset() {
     setPipeDiameter("");
     setLength("");
     setInnerDiameter("");
-    setPipesPerLayer("");
-    setErrors({});
-    setUnevenResult(null);
-    setEvenResult(null);
+    setPipesPerLayer(DEFAULT_PIPES_PER_LAYER);
+    setShowErrors(false);
   }
 
   return (
@@ -81,29 +73,34 @@ export function WindingPositionCalc() {
           {t("inputs")}
         </h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <InputField
+          <CalculatorField
+            id="wep-pipe-diameter"
             label={t("pipeDiameter")}
             value={pipeDiameter}
-            onChange={(v) => updateField("pipeDiameter", v, setPipeDiameter)}
-            error={fieldErrorMessage(errors.pipeDiameter)}
+            onChange={setPipeDiameter}
+            error={fieldError("pipeDiameter")}
           />
-          <InputField
+          <CalculatorField
+            id="wep-length"
             label={t("length")}
             value={length}
-            onChange={(v) => updateField("length", v, setLength)}
-            error={fieldErrorMessage(errors.length)}
+            onChange={setLength}
+            error={fieldError("length")}
           />
-          <InputField
+          <CalculatorField
+            id="wep-inner-diameter"
             label={t("innerDiameter")}
             value={innerDiameter}
-            onChange={(v) => updateField("innerDiameter", v, setInnerDiameter)}
-            error={fieldErrorMessage(errors.innerDiameter)}
+            onChange={setInnerDiameter}
+            error={fieldError("innerDiameter")}
           />
-          <InputField
+          <CalculatorField
+            id="wep-pipes-per-layer"
             label={t("pipesPerLayer")}
             value={pipesPerLayer}
-            onChange={(v) => updateField("pipesPerLayer", v, setPipesPerLayer)}
-            error={fieldErrorMessage(errors.pipesPerLayer)}
+            onChange={setPipesPerLayer}
+            error={fieldError("pipesPerLayer")}
+            inputMode="numeric"
           />
         </div>
         <div className="flex gap-3 mt-6">
@@ -124,86 +121,78 @@ export function WindingPositionCalc() {
         </div>
       </div>
 
-      {unevenResult && (
-        <ResultSection title={t("unevenLayers")} result={unevenResult} t={t} />
-      )}
-      {evenResult && (
-        <ResultSection title={t("evenLayersOffset")} result={evenResult} t={t} />
-      )}
-    </div>
-  );
-}
-
-function InputField({
-  label,
-  value,
-  onChange,
-  error,
-}: {
-  label: string;
-  value: string;
-  onChange: (v: string) => void;
-  error?: string;
-}) {
-  const inputBase =
-    "w-full px-3 py-2 border rounded-lg outline-none transition-all";
-  const inputNormal = `${inputBase} border-grey-300 focus:ring-2 focus:ring-accent/30 focus:border-accent`;
-  const inputError = `${inputBase} border-red-400 focus:ring-2 focus:ring-red-200 focus:border-red-400`;
-
-  return (
-    <div>
-      <label className="block text-sm font-medium text-text-muted mb-1">{label}</label>
-      <input
-        type="number"
-        value={value}
-        onChange={(e) => onChange(e.target.value)}
-        className={error ? inputError : inputNormal}
-        min="0"
-        step="any"
-        aria-invalid={error ? true : undefined}
-        aria-describedby={error ? `${label}-error` : undefined}
-      />
-      {error && (
-        <p id={`${label}-error`} className="mt-1 text-sm text-red-600" role="alert">
-          {error}
-        </p>
-      )}
-    </div>
-  );
-}
-
-function ResultSection({
-  title,
-  result,
-  t,
-}: {
-  title: string;
-  result: WindingPatternResult;
-  t: ReturnType<typeof useTranslations>;
-}) {
-  return (
-    <div className="bg-white border border-grey-200 rounded-xl p-6 shadow-sm">
-      <h4 className="font-bold text-dark mb-4">{title}</h4>
-      <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
-        <ResultItem label={t("layerCount")} value={result.layerCount} />
-        <ResultItem
-          label={t("pipesLastLayer")}
-          value={`${result.pipesLastLayer} / ${result.pipesOnFullLayer}`}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <PatternResultCard
+          title={t("unevenLayers")}
+          diagramSrc="/images/calculator/ugl.gif"
+          diagramAlt={t("diagramUnevenAlt")}
+          fields={[
+            {
+              label: t("layerCount"),
+              value: unevenResult
+                ? String(unevenResult.layerCount)
+                : CALCULATOR_EMPTY_VALUE,
+            },
+            {
+              label: t("pipesLastLayer"),
+              value: formatPipes(unevenResult),
+            },
+            {
+              label: t("rotationCount"),
+              value: unevenResult
+                ? String(unevenResult.rotationCount)
+                : CALCULATOR_EMPTY_VALUE,
+            },
+            {
+              label: t("bundleWidth"),
+              value: formatMm(unevenResult?.bundleWidth),
+            },
+            {
+              label: t("bundleHeight"),
+              value: formatMm(unevenResult?.bundleHeight),
+            },
+            {
+              label: t("outerDiameter"),
+              value: formatMm(unevenResult?.outerDiameter),
+            },
+          ]}
         />
-        <ResultItem label={t("rotationCount")} value={result.rotationCount} />
-        <ResultItem label={t("bundleWidth")} value={`${result.bundleWidth} mm`} />
-        <ResultItem label={t("bundleHeight")} value={`${result.bundleHeight} mm`} />
-        <ResultItem label={t("outerDiameter")} value={`${result.outerDiameter} mm`} />
+        <PatternResultCard
+          title={t("evenLayersOffset")}
+          diagramSrc="/images/calculator/ggl.gif"
+          diagramAlt={t("diagramEvenAlt")}
+          fields={[
+            {
+              label: t("layerCount"),
+              value: evenResult
+                ? String(evenResult.layerCount)
+                : CALCULATOR_EMPTY_VALUE,
+            },
+            {
+              label: t("pipesLastLayer"),
+              value: formatPipes(evenResult),
+            },
+            {
+              label: t("rotationCount"),
+              value: evenResult
+                ? String(evenResult.rotationCount)
+                : CALCULATOR_EMPTY_VALUE,
+            },
+            {
+              label: t("bundleWidth"),
+              value: formatMm(evenResult?.bundleWidth),
+            },
+            {
+              label: t("bundleHeight"),
+              value: formatMm(evenResult?.bundleHeight),
+            },
+            {
+              label: t("outerDiameter"),
+              value: formatMm(evenResult?.outerDiameter),
+            },
+          ]}
+        />
       </div>
-    </div>
-  );
-}
-
-function ResultItem({ label, value }: { label: string; value: string | number }) {
-  return (
-    <div>
-      <p className="text-xs text-text-muted">{label}</p>
-      <p className="text-lg font-semibold text-dark">{value}</p>
     </div>
   );
 }

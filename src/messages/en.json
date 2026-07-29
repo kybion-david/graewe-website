@@ -230,8 +230,13 @@
       "required": "This field is required.",
       "invalid": "Please enter a valid number.",
       "positive": "Value must be greater than 0.",
-      "odMustExceedId": "Outer diameter must be greater than inner diameter."
-    }
+      "odMustExceedId": "Outer diameter must be greater than inner diameter.",
+      "minPipesPerLayer": "At least 2 pipes per layer are required.",
+      "bundleWidthTooNarrow": "Bundle width must be at least twice the pipe diameter."
+    },
+    "diagramUnevenAlt": "Winding pattern uneven layers",
+    "diagramEvenAlt": "Winding pattern even layers offset",
+    "emptyValue": "N/V"
   },
   "contact": {
     "title": "Contact",

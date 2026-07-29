@@ -411,4 +411,49 @@ describe("Calculator - input validation", () => {
       },
     });
   });
+
+  it("accepts German decimal commas", () => {
+    const result = validateWindingPositionInput({
+      pipeDiameter: "20,5",
+      length: "100,25",
+      innerDiameter: "300",
+      pipesPerLayer: "10",
+    });
+
+    expect(result).toEqual({
+      ok: true,
+      input: {
+        pipeDiameter: 20.5,
+        length: 100.25,
+        innerDiameter: 300,
+        pipesPerLayer: 10,
+      },
+    });
+  });
+
+  it("requires at least 2 pipes per layer (live CPL rule)", () => {
+    const result = validateWindingPositionInput({
+      pipeDiameter: "20",
+      length: "100",
+      innerDiameter: "300",
+      pipesPerLayer: "1",
+    });
+
+    expect(result.ok).toBe(false);
+    if (result.ok) return;
+    expect(result.errors.pipesPerLayer).toBe("minPipesPerLayer");
+  });
+
+  it("requires bundle width at least 2× pipe diameter (live WL rule)", () => {
+    const result = validateWindingLengthInput({
+      pipeDiameter: "20",
+      innerDiameter: "300",
+      outerDiameter: "500",
+      bundleWidth: "30",
+    });
+
+    expect(result.ok).toBe(false);
+    if (result.ok) return;
+    expect(result.errors.bundleWidth).toBe("bundleWidthTooNarrow");
+  });
 });

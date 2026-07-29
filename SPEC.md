@@ -53,6 +53,7 @@ public/images/        # Static assets by section
 | Product body content | `src/lib/productContent/` (`de\|en\|fr\|ru\|es.json` + `index.ts`) |
 | Product images map | `src/lib/productImages.ts` |
 | Calculator math | `src/lib/calculator.ts` (pure; golden-tested vs live graewe.com) |
+| Calculator diagrams | `public/images/calculator/{ugl,ggl}.gif` (live Wickelbild assets) |
 | Job openings (slugs / TYPO3 IDs) | `src/lib/jobs.ts` |
 | Job copy (titles, bodies, apply text) | `src/messages/{locale}.json` → `jobs.*` (email-only apply; no on-site application form) |
 | Imprint / privacy page bodies | `src/messages/{locale}.json` → `imprintPage.*` / `privacyPage.*` |
@@ -105,7 +106,7 @@ Copy `.env.example` → `.env.local`. **Contact email requires `RESEND_API_KEY`*
 ## 8. Current status snapshot
 
 - Pages: home, unternehmen (4), produkte (overview + 3 categories + 19 products), success stories, aktuelles (+ articles), produktrechner, gebrauchtmaschinen, downloads, team, kontakt, stellenanzeigen (+ job detail pages), impressum, datenschutz (bodies in `imprintPage` / `privacyPage` for all locales; DE legally binding), sitemap (HTML), cookies (essential-only; no analytics / no consent banner)
-- Interactive: Produktrechner (2 modes), contact form (Resend + Turnstile/honeypot/rate-limit)
+- Interactive: Produktrechner (2 modes, live recalculation, Wickelbild diagrams, validation), contact form (Resend + Turnstile/honeypot/rate-limit)
 - SEO: `generateMetadata`, Open Graph, JSON-LD, `next-sitemap` (no third-party analytics)
 - A11y: skip link, ARIA on menu/language switcher, focus-visible, contrast-safe yellow buttons
 - Deploy: Azure SWA Terraform + GH Actions; optional GitHub Pages path via `GITHUB_PAGES=true`
