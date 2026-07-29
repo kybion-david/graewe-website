@@ -2,6 +2,7 @@ import { getTranslations } from "next-intl/server";
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import { getLatestNews, type NewsItem } from "@/lib/news";
+import { HomeVideo } from "@/components/home/HomeVideo";
 
 export async function NewsTeaser() {
   const t = await getTranslations();
@@ -12,26 +13,7 @@ export async function NewsTeaser() {
     <section className="bg-grey-100">
       <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 py-14">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
-          {/* Vimeo video */}
-          <div className="rounded-lg overflow-hidden shadow-lg">
-            <div className="relative w-full aspect-video bg-dark">
-              <iframe
-                src="https://player.vimeo.com/video/987078686?badge=0&autopause=0&player_id=0&app_id=58479"
-                className="absolute inset-0 w-full h-full"
-                frameBorder="0"
-                allow="autoplay; fullscreen; picture-in-picture"
-                allowFullScreen
-                title="Graewe Video Coilers"
-                loading="lazy"
-              />
-            </div>
-            <div className="bg-white p-4">
-              <p className="text-xs text-grey-400 uppercase tracking-wider font-bold mb-1">
-                Video
-              </p>
-              <p className="text-sm font-semibold text-dark">GRAEWE Coilers</p>
-            </div>
-          </div>
+          <HomeVideo />
 
           {/* Latest news */}
           <div className="bg-white rounded-lg p-6 shadow-sm min-h-[200px] flex flex-col">

@@ -377,14 +377,15 @@ Old site checked live on graewe.com.
 ---
 
 ### ISSUE-024 — Homepage Vimeo embed often appears as blank dark block
-- **Status:** Open
+- **Status:** Done
+- **Note:** Replaced eager iframe with click-to-play `HomeVideo` facade: local poster (`public/images/home/coilers-video.jpg`), play CTA, Vimeo embed on interaction (`dnt=1` + referrerPolicy), plus “Watch on Vimeo” fallback link; copy in all 5 locales.
 - **Category:** Bug / UX
 - **Problem:** During local review, homepage video area rendered as solid dark rectangle before/without visible player chrome (iframe present in `NewsTeaser.tsx`). May be cookie/third-party blocking, missing Vimeo privacy hash, or lazy-load issue.
 - **Likely files:** `src/components/home/NewsTeaser.tsx`
 - **Acceptance criteria:**
-  - [ ] Video visibly loads on desktop + mobile in clean browser profile.
-  - [ ] Accessible title retained; no CLS jump preferred.
-  - [ ] Fallback thumbnail + link if embed blocked.
+  - [x] Video visibly loads on desktop + mobile in clean browser profile.
+  - [x] Accessible title retained; no CLS jump preferred.
+  - [x] Fallback thumbnail + link if embed blocked.
 
 ---
 

@@ -53,7 +53,11 @@
     "sheetExtrusionDesc": "Los sistemas de láminas de Graewe se adaptan a los requisitos de cada aplicación",
     "newsTitle": "Actualidad",
     "noNews": "No hay noticias disponibles.",
-    "learnMore": "Más información"
+    "learnMore": "Más información",
+    "videoLabel": "Vídeo",
+    "videoTitle": "GRAEWE Coilers",
+    "videoPlayAria": "Reproducir el vídeo GRAEWE Coilers",
+    "videoOpenExternal": "Ver en Vimeo"
   },
   "company": {
     "whoIsGraewe": {
