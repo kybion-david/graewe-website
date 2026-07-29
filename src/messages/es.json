@@ -584,5 +584,10 @@
   },
   "common": {
     "backToTop": "Volver arriba"
+  },
+  "notFound": {
+    "title": "Página no encontrada",
+    "description": "La página solicitada no existe o se ha movido.",
+    "backHome": "Volver al inicio"
   }
 }

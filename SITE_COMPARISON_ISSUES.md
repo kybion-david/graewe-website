@@ -40,8 +40,8 @@ Old site checked live on graewe.com.
 | Calculator | Present (2 modes) |
 | Contact form | Present; Turnstile + honeypot + rate limit |
 | HTML Sitemap / Cookies pages | Present (essential-cookies notice; no banner) |
-| Multi-language **URL** parity | **Broken** (old uses translated slugs) |
-| Redirects for cutover | **Incomplete** |
+| Multi-language **URL** parity | German slugs canonical; old translated paths **301** |
+| Redirects for cutover | Path + news/job query redirects in place |
 | Legal pages localized | DE body only |
 | Social YouTube link | Fixed (Graewemachines) |
 
@@ -103,7 +103,8 @@ Old site checked live on graewe.com.
 ---
 
 ### ISSUE-004 — Incomplete / wrong 301 redirect map for DNS cutover (SEO)
-- **Status:** Open
+- **Status:** Done
+- **Note:** Central map in `src/lib/legacyRedirects.ts`; applied via `src/proxy.ts` (path + news/job query 301s) and regenerated `staticwebapp.config.json` (path-only). `infra/DNS_CUTOVER.md` documents the matrix. Removed `responseOverrides.404 → /de`; added dedicated 404 pages. Typo slug `kalibier-und-kuehlbaeder` included (also closes ISSUE-030).
 - **Category:** SEO / redirects
 - **Problem:** `staticwebapp.config.json` only covers a subset of DE `.html` hub pages. Live site also uses:
   - Translated EN/FR/RU/ES paths (see ISSUE-005)
@@ -115,17 +116,18 @@ Old site checked live on graewe.com.
 - **Evidence:** `staticwebapp.config.json`, `infra/DNS_CUTOVER.md` (still claims `/en/...` paths stay the same — **incorrect** relative to rebuilt routes).
 - **Likely files:** `staticwebapp.config.json`, `infra/DNS_CUTOVER.md`, possibly `next.config.ts` redirects for local/Azure.
 - **Acceptance criteria:**
-  - [ ] Documented redirect matrix: old URL → new URL for DE + EN + FR + RU + ES hubs and all product subpages.
-  - [ ] News `tx_news_pi1[news]=ID` → matching `/de/aktuelles/{slug}` (and locale equivalents).
-  - [ ] Job detail query URLs → new job pages.
-  - [ ] Old typo `.../kalibier-und-kuehlbaeder` → `.../kalibrier-und-kuehlbaeder`.
-  - [ ] DNS cutover doc updated to match reality.
-  - [ ] 404 override does **not** silently rewrite unknown URLs to homepage in a way that hides broken links from monitoring (revisit `responseOverrides.404` → `/de`).
+  - [x] Documented redirect matrix: old URL → new URL for DE + EN + FR + RU + ES hubs and all product subpages.
+  - [x] News `tx_news_pi1[news]=ID` → matching `/de/aktuelles/{slug}` (and locale equivalents).
+  - [x] Job detail query URLs → new job pages.
+  - [x] Old typo `.../kalibier-und-kuehlbaeder` → `.../kalibrier-und-kuehlbaeder`.
+  - [x] DNS cutover doc updated to match reality.
+  - [x] 404 override does **not** silently rewrite unknown URLs to homepage in a way that hides broken links from monitoring (revisit `responseOverrides.404` → `/de`).
 
 ---
 
 ### ISSUE-005 — Non-DE locales lost translated URL structure
-- **Status:** Open
+- **Status:** Done
+- **Decision:** **(B)** Keep German slugs as canonical for all locales; comprehensive 301s from old translated EN/FR/RU/ES paths (see ISSUE-004 / `legacyRedirects.ts`). Language switcher already preserves the equivalent page because pathnames are shared across locales.
 - **Category:** SEO / i18n / Missing feature
 - **Problem:** Live site uses localized path segments. Rebuild uses **German slugs for all locales** (`/en/unternehmen/wer-ist-graewe`). Old English bookmarks/SEO URLs 404 on the new app (e.g. `/en/company/who-is-graewe` → 404 locally).
 - **Evidence (old EN examples):**
@@ -140,9 +142,9 @@ Old site checked live on graewe.com.
 - **Decision needed:** Either (A) restore pathnames localization in `next-intl` routing, or (B) keep German slugs and add comprehensive 301s from every old localized path.
 - **Likely files:** `src/i18n/routing.ts`, `src/i18n/navigation.ts`, all `Link` usages, `staticwebapp.config.json`.
 - **Acceptance criteria:**
-  - [ ] Chosen approach documented in this item.
-  - [ ] Every major old EN/FR/RU/ES URL either still works or 301s to the canonical new URL.
-  - [ ] Language switcher preserves the equivalent page across locales.
+  - [x] Chosen approach documented in this item.
+  - [x] Every major old EN/FR/RU/ES URL either still works or 301s to the canonical new URL.
+  - [x] Language switcher preserves the equivalent page across locales.
 
 ---
 
@@ -426,12 +428,12 @@ Old site checked live on graewe.com.
 ---
 
 ### ISSUE-030 — Old DE product typo slug needs redirect
-- **Status:** Open
+- **Status:** Done
+- **Note:** Folded into ISSUE-004 (`legacyRedirects.ts` + SWA config).
 - **Category:** SEO / redirects
 - **Problem:** Live DE uses `/produkte/rohrextrusion/kalibier-und-kuehlbaeder` (typo). Rebuild correctly uses `kalibrier-und-kuehlbaeder`. Local old typo path → 404.
-- **Note:** Can be folded into ISSUE-004; kept separate so it isn’t forgotten.
 - **Acceptance criteria:**
-  - [ ] Typo URL 301s to corrected slug for all locales that need it.
+  - [x] Typo URL 301s to corrected slug for all locales that need it.
 
 ---
 
@@ -460,12 +462,13 @@ Old site checked live on graewe.com.
 ---
 
 ### ISSUE-033 — 404 handling rewrites to homepage
-- **Status:** Open
+- **Status:** Done
+- **Note:** Removed SWA `responseOverrides.404`; added `src/app/not-found.tsx` and `src/app/[locale]/not-found.tsx` (done with ISSUE-004).
 - **Category:** SEO / Bug
 - **Problem:** `staticwebapp.config.json` `responseOverrides.404.rewrite = "/de"` masks missing pages as the homepage (bad for SEO debugging and users).
 - **Acceptance criteria:**
-  - [ ] Dedicated localized 404 page.
-  - [ ] Real 404 status preserved where platform allows.
+  - [x] Dedicated localized 404 page.
+  - [x] Real 404 status preserved where platform allows.
 
 ---
 

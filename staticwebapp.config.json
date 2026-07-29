@@ -1,33 +1,2001 @@
 {
   "routes": [
-    { "route": "/unternehmen/wer-ist-graewe.html", "redirect": "/de/unternehmen/wer-ist-graewe", "statusCode": 301 },
-    { "route": "/unternehmen/was-macht-graewe.html", "redirect": "/de/unternehmen/was-macht-graewe", "statusCode": 301 },
-    { "route": "/unternehmen/wofuer-steht-graewe.html", "redirect": "/de/unternehmen/wofuer-steht-graewe", "statusCode": 301 },
-    { "route": "/unternehmen/die-graewe-gruppe.html", "redirect": "/de/unternehmen/die-graewe-gruppe", "statusCode": 301 },
-    { "route": "/produkte/rohrextrusion.html", "redirect": "/de/produkte/rohrextrusion", "statusCode": 301 },
-    { "route": "/produkte/profilextrusion.html", "redirect": "/de/produkte/profilextrusion", "statusCode": 301 },
-    { "route": "/produkte/plattenextrusion.html", "redirect": "/de/produkte/plattenextrusion", "statusCode": 301 },
-    { "route": "/success-stories.html", "redirect": "/de/success-stories", "statusCode": 301 },
-    { "route": "/gebrauchtmaschinen.html", "redirect": "/de/gebrauchtmaschinen", "statusCode": 301 },
-    { "route": "/aktuelles.html", "redirect": "/de/aktuelles", "statusCode": 301 },
-    { "route": "/produktrechner.html", "redirect": "/de/produktrechner", "statusCode": 301 },
-    { "route": "/downloads.html", "redirect": "/de/downloads", "statusCode": 301 },
-    { "route": "/team.html", "redirect": "/de/team", "statusCode": 301 },
-    { "route": "/kontakt.html", "redirect": "/de/kontakt", "statusCode": 301 },
-    { "route": "/stellenanzeigen.html", "redirect": "/de/stellenanzeigen", "statusCode": 301 },
-    { "route": "/impressum.html", "redirect": "/de/impressum", "statusCode": 301 },
-    { "route": "/datenschutz.html", "redirect": "/de/datenschutz", "statusCode": 301 },
-    { "route": "/sitemap", "redirect": "/de/sitemap", "statusCode": 301 },
-    { "route": "/sitemap.html", "redirect": "/de/sitemap", "statusCode": 301 },
-    { "route": "/cookies", "redirect": "/de/cookies", "statusCode": 301 },
-    { "route": "/cookies.html", "redirect": "/de/cookies", "statusCode": 301 },
-    { "route": "/index.php", "redirect": "/de", "statusCode": 301 }
-  ],
-  "responseOverrides": {
-    "404": {
-      "rewrite": "/de"
+    {
+      "route": "/aktuelles",
+      "redirect": "/de/aktuelles",
+      "statusCode": 301
+    },
+    {
+      "route": "/aktuelles.html",
+      "redirect": "/de/aktuelles",
+      "statusCode": 301
+    },
+    {
+      "route": "/cookies",
+      "redirect": "/de/cookies",
+      "statusCode": 301
+    },
+    {
+      "route": "/cookies.html",
+      "redirect": "/de/cookies",
+      "statusCode": 301
+    },
+    {
+      "route": "/datenschutz",
+      "redirect": "/de/datenschutz",
+      "statusCode": 301
+    },
+    {
+      "route": "/datenschutz.html",
+      "redirect": "/de/datenschutz",
+      "statusCode": 301
+    },
+    {
+      "route": "/de/aktuelles.html",
+      "redirect": "/de/aktuelles",
+      "statusCode": 301
+    },
+    {
+      "route": "/de/datenschutz.html",
+      "redirect": "/de/datenschutz",
+      "statusCode": 301
+    },
+    {
+      "route": "/de/downloads.html",
+      "redirect": "/de/downloads",
+      "statusCode": 301
+    },
+    {
+      "route": "/de/gebrauchtmaschinen.html",
+      "redirect": "/de/gebrauchtmaschinen",
+      "statusCode": 301
+    },
+    {
+      "route": "/de/impressum.html",
+      "redirect": "/de/impressum",
+      "statusCode": 301
+    },
+    {
+      "route": "/de/kontakt.html",
+      "redirect": "/de/kontakt",
+      "statusCode": 301
+    },
+    {
+      "route": "/de/produkte/plattenextrusion.html",
+      "redirect": "/de/produkte/plattenextrusion",
+      "statusCode": 301
+    },
+    {
+      "route": "/de/produkte/profilextrusion.html",
+      "redirect": "/de/produkte/profilextrusion",
+      "statusCode": 301
+    },
+    {
+      "route": "/de/produkte/rohrextrusion.html",
+      "redirect": "/de/produkte/rohrextrusion",
+      "statusCode": 301
+    },
+    {
+      "route": "/de/produkte/rohrextrusion/kalibier-und-kuehlbaeder",
+      "redirect": "/de/produkte/rohrextrusion/kalibrier-und-kuehlbaeder",
+      "statusCode": 301
+    },
+    {
+      "route": "/de/produkte/rohrextrusion/kalibier-und-kuehlbaeder.html",
+      "redirect": "/de/produkte/rohrextrusion/kalibrier-und-kuehlbaeder",
+      "statusCode": 301
+    },
+    {
+      "route": "/de/produktrechner.html",
+      "redirect": "/de/produktrechner",
+      "statusCode": 301
+    },
+    {
+      "route": "/de/stellenanzeigen.html",
+      "redirect": "/de/stellenanzeigen",
+      "statusCode": 301
+    },
+    {
+      "route": "/de/success-stories.html",
+      "redirect": "/de/success-stories",
+      "statusCode": 301
+    },
+    {
+      "route": "/de/team.html",
+      "redirect": "/de/team",
+      "statusCode": 301
+    },
+    {
+      "route": "/de/unternehmen/die-graewe-gruppe.html",
+      "redirect": "/de/unternehmen/die-graewe-gruppe",
+      "statusCode": 301
+    },
+    {
+      "route": "/de/unternehmen/was-macht-graewe.html",
+      "redirect": "/de/unternehmen/was-macht-graewe",
+      "statusCode": 301
+    },
+    {
+      "route": "/de/unternehmen/wer-ist-graewe.html",
+      "redirect": "/de/unternehmen/wer-ist-graewe",
+      "statusCode": 301
+    },
+    {
+      "route": "/de/unternehmen/wofuer-steht-graewe.html",
+      "redirect": "/de/unternehmen/wofuer-steht-graewe",
+      "statusCode": 301
+    },
+    {
+      "route": "/downloads",
+      "redirect": "/de/downloads",
+      "statusCode": 301
+    },
+    {
+      "route": "/downloads.html",
+      "redirect": "/de/downloads",
+      "statusCode": 301
+    },
+    {
+      "route": "/en/company/graewe-group",
+      "redirect": "/en/unternehmen/die-graewe-gruppe",
+      "statusCode": 301
+    },
+    {
+      "route": "/en/company/graewe-group.html",
+      "redirect": "/en/unternehmen/die-graewe-gruppe",
+      "statusCode": 301
+    },
+    {
+      "route": "/en/company/what-does-graewe-do",
+      "redirect": "/en/unternehmen/was-macht-graewe",
+      "statusCode": 301
+    },
+    {
+      "route": "/en/company/what-does-graewe-do.html",
+      "redirect": "/en/unternehmen/was-macht-graewe",
+      "statusCode": 301
+    },
+    {
+      "route": "/en/company/what-does-graewe-stand-for",
+      "redirect": "/en/unternehmen/wofuer-steht-graewe",
+      "statusCode": 301
+    },
+    {
+      "route": "/en/company/what-does-graewe-stand-for.html",
+      "redirect": "/en/unternehmen/wofuer-steht-graewe",
+      "statusCode": 301
+    },
+    {
+      "route": "/en/company/who-is-graewe",
+      "redirect": "/en/unternehmen/wer-ist-graewe",
+      "statusCode": 301
+    },
+    {
+      "route": "/en/company/who-is-graewe.html",
+      "redirect": "/en/unternehmen/wer-ist-graewe",
+      "statusCode": 301
+    },
+    {
+      "route": "/en/contact",
+      "redirect": "/en/kontakt",
+      "statusCode": 301
+    },
+    {
+      "route": "/en/contact.html",
+      "redirect": "/en/kontakt",
+      "statusCode": 301
+    },
+    {
+      "route": "/en/data-privacy",
+      "redirect": "/en/datenschutz",
+      "statusCode": 301
+    },
+    {
+      "route": "/en/data-privacy.html",
+      "redirect": "/en/datenschutz",
+      "statusCode": 301
+    },
+    {
+      "route": "/en/downloads.html",
+      "redirect": "/en/downloads",
+      "statusCode": 301
+    },
+    {
+      "route": "/en/imprint",
+      "redirect": "/en/impressum",
+      "statusCode": 301
+    },
+    {
+      "route": "/en/imprint.html",
+      "redirect": "/en/impressum",
+      "statusCode": 301
+    },
+    {
+      "route": "/en/job-advertisements",
+      "redirect": "/en/stellenanzeigen",
+      "statusCode": 301
+    },
+    {
+      "route": "/en/job-advertisements.html",
+      "redirect": "/en/stellenanzeigen",
+      "statusCode": 301
+    },
+    {
+      "route": "/en/news",
+      "redirect": "/en/aktuelles",
+      "statusCode": 301
+    },
+    {
+      "route": "/en/news.html",
+      "redirect": "/en/aktuelles",
+      "statusCode": 301
+    },
+    {
+      "route": "/en/product-calculator",
+      "redirect": "/en/produktrechner",
+      "statusCode": 301
+    },
+    {
+      "route": "/en/product-calculator.html",
+      "redirect": "/en/produktrechner",
+      "statusCode": 301
+    },
+    {
+      "route": "/en/products",
+      "redirect": "/en",
+      "statusCode": 301
+    },
+    {
+      "route": "/en/products.html",
+      "redirect": "/en",
+      "statusCode": 301
+    },
+    {
+      "route": "/en/products/pipe-extrusion",
+      "redirect": "/en/produkte/rohrextrusion",
+      "statusCode": 301
+    },
+    {
+      "route": "/en/products/pipe-extrusion.html",
+      "redirect": "/en/produkte/rohrextrusion",
+      "statusCode": 301
+    },
+    {
+      "route": "/en/products/pipe-extrusion/belt-haul-off",
+      "redirect": "/en/produkte/rohrextrusion/abzuege",
+      "statusCode": 301
+    },
+    {
+      "route": "/en/products/pipe-extrusion/belt-haul-off.html",
+      "redirect": "/en/produkte/rohrextrusion/abzuege",
+      "statusCode": 301
+    },
+    {
+      "route": "/en/products/pipe-extrusion/cutting-machines",
+      "redirect": "/en/produkte/rohrextrusion/trenneinrichtungen",
+      "statusCode": 301
+    },
+    {
+      "route": "/en/products/pipe-extrusion/cutting-machines.html",
+      "redirect": "/en/produkte/rohrextrusion/trenneinrichtungen",
+      "statusCode": 301
+    },
+    {
+      "route": "/en/products/pipe-extrusion/fully-automatic-coilers",
+      "redirect": "/en/produkte/rohrextrusion/vollautomatische-wickler",
+      "statusCode": 301
+    },
+    {
+      "route": "/en/products/pipe-extrusion/fully-automatic-coilers.html",
+      "redirect": "/en/produkte/rohrextrusion/vollautomatische-wickler",
+      "statusCode": 301
+    },
+    {
+      "route": "/en/products/pipe-extrusion/pipe-extrusion-extruder",
+      "redirect": "/en/produkte/rohrextrusion/extruder",
+      "statusCode": 301
+    },
+    {
+      "route": "/en/products/pipe-extrusion/pipe-extrusion-extruder.html",
+      "redirect": "/en/produkte/rohrextrusion/extruder",
+      "statusCode": 301
+    },
+    {
+      "route": "/en/products/pipe-extrusion/pipe-extrusion-vacuum-calibration-tanks",
+      "redirect": "/en/produkte/rohrextrusion/kalibrier-und-kuehlbaeder",
+      "statusCode": 301
+    },
+    {
+      "route": "/en/products/pipe-extrusion/pipe-extrusion-vacuum-calibration-tanks.html",
+      "redirect": "/en/produkte/rohrextrusion/kalibrier-und-kuehlbaeder",
+      "statusCode": 301
+    },
+    {
+      "route": "/en/products/pipe-extrusion/semi-automatic-coilers",
+      "redirect": "/en/produkte/rohrextrusion/halbautomatische-wickler",
+      "statusCode": 301
+    },
+    {
+      "route": "/en/products/pipe-extrusion/semi-automatic-coilers.html",
+      "redirect": "/en/produkte/rohrextrusion/halbautomatische-wickler",
+      "statusCode": 301
+    },
+    {
+      "route": "/en/products/pipe-extrusion/socketing-machines",
+      "redirect": "/en/produkte/rohrextrusion/muffenmaschinen",
+      "statusCode": 301
+    },
+    {
+      "route": "/en/products/pipe-extrusion/socketing-machines.html",
+      "redirect": "/en/produkte/rohrextrusion/muffenmaschinen",
+      "statusCode": 301
+    },
+    {
+      "route": "/en/products/pipe-extrusion/special-machines",
+      "redirect": "/en/produkte/rohrextrusion/sondermaschinen",
+      "statusCode": 301
+    },
+    {
+      "route": "/en/products/pipe-extrusion/special-machines.html",
+      "redirect": "/en/produkte/rohrextrusion/sondermaschinen",
+      "statusCode": 301
+    },
+    {
+      "route": "/en/products/profile-extrusion",
+      "redirect": "/en/produkte/profilextrusion",
+      "statusCode": 301
+    },
+    {
+      "route": "/en/products/profile-extrusion.html",
+      "redirect": "/en/produkte/profilextrusion",
+      "statusCode": 301
+    },
+    {
+      "route": "/en/products/profile-extrusion/calibration-tables",
+      "redirect": "/en/produkte/profilextrusion/kalibriertische",
+      "statusCode": 301
+    },
+    {
+      "route": "/en/products/profile-extrusion/calibration-tables.html",
+      "redirect": "/en/produkte/profilextrusion/kalibriertische",
+      "statusCode": 301
+    },
+    {
+      "route": "/en/products/profile-extrusion/coilers",
+      "redirect": "/en/produkte/profilextrusion/wickler",
+      "statusCode": 301
+    },
+    {
+      "route": "/en/products/profile-extrusion/coilers.html",
+      "redirect": "/en/produkte/profilextrusion/wickler",
+      "statusCode": 301
+    },
+    {
+      "route": "/en/products/profile-extrusion/cutting-machines",
+      "redirect": "/en/produkte/profilextrusion/trenneinrichtungen",
+      "statusCode": 301
+    },
+    {
+      "route": "/en/products/profile-extrusion/cutting-machines.html",
+      "redirect": "/en/produkte/profilextrusion/trenneinrichtungen",
+      "statusCode": 301
+    },
+    {
+      "route": "/en/products/profile-extrusion/extruders",
+      "redirect": "/en/produkte/profilextrusion/extruder",
+      "statusCode": 301
+    },
+    {
+      "route": "/en/products/profile-extrusion/extruders.html",
+      "redirect": "/en/produkte/profilextrusion/extruder",
+      "statusCode": 301
+    },
+    {
+      "route": "/en/products/profile-extrusion/haul-off",
+      "redirect": "/en/produkte/profilextrusion/abzuege",
+      "statusCode": 301
+    },
+    {
+      "route": "/en/products/profile-extrusion/haul-off.html",
+      "redirect": "/en/produkte/profilextrusion/abzuege",
+      "statusCode": 301
+    },
+    {
+      "route": "/en/products/profile-extrusion/special-machines",
+      "redirect": "/en/produkte/profilextrusion/sondermaschinen",
+      "statusCode": 301
+    },
+    {
+      "route": "/en/products/profile-extrusion/special-machines.html",
+      "redirect": "/en/produkte/profilextrusion/sondermaschinen",
+      "statusCode": 301
+    },
+    {
+      "route": "/en/products/sheet-extrusion",
+      "redirect": "/en/produkte/plattenextrusion",
+      "statusCode": 301
+    },
+    {
+      "route": "/en/products/sheet-extrusion.html",
+      "redirect": "/en/produkte/plattenextrusion",
+      "statusCode": 301
+    },
+    {
+      "route": "/en/products/sheet-extrusion/cross-cut-units",
+      "redirect": "/en/produkte/plattenextrusion/quertrenn-einrichtungen",
+      "statusCode": 301
+    },
+    {
+      "route": "/en/products/sheet-extrusion/cross-cut-units.html",
+      "redirect": "/en/produkte/plattenextrusion/quertrenn-einrichtungen",
+      "statusCode": 301
+    },
+    {
+      "route": "/en/products/sheet-extrusion/extruders",
+      "redirect": "/en/produkte/plattenextrusion/extruder",
+      "statusCode": 301
+    },
+    {
+      "route": "/en/products/sheet-extrusion/extruders.html",
+      "redirect": "/en/produkte/plattenextrusion/extruder",
+      "statusCode": 301
+    },
+    {
+      "route": "/en/products/sheet-extrusion/sheetstacker",
+      "redirect": "/en/produkte/plattenextrusion/plattenstapler",
+      "statusCode": 301
+    },
+    {
+      "route": "/en/products/sheet-extrusion/sheetstacker.html",
+      "redirect": "/en/produkte/plattenextrusion/plattenstapler",
+      "statusCode": 301
+    },
+    {
+      "route": "/en/products/sheet-extrusion/side-trim-units",
+      "redirect": "/en/produkte/plattenextrusion/laengstrenn-einrichtungen",
+      "statusCode": 301
+    },
+    {
+      "route": "/en/products/sheet-extrusion/side-trim-units.html",
+      "redirect": "/en/produkte/plattenextrusion/laengstrenn-einrichtungen",
+      "statusCode": 301
+    },
+    {
+      "route": "/en/products/sheet-extrusion/special-machines",
+      "redirect": "/en/produkte/plattenextrusion/sondermaschinen",
+      "statusCode": 301
+    },
+    {
+      "route": "/en/products/sheet-extrusion/special-machines.html",
+      "redirect": "/en/produkte/plattenextrusion/sondermaschinen",
+      "statusCode": 301
+    },
+    {
+      "route": "/en/produkte/rohrextrusion/kalibier-und-kuehlbaeder",
+      "redirect": "/en/produkte/rohrextrusion/kalibrier-und-kuehlbaeder",
+      "statusCode": 301
+    },
+    {
+      "route": "/en/produkte/rohrextrusion/kalibier-und-kuehlbaeder.html",
+      "redirect": "/en/produkte/rohrextrusion/kalibrier-und-kuehlbaeder",
+      "statusCode": 301
+    },
+    {
+      "route": "/en/second-hand-machines",
+      "redirect": "/en/gebrauchtmaschinen",
+      "statusCode": 301
+    },
+    {
+      "route": "/en/second-hand-machines.html",
+      "redirect": "/en/gebrauchtmaschinen",
+      "statusCode": 301
+    },
+    {
+      "route": "/en/success-stories.html",
+      "redirect": "/en/success-stories",
+      "statusCode": 301
+    },
+    {
+      "route": "/en/team.html",
+      "redirect": "/en/team",
+      "statusCode": 301
+    },
+    {
+      "route": "/es/company/graewe-group",
+      "redirect": "/es/unternehmen/die-graewe-gruppe",
+      "statusCode": 301
+    },
+    {
+      "route": "/es/company/graewe-group.html",
+      "redirect": "/es/unternehmen/die-graewe-gruppe",
+      "statusCode": 301
+    },
+    {
+      "route": "/es/company/what-does-graewe-do",
+      "redirect": "/es/unternehmen/was-macht-graewe",
+      "statusCode": 301
+    },
+    {
+      "route": "/es/company/what-does-graewe-do.html",
+      "redirect": "/es/unternehmen/was-macht-graewe",
+      "statusCode": 301
+    },
+    {
+      "route": "/es/company/what-does-graewe-stand-for",
+      "redirect": "/es/unternehmen/wofuer-steht-graewe",
+      "statusCode": 301
+    },
+    {
+      "route": "/es/company/what-does-graewe-stand-for.html",
+      "redirect": "/es/unternehmen/wofuer-steht-graewe",
+      "statusCode": 301
+    },
+    {
+      "route": "/es/company/who-is-graewe",
+      "redirect": "/es/unternehmen/wer-ist-graewe",
+      "statusCode": 301
+    },
+    {
+      "route": "/es/company/who-is-graewe.html",
+      "redirect": "/es/unternehmen/wer-ist-graewe",
+      "statusCode": 301
+    },
+    {
+      "route": "/es/contact",
+      "redirect": "/es/kontakt",
+      "statusCode": 301
+    },
+    {
+      "route": "/es/contact.html",
+      "redirect": "/es/kontakt",
+      "statusCode": 301
+    },
+    {
+      "route": "/es/data-privacy",
+      "redirect": "/es/datenschutz",
+      "statusCode": 301
+    },
+    {
+      "route": "/es/data-privacy.html",
+      "redirect": "/es/datenschutz",
+      "statusCode": 301
+    },
+    {
+      "route": "/es/downloads.html",
+      "redirect": "/es/downloads",
+      "statusCode": 301
+    },
+    {
+      "route": "/es/imprint",
+      "redirect": "/es/impressum",
+      "statusCode": 301
+    },
+    {
+      "route": "/es/imprint.html",
+      "redirect": "/es/impressum",
+      "statusCode": 301
+    },
+    {
+      "route": "/es/job-advertisements",
+      "redirect": "/es/stellenanzeigen",
+      "statusCode": 301
+    },
+    {
+      "route": "/es/job-advertisements.html",
+      "redirect": "/es/stellenanzeigen",
+      "statusCode": 301
+    },
+    {
+      "route": "/es/news",
+      "redirect": "/es/aktuelles",
+      "statusCode": 301
+    },
+    {
+      "route": "/es/news.html",
+      "redirect": "/es/aktuelles",
+      "statusCode": 301
+    },
+    {
+      "route": "/es/product-calculator",
+      "redirect": "/es/produktrechner",
+      "statusCode": 301
+    },
+    {
+      "route": "/es/product-calculator.html",
+      "redirect": "/es/produktrechner",
+      "statusCode": 301
+    },
+    {
+      "route": "/es/products",
+      "redirect": "/es",
+      "statusCode": 301
+    },
+    {
+      "route": "/es/products.html",
+      "redirect": "/es",
+      "statusCode": 301
+    },
+    {
+      "route": "/es/products/pipe-extrusion",
+      "redirect": "/es/produkte/rohrextrusion",
+      "statusCode": 301
+    },
+    {
+      "route": "/es/products/pipe-extrusion.html",
+      "redirect": "/es/produkte/rohrextrusion",
+      "statusCode": 301
+    },
+    {
+      "route": "/es/products/pipe-extrusion/belt-haul-off",
+      "redirect": "/es/produkte/rohrextrusion/abzuege",
+      "statusCode": 301
+    },
+    {
+      "route": "/es/products/pipe-extrusion/belt-haul-off.html",
+      "redirect": "/es/produkte/rohrextrusion/abzuege",
+      "statusCode": 301
+    },
+    {
+      "route": "/es/products/pipe-extrusion/cutting-machines",
+      "redirect": "/es/produkte/rohrextrusion/trenneinrichtungen",
+      "statusCode": 301
+    },
+    {
+      "route": "/es/products/pipe-extrusion/cutting-machines.html",
+      "redirect": "/es/produkte/rohrextrusion/trenneinrichtungen",
+      "statusCode": 301
+    },
+    {
+      "route": "/es/products/pipe-extrusion/fully-automatic-coilers",
+      "redirect": "/es/produkte/rohrextrusion/vollautomatische-wickler",
+      "statusCode": 301
+    },
+    {
+      "route": "/es/products/pipe-extrusion/fully-automatic-coilers.html",
+      "redirect": "/es/produkte/rohrextrusion/vollautomatische-wickler",
+      "statusCode": 301
+    },
+    {
+      "route": "/es/products/pipe-extrusion/pipe-extrusion-extruder",
+      "redirect": "/es/produkte/rohrextrusion/extruder",
+      "statusCode": 301
+    },
+    {
+      "route": "/es/products/pipe-extrusion/pipe-extrusion-extruder.html",
+      "redirect": "/es/produkte/rohrextrusion/extruder",
+      "statusCode": 301
+    },
+    {
+      "route": "/es/products/pipe-extrusion/pipe-extrusion-vacuum-calibration-tanks",
+      "redirect": "/es/produkte/rohrextrusion/kalibrier-und-kuehlbaeder",
+      "statusCode": 301
+    },
+    {
+      "route": "/es/products/pipe-extrusion/pipe-extrusion-vacuum-calibration-tanks.html",
+      "redirect": "/es/produkte/rohrextrusion/kalibrier-und-kuehlbaeder",
+      "statusCode": 301
+    },
+    {
+      "route": "/es/products/pipe-extrusion/semi-automatic-coilers",
+      "redirect": "/es/produkte/rohrextrusion/halbautomatische-wickler",
+      "statusCode": 301
+    },
+    {
+      "route": "/es/products/pipe-extrusion/semi-automatic-coilers.html",
+      "redirect": "/es/produkte/rohrextrusion/halbautomatische-wickler",
+      "statusCode": 301
+    },
+    {
+      "route": "/es/products/pipe-extrusion/socketing-machines",
+      "redirect": "/es/produkte/rohrextrusion/muffenmaschinen",
+      "statusCode": 301
+    },
+    {
+      "route": "/es/products/pipe-extrusion/socketing-machines.html",
+      "redirect": "/es/produkte/rohrextrusion/muffenmaschinen",
+      "statusCode": 301
+    },
+    {
+      "route": "/es/products/pipe-extrusion/special-machines",
+      "redirect": "/es/produkte/rohrextrusion/sondermaschinen",
+      "statusCode": 301
+    },
+    {
+      "route": "/es/products/pipe-extrusion/special-machines.html",
+      "redirect": "/es/produkte/rohrextrusion/sondermaschinen",
+      "statusCode": 301
+    },
+    {
+      "route": "/es/products/profile-extrusion",
+      "redirect": "/es/produkte/profilextrusion",
+      "statusCode": 301
+    },
+    {
+      "route": "/es/products/profile-extrusion.html",
+      "redirect": "/es/produkte/profilextrusion",
+      "statusCode": 301
+    },
+    {
+      "route": "/es/products/profile-extrusion/calibration-tables",
+      "redirect": "/es/produkte/profilextrusion/kalibriertische",
+      "statusCode": 301
+    },
+    {
+      "route": "/es/products/profile-extrusion/calibration-tables.html",
+      "redirect": "/es/produkte/profilextrusion/kalibriertische",
+      "statusCode": 301
+    },
+    {
+      "route": "/es/products/profile-extrusion/coilers",
+      "redirect": "/es/produkte/profilextrusion/wickler",
+      "statusCode": 301
+    },
+    {
+      "route": "/es/products/profile-extrusion/coilers.html",
+      "redirect": "/es/produkte/profilextrusion/wickler",
+      "statusCode": 301
+    },
+    {
+      "route": "/es/products/profile-extrusion/cutting-machines",
+      "redirect": "/es/produkte/profilextrusion/trenneinrichtungen",
+      "statusCode": 301
+    },
+    {
+      "route": "/es/products/profile-extrusion/cutting-machines.html",
+      "redirect": "/es/produkte/profilextrusion/trenneinrichtungen",
+      "statusCode": 301
+    },
+    {
+      "route": "/es/products/profile-extrusion/extruders",
+      "redirect": "/es/produkte/profilextrusion/extruder",
+      "statusCode": 301
+    },
+    {
+      "route": "/es/products/profile-extrusion/extruders.html",
+      "redirect": "/es/produkte/profilextrusion/extruder",
+      "statusCode": 301
+    },
+    {
+      "route": "/es/products/profile-extrusion/haul-off",
+      "redirect": "/es/produkte/profilextrusion/abzuege",
+      "statusCode": 301
+    },
+    {
+      "route": "/es/products/profile-extrusion/haul-off.html",
+      "redirect": "/es/produkte/profilextrusion/abzuege",
+      "statusCode": 301
+    },
+    {
+      "route": "/es/products/profile-extrusion/special-machines",
+      "redirect": "/es/produkte/profilextrusion/sondermaschinen",
+      "statusCode": 301
+    },
+    {
+      "route": "/es/products/profile-extrusion/special-machines.html",
+      "redirect": "/es/produkte/profilextrusion/sondermaschinen",
+      "statusCode": 301
+    },
+    {
+      "route": "/es/products/sheet-extrusion",
+      "redirect": "/es/produkte/plattenextrusion",
+      "statusCode": 301
+    },
+    {
+      "route": "/es/products/sheet-extrusion.html",
+      "redirect": "/es/produkte/plattenextrusion",
+      "statusCode": 301
+    },
+    {
+      "route": "/es/products/sheet-extrusion/cross-cut-units",
+      "redirect": "/es/produkte/plattenextrusion/quertrenn-einrichtungen",
+      "statusCode": 301
+    },
+    {
+      "route": "/es/products/sheet-extrusion/cross-cut-units.html",
+      "redirect": "/es/produkte/plattenextrusion/quertrenn-einrichtungen",
+      "statusCode": 301
+    },
+    {
+      "route": "/es/products/sheet-extrusion/extruders",
+      "redirect": "/es/produkte/plattenextrusion/extruder",
+      "statusCode": 301
+    },
+    {
+      "route": "/es/products/sheet-extrusion/extruders.html",
+      "redirect": "/es/produkte/plattenextrusion/extruder",
+      "statusCode": 301
+    },
+    {
+      "route": "/es/products/sheet-extrusion/sheetstacker",
+      "redirect": "/es/produkte/plattenextrusion/plattenstapler",
+      "statusCode": 301
+    },
+    {
+      "route": "/es/products/sheet-extrusion/sheetstacker.html",
+      "redirect": "/es/produkte/plattenextrusion/plattenstapler",
+      "statusCode": 301
+    },
+    {
+      "route": "/es/products/sheet-extrusion/side-trim-units",
+      "redirect": "/es/produkte/plattenextrusion/laengstrenn-einrichtungen",
+      "statusCode": 301
+    },
+    {
+      "route": "/es/products/sheet-extrusion/side-trim-units.html",
+      "redirect": "/es/produkte/plattenextrusion/laengstrenn-einrichtungen",
+      "statusCode": 301
+    },
+    {
+      "route": "/es/products/sheet-extrusion/special-machines",
+      "redirect": "/es/produkte/plattenextrusion/sondermaschinen",
+      "statusCode": 301
+    },
+    {
+      "route": "/es/products/sheet-extrusion/special-machines.html",
+      "redirect": "/es/produkte/plattenextrusion/sondermaschinen",
+      "statusCode": 301
+    },
+    {
+      "route": "/es/produkte/rohrextrusion/kalibier-und-kuehlbaeder",
+      "redirect": "/es/produkte/rohrextrusion/kalibrier-und-kuehlbaeder",
+      "statusCode": 301
+    },
+    {
+      "route": "/es/produkte/rohrextrusion/kalibier-und-kuehlbaeder.html",
+      "redirect": "/es/produkte/rohrextrusion/kalibrier-und-kuehlbaeder",
+      "statusCode": 301
+    },
+    {
+      "route": "/es/second-hand-machines",
+      "redirect": "/es/gebrauchtmaschinen",
+      "statusCode": 301
+    },
+    {
+      "route": "/es/second-hand-machines.html",
+      "redirect": "/es/gebrauchtmaschinen",
+      "statusCode": 301
+    },
+    {
+      "route": "/es/success-stories.html",
+      "redirect": "/es/success-stories",
+      "statusCode": 301
+    },
+    {
+      "route": "/es/team.html",
+      "redirect": "/es/team",
+      "statusCode": 301
+    },
+    {
+      "route": "/fr/calculateur",
+      "redirect": "/fr/produktrechner",
+      "statusCode": 301
+    },
+    {
+      "route": "/fr/calculateur.html",
+      "redirect": "/fr/produktrechner",
+      "statusCode": 301
+    },
+    {
+      "route": "/fr/contactez",
+      "redirect": "/fr/kontakt",
+      "statusCode": 301
+    },
+    {
+      "route": "/fr/contactez.html",
+      "redirect": "/fr/kontakt",
+      "statusCode": 301
+    },
+    {
+      "route": "/fr/entreprise/le-groupe-graewe",
+      "redirect": "/fr/unternehmen/die-graewe-gruppe",
+      "statusCode": 301
+    },
+    {
+      "route": "/fr/entreprise/le-groupe-graewe.html",
+      "redirect": "/fr/unternehmen/die-graewe-gruppe",
+      "statusCode": 301
+    },
+    {
+      "route": "/fr/entreprise/que-fabrique-graewe",
+      "redirect": "/fr/unternehmen/was-macht-graewe",
+      "statusCode": 301
+    },
+    {
+      "route": "/fr/entreprise/que-fabrique-graewe.html",
+      "redirect": "/fr/unternehmen/was-macht-graewe",
+      "statusCode": 301
+    },
+    {
+      "route": "/fr/entreprise/que-vous-apporte-graewe",
+      "redirect": "/fr/unternehmen/wofuer-steht-graewe",
+      "statusCode": 301
+    },
+    {
+      "route": "/fr/entreprise/que-vous-apporte-graewe.html",
+      "redirect": "/fr/unternehmen/wofuer-steht-graewe",
+      "statusCode": 301
+    },
+    {
+      "route": "/fr/entreprise/qui-est-graewe",
+      "redirect": "/fr/unternehmen/wer-ist-graewe",
+      "statusCode": 301
+    },
+    {
+      "route": "/fr/entreprise/qui-est-graewe.html",
+      "redirect": "/fr/unternehmen/wer-ist-graewe",
+      "statusCode": 301
+    },
+    {
+      "route": "/fr/equipe",
+      "redirect": "/fr/team",
+      "statusCode": 301
+    },
+    {
+      "route": "/fr/equipe.html",
+      "redirect": "/fr/team",
+      "statusCode": 301
+    },
+    {
+      "route": "/fr/machines-doccasion",
+      "redirect": "/fr/gebrauchtmaschinen",
+      "statusCode": 301
+    },
+    {
+      "route": "/fr/machines-doccasion.html",
+      "redirect": "/fr/gebrauchtmaschinen",
+      "statusCode": 301
+    },
+    {
+      "route": "/fr/mentions-legales",
+      "redirect": "/fr/impressum",
+      "statusCode": 301
+    },
+    {
+      "route": "/fr/mentions-legales.html",
+      "redirect": "/fr/impressum",
+      "statusCode": 301
+    },
+    {
+      "route": "/fr/nouveautes",
+      "redirect": "/fr/aktuelles",
+      "statusCode": 301
+    },
+    {
+      "route": "/fr/nouveautes.html",
+      "redirect": "/fr/aktuelles",
+      "statusCode": 301
+    },
+    {
+      "route": "/fr/offres-demploi",
+      "redirect": "/fr/stellenanzeigen",
+      "statusCode": 301
+    },
+    {
+      "route": "/fr/offres-demploi.html",
+      "redirect": "/fr/stellenanzeigen",
+      "statusCode": 301
+    },
+    {
+      "route": "/fr/produits",
+      "redirect": "/fr",
+      "statusCode": 301
+    },
+    {
+      "route": "/fr/produits.html",
+      "redirect": "/fr",
+      "statusCode": 301
+    },
+    {
+      "route": "/fr/produits/extrusion-de-plaques",
+      "redirect": "/fr/produkte/plattenextrusion",
+      "statusCode": 301
+    },
+    {
+      "route": "/fr/produits/extrusion-de-plaques.html",
+      "redirect": "/fr/produkte/plattenextrusion",
+      "statusCode": 301
+    },
+    {
+      "route": "/fr/produits/extrusion-de-plaques/extrudeuses",
+      "redirect": "/fr/produkte/plattenextrusion/extruder",
+      "statusCode": 301
+    },
+    {
+      "route": "/fr/produits/extrusion-de-plaques/extrudeuses.html",
+      "redirect": "/fr/produkte/plattenextrusion/extruder",
+      "statusCode": 301
+    },
+    {
+      "route": "/fr/produits/extrusion-de-plaques/machines-speciales",
+      "redirect": "/fr/produkte/plattenextrusion/sondermaschinen",
+      "statusCode": 301
+    },
+    {
+      "route": "/fr/produits/extrusion-de-plaques/machines-speciales.html",
+      "redirect": "/fr/produkte/plattenextrusion/sondermaschinen",
+      "statusCode": 301
+    },
+    {
+      "route": "/fr/produits/extrusion-de-plaques/palettiseurs",
+      "redirect": "/fr/produkte/plattenextrusion/plattenstapler",
+      "statusCode": 301
+    },
+    {
+      "route": "/fr/produits/extrusion-de-plaques/palettiseurs.html",
+      "redirect": "/fr/produkte/plattenextrusion/plattenstapler",
+      "statusCode": 301
+    },
+    {
+      "route": "/fr/produits/extrusion-de-plaques/scies-a-lame-a-coupe-longitudinale",
+      "redirect": "/fr/produkte/plattenextrusion/laengstrenn-einrichtungen",
+      "statusCode": 301
+    },
+    {
+      "route": "/fr/produits/extrusion-de-plaques/scies-a-lame-a-coupe-longitudinale.html",
+      "redirect": "/fr/produkte/plattenextrusion/laengstrenn-einrichtungen",
+      "statusCode": 301
+    },
+    {
+      "route": "/fr/produits/extrusion-de-plaques/scies-a-lame-a-coupe-transversale",
+      "redirect": "/fr/produkte/plattenextrusion/quertrenn-einrichtungen",
+      "statusCode": 301
+    },
+    {
+      "route": "/fr/produits/extrusion-de-plaques/scies-a-lame-a-coupe-transversale.html",
+      "redirect": "/fr/produkte/plattenextrusion/quertrenn-einrichtungen",
+      "statusCode": 301
+    },
+    {
+      "route": "/fr/produits/extrusion-de-profiles",
+      "redirect": "/fr/produkte/profilextrusion",
+      "statusCode": 301
+    },
+    {
+      "route": "/fr/produits/extrusion-de-profiles.html",
+      "redirect": "/fr/produkte/profilextrusion",
+      "statusCode": 301
+    },
+    {
+      "route": "/fr/produits/extrusion-de-profiles/enrouleurs",
+      "redirect": "/fr/produkte/profilextrusion/wickler",
+      "statusCode": 301
+    },
+    {
+      "route": "/fr/produits/extrusion-de-profiles/enrouleurs.html",
+      "redirect": "/fr/produkte/profilextrusion/wickler",
+      "statusCode": 301
+    },
+    {
+      "route": "/fr/produits/extrusion-de-profiles/extrudeuses",
+      "redirect": "/fr/produkte/profilextrusion/extruder",
+      "statusCode": 301
+    },
+    {
+      "route": "/fr/produits/extrusion-de-profiles/extrudeuses.html",
+      "redirect": "/fr/produkte/profilextrusion/extruder",
+      "statusCode": 301
+    },
+    {
+      "route": "/fr/produits/extrusion-de-profiles/machines-speciales",
+      "redirect": "/fr/produkte/profilextrusion/sondermaschinen",
+      "statusCode": 301
+    },
+    {
+      "route": "/fr/produits/extrusion-de-profiles/machines-speciales.html",
+      "redirect": "/fr/produkte/profilextrusion/sondermaschinen",
+      "statusCode": 301
+    },
+    {
+      "route": "/fr/produits/extrusion-de-profiles/tables-de-calibrage",
+      "redirect": "/fr/produkte/profilextrusion/kalibriertische",
+      "statusCode": 301
+    },
+    {
+      "route": "/fr/produits/extrusion-de-profiles/tables-de-calibrage.html",
+      "redirect": "/fr/produkte/profilextrusion/kalibriertische",
+      "statusCode": 301
+    },
+    {
+      "route": "/fr/produits/extrusion-de-profiles/tireuses",
+      "redirect": "/fr/produkte/profilextrusion/abzuege",
+      "statusCode": 301
+    },
+    {
+      "route": "/fr/produits/extrusion-de-profiles/tireuses.html",
+      "redirect": "/fr/produkte/profilextrusion/abzuege",
+      "statusCode": 301
+    },
+    {
+      "route": "/fr/produits/extrusion-de-profiles/unites-de-coupe",
+      "redirect": "/fr/produkte/profilextrusion/trenneinrichtungen",
+      "statusCode": 301
+    },
+    {
+      "route": "/fr/produits/extrusion-de-profiles/unites-de-coupe.html",
+      "redirect": "/fr/produkte/profilextrusion/trenneinrichtungen",
+      "statusCode": 301
+    },
+    {
+      "route": "/fr/produits/extrusion-de-tubes",
+      "redirect": "/fr/produkte/rohrextrusion",
+      "statusCode": 301
+    },
+    {
+      "route": "/fr/produits/extrusion-de-tubes.html",
+      "redirect": "/fr/produkte/rohrextrusion",
+      "statusCode": 301
+    },
+    {
+      "route": "/fr/produits/extrusion-de-tubes/bacs-de-calibrage-et-bacs-de-refroidissement",
+      "redirect": "/fr/produkte/rohrextrusion/kalibrier-und-kuehlbaeder",
+      "statusCode": 301
+    },
+    {
+      "route": "/fr/produits/extrusion-de-tubes/bacs-de-calibrage-et-bacs-de-refroidissement.html",
+      "redirect": "/fr/produkte/rohrextrusion/kalibrier-und-kuehlbaeder",
+      "statusCode": 301
+    },
+    {
+      "route": "/fr/produits/extrusion-de-tubes/enrouleurs-automatiques",
+      "redirect": "/fr/produkte/rohrextrusion/vollautomatische-wickler",
+      "statusCode": 301
+    },
+    {
+      "route": "/fr/produits/extrusion-de-tubes/enrouleurs-automatiques.html",
+      "redirect": "/fr/produkte/rohrextrusion/vollautomatische-wickler",
+      "statusCode": 301
+    },
+    {
+      "route": "/fr/produits/extrusion-de-tubes/enrouleurs-semi-automatiques",
+      "redirect": "/fr/produkte/rohrextrusion/halbautomatische-wickler",
+      "statusCode": 301
+    },
+    {
+      "route": "/fr/produits/extrusion-de-tubes/enrouleurs-semi-automatiques.html",
+      "redirect": "/fr/produkte/rohrextrusion/halbautomatische-wickler",
+      "statusCode": 301
+    },
+    {
+      "route": "/fr/produits/extrusion-de-tubes/extrudeuses",
+      "redirect": "/fr/produkte/rohrextrusion/extruder",
+      "statusCode": 301
+    },
+    {
+      "route": "/fr/produits/extrusion-de-tubes/extrudeuses.html",
+      "redirect": "/fr/produkte/rohrextrusion/extruder",
+      "statusCode": 301
+    },
+    {
+      "route": "/fr/produits/extrusion-de-tubes/machines-speciales",
+      "redirect": "/fr/produkte/rohrextrusion/sondermaschinen",
+      "statusCode": 301
+    },
+    {
+      "route": "/fr/produits/extrusion-de-tubes/machines-speciales.html",
+      "redirect": "/fr/produkte/rohrextrusion/sondermaschinen",
+      "statusCode": 301
+    },
+    {
+      "route": "/fr/produits/extrusion-de-tubes/tireuses",
+      "redirect": "/fr/produkte/rohrextrusion/abzuege",
+      "statusCode": 301
+    },
+    {
+      "route": "/fr/produits/extrusion-de-tubes/tireuses.html",
+      "redirect": "/fr/produkte/rohrextrusion/abzuege",
+      "statusCode": 301
+    },
+    {
+      "route": "/fr/produits/extrusion-de-tubes/tulipeuses",
+      "redirect": "/fr/produkte/rohrextrusion/muffenmaschinen",
+      "statusCode": 301
+    },
+    {
+      "route": "/fr/produits/extrusion-de-tubes/tulipeuses.html",
+      "redirect": "/fr/produkte/rohrextrusion/muffenmaschinen",
+      "statusCode": 301
+    },
+    {
+      "route": "/fr/produits/extrusion-de-tubes/unites-de-coupe",
+      "redirect": "/fr/produkte/rohrextrusion/trenneinrichtungen",
+      "statusCode": 301
+    },
+    {
+      "route": "/fr/produits/extrusion-de-tubes/unites-de-coupe.html",
+      "redirect": "/fr/produkte/rohrextrusion/trenneinrichtungen",
+      "statusCode": 301
+    },
+    {
+      "route": "/fr/produkte/rohrextrusion/kalibier-und-kuehlbaeder",
+      "redirect": "/fr/produkte/rohrextrusion/kalibrier-und-kuehlbaeder",
+      "statusCode": 301
+    },
+    {
+      "route": "/fr/produkte/rohrextrusion/kalibier-und-kuehlbaeder.html",
+      "redirect": "/fr/produkte/rohrextrusion/kalibrier-und-kuehlbaeder",
+      "statusCode": 301
+    },
+    {
+      "route": "/fr/reussites",
+      "redirect": "/fr/success-stories",
+      "statusCode": 301
+    },
+    {
+      "route": "/fr/reussites.html",
+      "redirect": "/fr/success-stories",
+      "statusCode": 301
+    },
+    {
+      "route": "/fr/telechargements",
+      "redirect": "/fr/downloads",
+      "statusCode": 301
+    },
+    {
+      "route": "/fr/telechargements.html",
+      "redirect": "/fr/downloads",
+      "statusCode": 301
+    },
+    {
+      "route": "/fr/vos-informations-personelles",
+      "redirect": "/fr/datenschutz",
+      "statusCode": 301
+    },
+    {
+      "route": "/fr/vos-informations-personelles.html",
+      "redirect": "/fr/datenschutz",
+      "statusCode": 301
+    },
+    {
+      "route": "/gebrauchtmaschinen",
+      "redirect": "/de/gebrauchtmaschinen",
+      "statusCode": 301
+    },
+    {
+      "route": "/gebrauchtmaschinen.html",
+      "redirect": "/de/gebrauchtmaschinen",
+      "statusCode": 301
+    },
+    {
+      "route": "/impressum",
+      "redirect": "/de/impressum",
+      "statusCode": 301
+    },
+    {
+      "route": "/impressum.html",
+      "redirect": "/de/impressum",
+      "statusCode": 301
+    },
+    {
+      "route": "/index",
+      "redirect": "/de",
+      "statusCode": 301
+    },
+    {
+      "route": "/index.html",
+      "redirect": "/de",
+      "statusCode": 301
+    },
+    {
+      "route": "/index.php",
+      "redirect": "/de",
+      "statusCode": 301
+    },
+    {
+      "route": "/index.php.html",
+      "redirect": "/de",
+      "statusCode": 301
+    },
+    {
+      "route": "/kontakt",
+      "redirect": "/de/kontakt",
+      "statusCode": 301
+    },
+    {
+      "route": "/kontakt.html",
+      "redirect": "/de/kontakt",
+      "statusCode": 301
+    },
+    {
+      "route": "/produkte",
+      "redirect": "/de",
+      "statusCode": 301
+    },
+    {
+      "route": "/produkte.html",
+      "redirect": "/de",
+      "statusCode": 301
+    },
+    {
+      "route": "/produkte/plattenextrusion",
+      "redirect": "/de/produkte/plattenextrusion",
+      "statusCode": 301
+    },
+    {
+      "route": "/produkte/plattenextrusion.html",
+      "redirect": "/de/produkte/plattenextrusion",
+      "statusCode": 301
+    },
+    {
+      "route": "/produkte/plattenextrusion/extruder",
+      "redirect": "/de/produkte/plattenextrusion/extruder",
+      "statusCode": 301
+    },
+    {
+      "route": "/produkte/plattenextrusion/extruder.html",
+      "redirect": "/de/produkte/plattenextrusion/extruder",
+      "statusCode": 301
+    },
+    {
+      "route": "/produkte/plattenextrusion/laengstrenn-einrichtungen",
+      "redirect": "/de/produkte/plattenextrusion/laengstrenn-einrichtungen",
+      "statusCode": 301
+    },
+    {
+      "route": "/produkte/plattenextrusion/laengstrenn-einrichtungen.html",
+      "redirect": "/de/produkte/plattenextrusion/laengstrenn-einrichtungen",
+      "statusCode": 301
+    },
+    {
+      "route": "/produkte/plattenextrusion/plattenstapler",
+      "redirect": "/de/produkte/plattenextrusion/plattenstapler",
+      "statusCode": 301
+    },
+    {
+      "route": "/produkte/plattenextrusion/plattenstapler.html",
+      "redirect": "/de/produkte/plattenextrusion/plattenstapler",
+      "statusCode": 301
+    },
+    {
+      "route": "/produkte/plattenextrusion/quertrenn-einrichtungen",
+      "redirect": "/de/produkte/plattenextrusion/quertrenn-einrichtungen",
+      "statusCode": 301
+    },
+    {
+      "route": "/produkte/plattenextrusion/quertrenn-einrichtungen.html",
+      "redirect": "/de/produkte/plattenextrusion/quertrenn-einrichtungen",
+      "statusCode": 301
+    },
+    {
+      "route": "/produkte/plattenextrusion/sondermaschinen",
+      "redirect": "/de/produkte/plattenextrusion/sondermaschinen",
+      "statusCode": 301
+    },
+    {
+      "route": "/produkte/plattenextrusion/sondermaschinen.html",
+      "redirect": "/de/produkte/plattenextrusion/sondermaschinen",
+      "statusCode": 301
+    },
+    {
+      "route": "/produkte/profilextrusion",
+      "redirect": "/de/produkte/profilextrusion",
+      "statusCode": 301
+    },
+    {
+      "route": "/produkte/profilextrusion.html",
+      "redirect": "/de/produkte/profilextrusion",
+      "statusCode": 301
+    },
+    {
+      "route": "/produkte/profilextrusion/abzuege",
+      "redirect": "/de/produkte/profilextrusion/abzuege",
+      "statusCode": 301
+    },
+    {
+      "route": "/produkte/profilextrusion/abzuege.html",
+      "redirect": "/de/produkte/profilextrusion/abzuege",
+      "statusCode": 301
+    },
+    {
+      "route": "/produkte/profilextrusion/extruder",
+      "redirect": "/de/produkte/profilextrusion/extruder",
+      "statusCode": 301
+    },
+    {
+      "route": "/produkte/profilextrusion/extruder.html",
+      "redirect": "/de/produkte/profilextrusion/extruder",
+      "statusCode": 301
+    },
+    {
+      "route": "/produkte/profilextrusion/kalibriertische",
+      "redirect": "/de/produkte/profilextrusion/kalibriertische",
+      "statusCode": 301
+    },
+    {
+      "route": "/produkte/profilextrusion/kalibriertische.html",
+      "redirect": "/de/produkte/profilextrusion/kalibriertische",
+      "statusCode": 301
+    },
+    {
+      "route": "/produkte/profilextrusion/sondermaschinen",
+      "redirect": "/de/produkte/profilextrusion/sondermaschinen",
+      "statusCode": 301
+    },
+    {
+      "route": "/produkte/profilextrusion/sondermaschinen.html",
+      "redirect": "/de/produkte/profilextrusion/sondermaschinen",
+      "statusCode": 301
+    },
+    {
+      "route": "/produkte/profilextrusion/trenneinrichtungen",
+      "redirect": "/de/produkte/profilextrusion/trenneinrichtungen",
+      "statusCode": 301
+    },
+    {
+      "route": "/produkte/profilextrusion/trenneinrichtungen.html",
+      "redirect": "/de/produkte/profilextrusion/trenneinrichtungen",
+      "statusCode": 301
+    },
+    {
+      "route": "/produkte/profilextrusion/wickler",
+      "redirect": "/de/produkte/profilextrusion/wickler",
+      "statusCode": 301
+    },
+    {
+      "route": "/produkte/profilextrusion/wickler.html",
+      "redirect": "/de/produkte/profilextrusion/wickler",
+      "statusCode": 301
+    },
+    {
+      "route": "/produkte/rohrextrusion",
+      "redirect": "/de/produkte/rohrextrusion",
+      "statusCode": 301
+    },
+    {
+      "route": "/produkte/rohrextrusion.html",
+      "redirect": "/de/produkte/rohrextrusion",
+      "statusCode": 301
+    },
+    {
+      "route": "/produkte/rohrextrusion/abzuege",
+      "redirect": "/de/produkte/rohrextrusion/abzuege",
+      "statusCode": 301
+    },
+    {
+      "route": "/produkte/rohrextrusion/abzuege.html",
+      "redirect": "/de/produkte/rohrextrusion/abzuege",
+      "statusCode": 301
+    },
+    {
+      "route": "/produkte/rohrextrusion/extruder",
+      "redirect": "/de/produkte/rohrextrusion/extruder",
+      "statusCode": 301
+    },
+    {
+      "route": "/produkte/rohrextrusion/extruder.html",
+      "redirect": "/de/produkte/rohrextrusion/extruder",
+      "statusCode": 301
+    },
+    {
+      "route": "/produkte/rohrextrusion/halbautomatische-wickler",
+      "redirect": "/de/produkte/rohrextrusion/halbautomatische-wickler",
+      "statusCode": 301
+    },
+    {
+      "route": "/produkte/rohrextrusion/halbautomatische-wickler.html",
+      "redirect": "/de/produkte/rohrextrusion/halbautomatische-wickler",
+      "statusCode": 301
+    },
+    {
+      "route": "/produkte/rohrextrusion/kalibier-und-kuehlbaeder",
+      "redirect": "/de/produkte/rohrextrusion/kalibrier-und-kuehlbaeder",
+      "statusCode": 301
+    },
+    {
+      "route": "/produkte/rohrextrusion/kalibier-und-kuehlbaeder.html",
+      "redirect": "/de/produkte/rohrextrusion/kalibrier-und-kuehlbaeder",
+      "statusCode": 301
+    },
+    {
+      "route": "/produkte/rohrextrusion/kalibrier-und-kuehlbaeder",
+      "redirect": "/de/produkte/rohrextrusion/kalibrier-und-kuehlbaeder",
+      "statusCode": 301
+    },
+    {
+      "route": "/produkte/rohrextrusion/kalibrier-und-kuehlbaeder.html",
+      "redirect": "/de/produkte/rohrextrusion/kalibrier-und-kuehlbaeder",
+      "statusCode": 301
+    },
+    {
+      "route": "/produkte/rohrextrusion/muffenmaschinen",
+      "redirect": "/de/produkte/rohrextrusion/muffenmaschinen",
+      "statusCode": 301
+    },
+    {
+      "route": "/produkte/rohrextrusion/muffenmaschinen.html",
+      "redirect": "/de/produkte/rohrextrusion/muffenmaschinen",
+      "statusCode": 301
+    },
+    {
+      "route": "/produkte/rohrextrusion/sondermaschinen",
+      "redirect": "/de/produkte/rohrextrusion/sondermaschinen",
+      "statusCode": 301
+    },
+    {
+      "route": "/produkte/rohrextrusion/sondermaschinen.html",
+      "redirect": "/de/produkte/rohrextrusion/sondermaschinen",
+      "statusCode": 301
+    },
+    {
+      "route": "/produkte/rohrextrusion/trenneinrichtungen",
+      "redirect": "/de/produkte/rohrextrusion/trenneinrichtungen",
+      "statusCode": 301
+    },
+    {
+      "route": "/produkte/rohrextrusion/trenneinrichtungen.html",
+      "redirect": "/de/produkte/rohrextrusion/trenneinrichtungen",
+      "statusCode": 301
+    },
+    {
+      "route": "/produkte/rohrextrusion/vollautomatische-wickler",
+      "redirect": "/de/produkte/rohrextrusion/vollautomatische-wickler",
+      "statusCode": 301
+    },
+    {
+      "route": "/produkte/rohrextrusion/vollautomatische-wickler.html",
+      "redirect": "/de/produkte/rohrextrusion/vollautomatische-wickler",
+      "statusCode": 301
+    },
+    {
+      "route": "/produktrechner",
+      "redirect": "/de/produktrechner",
+      "statusCode": 301
+    },
+    {
+      "route": "/produktrechner.html",
+      "redirect": "/de/produktrechner",
+      "statusCode": 301
+    },
+    {
+      "route": "/ru/company/graewe-group",
+      "redirect": "/ru/unternehmen/die-graewe-gruppe",
+      "statusCode": 301
+    },
+    {
+      "route": "/ru/company/graewe-group.html",
+      "redirect": "/ru/unternehmen/die-graewe-gruppe",
+      "statusCode": 301
+    },
+    {
+      "route": "/ru/company/what-does-graewe-do",
+      "redirect": "/ru/unternehmen/was-macht-graewe",
+      "statusCode": 301
+    },
+    {
+      "route": "/ru/company/what-does-graewe-do.html",
+      "redirect": "/ru/unternehmen/was-macht-graewe",
+      "statusCode": 301
+    },
+    {
+      "route": "/ru/company/what-does-graewe-stand-for",
+      "redirect": "/ru/unternehmen/wofuer-steht-graewe",
+      "statusCode": 301
+    },
+    {
+      "route": "/ru/company/what-does-graewe-stand-for.html",
+      "redirect": "/ru/unternehmen/wofuer-steht-graewe",
+      "statusCode": 301
+    },
+    {
+      "route": "/ru/company/who-is-graewe",
+      "redirect": "/ru/unternehmen/wer-ist-graewe",
+      "statusCode": 301
+    },
+    {
+      "route": "/ru/company/who-is-graewe.html",
+      "redirect": "/ru/unternehmen/wer-ist-graewe",
+      "statusCode": 301
+    },
+    {
+      "route": "/ru/contact",
+      "redirect": "/ru/kontakt",
+      "statusCode": 301
+    },
+    {
+      "route": "/ru/contact.html",
+      "redirect": "/ru/kontakt",
+      "statusCode": 301
+    },
+    {
+      "route": "/ru/data-privacy",
+      "redirect": "/ru/datenschutz",
+      "statusCode": 301
+    },
+    {
+      "route": "/ru/data-privacy.html",
+      "redirect": "/ru/datenschutz",
+      "statusCode": 301
+    },
+    {
+      "route": "/ru/downloads.html",
+      "redirect": "/ru/downloads",
+      "statusCode": 301
+    },
+    {
+      "route": "/ru/imprint",
+      "redirect": "/ru/impressum",
+      "statusCode": 301
+    },
+    {
+      "route": "/ru/imprint.html",
+      "redirect": "/ru/impressum",
+      "statusCode": 301
+    },
+    {
+      "route": "/ru/job-advertisements",
+      "redirect": "/ru/stellenanzeigen",
+      "statusCode": 301
+    },
+    {
+      "route": "/ru/job-advertisements.html",
+      "redirect": "/ru/stellenanzeigen",
+      "statusCode": 301
+    },
+    {
+      "route": "/ru/kontakt.html",
+      "redirect": "/ru/kontakt",
+      "statusCode": 301
+    },
+    {
+      "route": "/ru/news",
+      "redirect": "/ru/aktuelles",
+      "statusCode": 301
+    },
+    {
+      "route": "/ru/news.html",
+      "redirect": "/ru/aktuelles",
+      "statusCode": 301
+    },
+    {
+      "route": "/ru/product-calculator",
+      "redirect": "/ru/produktrechner",
+      "statusCode": 301
+    },
+    {
+      "route": "/ru/product-calculator.html",
+      "redirect": "/ru/produktrechner",
+      "statusCode": 301
+    },
+    {
+      "route": "/ru/products",
+      "redirect": "/ru",
+      "statusCode": 301
+    },
+    {
+      "route": "/ru/products.html",
+      "redirect": "/ru",
+      "statusCode": 301
+    },
+    {
+      "route": "/ru/products/pipe-extrusion",
+      "redirect": "/ru/produkte/rohrextrusion",
+      "statusCode": 301
+    },
+    {
+      "route": "/ru/products/pipe-extrusion.html",
+      "redirect": "/ru/produkte/rohrextrusion",
+      "statusCode": 301
+    },
+    {
+      "route": "/ru/products/pipe-extrusion/belt-haul-off",
+      "redirect": "/ru/produkte/rohrextrusion/abzuege",
+      "statusCode": 301
+    },
+    {
+      "route": "/ru/products/pipe-extrusion/belt-haul-off.html",
+      "redirect": "/ru/produkte/rohrextrusion/abzuege",
+      "statusCode": 301
+    },
+    {
+      "route": "/ru/products/pipe-extrusion/cutting-machines",
+      "redirect": "/ru/produkte/rohrextrusion/trenneinrichtungen",
+      "statusCode": 301
+    },
+    {
+      "route": "/ru/products/pipe-extrusion/cutting-machines.html",
+      "redirect": "/ru/produkte/rohrextrusion/trenneinrichtungen",
+      "statusCode": 301
+    },
+    {
+      "route": "/ru/products/pipe-extrusion/fully-automatic-coilers",
+      "redirect": "/ru/produkte/rohrextrusion/vollautomatische-wickler",
+      "statusCode": 301
+    },
+    {
+      "route": "/ru/products/pipe-extrusion/fully-automatic-coilers.html",
+      "redirect": "/ru/produkte/rohrextrusion/vollautomatische-wickler",
+      "statusCode": 301
+    },
+    {
+      "route": "/ru/products/pipe-extrusion/pipe-extrusion-extruder",
+      "redirect": "/ru/produkte/rohrextrusion/extruder",
+      "statusCode": 301
+    },
+    {
+      "route": "/ru/products/pipe-extrusion/pipe-extrusion-extruder.html",
+      "redirect": "/ru/produkte/rohrextrusion/extruder",
+      "statusCode": 301
+    },
+    {
+      "route": "/ru/products/pipe-extrusion/pipe-extrusion-vacuum-calibration-tanks",
+      "redirect": "/ru/produkte/rohrextrusion/kalibrier-und-kuehlbaeder",
+      "statusCode": 301
+    },
+    {
+      "route": "/ru/products/pipe-extrusion/pipe-extrusion-vacuum-calibration-tanks.html",
+      "redirect": "/ru/produkte/rohrextrusion/kalibrier-und-kuehlbaeder",
+      "statusCode": 301
+    },
+    {
+      "route": "/ru/products/pipe-extrusion/semi-automatic-coilers",
+      "redirect": "/ru/produkte/rohrextrusion/halbautomatische-wickler",
+      "statusCode": 301
+    },
+    {
+      "route": "/ru/products/pipe-extrusion/semi-automatic-coilers.html",
+      "redirect": "/ru/produkte/rohrextrusion/halbautomatische-wickler",
+      "statusCode": 301
+    },
+    {
+      "route": "/ru/products/pipe-extrusion/socketing-machines",
+      "redirect": "/ru/produkte/rohrextrusion/muffenmaschinen",
+      "statusCode": 301
+    },
+    {
+      "route": "/ru/products/pipe-extrusion/socketing-machines.html",
+      "redirect": "/ru/produkte/rohrextrusion/muffenmaschinen",
+      "statusCode": 301
+    },
+    {
+      "route": "/ru/products/pipe-extrusion/special-machines",
+      "redirect": "/ru/produkte/rohrextrusion/sondermaschinen",
+      "statusCode": 301
+    },
+    {
+      "route": "/ru/products/pipe-extrusion/special-machines.html",
+      "redirect": "/ru/produkte/rohrextrusion/sondermaschinen",
+      "statusCode": 301
+    },
+    {
+      "route": "/ru/products/profile-extrusion",
+      "redirect": "/ru/produkte/profilextrusion",
+      "statusCode": 301
+    },
+    {
+      "route": "/ru/products/profile-extrusion.html",
+      "redirect": "/ru/produkte/profilextrusion",
+      "statusCode": 301
+    },
+    {
+      "route": "/ru/products/profile-extrusion/calibration-tables",
+      "redirect": "/ru/produkte/profilextrusion/kalibriertische",
+      "statusCode": 301
+    },
+    {
+      "route": "/ru/products/profile-extrusion/calibration-tables.html",
+      "redirect": "/ru/produkte/profilextrusion/kalibriertische",
+      "statusCode": 301
+    },
+    {
+      "route": "/ru/products/profile-extrusion/coilers",
+      "redirect": "/ru/produkte/profilextrusion/wickler",
+      "statusCode": 301
+    },
+    {
+      "route": "/ru/products/profile-extrusion/coilers.html",
+      "redirect": "/ru/produkte/profilextrusion/wickler",
+      "statusCode": 301
+    },
+    {
+      "route": "/ru/products/profile-extrusion/cutting-machines",
+      "redirect": "/ru/produkte/profilextrusion/trenneinrichtungen",
+      "statusCode": 301
+    },
+    {
+      "route": "/ru/products/profile-extrusion/cutting-machines.html",
+      "redirect": "/ru/produkte/profilextrusion/trenneinrichtungen",
+      "statusCode": 301
+    },
+    {
+      "route": "/ru/products/profile-extrusion/extruders",
+      "redirect": "/ru/produkte/profilextrusion/extruder",
+      "statusCode": 301
+    },
+    {
+      "route": "/ru/products/profile-extrusion/extruders.html",
+      "redirect": "/ru/produkte/profilextrusion/extruder",
+      "statusCode": 301
+    },
+    {
+      "route": "/ru/products/profile-extrusion/haul-off",
+      "redirect": "/ru/produkte/profilextrusion/abzuege",
+      "statusCode": 301
+    },
+    {
+      "route": "/ru/products/profile-extrusion/haul-off.html",
+      "redirect": "/ru/produkte/profilextrusion/abzuege",
+      "statusCode": 301
+    },
+    {
+      "route": "/ru/products/profile-extrusion/special-machines",
+      "redirect": "/ru/produkte/profilextrusion/sondermaschinen",
+      "statusCode": 301
+    },
+    {
+      "route": "/ru/products/profile-extrusion/special-machines.html",
+      "redirect": "/ru/produkte/profilextrusion/sondermaschinen",
+      "statusCode": 301
+    },
+    {
+      "route": "/ru/products/sheet-extrusion",
+      "redirect": "/ru/produkte/plattenextrusion",
+      "statusCode": 301
+    },
+    {
+      "route": "/ru/products/sheet-extrusion.html",
+      "redirect": "/ru/produkte/plattenextrusion",
+      "statusCode": 301
+    },
+    {
+      "route": "/ru/products/sheet-extrusion/cross-cut-units",
+      "redirect": "/ru/produkte/plattenextrusion/quertrenn-einrichtungen",
+      "statusCode": 301
+    },
+    {
+      "route": "/ru/products/sheet-extrusion/cross-cut-units.html",
+      "redirect": "/ru/produkte/plattenextrusion/quertrenn-einrichtungen",
+      "statusCode": 301
+    },
+    {
+      "route": "/ru/products/sheet-extrusion/extruders",
+      "redirect": "/ru/produkte/plattenextrusion/extruder",
+      "statusCode": 301
+    },
+    {
+      "route": "/ru/products/sheet-extrusion/extruders.html",
+      "redirect": "/ru/produkte/plattenextrusion/extruder",
+      "statusCode": 301
+    },
+    {
+      "route": "/ru/products/sheet-extrusion/sheetstacker",
+      "redirect": "/ru/produkte/plattenextrusion/plattenstapler",
+      "statusCode": 301
+    },
+    {
+      "route": "/ru/products/sheet-extrusion/sheetstacker.html",
+      "redirect": "/ru/produkte/plattenextrusion/plattenstapler",
+      "statusCode": 301
+    },
+    {
+      "route": "/ru/products/sheet-extrusion/side-trim-units",
+      "redirect": "/ru/produkte/plattenextrusion/laengstrenn-einrichtungen",
+      "statusCode": 301
+    },
+    {
+      "route": "/ru/products/sheet-extrusion/side-trim-units.html",
+      "redirect": "/ru/produkte/plattenextrusion/laengstrenn-einrichtungen",
+      "statusCode": 301
+    },
+    {
+      "route": "/ru/products/sheet-extrusion/special-machines",
+      "redirect": "/ru/produkte/plattenextrusion/sondermaschinen",
+      "statusCode": 301
+    },
+    {
+      "route": "/ru/products/sheet-extrusion/special-machines.html",
+      "redirect": "/ru/produkte/plattenextrusion/sondermaschinen",
+      "statusCode": 301
+    },
+    {
+      "route": "/ru/produkte/rohrextrusion/kalibier-und-kuehlbaeder",
+      "redirect": "/ru/produkte/rohrextrusion/kalibrier-und-kuehlbaeder",
+      "statusCode": 301
+    },
+    {
+      "route": "/ru/produkte/rohrextrusion/kalibier-und-kuehlbaeder.html",
+      "redirect": "/ru/produkte/rohrextrusion/kalibrier-und-kuehlbaeder",
+      "statusCode": 301
+    },
+    {
+      "route": "/ru/second-hand-machines",
+      "redirect": "/ru/gebrauchtmaschinen",
+      "statusCode": 301
+    },
+    {
+      "route": "/ru/second-hand-machines.html",
+      "redirect": "/ru/gebrauchtmaschinen",
+      "statusCode": 301
+    },
+    {
+      "route": "/ru/success-stories.html",
+      "redirect": "/ru/success-stories",
+      "statusCode": 301
+    },
+    {
+      "route": "/ru/team.html",
+      "redirect": "/ru/team",
+      "statusCode": 301
+    },
+    {
+      "route": "/sitemap",
+      "redirect": "/de/sitemap",
+      "statusCode": 301
+    },
+    {
+      "route": "/sitemap.html",
+      "redirect": "/de/sitemap",
+      "statusCode": 301
+    },
+    {
+      "route": "/stellenanzeigen",
+      "redirect": "/de/stellenanzeigen",
+      "statusCode": 301
+    },
+    {
+      "route": "/stellenanzeigen.html",
+      "redirect": "/de/stellenanzeigen",
+      "statusCode": 301
+    },
+    {
+      "route": "/success-stories",
+      "redirect": "/de/success-stories",
+      "statusCode": 301
+    },
+    {
+      "route": "/success-stories.html",
+      "redirect": "/de/success-stories",
+      "statusCode": 301
+    },
+    {
+      "route": "/team",
+      "redirect": "/de/team",
+      "statusCode": 301
+    },
+    {
+      "route": "/team.html",
+      "redirect": "/de/team",
+      "statusCode": 301
+    },
+    {
+      "route": "/unternehmen/die-graewe-gruppe",
+      "redirect": "/de/unternehmen/die-graewe-gruppe",
+      "statusCode": 301
+    },
+    {
+      "route": "/unternehmen/die-graewe-gruppe.html",
+      "redirect": "/de/unternehmen/die-graewe-gruppe",
+      "statusCode": 301
+    },
+    {
+      "route": "/unternehmen/was-macht-graewe",
+      "redirect": "/de/unternehmen/was-macht-graewe",
+      "statusCode": 301
+    },
+    {
+      "route": "/unternehmen/was-macht-graewe.html",
+      "redirect": "/de/unternehmen/was-macht-graewe",
+      "statusCode": 301
+    },
+    {
+      "route": "/unternehmen/wer-ist-graewe",
+      "redirect": "/de/unternehmen/wer-ist-graewe",
+      "statusCode": 301
+    },
+    {
+      "route": "/unternehmen/wer-ist-graewe.html",
+      "redirect": "/de/unternehmen/wer-ist-graewe",
+      "statusCode": 301
+    },
+    {
+      "route": "/unternehmen/wofuer-steht-graewe",
+      "redirect": "/de/unternehmen/wofuer-steht-graewe",
+      "statusCode": 301
+    },
+    {
+      "route": "/unternehmen/wofuer-steht-graewe.html",
+      "redirect": "/de/unternehmen/wofuer-steht-graewe",
+      "statusCode": 301
     }
-  },
+  ],
   "globalHeaders": {
     "X-Content-Type-Options": "nosniff",
     "X-Frame-Options": "SAMEORIGIN",
