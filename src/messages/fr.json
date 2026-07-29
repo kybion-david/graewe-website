@@ -199,7 +199,13 @@
     "windingLengthResult": "Longueur d’enroulement [m]",
     "disclaimer": "Les longueurs d’enroulement calculées peuvent varier jusqu’à 10 %. Nous déclinons toute responsabilité quant à l’exactitude des résultats.",
     "calculate": "Calculer",
-    "reset": "Réinitialiser"
+    "reset": "Réinitialiser",
+    "validation": {
+      "required": "Ce champ est obligatoire.",
+      "invalid": "Veuillez saisir un nombre valide.",
+      "positive": "La valeur doit être supérieure à 0.",
+      "odMustExceedId": "Le diamètre extérieur doit être supérieur au diamètre intérieur."
+    }
   },
   "contact": {
     "title": "Contact",

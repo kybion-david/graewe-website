@@ -5,8 +5,13 @@ import { useTranslations } from "next-intl";
 import {
   calculateWindingLengthUneven,
   calculateWindingLengthEven,
+  validateWindingLengthInput,
+  type CalculatorFieldError,
+  type WindingLengthFieldKey,
   type WindingLengthResult,
 } from "@/lib/calculator";
+
+type FieldErrors = Partial<Record<WindingLengthFieldKey, CalculatorFieldError>>;
 
 export function WindingLengthCalc() {
   const t = useTranslations("calculator");
@@ -14,22 +19,48 @@ export function WindingLengthCalc() {
   const [innerDiameter, setInnerDiameter] = useState("");
   const [outerDiameter, setOuterDiameter] = useState("");
   const [bundleWidth, setBundleWidth] = useState("");
+  const [errors, setErrors] = useState<FieldErrors>({});
   const [unevenResult, setUnevenResult] = useState<WindingLengthResult | null>(null);
   const [evenResult, setEvenResult] = useState<WindingLengthResult | null>(null);
 
-  function calculate() {
-    const d = parseFloat(pipeDiameter);
-    const id = parseFloat(innerDiameter);
-    const od = parseFloat(outerDiameter);
-    const w = parseFloat(bundleWidth);
+  function fieldErrorMessage(code: CalculatorFieldError | undefined) {
+    if (!code) return undefined;
+    return t(`validation.${code}`);
+  }
 
-    if (isNaN(d) || isNaN(id) || isNaN(od) || isNaN(w) || d <= 0 || id <= 0 || od <= 0 || w <= 0) {
+  function updateField(
+    key: WindingLengthFieldKey,
+    value: string,
+    setter: (v: string) => void
+  ) {
+    setter(value);
+    if (errors[key]) {
+      setErrors((prev) => {
+        const next = { ...prev };
+        delete next[key];
+        return next;
+      });
+    }
+  }
+
+  function calculate() {
+    const validation = validateWindingLengthInput({
+      pipeDiameter,
+      innerDiameter,
+      outerDiameter,
+      bundleWidth,
+    });
+
+    if (!validation.ok) {
+      setErrors(validation.errors);
+      setUnevenResult(null);
+      setEvenResult(null);
       return;
     }
 
-    const input = { pipeDiameter: d, innerDiameter: id, outerDiameter: od, bundleWidth: w };
-    setUnevenResult(calculateWindingLengthUneven(input));
-    setEvenResult(calculateWindingLengthEven(input));
+    setErrors({});
+    setUnevenResult(calculateWindingLengthUneven(validation.input));
+    setEvenResult(calculateWindingLengthEven(validation.input));
   }
 
   function reset() {
@@ -37,6 +68,7 @@ export function WindingLengthCalc() {
     setInnerDiameter("");
     setOuterDiameter("");
     setBundleWidth("");
+    setErrors({});
     setUnevenResult(null);
     setEvenResult(null);
   }
@@ -49,19 +81,41 @@ export function WindingLengthCalc() {
           {t("inputs")}
         </h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <InputField label={t("pipeDiameter")} value={pipeDiameter} onChange={setPipeDiameter} />
-          <InputField label={t("innerDiameter")} value={innerDiameter} onChange={setInnerDiameter} />
-          <InputField label={t("outerDiameter")} value={outerDiameter} onChange={setOuterDiameter} />
-          <InputField label={t("bundleWidth")} value={bundleWidth} onChange={setBundleWidth} />
+          <InputField
+            label={t("pipeDiameter")}
+            value={pipeDiameter}
+            onChange={(v) => updateField("pipeDiameter", v, setPipeDiameter)}
+            error={fieldErrorMessage(errors.pipeDiameter)}
+          />
+          <InputField
+            label={t("innerDiameter")}
+            value={innerDiameter}
+            onChange={(v) => updateField("innerDiameter", v, setInnerDiameter)}
+            error={fieldErrorMessage(errors.innerDiameter)}
+          />
+          <InputField
+            label={t("outerDiameter")}
+            value={outerDiameter}
+            onChange={(v) => updateField("outerDiameter", v, setOuterDiameter)}
+            error={fieldErrorMessage(errors.outerDiameter)}
+          />
+          <InputField
+            label={t("bundleWidth")}
+            value={bundleWidth}
+            onChange={(v) => updateField("bundleWidth", v, setBundleWidth)}
+            error={fieldErrorMessage(errors.bundleWidth)}
+          />
         </div>
         <div className="flex gap-3 mt-6">
           <button
+            type="button"
             onClick={calculate}
             className="px-6 py-2.5 bg-accent text-dark rounded-lg font-bold hover:bg-accent-dark transition-colors"
           >
             {t("calculate")}
           </button>
           <button
+            type="button"
             onClick={reset}
             className="px-6 py-2.5 border border-grey-300 text-text-muted rounded-lg font-medium hover:bg-grey-200 transition-colors"
           >
@@ -84,11 +138,18 @@ function InputField({
   label,
   value,
   onChange,
+  error,
 }: {
   label: string;
   value: string;
   onChange: (v: string) => void;
+  error?: string;
 }) {
+  const inputBase =
+    "w-full px-3 py-2 border rounded-lg outline-none transition-all";
+  const inputNormal = `${inputBase} border-grey-300 focus:ring-2 focus:ring-accent/30 focus:border-accent`;
+  const inputError = `${inputBase} border-red-400 focus:ring-2 focus:ring-red-200 focus:border-red-400`;
+
   return (
     <div>
       <label className="block text-sm font-medium text-text-muted mb-1">{label}</label>
@@ -96,10 +157,17 @@ function InputField({
         type="number"
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="w-full px-3 py-2 border border-grey-300 rounded-lg focus:ring-2 focus:ring-accent/30 focus:border-accent outline-none transition-all"
+        className={error ? inputError : inputNormal}
         min="0"
         step="any"
+        aria-invalid={error ? true : undefined}
+        aria-describedby={error ? `${label}-error` : undefined}
       />
+      {error && (
+        <p id={`${label}-error`} className="mt-1 text-sm text-red-600" role="alert">
+          {error}
+        </p>
+      )}
     </div>
   );
 }

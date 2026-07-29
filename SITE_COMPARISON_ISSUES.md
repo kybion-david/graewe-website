@@ -284,14 +284,15 @@ Old site checked live on graewe.com.
 ---
 
 ### ISSUE-016 — Calculator input validation is silent
-- **Status:** Open
+- **Status:** Done
+- **Note:** Added pure `validateWindingPositionInput` / `validateWindingLengthInput` helpers; UI shows per-field errors (required / invalid / positive / OD>ID) in all 5 locales; unit + e2e coverage.
 - **Category:** Bug / UX
 - **Problem:** Invalid/empty/non-positive inputs cause calculate to no-op with no error message.
 - **Likely files:** `src/components/calculator/*`, `src/lib/calculator.ts`, messages under `calculator.*`.
 - **Acceptance criteria:**
-  - [ ] User sees validation errors for missing/invalid fields.
-  - [ ] Unit tests cover invalid input handling.
-  - [ ] Results still match live calculator within documented ±10% disclaimer (spot-check against graewe.com/produktrechner).
+  - [x] User sees validation errors for missing/invalid fields.
+  - [x] Unit tests cover invalid input handling.
+  - [x] Results still match live calculator within documented ±10% disclaimer (spot-check against graewe.com/produktrechner).
 
 ---
 
