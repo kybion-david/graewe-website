@@ -4,23 +4,51 @@
 > Update it in the same PR whenever you change architecture, conventions, routes, or workflow.
 > Historical vision and phase notes live in [`PROJECT.md`](./PROJECT.md) — prefer this file when they disagree.
 
-## 0. Start from the current remote (do this first, every time)
+## 0. Worktree lifecycle (do this first, every time)
 
-Many agents work this repo in parallel and `main` moves fast. A local checkout is stale far more
-often than it looks, and stale work wastes a whole session: it audits code that no longer exists,
-re-fixes what someone already fixed, and produces line numbers that point at nothing.
+Many agents work this repo in parallel and `main` moves fast. **Every task gets its own worktree** —
+that is what lets several agents work at once without fighting over one checkout, one `node_modules`,
+or one dev server. And a local checkout is stale far more often than it looks; stale work wastes a
+whole session, auditing code that no longer exists and re-fixing what someone already fixed.
 
-**Before you plan, branch, or edit:**
+### Start — always in a fresh worktree off `origin/main`
 
 ```bash
 git fetch origin main
-git log --oneline main..origin/main   # NON-EMPTY = your checkout is STALE. Stop and rebase.
+git log --oneline main..origin/main   # NON-EMPTY = your checkout is STALE. Do not work in it.
 git worktree add -b <type>/<desc> ../graewe-website-<desc> origin/main
 cd ../graewe-website-<desc> && npm ci
 ```
 
-Rules that follow from this — none of them optional:
+This applies to **every** task — features, fixes, chores, docs, and read-only audits. Never work
+directly in the primary checkout, and never branch off local `main`.
 
+### Finish — remove the worktree when the PR is merged
+
+A worktree is scratch space, not a record. Leaving them behind is not free: they pin branches so
+`git branch -d` refuses, they multiply `node_modules` copies, and a stale server or checkout inside
+one silently corrupts later runs. On 2026-07-29 this repo had accumulated **32 dead worktrees**, one
+of them nested inside another.
+
+```bash
+cd /Users/<you>/repos/graewe-website          # back to the primary checkout first
+git worktree remove ../graewe-website-<desc>  # refuses if you have uncommitted work — good
+git branch -d <type>/<desc>                   # safe: fails unless fully merged
+git worktree prune                            # clears records for dirs already deleted
+git worktree list                             # verify: only the primary checkout remains
+```
+
+Before removing, check `git status` in the worktree for **gitignored local config** that is not
+recoverable from git — `infra/terraform.tfvars`, `.env.local`, `infra/.terraform.lock.hcl`. Copy
+anything real out first; `--force` will delete it without asking.
+
+If you did not create a worktree because the task turned out to be trivial, say so in the PR — do
+not silently leave one behind.
+
+### Rules that follow — none of them optional
+
+- **One worktree per task, always.** It is what makes parallel agents safe; it also keeps the
+  primary checkout permanently clean and on `main`.
 - **Always branch off `origin/main`, never local `main`.** The worktree command above already does.
 - **`git rev-parse main origin/main` is not a staleness check.** It tells you the two differ, not
   which way. Use `main..origin/main` (what you are missing) and `origin/main..main` (what you have
