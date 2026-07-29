@@ -4,9 +4,9 @@
  * Decision (ISSUE-005): keep German slugs for all locales; 301 old
  * translated EN/FR/RU/ES paths (and unprefixed DE hubs) to the new routes.
  *
- * Static path pairs also feed `staticwebapp.config.json` (see
- * `getStaticWebAppRedirectRoutes`). Query-string news/job details are
- * resolved at request time via `resolveLegacyRedirect`.
+ * All path + query redirects run in `src/proxy.ts` via `resolveLegacyRedirect`.
+ * `staticwebapp.config.json` only carries security headers — Azure SWA rejects
+ * config files over 20 KB, so the full path matrix cannot live there.
  */
 
 import { getJobSlugFromLegacyId } from "./jobs";
@@ -313,7 +313,31 @@ export type StaticWebAppRedirectRoute = {
   statusCode: 301;
 };
 
-/** Routes for `staticwebapp.config.json` (path-only; query URLs use middleware). */
+/** Azure SWA rejects `staticwebapp.config.json` larger than 20 KB. */
+export const STATIC_WEB_APP_CONFIG_MAX_BYTES = 20 * 1024;
+
+const STATIC_WEB_APP_GLOBAL_HEADERS = {
+  "X-Content-Type-Options": "nosniff",
+  "X-Frame-Options": "SAMEORIGIN",
+  "Referrer-Policy": "strict-origin-when-cross-origin",
+  "Permissions-Policy": "camera=(), microphone=(), geolocation=()",
+} as const;
+
+/**
+ * Azure Static Web Apps config payload (headers only).
+ * Legacy URL 301s are handled in `src/proxy.ts`, not here.
+ */
+export function getStaticWebAppConfig(): {
+  routes: StaticWebAppRedirectRoute[];
+  globalHeaders: typeof STATIC_WEB_APP_GLOBAL_HEADERS;
+} {
+  return {
+    routes: [],
+    globalHeaders: STATIC_WEB_APP_GLOBAL_HEADERS,
+  };
+}
+
+/** Full path → path redirect list (for tests / docs; not written to SWA config). */
 export function getStaticWebAppRedirectRoutes(): StaticWebAppRedirectRoute[] {
   return [...PATH_REDIRECTS.entries()]
     .map(([route, redirect]) => ({ route, redirect, statusCode: 301 as const }))
