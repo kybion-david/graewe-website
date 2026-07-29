@@ -11,8 +11,14 @@ export function Header() {
   const t = useTranslations("nav");
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
+  const [menuPathname, setMenuPathname] = useState(pathname);
   const [scrolled, setScrolled] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
+
+  if (pathname !== menuPathname) {
+    setMenuPathname(pathname);
+    setMenuOpen(false);
+  }
 
   useEffect(() => {
     function handleScroll() {
@@ -36,10 +42,6 @@ export function Header() {
     }
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [menuOpen]);
-
-  useEffect(() => {
-    setMenuOpen(false);
-  }, [pathname]);
 
   const companyLinks = [
     { href: "/unternehmen/wer-ist-graewe", label: t("whoIsGraewe") },
