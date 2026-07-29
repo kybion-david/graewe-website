@@ -7,8 +7,6 @@ type CalculatorFieldProps = {
   onChange: (value: string) => void;
   error?: string;
   inputMode?: "decimal" | "numeric";
-  /** Live-site placeholder when empty (N/V). */
-  placeholder?: string;
 };
 
 export function CalculatorField({
@@ -18,19 +16,18 @@ export function CalculatorField({
   onChange,
   error,
   inputMode = "decimal",
-  placeholder,
 }: CalculatorFieldProps) {
   const inputBase =
-    "w-full px-3 py-2.5 outline-none transition-all text-text-muted";
-  const inputNormal = `${inputBase} border-0 bg-grey-200 focus:ring-2 focus:ring-accent/40`;
-  const inputError = `${inputBase} border border-red-400 bg-white focus:ring-2 focus:ring-red-200`;
+    "w-full px-3 py-2 border rounded-lg outline-none transition-all";
+  const inputNormal = `${inputBase} border-grey-300 focus:ring-2 focus:ring-accent/30 focus:border-accent`;
+  const inputError = `${inputBase} border-red-400 focus:ring-2 focus:ring-red-200 focus:border-red-400`;
   const errorId = `${id}-error`;
 
   return (
     <div>
       <label
         htmlFor={id}
-        className="block text-xs font-medium text-text-muted mb-1.5 uppercase tracking-wide"
+        className="block text-sm font-medium text-text-muted mb-1"
       >
         {label}
       </label>
@@ -39,7 +36,6 @@ export function CalculatorField({
         type="text"
         inputMode={inputMode}
         value={value}
-        placeholder={placeholder}
         onChange={(e) => onChange(e.target.value)}
         className={error ? inputError : inputNormal}
         aria-invalid={error ? true : undefined}

@@ -6,6 +6,7 @@ import { CALCULATOR_EMPTY_VALUE } from "@/lib/calculator";
 export type ResultField = {
   label: string;
   value: string;
+  emphasize?: boolean;
 };
 
 type PatternResultCardProps = {
@@ -16,8 +17,8 @@ type PatternResultCardProps = {
 };
 
 /**
- * Live-style result panel: yellow border, readonly-looking outputs,
- * then a large labeled Wickelbild diagram explaining OD/ID/H/W/d.
+ * Modern result card with a labeled Wickelbild diagram to guide users
+ * on what OD / ID / H / W / d mean — without copying the old TYPO3 chrome.
  */
 export function PatternResultCard({
   title,
@@ -26,34 +27,32 @@ export function PatternResultCard({
   fields,
 }: PatternResultCardProps) {
   return (
-    <div className="border border-accent bg-white p-4 sm:p-5 h-full flex flex-col">
-      <h4 className="font-bold text-dark text-base mb-4">{title}</h4>
+    <div className="bg-white border border-grey-200 rounded-xl p-6 shadow-sm h-full flex flex-col">
+      <h4 className="font-bold text-dark mb-4">{title}</h4>
 
-      <div className="space-y-3 mb-5">
+      <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-6">
         {fields.map((field) => (
           <div key={field.label}>
-            <p className="text-xs text-text-muted uppercase tracking-wide mb-1">
-              {field.label}
-            </p>
-            <div
-              className="w-full px-3 py-2.5 bg-white border border-dotted border-dark text-text-muted tabular-nums"
-              aria-live="polite"
+            <p className="text-xs text-text-muted">{field.label}</p>
+            <p
+              className={`text-lg font-semibold tabular-nums ${
+                field.emphasize ? "text-accent-dark" : "text-dark"
+              }`}
             >
               {field.value || CALCULATOR_EMPTY_VALUE}
-            </div>
+            </p>
           </div>
         ))}
       </div>
 
-      <div className="mt-auto border-t border-grey-200 pt-4">
+      <div className="mt-auto rounded-lg bg-grey-100 p-4">
         <Image
           src={diagramSrc}
           alt={diagramAlt}
           width={260}
           height={280}
-          className="w-full h-auto max-w-[280px] mx-auto"
+          className="w-full h-auto max-w-[260px] mx-auto"
           unoptimized
-          priority
         />
       </div>
     </div>

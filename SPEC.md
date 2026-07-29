@@ -106,7 +106,7 @@ Copy `.env.example` → `.env.local`. **Contact email requires `RESEND_API_KEY`*
 ## 8. Current status snapshot
 
 - Pages: home, unternehmen (4), produkte (overview + 3 categories + 19 products), success stories, aktuelles (+ articles), produktrechner, gebrauchtmaschinen, downloads, team, kontakt, stellenanzeigen (+ job detail pages), impressum, datenschutz (bodies in `imprintPage` / `privacyPage` for all locales; DE legally binding), sitemap (HTML), cookies (essential-only; no analytics / no consent banner)
-- Interactive: Produktrechner (live calc, 3-column layout with labeled Wickelbild diagrams, validation), contact form (Resend + Turnstile/honeypot/rate-limit)
+- Interactive: Produktrechner (modern UI with labeled Wickelbild diagrams, live calc, validation), contact form (Resend + Turnstile/honeypot/rate-limit)
 - SEO: `generateMetadata`, Open Graph, JSON-LD, `next-sitemap` (no third-party analytics)
 - A11y: skip link, ARIA on menu/language switcher, focus-visible, contrast-safe yellow buttons
 - Deploy: Azure SWA Terraform + GH Actions; optional GitHub Pages path via `GITHUB_PAGES=true`
