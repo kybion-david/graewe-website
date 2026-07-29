@@ -55,6 +55,7 @@ public/images/        # Static assets by section
 | Calculator math | `src/lib/calculator.ts` (pure functions) |
 | Job openings (slugs / TYPO3 IDs) | `src/lib/jobs.ts` |
 | Job copy (titles, bodies, apply text) | `src/messages/{locale}.json` → `jobs.*` |
+| Imprint / privacy page bodies | `src/messages/{locale}.json` → `imprintPage.*` / `privacyPage.*` |
 | News articles (slugs / TYPO3 IDs / images) | `src/lib/news.ts` + `public/images/news/` |
 | News copy (titles, excerpts, bodies) | `src/messages/{locale}.json` → `news.*` |
 | Legacy URL → canonical redirects | `src/lib/legacyRedirects.ts` |
@@ -99,7 +100,7 @@ Copy `.env.example` → `.env.local`. Without `RESEND_API_KEY`, contact submissi
 
 ## 8. Current status snapshot
 
-- Pages: home, unternehmen (4), produkte (3 categories + 19 products), success stories, aktuelles (+ articles), produktrechner, gebrauchtmaschinen, downloads, team, kontakt, stellenanzeigen (+ job detail pages), impressum, datenschutz, sitemap (HTML), cookies (essential-only notice; no consent banner while analytics unused)
+- Pages: home, unternehmen (4), produkte (3 categories + 19 products), success stories, aktuelles (+ articles), produktrechner, gebrauchtmaschinen, downloads, team, kontakt, stellenanzeigen (+ job detail pages), impressum, datenschutz (bodies in `imprintPage` / `privacyPage` for all locales; DE legally binding), sitemap (HTML), cookies (essential-only notice; no consent banner while analytics unused)
 - Interactive: Produktrechner (2 modes), contact form (Resend + Turnstile/honeypot/rate-limit)
 - SEO: `generateMetadata`, Open Graph, JSON-LD, `next-sitemap`
 - A11y: skip link, ARIA on menu/language switcher, focus-visible, contrast-safe yellow buttons

@@ -8,8 +8,8 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "legal" });
-  return { title: t("privacy") };
+  const t = await getTranslations({ locale, namespace: "privacyPage" });
+  return { title: t("title") };
 }
 
 export default async function DatenschutzPage({
@@ -19,97 +19,52 @@ export default async function DatenschutzPage({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
+  const t = await getTranslations({ locale, namespace: "privacyPage" });
+  const bindingNote = t("bindingNote");
 
   return (
     <div className="max-w-4xl mx-auto py-16 lg:py-20 px-4 sm:px-6 lg:px-8">
       <h1 className="text-3xl md:text-4xl font-bold text-dark mb-2">
-        Datenschutzerklärung
+        {t("title")}
       </h1>
       <div className="w-16 h-1 bg-accent mb-10" />
       <div className="space-y-8 text-text leading-relaxed">
-        <p>
-          Der Schutz Ihrer personenbezogenen Daten bei der Erhebung,
-          Verarbeitung und Nutzung anlässlich Ihres Besuchs auf unserer Homepage
-          ist uns ein wichtiges Anliegen. Ihre Daten werden im Rahmen der
-          gesetzlichen Vorschriften geschützt. Personenbezogene Daten werden auf
-          dieser Webseite nur im technisch notwendigen Umfang erhoben.
-        </p>
-        <p>
-          Nachfolgend finden Sie Informationen, welche Daten während Ihres
-          Besuchs auf der Homepage erfasst und wie diese genutzt werden:
-        </p>
+        {bindingNote ? (
+          <p className="text-text-muted text-sm">{bindingNote}</p>
+        ) : null}
+
+        <p>{t("intro1")}</p>
+        <p>{t("intro2")}</p>
 
         <section>
           <h2 className="text-lg font-bold text-dark mb-3">
-            1. Erhebung und Verarbeitung von Daten
+            {t("collectionTitle")}
           </h2>
-          <p>
-            Jeder Zugriff auf unsere Homepage und jeder Abruf einer auf der
-            Homepage hinterlegten Datei werden protokolliert. Die Speicherung
-            dient internen systembezogenen Zwecken. Protokolliert werden: Name
-            der abgerufenen Datei, Datum und Uhrzeit des Abrufs, übertragene
-            Datenmenge, Meldung über erfolgreichen Abruf, Webbrowser und
-            anfragende Domain. Zusätzlich werden die IP Adressen der
-            anfragenden Rechner protokolliert.
-          </p>
-          <p className="mt-3">
-            Bei Online-Bestellungen über unsere Webseite sowie bei
-            Kontaktaufnahme erheben wir mit dem Kundendaten- bzw.
-            Kontakt-Formular verschiedene personenbezogene Daten von Ihnen, die
-            Sie durch das Absenden Ihrer Bestellung zusammen mit den übrigen
-            Daten der Bestellung an uns übermitteln. Diese von Ihnen angegebenen
-            Daten werden dabei in verschlüsselter Form (SSL-Verschlüsselungstechnologie)
-            an uns übertragen, so dass ein Ausspähen dieser Daten durch Dritte
-            ausgeschlossen ist.
-          </p>
-          <p className="mt-3">
-            Mit der Übermittlung Ihrer personenbezogenen Daten an uns erklären
-            Sie sich mit der Erhebung, Verarbeitung und Nutzung Ihrer Daten
-            entsprechend der vorliegenden Datenschutzerklärung einverstanden.
-          </p>
+          <p>{t("collectionP1")}</p>
+          <p className="mt-3">{t("collectionP2")}</p>
+          <p className="mt-3">{t("collectionP3")}</p>
         </section>
 
         <section>
           <h2 className="text-lg font-bold text-dark mb-3">
-            2. Nutzung und Weitergabe personenbezogener Daten
+            {t("usageTitle")}
           </h2>
-          <p>
-            Soweit Sie uns personenbezogene Daten zur Verfügung gestellt haben,
-            verwenden wir diese nur zur Abwicklung Ihrer Buchung/Bestellung, zur
-            Beantwortung Ihrer Anfragen, zur Abwicklung mit Ihnen geschlossener
-            Verträge und für die technische Administration.
-          </p>
-          <p className="mt-3">
-            Ihre personenbezogenen Daten werden an Dritte nur weitergegeben oder
-            sonst übermittelt, wenn dies zum Zwecke der Vertragsabwicklung –
-            insbesondere Weitergabe von Bestelldaten an Lieferanten –
-            erforderlich ist, dies zu Abrechnungszwecken erforderlich ist, wir
-            gesetzlich dazu verpflichtet sind oder Sie zuvor eingewilligt haben.
-            Sie haben das Recht, eine erteilte Einwilligung mit Wirkung für die
-            Zukunft jederzeit zu widerrufen.
-          </p>
-          <p className="mt-3">
-            Die Löschung der gespeicherten personenbezogenen Daten erfolgt, wenn
-            Sie Ihre Einwilligung zur Speicherung widerrufen, wenn ihre Kenntnis
-            zur Erfüllung des mit der Speicherung verfolgten Zwecks nicht mehr
-            erforderlich ist oder wenn ihre Speicherung aus sonstigen
-            gesetzlichen Gründen unzulässig ist.
-          </p>
+          <p>{t("usageP1")}</p>
+          <p className="mt-3">{t("usageP2")}</p>
+          <p className="mt-3">{t("usageP3")}</p>
         </section>
 
         <section>
-          <h2 className="text-lg font-bold text-dark mb-3">3. Cookies</h2>
+          <h2 className="text-lg font-bold text-dark mb-3">
+            {t("cookiesTitle")}
+          </h2>
           <p>
-            Diese Website setzt keine Tracking-, Analyse- oder Marketing-Cookies
-            ein. Ein Cookie-Einwilligungsbanner ist daher nicht erforderlich.
-            Falls der Browser oder die Hosting-Infrastruktur technisch notwendige
-            Cookies setzt (z.&nbsp;B. für Sicherheit oder Lastverteilung), dienen
-            diese ausschließlich dem Betrieb der Website und werden nicht zur
-            Profilerstellung oder zu Werbezwecken genutzt. Dienste wie etracker
-            oder vergleichbare Analyse-Tools kommen derzeit nicht zum Einsatz.
-            Weitere Hinweise finden Sie auf unserer{" "}
-            <Link href="/cookies" className="font-semibold underline decoration-accent underline-offset-2 hover:text-accent transition-colors">
-              Cookies-Seite
+            {t("cookiesLead")}{" "}
+            <Link
+              href="/cookies"
+              className="font-semibold underline decoration-accent underline-offset-2 hover:text-accent transition-colors"
+            >
+              {t("cookiesLink")}
             </Link>
             .
           </p>
@@ -117,62 +72,31 @@ export default async function DatenschutzPage({
 
         <section>
           <h2 className="text-lg font-bold text-dark mb-3">
-            4. Links zu anderen Webseiten
+            {t("linksTitle")}
           </h2>
-          <p>
-            Für Links zu anderen Webseiten übernehmen wir für deren Inhalte
-            keine Haftung.
-          </p>
-          <p className="mt-3">
-            Auf der Kontaktseite zeigen wir eine lokal gehostete, statische
-            Kartenabbildung (OpenStreetMap-Daten) unseres Standorts. Es werden
-            keine Kartendienste von Drittanbietern beim Seitenaufruf geladen.
-            Erst wenn Sie einen Link zu OpenStreetMap oder Google Maps
-            anklicken, verlassen Sie unsere Website und es gelten die
-            Datenschutzbestimmungen des jeweiligen Anbieters.
-          </p>
+          <p>{t("linksBody")}</p>
+          <p className="mt-3">{t("linksMapBody")}</p>
         </section>
 
         <section>
           <h2 className="text-lg font-bold text-dark mb-3">
-            5. Elektronischer Newsletter
+            {t("newsletterTitle")}
           </h2>
-          <p>
-            Wenn Sie unseren elektronischen Newsletter bestellen wollen,
-            benötigen wir aus rechtlichen Gründen die Angabe Ihrer
-            E-Mail-Adresse sowie die Bestätigung, dass Sie der Inhaber der
-            angegebenen Email-Adresse sind und mit dem Empfang des
-            elektronischen Newsletters einverstanden sind. Die Daten werden nur
-            zu dem Zweck erhoben, Ihnen den Newsletter zuschicken zu können und
-            unsere diesbezügliche Berechtigung zu dokumentieren. Eine Weitergabe
-            der Daten an Dritte erfolgt nicht. Die Bestellung des Newsletters
-            und Ihre Einwilligung zur Speicherung der E-Mail-Adresse können Sie
-            jederzeit widerrufen.
-          </p>
+          <p>{t("newsletterBody")}</p>
         </section>
 
         <section>
           <h2 className="text-lg font-bold text-dark mb-3">
-            6. Auskunftsrecht
+            {t("infoRightsTitle")}
           </h2>
-          <p>
-            Auf schriftliche Anfrage werden wir Sie gern über die zu Ihrer
-            Person gespeicherten Daten informieren.
-          </p>
+          <p>{t("infoRightsBody")}</p>
         </section>
 
         <section>
           <h2 className="text-lg font-bold text-dark mb-3">
-            Sicherheitshinweis
+            {t("securityTitle")}
           </h2>
-          <p>
-            Wir sind bemüht, Ihre personenbezogenen Daten durch Ergreifung
-            aller technischen und organisatorischen Möglichkeiten so zu
-            speichern, dass sie für Dritte nicht zugänglich sind. Bei der
-            Kommunikation per E-Mail kann die vollständige Datensicherheit von
-            uns nicht gewährleistet werden, so dass wir Ihnen bei vertraulichen
-            Informationen den Postweg empfehlen.
-          </p>
+          <p>{t("securityBody")}</p>
         </section>
       </div>
     </div>

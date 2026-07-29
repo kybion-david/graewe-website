@@ -45,6 +45,12 @@ describe("legacyRedirects", () => {
       "/ru/stellenanzeigen",
     );
     expect(resolveLegacyRedirect("/es/data-privacy")).toBe("/es/datenschutz");
+    expect(resolveLegacyRedirect("/en/imprint")).toBe("/en/impressum");
+    expect(resolveLegacyRedirect("/en/data-privacy")).toBe("/en/datenschutz");
+    expect(resolveLegacyRedirect("/fr/mentions-legales")).toBe("/fr/impressum");
+    expect(resolveLegacyRedirect("/fr/vos-informations-personelles")).toBe(
+      "/fr/datenschutz",
+    );
   });
 
   it("resolves news detail query URLs in one hop", () => {

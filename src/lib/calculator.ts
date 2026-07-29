@@ -27,6 +27,116 @@ export interface WindingLengthResult {
   bundleWidth: number;
 }
 
+/** Field-level validation codes mapped to i18n in the calculator UI. */
+export type CalculatorFieldError =
+  | "required"
+  | "invalid"
+  | "positive"
+  | "odMustExceedId";
+
+export type WindingPositionFields = {
+  pipeDiameter: string;
+  length: string;
+  innerDiameter: string;
+  pipesPerLayer: string;
+};
+
+export type WindingLengthFields = {
+  pipeDiameter: string;
+  innerDiameter: string;
+  outerDiameter: string;
+  bundleWidth: string;
+};
+
+export type WindingPositionFieldKey = keyof WindingPositionFields;
+export type WindingLengthFieldKey = keyof WindingLengthFields;
+
+export type ValidationSuccess<T> = { ok: true; input: T };
+export type ValidationFailure<K extends string> = {
+  ok: false;
+  errors: Partial<Record<K, CalculatorFieldError>>;
+};
+export type ValidationResult<T, K extends string> =
+  | ValidationSuccess<T>
+  | ValidationFailure<K>;
+
+function parsePositiveNumber(
+  raw: string
+): { ok: true; value: number } | { ok: false; error: CalculatorFieldError } {
+  const trimmed = raw.trim();
+  if (trimmed === "") {
+    return { ok: false, error: "required" };
+  }
+  const value = Number(trimmed);
+  if (!Number.isFinite(value)) {
+    return { ok: false, error: "invalid" };
+  }
+  if (value <= 0) {
+    return { ok: false, error: "positive" };
+  }
+  return { ok: true, value };
+}
+
+export function validateWindingPositionInput(
+  fields: WindingPositionFields
+): ValidationResult<WindingPositionInput, WindingPositionFieldKey> {
+  const errors: Partial<Record<WindingPositionFieldKey, CalculatorFieldError>> =
+    {};
+  const parsed: Partial<WindingPositionInput> = {};
+
+  (Object.keys(fields) as WindingPositionFieldKey[]).forEach((key) => {
+    const result = parsePositiveNumber(fields[key]);
+    if (result.ok) {
+      parsed[key] = result.value;
+    } else {
+      errors[key] = result.error;
+    }
+  });
+
+  if (Object.keys(errors).length > 0) {
+    return { ok: false, errors };
+  }
+
+  return {
+    ok: true,
+    input: parsed as WindingPositionInput,
+  };
+}
+
+export function validateWindingLengthInput(
+  fields: WindingLengthFields
+): ValidationResult<WindingLengthInput, WindingLengthFieldKey> {
+  const errors: Partial<Record<WindingLengthFieldKey, CalculatorFieldError>> =
+    {};
+  const parsed: Partial<WindingLengthInput> = {};
+
+  (Object.keys(fields) as WindingLengthFieldKey[]).forEach((key) => {
+    const result = parsePositiveNumber(fields[key]);
+    if (result.ok) {
+      parsed[key] = result.value;
+    } else {
+      errors[key] = result.error;
+    }
+  });
+
+  if (
+    parsed.innerDiameter !== undefined &&
+    parsed.outerDiameter !== undefined &&
+    parsed.outerDiameter <= parsed.innerDiameter
+  ) {
+    errors.outerDiameter = "odMustExceedId";
+  }
+
+  if (Object.keys(errors).length > 0) {
+    return { ok: false, errors };
+  }
+
+  return {
+    ok: true,
+    input: parsed as WindingLengthInput,
+  };
+}
+
 export function calculateWindingPositionUneven(
   input: WindingPositionInput
 ): WindingPatternResult {

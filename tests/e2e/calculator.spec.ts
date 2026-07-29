@@ -29,4 +29,13 @@ test.describe("Produktrechner", () => {
     await expect(page.locator("text=Ungleiche Lagen")).toBeVisible();
     await expect(page.locator("text=Gleiche Lagen versetzt")).toBeVisible();
   });
+
+  test("shows validation errors for empty inputs", async ({ page }) => {
+    await page.goto("/de/produktrechner");
+    await page.click("button:text('Berechnen')");
+
+    await expect(page.getByRole("alert").first()).toBeVisible();
+    await expect(page.getByText("Dieses Feld ist erforderlich.").first()).toBeVisible();
+    await expect(page.locator("text=Ungleiche Lagen")).toHaveCount(0);
+  });
 });
