@@ -65,7 +65,7 @@ Do **not** hardcode user-facing strings in components. Add keys to **all five** 
 
 - Pattern: `/[locale]/...` with German slugs preserved (`/de/produkte/rohrextrusion/extruder`)
 - `localeDetection: false` — `/` always redirects to `/de`
-- Old TYPO3 / translated-locale URLs: 301 via `src/lib/legacyRedirects.ts` (applied in `src/proxy.ts`; path-only copy in `staticwebapp.config.json`). See `infra/DNS_CUTOVER.md`.
+- Old TYPO3 / translated-locale URLs: 301 via `src/lib/legacyRedirects.ts` in `src/proxy.ts`. `staticwebapp.config.json` holds security headers only (Azure 20 KB config limit). See `infra/DNS_CUTOVER.md`.
 - Unknown paths: dedicated 404 pages — do **not** rewrite 404 → homepage in SWA config
 - Use `@/i18n/navigation` (`Link`, `useRouter`, `usePathname`) — not `next/link` / `next/navigation` — for locale-aware routing
 
