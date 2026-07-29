@@ -10,7 +10,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "imprintPage" });
-  return pageMetadata(t("title"), t("metaDescription"));
+  return pageMetadata(t("title"), t("metaDescription"), locale, "/impressum");
 }
 
 function Section({

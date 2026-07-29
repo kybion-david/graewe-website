@@ -32,6 +32,8 @@ export async function generateMetadata({
   return pageMetadata(
     item?.title ?? t("title"),
     item?.excerpt ?? t("metaDescription"),
+    locale,
+    `/aktuelles/${slug}`,
   );
 }
 

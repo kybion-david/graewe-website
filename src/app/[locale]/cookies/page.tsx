@@ -10,7 +10,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "cookiesPage" });
-  return pageMetadata(t("title"), t("intro"));
+  return pageMetadata(t("title"), t("intro"), locale, "/cookies");
 }
 
 export default async function CookiesPage({

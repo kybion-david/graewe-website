@@ -10,7 +10,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "company" });
-  return pageMetadata(t("graeweGroup.breadcrumb"), t("graeweGroup.p1"));
+  return pageMetadata(t("graeweGroup.breadcrumb"), t("graeweGroup.p1"), locale, "/unternehmen/die-graewe-gruppe");
 }
 
 export default async function GraeweGroupPage({

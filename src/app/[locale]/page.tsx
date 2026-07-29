@@ -4,6 +4,7 @@ import { HeroCarousel } from "@/components/home/HeroCarousel";
 import { ProductCategories } from "@/components/home/ProductCategories";
 import { NewsTeaser } from "@/components/home/NewsTeaser";
 import { truncateMetaDescription } from "@/lib/pageMetadata";
+import { buildLocaleAlternates } from "@/lib/seo";
 
 export async function generateMetadata({
   params,
@@ -16,6 +17,7 @@ export async function generateMetadata({
   return {
     description,
     openGraph: { description },
+    alternates: buildLocaleAlternates(locale),
   };
 }
 

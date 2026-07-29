@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { getSiteUrl } from "@/lib/seo";
 import "../globals.css";
 
 export function generateStaticParams() {
@@ -24,7 +25,7 @@ export async function generateMetadata({
       template: `%s | GRAEWE GmbH`,
     },
     description: messages.meta.description,
-    metadataBase: new URL("https://www.graewe.com"),
+    metadataBase: new URL(getSiteUrl()),
     icons: {
       icon: "/images/logo/favicon-32x32.png",
       apple: "/images/logo/apple-touch-icon.png",
