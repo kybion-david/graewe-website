@@ -573,5 +573,10 @@
   },
   "common": {
     "backToTop": "Back to top"
+  },
+  "notFound": {
+    "title": "Page not found",
+    "description": "The page you requested does not exist or has moved.",
+    "backHome": "Back to home"
   }
 }
