@@ -30,6 +30,15 @@
   },
   "hero": {
     "h1": "GRAEWE GmbH – Technique d'extrusion et construction de machines",
+    "carouselLabel": "Carrousel principal",
+    "roleDescription": "carrousel",
+    "slideRoleDescription": "diapositive",
+    "slideLabel": "Diapositive {n} sur {total}",
+    "previousSlide": "Diapositive précédente",
+    "nextSlide": "Diapositive suivante",
+    "goToSlide": "Aller à la diapositive {n}",
+    "pauseAria": "Mettre en pause le défilement automatique",
+    "playAria": "Lancer le défilement automatique",
     "slide1": {
       "title": "Parce que nous savons concrétiser les idées.",
       "subtitle": "PLEINEMENT ENROULÉ, PARFAITEMENT DÉROULÉ"
@@ -49,10 +58,7 @@
     "slide5": {
       "title": "Graewe est une marque recherchée dans le domaine de la technologie d’extrusion.",
       "subtitle": "Parce que nous savons concrétiser les idées."
-    },
-    "previousSlide": "Diapositive précédente",
-    "nextSlide": "Diapositive suivante",
-    "goToSlide": "Aller à la diapositive {n}"
+    }
   },
   "home": {
     "pipeExtrusionDesc": "L’extrusion de tubes et de canalisations est notre cœur de métier",
