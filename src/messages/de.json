@@ -410,6 +410,22 @@
     "sitemap": "Sitemap",
     "cookies": "Cookies"
   },
+  "sitemapPage": {
+    "title": "Sitemap",
+    "intro": "Übersicht der Webseite",
+    "other": "Weitere Seiten",
+    "legal": "Rechtliches"
+  },
+  "cookiesPage": {
+    "title": "Cookies",
+    "intro": "Auf dieser Website setzen wir keine Tracking-, Analyse- oder Marketing-Cookies. Ein Cookie-Einwilligungsbanner ist daher nicht erforderlich.",
+    "essentialTitle": "Technisch notwendige Cookies",
+    "essentialBody": "Falls der Browser oder die Hosting-Infrastruktur technisch notwendige Cookies setzt (z. B. für Sicherheit oder Lastverteilung), dienen diese ausschließlich dem Betrieb der Website. Sie werden nicht zur Profilerstellung oder zu Werbezwecken genutzt.",
+    "noTrackingTitle": "Keine Analyse- oder Werbe-Cookies",
+    "noTrackingBody": "Wir setzen derzeit keine Dienste wie etracker, Google Analytics oder vergleichbare Tracking-Tools ein. Es werden keine personenbezogenen Nutzungsprofile über Cookies erstellt.",
+    "privacyLead": "Weitere Informationen zur Verarbeitung personenbezogener Daten finden Sie in unserer",
+    "privacyLink": "Datenschutzerklärung"
+  },
   "footer": {
     "productCalculator": "Produktrechner",
     "contact": "Kontakt",

@@ -17,6 +17,10 @@
     { "route": "/stellenanzeigen.html", "redirect": "/de/stellenanzeigen", "statusCode": 301 },
     { "route": "/impressum.html", "redirect": "/de/impressum", "statusCode": 301 },
     { "route": "/datenschutz.html", "redirect": "/de/datenschutz", "statusCode": 301 },
+    { "route": "/sitemap", "redirect": "/de/sitemap", "statusCode": 301 },
+    { "route": "/sitemap.html", "redirect": "/de/sitemap", "statusCode": 301 },
+    { "route": "/cookies", "redirect": "/de/cookies", "statusCode": 301 },
+    { "route": "/cookies.html", "redirect": "/de/cookies", "statusCode": 301 },
     { "route": "/index.php", "redirect": "/de", "statusCode": 301 }
   ],
   "responseOverrides": {

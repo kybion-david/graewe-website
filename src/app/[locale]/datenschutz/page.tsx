@@ -1,5 +1,6 @@
 import { setRequestLocale, getTranslations } from "next-intl/server";
 import type { Metadata } from "next";
+import { Link } from "@/i18n/navigation";
 
 export async function generateMetadata({
   params,
@@ -18,7 +19,6 @@ export default async function DatenschutzPage({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
-  const t = await getTranslations({ locale, namespace: "legal" });
 
   return (
     <div className="max-w-4xl mx-auto py-16 lg:py-20 px-4 sm:px-6 lg:px-8">
@@ -100,14 +100,18 @@ export default async function DatenschutzPage({
         <section>
           <h2 className="text-lg font-bold text-dark mb-3">3. Cookies</h2>
           <p>
-            Die Internetseiten verwenden an mehreren Stellen so genannte
-            Cookies. Sie dienen dazu, unser Angebot nutzerfreundlicher,
-            effektiver und sicherer zu machen. Cookies sind kleine Textdateien,
-            die auf Ihrem Rechner abgelegt werden und die Ihr Browser speichert.
-            Die meisten der von uns verwendeten Cookies sind so genannte
-            &quot;Session-Cookies&quot;. Sie werden nach Ende Ihres Besuchs
-            automatisch gelöscht. Cookies richten auf Ihrem Rechner keinen
-            Schaden an und enthalten keine Viren.
+            Diese Website setzt keine Tracking-, Analyse- oder Marketing-Cookies
+            ein. Ein Cookie-Einwilligungsbanner ist daher nicht erforderlich.
+            Falls der Browser oder die Hosting-Infrastruktur technisch notwendige
+            Cookies setzt (z.&nbsp;B. für Sicherheit oder Lastverteilung), dienen
+            diese ausschließlich dem Betrieb der Website und werden nicht zur
+            Profilerstellung oder zu Werbezwecken genutzt. Dienste wie etracker
+            oder vergleichbare Analyse-Tools kommen derzeit nicht zum Einsatz.
+            Weitere Hinweise finden Sie auf unserer{" "}
+            <Link href="/cookies" className="font-semibold underline decoration-accent underline-offset-2 hover:text-accent transition-colors">
+              Cookies-Seite
+            </Link>
+            .
           </p>
         </section>
 

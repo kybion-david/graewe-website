@@ -44,6 +44,25 @@ test.describe("Navigation", () => {
     await expect(page.locator("h1")).toContainText("Impressum");
   });
 
+  test("can navigate to HTML sitemap", async ({ page }) => {
+    await page.goto("/de/sitemap");
+    await expect(page.locator("h1")).toContainText("Sitemap");
+    await expect(page.getByRole("link", { name: "Rohrextrusion" }).first()).toBeVisible();
+    await expect(page.getByRole("link", { name: "Extruder" }).first()).toBeVisible();
+  });
+
+  test("can navigate to cookies page", async ({ page }) => {
+    await page.goto("/de/cookies");
+    await expect(page.locator("h1")).toContainText("Cookies");
+  });
+
+  test("footer links to sitemap and cookies", async ({ page }) => {
+    await page.goto("/de");
+    const footer = page.locator("footer");
+    await expect(footer.getByRole("link", { name: "Sitemap" })).toHaveAttribute("href", "/de/sitemap");
+    await expect(footer.getByRole("link", { name: "Cookies" })).toHaveAttribute("href", "/de/cookies");
+  });
+
   test("menu opens and shows navigation links", async ({ page }) => {
     await page.goto("/de");
     await page.click("text=MENÜ");

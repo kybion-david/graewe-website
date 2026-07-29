@@ -95,7 +95,7 @@ Copy `.env.example` → `.env.local`. Without `RESEND_API_KEY`, contact submissi
 
 ## 8. Current status snapshot
 
-- Pages: home, unternehmen (4), produkte (3 categories + 19 products), success stories, aktuelles (+ articles), produktrechner, gebrauchtmaschinen, downloads, team, kontakt, stellenanzeigen (+ job detail pages), impressum, datenschutz
+- Pages: home, unternehmen (4), produkte (3 categories + 19 products), success stories, aktuelles (+ articles), produktrechner, gebrauchtmaschinen, downloads, team, kontakt, stellenanzeigen (+ job detail pages), impressum, datenschutz, sitemap (HTML), cookies (essential-only notice; no consent banner while analytics unused)
 - Interactive: Produktrechner (2 modes), contact form (Resend)
 - SEO: `generateMetadata`, Open Graph, JSON-LD, `next-sitemap`
 - A11y: skip link, ARIA on menu/language switcher, focus-visible, contrast-safe yellow buttons
