@@ -104,9 +104,10 @@ test.describe("Navigation", () => {
 
   test("menu opens and shows navigation links", async ({ page }) => {
     await page.goto("/de");
-    await page.click("text=MENÜ");
+    await page.getByRole("button", { name: "Navigationsmenü" }).click();
     // aria-label is localized — DE uses "Hauptnavigation", not the EN "Main navigation".
     const nav = page.getByRole("navigation", { name: "Hauptnavigation" });
+    await expect(nav).toBeVisible();
     await expect(nav.getByText("Unternehmen")).toBeVisible();
     await expect(nav.getByText("Produkte")).toBeVisible();
     await expect(nav.getByText("Kontakt")).toBeVisible();
