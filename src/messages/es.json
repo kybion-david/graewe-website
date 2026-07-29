@@ -252,7 +252,125 @@
   },
   "jobs": {
     "title": "Ofertas de empleo",
-    "noJobs": "No hay ofertas de empleo disponibles en este momento."
+    "introTitle": "Empleo en Graewe",
+    "intro": [
+      "Estimados interesados, nos alegra su interés por un puesto en Graewe GmbH.",
+      "Desde hace más de 40 años impulsamos la planificación, el desarrollo, la fabricación y el montaje de líneas de extrusión para la industria del plástico moderna. Con conceptos y soluciones creativas y eficaces nos hemos convertido en uno de los proveedores líderes del mercado mundial. Somos una empresa familiar con 75 empleados de larga duración en Neuenburg am Rhein.",
+      "Estamos entre los mejores de nuestro sector y buscamos continuamente colegas comprometidos y motivados.",
+      "Competencia, creatividad y disposición a asumir responsabilidades son buenas bases para ofrecer juntos el mejor rendimiento a nuestros clientes."
+    ],
+    "openingsHeading": "Puestos abiertos",
+    "benefitsIntro": "Le ofrecemos tareas exigentes y variadas, así como la posibilidad de asumir proyectos con responsabilidad propia.",
+    "benefits": [
+      "Remuneración según rendimiento",
+      "Previsión de jubilación de empresa y otras prestaciones sociales",
+      "Bicicleta de empresa (Jobrad)",
+      "30 días de vacaciones al año",
+      "Trabajo en una de las regiones más bonitas y soleadas de Alemania"
+    ],
+    "lookingFor": "Para reforzar nuestro equipo buscamos:",
+    "closing": "Nos alegramos de conocerle y de descubrir lo que podemos lograr juntos. Para cualquier pregunta, estamos a su disposición.",
+    "contactCompany": "Graewe GmbH",
+    "contactName": "Olga Waigel",
+    "contactRole": "Recursos humanos",
+    "contactEmail": "olga.waigel@graewe.com",
+    "applyHeading": "Cómo solicitar",
+    "applyIntro": "Preferimos las candidaturas por correo electrónico.",
+    "applyInstructions": [
+      "Envíenos solo archivos PDF y combine todos los documentos (carta de presentación, CV, certificados escolares y laborales) en un único documento.",
+      "Compruebe que la solicitud esté completa. Indicar su expectativa salarial es deseable. ¡Gracias!"
+    ],
+    "viewDetails": "Ver detalles",
+    "backToList": "Volver al resumen",
+    "tasksHeading": "Sus tareas",
+    "profileHeading": "Su perfil",
+    "relatedTitlesHeading": "También de interés",
+    "benefitsHeading": "Lo que le ofrecemos",
+    "applyCta": "Solicitar por correo",
+    "noJobs": "No hay ofertas de empleo disponibles en este momento.",
+    "items": [
+      {
+        "slug": "elektriker-elektroniker",
+        "title": "Electricista / técnico en electrónica (electricista industrial – técnica de explotación)",
+        "summary": "Para el departamento eléctrico buscamos un colaborador (m/f/d) para el montaje de la electrónica de las máquinas.",
+        "tasks": [
+          "Montaje, instalación y fabricación de instalaciones y máquinas eléctricas, electrónicas y mecatrónicas habituales",
+          "Puesta en marcha de la instalación",
+          "Aseguramiento de la calidad",
+          "servicio al cliente si procede"
+        ],
+        "profile": [
+          "Formación profesional completa en el oficio eléctrico o como especialista eléctrico; alternativa: mecatrónico",
+          "Flexibilidad y espíritu de equipo",
+          "Alta conciencia de calidad"
+        ],
+        "benefits": [
+          "Contrato indefinido",
+          "Pagas de vacaciones y de Navidad",
+          "Previsión de jubilación de empresa",
+          "Prestaciones de capitalización",
+          "Ropa de trabajo proporcionada",
+          "Buen clima laboral"
+        ],
+        "applyNote": "Si le interesa un puesto a largo plazo con nosotros, esperamos su candidatura por correo a RR. HH., indicando su expectativa salarial.",
+        "applyEmail": "olga.waigel@graewe.com"
+      },
+      {
+        "slug": "sps-programmierer",
+        "title": "Programador PLC (m/f/d)",
+        "summary": "Para reforzar nuestro equipo buscamos a alguien comprometido para planificar, proyectar y programar nuestras líneas de extrusión.",
+        "tasks": [
+          "Planificación, ingeniería y optimización de software de control",
+          "Programación de nuestras máquinas con controles Siemens S7",
+          "Servicio al cliente y viajes en Alemania y el extranjero (30 %)",
+          "Elaboración de la documentación de la instalación"
+        ],
+        "profile": [
+          "Formación o estudios finalizados en electrotécnica o automatización, o cualificaciones equivalentes",
+          "Experiencia en programación PLC y con Siemens S7",
+          "Forma de trabajar autónoma, fiable y estructurada",
+          "Buen nivel de alemán e inglés"
+        ],
+        "benefits": [
+          "Una actividad responsable e interesante",
+          "Puesto indefinido y 30 días de vacaciones",
+          "Pagos especiales como pagas de Navidad y vacaciones",
+          "Previsión de jubilación de empresa",
+          "Prestaciones de capitalización",
+          "Buen clima laboral",
+          "Bicicleta de empresa (Jobrad)",
+          "Hansefit"
+        ],
+        "applyNote": "¿Le interesa? Esperamos su candidatura por correo electrónico.",
+        "applyEmail": "olga.waigel@graewe.com"
+      },
+      {
+        "slug": "konstrukteur-elektronik",
+        "title": "Constructor de electrónica m/f/d",
+        "summary": "Para reforzar nuestro equipo buscamos apoyo en el diseño y la ingeniería electrónica.",
+        "relatedTitles": [
+          "Técnico en electrotécnica m/f/d",
+          "Técnico de proyecto (eléctrico) m/f/d",
+          "Electrónico industrial – técnica de explotación con formación continua hacia técnico de automatización m/f/d"
+        ],
+        "tasks": [
+          "Diseño de conjuntos electrónicos y electromecánicos",
+          "Elaboración de documentación de diseño (esquemas de conexión, planos de montaje y de detalle, esquemas de instalación y de circuito, planos de cableado, etc.) mediante E-CAD con WSCAD",
+          "Elaboración de documentación de fabricación y listas de materiales"
+        ],
+        "profile": [],
+        "benefits": [
+          "Una actividad responsable e interesante",
+          "Puesto indefinido y 30 días de vacaciones",
+          "Pagos especiales como pagas de Navidad y vacaciones",
+          "Previsión de jubilación y prestaciones de capitalización",
+          "Buen clima laboral",
+          "Bicicleta de empresa (Jobrad), Hansefit"
+        ],
+        "applyNote": "¿Le interesa? Esperamos su candidatura por correo electrónico.",
+        "applyEmail": "jobs@graewe.com"
+      }
+    ]
   },
   "news": {
     "title": "Actualidad",

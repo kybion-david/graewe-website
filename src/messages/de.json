@@ -252,7 +252,125 @@
   },
   "jobs": {
     "title": "Stellenanzeigen",
-    "noJobs": "Derzeit sind keine Stellenanzeigen verfügbar."
+    "introTitle": "Stellenanzeigen bei Graewe",
+    "intro": [
+      "Liebe Interessentinnen und Interessenten, wir freuen uns, dass Sie Interesse an einem Arbeitsplatz in unserem Unternehmen, der Graewe GmbH, haben.",
+      "Für die moderne Kunststoffindustrie sind wir seit über 40 Jahren ein wesentlicher Impulsgeber bei Planung, Entwicklung, Fertigung und Montage von Extrusionsanlagen. Mit kreativen und effektiven Konzepten und Lösungen haben wir uns zu einem der führenden Anbieter auf dem Weltmarkt entwickelt. Wir sind ein Familienunternehmen mit 75 langfristigen Mitarbeitern am Standort Neuenburg am Rhein.",
+      "Wir gehören zu den Besten unserer Branche und suchen ständig engagierte und motivierte Mitarbeiterinnen und Mitarbeiter.",
+      "Kompetenz, Kreativität und die Bereitschaft, Verantwortung zu übernehmen, sind gute Voraussetzungen um gemeinsam in unserem Team beste Leistungen für unsere Kunden zu erbringen."
+    ],
+    "openingsHeading": "Stellenanzeigen",
+    "benefitsIntro": "Wir bieten Ihnen anspruchsvolle und abwechslungsreiche Tätigkeiten, sowie die Möglichkeit, eigenverantwortlich Aufgaben und Projekte zu übernehmen.",
+    "benefits": [
+      "Leistungsgerechte Vergütung",
+      "Berufliche Altersvorsorge und weitere Sozialleistungen",
+      "Jobrad",
+      "30 Urlaubstage pro Jahr",
+      "Arbeit in einer der schönsten und sonnigsten Regionen Deutschlands"
+    ],
+    "lookingFor": "Zur Verstärkung unseres Teams suchen wir:",
+    "closing": "Wir freuen uns, Sie kennenzulernen und sind gespannt darauf, was wir gemeinsam bewegen können. Für Fragen stehen wir Ihnen selbstverständlich gerne zur Verfügung.",
+    "contactCompany": "Graewe GmbH",
+    "contactName": "Olga Waigel",
+    "contactRole": "Personalabteilung",
+    "contactEmail": "olga.waigel@graewe.com",
+    "applyHeading": "Bewerbung",
+    "applyIntro": "Wir freuen uns über Ihre Bewerbung per E-Mail.",
+    "applyInstructions": [
+      "Bitte schicken Sie uns nur PDF-Dateien und fassen Sie alle Dokumente (Anschreiben, Lebenslauf, Schul- und Arbeitszeugnisse) zu einem Dokument zusammen.",
+      "Achten Sie bitte auch auf die Vollständigkeit Ihrer Anlagen. Die Angabe Ihres Gehaltswunsches wäre wünschenswert. Vielen Dank!"
+    ],
+    "viewDetails": "Details ansehen",
+    "backToList": "Zurück zur Übersicht",
+    "tasksHeading": "Ihre Aufgaben",
+    "profileHeading": "Ihr Profil",
+    "relatedTitlesHeading": "Auch interessant",
+    "benefitsHeading": "Vorteile, die wir Ihnen bieten",
+    "applyCta": "Per E-Mail bewerben",
+    "noJobs": "Derzeit sind keine Stellenanzeigen verfügbar.",
+    "items": [
+      {
+        "slug": "elektriker-elektroniker",
+        "title": "Elektriker / Elektroniker (Industrieelektriker/in - Betriebstechnik)",
+        "summary": "Für die Elektroabteilung suchen wir einen Mitarbeiter (m/w/d) für den Einbau der Maschinenelektronik.",
+        "tasks": [
+          "Aufbau, Einbau, Fertigung von betriebsüblichen elektrischen, elektronischen und mechatronischen Anlagen und Maschinen",
+          "Inbetriebnahme der Anlage",
+          "Qualitätssicherung",
+          "eventuell Kundenservice"
+        ],
+        "profile": [
+          "Abgeschlossene Berufsausbildung im Elektrohandwerk oder Ausbildung zur Elektrofachkraft, alternativ: Mechatroniker",
+          "Flexibilität und Teamgeist",
+          "Hohes Qualitätsbewusstsein"
+        ],
+        "benefits": [
+          "Unbefristeter Arbeitsvertrag",
+          "Urlaubs- und Weihnachtsgeld",
+          "betriebliche Altersvorsorge",
+          "Vermögenswirksame Leistungen",
+          "Arbeitskleidung wird gestellt",
+          "gutes Betriebsklima"
+        ],
+        "applyNote": "Wenn Sie an einem langfristigen Arbeitsplatz in unserem Haus interessiert sind, freuen wir uns über Ihre Bewerbung per E-Mail an unsere Personalabteilung, bitte mit Angabe Ihres Gehaltswunsches.",
+        "applyEmail": "olga.waigel@graewe.com"
+      },
+      {
+        "slug": "sps-programmierer",
+        "title": "SPS-Programmierer (m/w/d)",
+        "summary": "Zur Verstärkung unseres Teams suchen wir eine engagierte Persönlichkeit für Planung, Projektierung und Programmierung unserer Extrusionsanlagen.",
+        "tasks": [
+          "Planung, Projektierung und Optimierung von Steuerungssoftware",
+          "Programmierung unserer Maschinen mit Siemens S7 Steuerungen",
+          "Kundenservice und Reisetätigkeiten im In- und Ausland (30%)",
+          "Erstellung der Anlagedokumentation"
+        ],
+        "profile": [
+          "Abgeschlossene Ausbildung oder Studium im Bereich Elektrotechnik oder Automatisierungstechnik bzw. vergleichbare Qualifikationen",
+          "Erfahrungen im Bereich SPS-Programmierung und Erfahrungen mit Siemens S7",
+          "Eigenverantwortliche, zuverlässige und strukturierte Arbeitsweise",
+          "Gute Deutsch- und Englischkenntnisse"
+        ],
+        "benefits": [
+          "Eine verantwortungsvolle und interessante Tätigkeit",
+          "unbefristeten Arbeitsplatz und 30 Tage Urlaub",
+          "Sonderzahlungen wie Weihnachts- und Urlaubsgeld",
+          "betriebliche Altersvorsorge",
+          "Vermögenswirksame Leistungen",
+          "gutes Betriebsklima",
+          "Jobrad",
+          "Hansefit"
+        ],
+        "applyNote": "Interessiert? Dann freuen wir uns auf Ihre Bewerbung per E-Mail.",
+        "applyEmail": "olga.waigel@graewe.com"
+      },
+      {
+        "slug": "konstrukteur-elektronik",
+        "title": "Konstrukteur Elektronik m/w/d",
+        "summary": "Zur Verstärkung unseres Teams suchen wir Unterstützung in der elektronischen Konstruktion und Projektierung.",
+        "relatedTitles": [
+          "Techniker in der Elektrotechnik m/w/d",
+          "Projektierungstechniker (Elektro) m/w/d",
+          "Industrieelektroniker - Betriebstechnik mit Weiterbildung zum Automatisierungstechniker m/w/d"
+        ],
+        "tasks": [
+          "Konstruktion von elektronischen und elektromechanischen Baugruppen",
+          "Erstellung von Konstruktionsunterlagen (Anschlusspläne, Einbau- und Einzelteilzeichnungen, Installations- und Stromlaufpläne, Verkabelungspläne usw.) über das E-CAD mit WSCAD",
+          "Erstellung von Fertigungsunterlagen und Stücklisten"
+        ],
+        "profile": [],
+        "benefits": [
+          "Eine verantwortungsvolle und interessante Tätigkeit",
+          "unbefristeten Arbeitsplatz und 30 Tage Urlaub",
+          "Sonderzahlungen wie Weihnachts- und Urlaubsgeld",
+          "betriebliche Altersvorsorge, Vermögenswirksame Leistungen",
+          "gutes Betriebsklima",
+          "Jobrad, Hansefit"
+        ],
+        "applyNote": "Interessiert? Dann freuen wir uns auf Ihre Bewerbung per E-Mail.",
+        "applyEmail": "jobs@graewe.com"
+      }
+    ]
   },
   "news": {
     "title": "Aktuelles",

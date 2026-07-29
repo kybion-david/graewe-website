@@ -252,7 +252,125 @@
   },
   "jobs": {
     "title": "Offres d’emploi",
-    "noJobs": "Aucune offre d’emploi disponible pour le moment."
+    "introTitle": "Offres d’emploi chez Graewe",
+    "intro": [
+      "Chers postulants, nous nous réjouissons de votre intérêt pour un poste dans notre entreprise.",
+      "Depuis plus de 40 ans, nous contribuons à la planification, au développement, à la fabrication et au montage d’installations d’extrusion pour l’industrie plastique moderne. Grâce à des concepts et solutions créatifs et efficaces, nous sommes devenus l’un des principaux fournisseurs sur le marché mondial. Nous sommes une entreprise familiale de 75 collaborateurs à long terme, basée à Neuenburg am Rhein.",
+      "Nous faisons partie des meilleurs de notre secteur et recherchons en permanence des collaborateurs engagés et motivés.",
+      "Compétence, créativité et goût des responsabilités sont de solides atouts pour offrir ensemble à nos clients les meilleures prestations."
+    ],
+    "openingsHeading": "Postes ouverts",
+    "benefitsIntro": "Nous vous proposons des missions exigeantes et variées, ainsi que la possibilité de prendre en charge des tâches et projets de manière autonome.",
+    "benefits": [
+      "Rémunération selon la performance",
+      "Prévoyance retraite professionnelle et autres avantages sociaux",
+      "Vélo d’entreprise (Jobrad)",
+      "30 jours de congés par an",
+      "Travail dans l’une des plus belles et ensoleillées régions d’Allemagne"
+    ],
+    "lookingFor": "Pour renforcer notre équipe, nous recherchons :",
+    "closing": "Nous nous réjouissons de faire votre connaissance et de découvrir ce que nous pourrons accomplir ensemble. Pour toute question, nous restons à votre disposition.",
+    "contactCompany": "Graewe GmbH",
+    "contactName": "Olga Waigel",
+    "contactRole": "Service du personnel",
+    "contactEmail": "olga.waigel@graewe.com",
+    "applyHeading": "Candidature",
+    "applyIntro": "Nous privilégions les candidatures par e-mail.",
+    "applyInstructions": [
+      "Veuillez nous envoyer uniquement des fichiers PDF et regrouper tous vos documents (lettre de motivation, CV, certificats scolaires et de travail) en un seul fichier.",
+      "Vérifiez que votre dossier est complet. L’indication de vos prétentions salariales est souhaitée. Merci !"
+    ],
+    "viewDetails": "Voir les détails",
+    "backToList": "Retour à la vue d’ensemble",
+    "tasksHeading": "Vos missions",
+    "profileHeading": "Votre profil",
+    "relatedTitlesHeading": "Aussi intéressant",
+    "benefitsHeading": "Ce que nous vous offrons",
+    "applyCta": "Postuler par e-mail",
+    "noJobs": "Aucune offre d’emploi disponible pour le moment.",
+    "items": [
+      {
+        "slug": "elektriker-elektroniker",
+        "title": "Électricien / électronicien (électrotechnicien industriel – technique d’exploitation)",
+        "summary": "Pour le service électrique, nous recherchons un collaborateur (h/f/d) pour l’installation de l’électronique des machines.",
+        "tasks": [
+          "Montage, installation et fabrication d’installations et machines électriques, électroniques et mécatroniques courantes",
+          "Mise en service des installations",
+          "Assurance qualité",
+          "Service client éventuel"
+        ],
+        "profile": [
+          "Formation professionnelle achevée dans le métier de l’électricité ou en tant qu’électrotechnicien, éventuellement mécatronicien",
+          "Flexibilité et esprit d’équipe",
+          "Fort sens de la qualité"
+        ],
+        "benefits": [
+          "Contrat à durée indéterminée",
+          "Primes de congés et de Noël",
+          "Prévoyance retraite d’entreprise",
+          "Avantages d’épargne salariale",
+          "Vêtements de travail fournis",
+          "Bonne ambiance de travail"
+        ],
+        "applyNote": "Si un poste durable dans notre entreprise vous intéresse, nous attendons votre candidature par e-mail au service du personnel, avec indication de vos prétentions salariales.",
+        "applyEmail": "olga.waigel@graewe.com"
+      },
+      {
+        "slug": "sps-programmierer",
+        "title": "Programmeur automate (h/f/d)",
+        "summary": "Pour renforcer notre équipe, nous recherchons une personne engagée pour la planification, l’ingénierie et la programmation de nos lignes d’extrusion.",
+        "tasks": [
+          "Planification, projet et optimisation de logiciels de commande",
+          "Programmation de nos machines avec des automates Siemens S7",
+          "Service client et déplacements en Allemagne et à l’étranger (30 %)",
+          "Rédaction de la documentation des installations"
+        ],
+        "profile": [
+          "Formation ou études achevées en électrotechnique ou automatisation, ou qualifications équivalentes",
+          "Expérience en programmation d’automates et avec Siemens S7",
+          "Travail autonome, fiable et structuré",
+          "Bonnes connaissances en allemand et en anglais"
+        ],
+        "benefits": [
+          "Une activité responsable et intéressante",
+          "Poste CDI et 30 jours de congés",
+          "Primes exceptionnelles (Noël, congés)",
+          "Prévoyance retraite d’entreprise",
+          "Avantages d’épargne salariale",
+          "Bonne ambiance de travail",
+          "Vélo d’entreprise (Jobrad)",
+          "Hansefit"
+        ],
+        "applyNote": "Intéressé(e) ? Nous attendons votre candidature par e-mail.",
+        "applyEmail": "olga.waigel@graewe.com"
+      },
+      {
+        "slug": "konstrukteur-elektronik",
+        "title": "Concepteur électronique h/f/d",
+        "summary": "Pour renforcer notre équipe, nous recherchons un soutien en conception et projet électronique.",
+        "relatedTitles": [
+          "Technicien en électrotechnique h/f/d",
+          "Technicien de projet (électro) h/f/d",
+          "Électronicien industriel – technique d’exploitation avec formation continue vers technicien en automatisation h/f/d"
+        ],
+        "tasks": [
+          "Conception d’ensembles électroniques et électromécaniques",
+          "Élaboration de documents de conception (schémas de raccordement, dessins d’implantation et de détail, schémas d’installation et de circuit, plans de câblage, etc.) via E-CAD avec WSCAD",
+          "Élaboration de documents de fabrication et de nomenclatures"
+        ],
+        "profile": [],
+        "benefits": [
+          "Une activité responsable et intéressante",
+          "Poste CDI et 30 jours de congés",
+          "Primes exceptionnelles (Noël, congés)",
+          "Prévoyance retraite et avantages d’épargne salariale",
+          "Bonne ambiance de travail",
+          "Vélo d’entreprise (Jobrad), Hansefit"
+        ],
+        "applyNote": "Intéressé(e) ? Nous attendons votre candidature par e-mail.",
+        "applyEmail": "jobs@graewe.com"
+      }
+    ]
   },
   "news": {
     "title": "Actualités",

@@ -252,7 +252,125 @@
   },
   "jobs": {
     "title": "Job Openings",
-    "noJobs": "No job openings available at this time."
+    "introTitle": "Careers at Graewe",
+    "intro": [
+      "Dear applicants, we are pleased that you are interested in working at Graewe GmbH.",
+      "For more than 40 years we have been a key driver in planning, development, manufacturing and assembly of extrusion lines for the modern plastics industry. With creative, effective concepts and solutions we have become one of the leading suppliers on the world market. We are a family business with 75 long-term employees at our site in Neuenburg am Rhein.",
+      "We are among the best in our industry and continually seek committed, motivated colleagues.",
+      "Competence, creativity and a willingness to take responsibility are strong foundations for delivering outstanding results for our customers as a team."
+    ],
+    "openingsHeading": "Open positions",
+    "benefitsIntro": "We offer demanding, varied work and the opportunity to take on tasks and projects with real ownership.",
+    "benefits": [
+      "Performance-based pay",
+      "Company pension scheme and additional social benefits",
+      "Company bike (Jobrad)",
+      "30 days of annual leave",
+      "Work in one of Germany’s most beautiful and sunniest regions"
+    ],
+    "lookingFor": "We are currently looking to strengthen our team with:",
+    "closing": "We look forward to meeting you and discovering what we can achieve together. Please do not hesitate to contact us with any questions.",
+    "contactCompany": "Graewe GmbH",
+    "contactName": "Olga Waigel",
+    "contactRole": "Human Resources",
+    "contactEmail": "olga.waigel@graewe.com",
+    "applyHeading": "How to apply",
+    "applyIntro": "We look forward to receiving your application by email.",
+    "applyInstructions": [
+      "Please send PDF files only and combine all documents (cover letter, CV, school and employment certificates) into a single document.",
+      "Please ensure your application is complete. Including your salary expectation is appreciated. Thank you!"
+    ],
+    "viewDetails": "View details",
+    "backToList": "Back to overview",
+    "tasksHeading": "Your responsibilities",
+    "profileHeading": "Your profile",
+    "relatedTitlesHeading": "Also of interest",
+    "benefitsHeading": "What we offer",
+    "applyCta": "Apply by email",
+    "noJobs": "No job openings available at this time.",
+    "items": [
+      {
+        "slug": "elektriker-elektroniker",
+        "title": "Electrician / Electronics technician (industrial electrician – plant engineering)",
+        "summary": "For our electrical department we are looking for a colleague (m/f/d) to install machine electronics.",
+        "tasks": [
+          "Assembly, installation and manufacture of standard electrical, electronic and mechatronic systems and machines",
+          "Commissioning of equipment",
+          "Quality assurance",
+          "Customer service where required"
+        ],
+        "profile": [
+          "Completed vocational training in the electrical trade or as a qualified electrician; alternatively mechatronics technician",
+          "Flexibility and team spirit",
+          "Strong quality awareness"
+        ],
+        "benefits": [
+          "Permanent employment contract",
+          "Holiday and Christmas bonuses",
+          "Company pension scheme",
+          "Capital-forming benefits",
+          "Workwear provided",
+          "Good working atmosphere"
+        ],
+        "applyNote": "If you are interested in a long-term role with us, we look forward to your application by email to HR, including your salary expectation.",
+        "applyEmail": "olga.waigel@graewe.com"
+      },
+      {
+        "slug": "sps-programmierer",
+        "title": "PLC programmer (m/f/d)",
+        "summary": "We are looking for an engaged colleague to plan, engineer and program our extrusion lines.",
+        "tasks": [
+          "Planning, engineering and optimisation of control software",
+          "Programming our machines with Siemens S7 controls",
+          "Customer service and travel in Germany and abroad (30%)",
+          "Creating plant documentation"
+        ],
+        "profile": [
+          "Completed training or degree in electrical engineering, automation technology or equivalent qualifications",
+          "Experience in PLC programming and with Siemens S7",
+          "Independent, reliable and structured way of working",
+          "Good German and English skills"
+        ],
+        "benefits": [
+          "A responsible and interesting role",
+          "Permanent position and 30 days of leave",
+          "Special payments such as Christmas and holiday bonuses",
+          "Company pension scheme",
+          "Capital-forming benefits",
+          "Good working atmosphere",
+          "Company bike (Jobrad)",
+          "Hansefit"
+        ],
+        "applyNote": "Interested? We look forward to your application by email.",
+        "applyEmail": "olga.waigel@graewe.com"
+      },
+      {
+        "slug": "konstrukteur-elektronik",
+        "title": "Electronics design engineer (m/f/d)",
+        "summary": "We are looking for support in electronics design and project engineering.",
+        "relatedTitles": [
+          "Electrical engineering technician (m/f/d)",
+          "Project engineer (electrical) (m/f/d)",
+          "Industrial electronics technician – plant engineering with further training toward automation technician (m/f/d)"
+        ],
+        "tasks": [
+          "Design of electronic and electromechanical assemblies",
+          "Creation of design documents (connection diagrams, installation and detail drawings, installation and circuit diagrams, wiring plans, etc.) using E-CAD with WSCAD",
+          "Creation of manufacturing documents and bills of materials"
+        ],
+        "profile": [],
+        "benefits": [
+          "A responsible and interesting role",
+          "Permanent position and 30 days of leave",
+          "Special payments such as Christmas and holiday bonuses",
+          "Company pension scheme and capital-forming benefits",
+          "Good working atmosphere",
+          "Company bike (Jobrad), Hansefit"
+        ],
+        "applyNote": "Interested? We look forward to your application by email.",
+        "applyEmail": "jobs@graewe.com"
+      }
+    ]
   },
   "news": {
     "title": "News",
