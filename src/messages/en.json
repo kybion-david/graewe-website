@@ -106,9 +106,19 @@
       "title": "Profile Extrusion",
       "description": "Our machines are used in the production of profiles. We offer tailor-made solutions for profile extrusion.",
       "usedAs": "Our machines are used in the production of profiles as:",
-      "usedAsList": ["Window profiles, main and secondary profiles", "Small profiles", "Technical profiles"],
+      "usedAsList": [
+        "Window profiles, main and secondary profiles",
+        "Small profiles",
+        "Technical profiles"
+      ],
       "applications": "The application areas are as diverse as our customers' innovations:",
-      "applicationsList": ["Furniture industry", "Construction industry", "Advertising", "Automotive industry", "Packaging"]
+      "applicationsList": [
+        "Furniture industry",
+        "Construction industry",
+        "Advertising",
+        "Automotive industry",
+        "Packaging"
+      ]
     },
     "sheetExtrusion": {
       "title": "Sheet Extrusion",
@@ -425,5 +435,10 @@
   },
   "common": {
     "backToTop": "Back to top"
+  },
+  "notFound": {
+    "title": "Page not found",
+    "description": "The page you requested does not exist or has moved.",
+    "backHome": "Back to home"
   }
 }

@@ -106,9 +106,19 @@
       "title": "Extrusión de perfiles",
       "description": "Nuestras máquinas se emplean en la fabricación de perfiles. Ofrecemos soluciones a medida para la extrusión de perfiles.",
       "usedAs": "Nuestras máquinas se utilizan en la fabricación de perfiles como:",
-      "usedAsList": ["Perfiles de ventanas, principales y secundarios", "Perfiles pequeños", "Perfiles técnicos"],
+      "usedAsList": [
+        "Perfiles de ventanas, principales y secundarios",
+        "Perfiles pequeños",
+        "Perfiles técnicos"
+      ],
       "applications": "Los campos de aplicación son tan diversos como las innovaciones de nuestros clientes:",
-      "applicationsList": ["Industria del mueble", "Industria de la construcción", "Publicidad", "Industria automotriz", "Embalaje"]
+      "applicationsList": [
+        "Industria del mueble",
+        "Industria de la construcción",
+        "Publicidad",
+        "Industria automotriz",
+        "Embalaje"
+      ]
     },
     "sheetExtrusion": {
       "title": "Extrusión de láminas",
@@ -425,5 +435,10 @@
   },
   "common": {
     "backToTop": "Volver arriba"
+  },
+  "notFound": {
+    "title": "Página no encontrada",
+    "description": "La página solicitada no existe o se ha movido.",
+    "backHome": "Volver al inicio"
   }
 }

@@ -106,9 +106,19 @@
       "title": "Profilextrusion",
       "description": "Unsere Maschinen finden bei der Fertigung von Profilen ihren Einsatz. Wir bieten maßgeschneiderte Lösungen für die Profilextrusion.",
       "usedAs": "Unsere Maschinen finden bei der Fertigung von Profilen ihren Einsatz als:",
-      "usedAsList": ["Fensterprofile, Haupt und Nebenprofile", "Kleinprofile", "Technische Profile"],
+      "usedAsList": [
+        "Fensterprofile, Haupt und Nebenprofile",
+        "Kleinprofile",
+        "Technische Profile"
+      ],
       "applications": "Die Einsatzgebiete sind so vielfältig wie die Innovationen unserer Kunden:",
-      "applicationsList": ["Möbelindustrie", "Bauindustrie", "Werbung", "Automobilindustrie", "Verpackung"]
+      "applicationsList": [
+        "Möbelindustrie",
+        "Bauindustrie",
+        "Werbung",
+        "Automobilindustrie",
+        "Verpackung"
+      ]
     },
     "sheetExtrusion": {
       "title": "Plattenextrusion",
@@ -425,5 +435,10 @@
   },
   "common": {
     "backToTop": "Zurück nach oben"
+  },
+  "notFound": {
+    "title": "Seite nicht gefunden",
+    "description": "Die angeforderte Seite existiert nicht oder wurde verschoben.",
+    "backHome": "Zur Startseite"
   }
 }

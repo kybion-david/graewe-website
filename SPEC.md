@@ -55,6 +55,7 @@ public/images/        # Static assets by section
 | Calculator math | `src/lib/calculator.ts` (pure functions) |
 | Job openings (slugs / TYPO3 IDs) | `src/lib/jobs.ts` |
 | Job copy (titles, bodies, apply text) | `src/messages/{locale}.json` → `jobs.*` |
+| Legacy URL → canonical redirects | `src/lib/legacyRedirects.ts` |
 
 Do **not** hardcode user-facing strings in components. Add keys to **all five** locale files.
 
@@ -62,7 +63,8 @@ Do **not** hardcode user-facing strings in components. Add keys to **all five** 
 
 - Pattern: `/[locale]/...` with German slugs preserved (`/de/produkte/rohrextrusion/extruder`)
 - `localeDetection: false` — `/` always redirects to `/de`
-- Old TYPO3 URLs: 301s in `staticwebapp.config.json`
+- Old TYPO3 / translated-locale URLs: 301 via `src/lib/legacyRedirects.ts` (applied in `src/proxy.ts`; path-only copy in `staticwebapp.config.json`). See `infra/DNS_CUTOVER.md`.
+- Unknown paths: dedicated 404 pages — do **not** rewrite 404 → homepage in SWA config
 - Use `@/i18n/navigation` (`Link`, `useRouter`, `usePathname`) — not `next/link` / `next/navigation` — for locale-aware routing
 
 ## 5. Design tokens (use these, not ad-hoc colors)
