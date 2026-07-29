@@ -1,8 +1,12 @@
 import { setRequestLocale, getTranslations } from "next-intl/server";
 import type { Metadata } from "next";
+import Image from "next/image";
 import { Link } from "@/i18n/navigation";
-
-type NewsItem = { slug: string; title: string; excerpt: string };
+import {
+  NEWS_SLUGS,
+  getNewsImages,
+  type NewsItem,
+} from "@/lib/news";
 
 export async function generateMetadata({
   params,
@@ -22,7 +26,11 @@ export default async function AktuellesPage({
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: "news" });
-  const items = t.raw("items") as NewsItem[];
+  const rawItems = t.raw("items") as NewsItem[];
+  const bySlug = new Map(rawItems.map((item) => [item.slug, item]));
+  const items = NEWS_SLUGS.map((slug) => bySlug.get(slug)).filter(
+    (item): item is NewsItem => item !== undefined,
+  );
 
   return (
     <div className="py-16 lg:py-20">
@@ -33,32 +41,61 @@ export default async function AktuellesPage({
         <div className="w-16 h-1 bg-accent mb-10" />
 
         <ul className="grid grid-cols-1 md:grid-cols-2 gap-6 list-none p-0 m-0">
-          {items.map((item) => (
-            <li key={item.slug}>
-              <article className="group h-full rounded-xl border border-grey-200 bg-white p-6 shadow-sm hover:shadow-lg hover:border-accent/30 transition-all duration-300 flex flex-col">
-                <h2 className="text-lg font-bold text-dark mb-3">
-                  <Link
-                    href={`/aktuelles/${item.slug}`}
-                    className="hover:text-accent-dark transition-colors"
-                  >
-                    {item.title}
-                  </Link>
-                </h2>
-                <p className="text-text-muted text-sm leading-relaxed flex-grow mb-4">
-                  {item.excerpt}
-                </p>
-                <Link
-                  href={`/aktuelles/${item.slug}`}
-                  className="inline-flex items-center gap-1.5 text-sm font-semibold text-dark group-hover:text-accent-dark transition-colors self-start"
-                >
-                  {t("readMore")}
-                  <svg className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                  </svg>
-                </Link>
-              </article>
-            </li>
-          ))}
+          {items.map((item) => {
+            const image = getNewsImages(item.slug)[0];
+            return (
+              <li key={item.slug}>
+                <article className="group h-full rounded-xl border border-grey-200 bg-white overflow-hidden shadow-sm hover:shadow-lg hover:border-accent/30 transition-all duration-300 flex flex-col">
+                  {image && (
+                    <Link
+                      href={`/aktuelles/${item.slug}`}
+                      className="relative block aspect-[16/10] bg-grey-100 overflow-hidden"
+                    >
+                      <Image
+                        src={image.src}
+                        alt={image.alt}
+                        fill
+                        className="object-cover transition-transform duration-300 group-hover:scale-[1.03]"
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                      />
+                    </Link>
+                  )}
+                  <div className="p-6 flex flex-col flex-grow">
+                    <h2 className="text-lg font-bold text-dark mb-3">
+                      <Link
+                        href={`/aktuelles/${item.slug}`}
+                        className="hover:text-accent-dark transition-colors"
+                      >
+                        {item.title}
+                      </Link>
+                    </h2>
+                    <p className="text-text-muted text-sm leading-relaxed flex-grow mb-4">
+                      {item.excerpt}
+                    </p>
+                    <Link
+                      href={`/aktuelles/${item.slug}`}
+                      className="inline-flex items-center gap-1.5 text-sm font-semibold text-dark group-hover:text-accent-dark transition-colors self-start"
+                    >
+                      {t("readMore")}
+                      <svg
+                        className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        strokeWidth={2.5}
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M13 7l5 5m0 0l-5 5m5-5H6"
+                        />
+                      </svg>
+                    </Link>
+                  </div>
+                </article>
+              </li>
+            );
+          })}
         </ul>
       </div>
     </div>
