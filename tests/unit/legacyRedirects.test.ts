@@ -22,10 +22,28 @@ describe("legacyRedirects", () => {
     expect(resolveLegacyRedirect("/index.php")).toBe("/de");
   });
 
-  it("redirects the old DE calibration typo slug", () => {
+  it("redirects the old DE calibration typo slug for all locales", () => {
     expect(
       resolveLegacyRedirect("/produkte/rohrextrusion/kalibier-und-kuehlbaeder"),
     ).toBe("/de/produkte/rohrextrusion/kalibrier-und-kuehlbaeder");
+    expect(
+      resolveLegacyRedirect(
+        "/produkte/rohrextrusion/kalibier-und-kuehlbaeder.html",
+      ),
+    ).toBe("/de/produkte/rohrextrusion/kalibrier-und-kuehlbaeder");
+
+    for (const locale of ["de", "en", "fr", "ru", "es"] as const) {
+      expect(
+        resolveLegacyRedirect(
+          `/${locale}/produkte/rohrextrusion/kalibier-und-kuehlbaeder`,
+        ),
+      ).toBe(`/${locale}/produkte/rohrextrusion/kalibrier-und-kuehlbaeder`);
+      expect(
+        resolveLegacyRedirect(
+          `/${locale}/produkte/rohrextrusion/kalibier-und-kuehlbaeder.html`,
+        ),
+      ).toBe(`/${locale}/produkte/rohrextrusion/kalibrier-und-kuehlbaeder`);
+    }
   });
 
   it("redirects product overview hubs to the new overview page", () => {
