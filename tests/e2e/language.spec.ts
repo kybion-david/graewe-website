@@ -22,6 +22,13 @@ test.describe("Language Switching", () => {
     await expect(page.locator("text=MENÜ")).toBeVisible();
   });
 
+  test("menu button label follows locale", async ({ page }) => {
+    await page.goto("/en");
+    await expect(page.getByRole("button", { name: "Navigation menu" })).toContainText("MENU");
+    await page.goto("/fr");
+    await expect(page.getByRole("button", { name: "Menu de navigation" })).toContainText("MENU");
+  });
+
   test("can navigate directly to English page", async ({ page }) => {
     await page.goto("/en/kontakt");
     await expect(page.locator("html")).toHaveAttribute("lang", "en");
