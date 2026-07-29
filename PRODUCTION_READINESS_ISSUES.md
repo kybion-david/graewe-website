@@ -401,7 +401,7 @@ Recorded so nobody re-audits them:
 ---
 
 ### ISSUE-051 — Harden `generateMetadata` against an unvalidated locale
-- **Status:** Open — **low confidence, not currently reachable**
+- **Status:** Done — `generateMetadata` now calls `hasLocale` + `notFound()` before the dynamic messages import (defense-in-depth; HTTP still not reachable via proxy as before).
 - **Category:** Hardening
 - **Problem:** `generateMetadata` does `await import(\`@/messages/${locale}.json\`)` **before** any validation; `hasLocale()` is only checked later in the layout body. An unvalidated locale reaching the import would reject with module-not-found and surface as a 500 instead of `notFound()`.
 - **Evidence — tested against a production build; it does not currently trigger:**
@@ -414,8 +414,8 @@ Recorded so nobody re-audits them:
 - **Why keep it:** the ordering is only safe because of how `src/proxy.ts` happens to behave, and the export path has no proxy at all.
 - **Likely files:** `src/app/[locale]/layout.tsx`
 - **Acceptance criteria:**
-  - [ ] `generateMetadata` validates with `hasLocale` and calls `notFound()` before importing messages.
-  - [ ] The routes above still behave as listed.
+  - [x] `generateMetadata` validates with `hasLocale` and calls `notFound()` before importing messages.
+  - [x] The routes above still behave as listed.
 
 ---
 
