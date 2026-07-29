@@ -1,9 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState, type TouchEvent } from "react";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
+import { useDismissibleOverlay } from "@/hooks/useDismissibleOverlay";
 import type { ProductDetail } from "@/lib/productContent";
 
 interface ProductDetailContentProps {
@@ -12,6 +13,8 @@ interface ProductDetailContentProps {
   contactLabel: string;
 }
 
+const SWIPE_THRESHOLD_PX = 50;
+
 export function ProductDetailContent({
   detail,
   images,
@@ -19,6 +22,64 @@ export function ProductDetailContent({
 }: ProductDetailContentProps) {
   const t = useTranslations("common");
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
+  const dialogRef = useRef<HTMLDivElement>(null);
+  const triggerRef = useRef<HTMLElement | null>(null);
+  const thumbnailRefs = useRef<(HTMLButtonElement | null)[]>([]);
+  const touchStartX = useRef<number | null>(null);
+
+  const isOpen = selectedImage !== null;
+
+  const closeLightbox = () => setSelectedImage(null);
+
+  const openLightbox = (idx: number) => {
+    triggerRef.current = thumbnailRefs.current[idx] ?? null;
+    setSelectedImage(idx);
+  };
+
+  const goToPrevious = () => {
+    setSelectedImage((current) =>
+      current !== null && current > 0 ? current - 1 : current,
+    );
+  };
+
+  const goToNext = () => {
+    setSelectedImage((current) =>
+      current !== null && current < images.length - 1 ? current + 1 : current,
+    );
+  };
+
+  useDismissibleOverlay(dialogRef, {
+    open: isOpen,
+    onClose: closeLightbox,
+    trapFocus: true,
+    triggerRef,
+  });
+
+  useEffect(() => {
+    if (!isOpen) return;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isOpen]);
+
+  const onTouchStart = (event: TouchEvent) => {
+    touchStartX.current = event.touches[0]?.clientX ?? null;
+  };
+
+  const onTouchEnd = (event: TouchEvent) => {
+    if (touchStartX.current === null || selectedImage === null) return;
+    const endX = event.changedTouches[0]?.clientX;
+    if (endX === undefined) {
+      touchStartX.current = null;
+      return;
+    }
+    const delta = endX - touchStartX.current;
+    touchStartX.current = null;
+    if (Math.abs(delta) < SWIPE_THRESHOLD_PX) return;
+    if (delta > 0) goToPrevious();
+    else goToNext();
+  };
 
   return (
     <div>
@@ -74,7 +135,11 @@ export function ProductDetailContent({
             {images.map((src, idx) => (
               <button
                 key={idx}
-                onClick={() => setSelectedImage(idx)}
+                ref={(el) => {
+                  thumbnailRefs.current[idx] = el;
+                }}
+                type="button"
+                onClick={() => openLightbox(idx)}
                 className="group relative aspect-[4/3] rounded-lg overflow-hidden bg-grey-100 cursor-pointer"
               >
                 <Image
@@ -101,57 +166,80 @@ export function ProductDetailContent({
         </div>
       )}
 
-      {/* Lightbox */}
-      {selectedImage !== null && (
+      {isOpen && selectedImage !== null && (
         <div
-          className="fixed inset-0 z-[200] bg-black/90 flex items-center justify-center p-4"
-          onClick={() => setSelectedImage(null)}
+          ref={dialogRef}
+          role="dialog"
+          aria-modal="true"
+          aria-label={t("lightboxAria")}
+          className="fixed inset-0 z-[200] bg-black/90 flex flex-col"
+          onClick={closeLightbox}
+          onTouchStart={onTouchStart}
+          onTouchEnd={onTouchEnd}
         >
-          <button
-            className="absolute top-4 right-4 text-white/80 hover:text-white transition-colors"
-            onClick={() => setSelectedImage(null)}
-            aria-label={t("close")}
-          >
-            <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </button>
-
-          {selectedImage > 0 && (
+          <div className="flex justify-end shrink-0 p-3 sm:p-4">
             <button
-              className="absolute left-4 text-white/80 hover:text-white transition-colors"
-              onClick={(e) => { e.stopPropagation(); setSelectedImage(selectedImage - 1); }}
+              type="button"
+              className="p-2 text-white/80 hover:text-white transition-colors"
+              onClick={(e) => {
+                e.stopPropagation();
+                closeLightbox();
+              }}
+              aria-label={t("close")}
+            >
+              <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+
+          <div
+            className="flex-1 flex items-center justify-center min-h-0 px-3 sm:px-4"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="relative max-w-4xl max-h-full w-full">
+              <Image
+                src={images[selectedImage]}
+                alt={`${detail.title} ${selectedImage + 1}`}
+                width={1200}
+                height={800}
+                className="w-full h-auto object-contain max-h-[min(70vh,calc(100dvh-10rem))]"
+                draggable={false}
+              />
+            </div>
+          </div>
+
+          <div
+            className="shrink-0 flex items-center justify-center gap-4 sm:gap-6 px-3 py-4 sm:py-5"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              type="button"
+              className="p-2 text-white/80 hover:text-white transition-colors disabled:opacity-30 disabled:pointer-events-none"
+              onClick={goToPrevious}
+              disabled={selectedImage <= 0}
               aria-label={t("previousImage")}
             >
-              <svg className="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <svg className="w-8 h-8 sm:w-10 sm:h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
               </svg>
             </button>
-          )}
 
-          {selectedImage < images.length - 1 && (
+            <p className="text-white/60 text-sm tabular-nums min-w-[4.5rem] text-center">
+              {selectedImage + 1} / {images.length}
+            </p>
+
             <button
-              className="absolute right-4 text-white/80 hover:text-white transition-colors"
-              onClick={(e) => { e.stopPropagation(); setSelectedImage(selectedImage + 1); }}
+              type="button"
+              className="p-2 text-white/80 hover:text-white transition-colors disabled:opacity-30 disabled:pointer-events-none"
+              onClick={goToNext}
+              disabled={selectedImage >= images.length - 1}
               aria-label={t("nextImage")}
             >
-              <svg className="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <svg className="w-8 h-8 sm:w-10 sm:h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
               </svg>
             </button>
-          )}
-
-          <div className="relative max-w-4xl max-h-[80vh] w-full" onClick={(e) => e.stopPropagation()}>
-            <Image
-              src={images[selectedImage]}
-              alt={`${detail.title} ${selectedImage + 1}`}
-              width={1200}
-              height={800}
-              className="w-full h-auto object-contain max-h-[80vh]"
-            />
-            <p className="text-white/60 text-sm text-center mt-3">
-              {selectedImage + 1} / {images.length}
-            </p>
           </div>
         </div>
       )}

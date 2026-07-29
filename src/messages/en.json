@@ -710,7 +710,8 @@
     "close": "Close",
     "previousImage": "Previous image",
     "nextImage": "Next image",
-    "gallery": "Gallery"
+    "gallery": "Gallery",
+    "lightboxAria": "Image gallery"
   },
   "notFound": {
     "title": "Page not found",

@@ -700,7 +700,8 @@
     "close": "Schließen",
     "previousImage": "Vorheriges Bild",
     "nextImage": "Nächstes Bild",
-    "gallery": "Galerie"
+    "gallery": "Galerie",
+    "lightboxAria": "Bildergalerie"
   },
   "notFound": {
     "title": "Seite nicht gefunden",
