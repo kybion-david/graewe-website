@@ -353,8 +353,8 @@ Old site checked live on graewe.com.
 
 ### ISSUE-022 — Job application “online portal” not represented
 - **Status:** Done
-- **Decision:** Email-only for launch. Do not rebuild the live TYPO3 on-site “JETZT ONLINE BEWERBEN” form (`bewerberformular`). Apply CTAs stay mailto / HR email in `jobs.*` messages.
-- **Note:** Copy already has no portal wording; recorded so agents do not reintroduce an application form without an explicit request.
+- **Decision:** Email-only for launch. Live “Onlineportal” is **not** an external career URL — on listing pages the word has no `href`; on job details it is the TYPO3 on-site form “JETZT ONLINE BEWERBEN” (`bewerberformular-512`). Do not rebuild that form for launch. Apply CTAs stay mailto / HR email in `jobs.*` messages.
+- **Note:** Rebuild copy already has no portal wording; documented so agents do not reintroduce an application form without an explicit request.
 - **Category:** Missing feature
 - **Problem:** Live Stellenanzeigen mentions preferring applications via online portal or email. Rebuild has no portal link / application flow.
 - **Acceptance criteria:**
