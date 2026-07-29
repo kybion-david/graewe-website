@@ -36,6 +36,11 @@
       "statusCode": 301
     },
     {
+      "route": "/de/cookies.html",
+      "redirect": "/de/cookies",
+      "statusCode": 301
+    },
+    {
       "route": "/de/datenschutz.html",
       "redirect": "/de/datenschutz",
       "statusCode": 301
@@ -88,6 +93,11 @@
     {
       "route": "/de/produktrechner.html",
       "redirect": "/de/produktrechner",
+      "statusCode": 301
+    },
+    {
+      "route": "/de/sitemap.html",
+      "redirect": "/de/sitemap",
       "statusCode": 301
     },
     {
@@ -183,6 +193,11 @@
     {
       "route": "/en/contact.html",
       "redirect": "/en/kontakt",
+      "statusCode": 301
+    },
+    {
+      "route": "/en/cookies.html",
+      "redirect": "/en/cookies",
       "statusCode": 301
     },
     {
@@ -491,6 +506,11 @@
       "statusCode": 301
     },
     {
+      "route": "/en/sitemap.html",
+      "redirect": "/en/sitemap",
+      "statusCode": 301
+    },
+    {
       "route": "/en/success-stories.html",
       "redirect": "/en/success-stories",
       "statusCode": 301
@@ -548,6 +568,11 @@
     {
       "route": "/es/contact.html",
       "redirect": "/es/kontakt",
+      "statusCode": 301
+    },
+    {
+      "route": "/es/cookies.html",
+      "redirect": "/es/cookies",
       "statusCode": 301
     },
     {
@@ -856,6 +881,11 @@
       "statusCode": 301
     },
     {
+      "route": "/es/sitemap.html",
+      "redirect": "/es/sitemap",
+      "statusCode": 301
+    },
+    {
       "route": "/es/success-stories.html",
       "redirect": "/es/success-stories",
       "statusCode": 301
@@ -883,6 +913,11 @@
     {
       "route": "/fr/contactez.html",
       "redirect": "/fr/kontakt",
+      "statusCode": 301
+    },
+    {
+      "route": "/fr/cookies.html",
+      "redirect": "/fr/cookies",
       "statusCode": 301
     },
     {
@@ -1223,6 +1258,11 @@
     {
       "route": "/fr/reussites.html",
       "redirect": "/fr/success-stories",
+      "statusCode": 301
+    },
+    {
+      "route": "/fr/sitemap.html",
+      "redirect": "/fr/sitemap",
       "statusCode": 301
     },
     {
@@ -1596,6 +1636,11 @@
       "statusCode": 301
     },
     {
+      "route": "/ru/cookies.html",
+      "redirect": "/ru/cookies",
+      "statusCode": 301
+    },
+    {
       "route": "/ru/data-privacy",
       "redirect": "/ru/datenschutz",
       "statusCode": 301
@@ -1903,6 +1948,11 @@
     {
       "route": "/ru/second-hand-machines.html",
       "redirect": "/ru/gebrauchtmaschinen",
+      "statusCode": 301
+    },
+    {
+      "route": "/ru/sitemap.html",
+      "redirect": "/ru/sitemap",
       "statusCode": 301
     },
     {

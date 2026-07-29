@@ -180,7 +180,7 @@ Old site checked live on graewe.com.
 
 ### ISSUE-008 — HTML Sitemap page missing
 - **Status:** Done
-- **Note:** Added `/[locale]/sitemap` listing company, product trees, service, and legal links; footer link + SWA redirects for `/sitemap(.html)`.
+- **Note:** Added `/[locale]/sitemap` listing company, product trees, service, and legal links; footer link; SWA redirects `/sitemap(.html)` → `/de/sitemap`.
 - **Category:** Missing feature
 - **Problem:** Live site has `/sitemap` (and `/en/sitemap`, etc.). New site has XML sitemap via `next-sitemap` but **no HTML sitemap route**. Footer i18n keys `footer.sitemap` / `legal.sitemap` exist but are unused; `/de/sitemap` → 404.
 - **Evidence (old):** https://www.graewe.com/sitemap
