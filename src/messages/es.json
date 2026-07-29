@@ -106,9 +106,19 @@
       "title": "Extrusión de perfiles",
       "description": "Nuestras máquinas se emplean en la fabricación de perfiles. Ofrecemos soluciones a medida para la extrusión de perfiles.",
       "usedAs": "Nuestras máquinas se utilizan en la fabricación de perfiles como:",
-      "usedAsList": ["Perfiles de ventanas, principales y secundarios", "Perfiles pequeños", "Perfiles técnicos"],
+      "usedAsList": [
+        "Perfiles de ventanas, principales y secundarios",
+        "Perfiles pequeños",
+        "Perfiles técnicos"
+      ],
       "applications": "Los campos de aplicación son tan diversos como las innovaciones de nuestros clientes:",
-      "applicationsList": ["Industria del mueble", "Industria de la construcción", "Publicidad", "Industria automotriz", "Embalaje"]
+      "applicationsList": [
+        "Industria del mueble",
+        "Industria de la construcción",
+        "Publicidad",
+        "Industria automotriz",
+        "Embalaje"
+      ]
     },
     "sheetExtrusion": {
       "title": "Extrusión de láminas",
@@ -379,32 +389,165 @@
   "news": {
     "title": "Actualidad",
     "readMore": "seguir leyendo",
-    "articlePlaceholder": "El contenido completo del artículo aparecerá aquí — marcador de posición.",
+    "germanOriginalNotice": "Este artículo está disponible en alemán.",
+    "backToList": "Volver a actualidad",
     "items": [
       {
         "slug": "kalibriertische-profilextrusion",
         "title": "Mesas de calibración para extrusión de perfiles",
-        "excerpt": "Ampliación de la oferta: mesas de calibración de precisión para aplicaciones exigentes de perfiles, adaptadas a su línea de extrusión."
+        "excerpt": "Las mesas de calibración para extrusión de perfiles sirven para calibrar y enfriar perfiles de termoplásticos.",
+        "body": [
+          {
+            "type": "p",
+            "text": "Kalibriertische für die Profilextrusion dienen zum Kalibrieren und Kühlen von Profilen aus thermoplastischen Kunststoffen."
+          },
+          {
+            "type": "h",
+            "text": "Extras:"
+          },
+          {
+            "type": "ul",
+            "items": [
+              "Stabiles Untergestell mit Blechabdeckungen",
+              "Rahmen aus galvanisch verzinktem Stahl oder rostfreiem Edelstahl",
+              "Wasserauffangwanne aus Edelstahl",
+              "Feinfühlige, spielarme Höhen-, Seiten-, und Längsverstellung mit spezieller Beschichtung gegen Korrosion.",
+              "Sämtliche Teile in Kontakt mit Wasser aus korrosionsfreien Materialien"
+            ]
+          },
+          {
+            "type": "h",
+            "text": "Zubehör:"
+          },
+          {
+            "type": "ul",
+            "items": [
+              "Energieoptimierte Vakuumregelung",
+              "Kalibriertischverlängerung",
+              "Zykloneinheit",
+              "Abblasvorrichtung"
+            ]
+          },
+          {
+            "type": "h",
+            "text": "Klare Vorteile auf einen Blick:"
+          },
+          {
+            "type": "ul",
+            "items": [
+              "Modulare Bauweise, Sonderlängen problemlos möglich",
+              "Große Aufspannflächen",
+              "Zahlreiche Wasser- und Vakuumanschlüsse",
+              "Getrennte, feinfühlig einstellbare Vakuum- und Kühlkreisläufe",
+              "Durchflussmengenregler mit Schwimmeranzeige",
+              "Gute Zugänglichkeit zu den Pumpen",
+              "Längsverstellung auf Schienenbahn zur Stabilitätserhöhung",
+              "Geräusch- und vibrationsarm durch Einsatz von Schwingungsdämpfern"
+            ]
+          }
+        ],
+        "germanOriginal": true
       },
       {
         "slug": "portfolio-erweiterung",
-        "title": "Ampliación del portafolio",
-        "excerpt": "GRAEWE amplía su gama y ofrece a los clientes aún más flexibilidad en la extrusión de tubos, perfiles y láminas."
+        "title": "Ampliación del portafolio y conocimiento experto",
+        "excerpt": "Nueva colaboración en GRAEWE — equipos de extrusión posteriores para perfiles medianos y grandes.",
+        "body": [
+          {
+            "type": "p",
+            "text": "GRAEWE übernimmt Leistungen im Bereich Extrudernachfolgeanlagen für mittlere und große Profile / Thomas Neuhardt zuständig für den neuen Bereich / Fa. Forsch Elektro Service konnte gewonnen werden."
+          },
+          {
+            "type": "p",
+            "text": "Neuenburg, 20. September 2013: Das Neuenburger Unternehmen GRAEWE GmbH, führender Hersteller von Extrudernachfolgeanlagen für Rohre, Profile und Platten, ist seit August 2013 mit neuem Kompetenzteam am Start. Ziel ist es, den Vertrieb und das Servicemanagement für neue Profil-Extrudernachfolgeanlagen flächendeckend weiter auszubauen."
+          },
+          {
+            "type": "p",
+            "text": "Hierzu konnten zwei führende Personen für diesen Spezialbereich gewonnen werden. Thomas Neuhardt, seit August bei Fa. Graewe sowie Karl Heinz Forsch von Fa. Forsch Elektro Service."
+          },
+          {
+            "type": "p",
+            "text": "Herr Neuhardt wird sich dabei verstärkt um Konstruktionen und Weiterentwicklungen kümmern. Das Team von Forsch Elektro Service, Know How-Erwerber von Baston, Lieferant von Ersatzteilen und Service für Baston/Vobau Anlagen, besitzt einschlägige Erfahrung im konstruktiven und elektrotechnischen Extrusionsbereich."
+          },
+          {
+            "type": "p",
+            "text": "Der Marktführer Graewe kann unter anderem nun auch Anlagen der 2011 insolvent gegangenen Firma BASTON fertigen und weiterentwickeln. Somit können jetzt auch Bestandskunden dieser Firma weiter beliefert werden!"
+          },
+          {
+            "type": "p",
+            "text": "Die ersten Marktreaktionen geben dem Konzept der Firma Graewe Recht: mehrere Großaufträge binnen kürzester Zeit belegen, dass die Kombination aus Graewe-Know-how und zwei erfahrenen, spezialisierten Profil-Extrusionskennern am Markt gefragt ist."
+          },
+          {
+            "type": "p",
+            "text": "Gesamttechnik-Geschäftsführer Michael Graewe hält die Portfolio-Erweiterung für eine wichtige, strategische Entscheidung, die die Zukunft des Neuenburger Maschinenbauers noch stärker sichert. Stefan Graewe konkretisiert: „Wir sehen schon jetzt, dass dieses Plus an Nähe und Service eine Lücke füllt und zum zusätzlichen Umsatzgaranten werden kann“, so der für den Gesamtvertrieb zuständige Geschäftsführer. Zwischenzeitlich befindet sich das neue Kompetenzteam bereits auf dem Weg zu Kunden und Interessenten, um sich und die erweiterte Leistungspalette persönlich vorzustellen."
+          }
+        ],
+        "germanOriginal": true
       },
       {
         "slug": "bauboom-nachfrage",
         "title": "El auge de la construcción impulsa la demanda",
-        "excerpt": "La fuerte actividad en construcción impulsa la demanda de tubos y perfiles de plástico; nuestros clientes amplían la producción."
+        "excerpt": "GRAEWE GmbH ha adquirido una cuarta nave de producción en su sede de Neuenburg.",
+        "body": [
+          {
+            "type": "p",
+            "text": "NEUENBURG AM RHEIN. Im Bereich innovativer Extrusionstechnik gehört die Neuenburger Firma Graewe GmbH zu den führenden Herstellern auf dem Weltmarkt. Sie plant, entwickelt und fertigt komplette Extrusionsanlagen, mit denen Kunststoffrohre, -profile und -platten hergestellt werden. Mit dem Kauf einer vierten Produktionshalle hat die Firma ihre Produktionsfläche um ein Drittel auf rund 18 000 Quadratmeter erweitert."
+          },
+          {
+            "type": "p",
+            "text": "Die Firma hat das gegenüberliegende 6400 Quadratmeter große Grundstück in der Fischerstraße – ehemals Pharmakonzern Biokirch – gekauft mit einer überbauten Büro- und Hallenfläche von 3000 Quadratmetern. Die Betriebserweiterung sei angesichts des stetig steigenden Auftragsvolumens eine wichtige Produktionsgrundlage und diene der Sicherung der Arbeitsplätze. Gleichzeitig sei diese Investition auch „ein klares Bekenntnis zum Standort Neuenburg“, betont Marketing-Geschäftsführer Stefan Graewe. Den Technikbereich leitet sein Bruder Michael Graewe."
+          },
+          {
+            "type": "p",
+            "text": "Vater Kurt Graewe, Seniorchef und Entwickler von mehreren Patenten, hat die Firma 1981 gegründet. Bevor der Neubau für sein Unternehmen 1987 fertig war, hat er für seinen Betrieb vorübergehend genau das Firmenareal angemietet, das er jetzt käuflich erworben hat. „So schließt sich der Kreis“, sagt Kurt Graewe. Mit zwei Leuten hat er den Aufbau damals begonnen, heute beschäftigt die Firma 85 Mitarbeiter. Graewe-Maschinen – jährlich 180 Stück – werden für Installations- und Bewässerungssysteme, für Fußbodenheizungen, Fensterprofile, aber auch in der Medizin verwendet."
+          },
+          {
+            "type": "p",
+            "text": "Neben den neuen Maschinen werden aber auch gebrauchte aufgearbeitet und verkauft. Dieser Secondhand-Service für die Kunststoffindustrie läuft über die Graewe-Tochterfirmen Next in Neuenburg und Indext in Mulhouse. Seit 2003 gibt es auch „Graewe-Fangli“ in Ningbo-Schanghai für die steigende Nachfrage im asiatischen Raum."
+          },
+          {
+            "type": "p",
+            "text": "Trotz der vollen Auftragsbücher sei der Exportanteil auf 80 Prozent gesunken, sagt Stefan Graewe, denn: „Wir profitieren vom Bauboom und der deshalb verstärkten Nachfrage in Deutschland.“"
+          },
+          {
+            "type": "p",
+            "text": "Zugenommen habe auch der Export innerhalb Europas und neben Indien, China, Ägypten, Iran und Russland sei der Verkauf nach Südamerika „im Kommen“, erklärt Stefan Graewe."
+          }
+        ],
+        "germanOriginal": true
       },
       {
         "slug": "produktionshallen-erweitert",
         "title": "Ampliación de las naves de producción",
-        "excerpt": "Inversión en más superficie: mayor capacidad de fabricación y montaje en la sede de Neuenburg."
+        "excerpt": "GRAEWE/next amplía la superficie de producción en Neuenburg hasta 17.800 m² en cuatro naves.",
+        "body": [
+          {
+            "type": "p",
+            "text": "Die GRAEWE/next GmbH investiert weiter in den Standort Neuenburg. Mit dem Kauf einer weiteren Produktionshalle trägt das Unternehmen dem ungebremst steigenden Auftragsvolumen Rechnung und erweitert die Produktionsfläche in nunmehr vier Hallen um 6.800 qm Grundfläche auf insgesamt 17.800 qm. GRAEWE/next sieht die Erweiterung nicht nur als klares Bekenntnis zum Standort Neuenburg, sondern auch und vor allem als Produktionsgrundlage zur Umsetzung des Auftragswachstums."
+          },
+          {
+            "type": "p",
+            "text": "„Unsere Auftragsbücher sind voll, GRAEWE-Maschinen sind weltweit gefragt, da sie in Sachen Zuverlässigkeit, Technologie und Produktivität zur Branchenspitze zählen. Wir wollen diesen Trend nicht nur nutzen, sondern ausbauen, indem wir erweiterte Produktionskapazitäten schaffen und nutzen“, erläutert Geschäftsführer Michael Graewe. Und ergänzt, dass man schließlich auch zukünftig keinen Auftrag aus Platzgründen verlieren möchte."
+          },
+          {
+            "type": "p",
+            "text": "Stefan Graewe, für Marketing und Vertrieb verantwortlicher Geschäftsführer, rechnet mit weiteren Zuwächsen und einer noch stärkeren Internationalisierung: „Es zeigt sich steigendes Interesse vor allem von Seiten vieler Unternehmen aus jenen Staaten, die bislang ausschließlich auf den Preis geachtet haben, nun aber erkennen, dass sie bei Graewe hervorragende Qualität zu fairen Preisen bekommen. Auch für diesen Trend sind wir nun in Neuenburg bestens gerüstet.“"
+          }
+        ],
+        "source": "Quelle: Extrusion 2/2014 VM Verlag",
+        "germanOriginal": true
       },
       {
         "slug": "jubilaeum",
         "title": "Aniversario",
-        "excerpt": "Años de tecnología de extrusión con éxito: agradecemos a nuestros clientes y socios su confianza."
+        "excerpt": "40 años de tecnología de extrusión con éxito – Celebrating 40 Years of X-tras (est. 1981).",
+        "body": [
+          {
+            "type": "p",
+            "text": "GRAEWE feiert 40 Jahre Extrusionstechnik: Celebrating 40 Years of X-tras — est. 1981."
+          }
+        ],
+        "germanOriginal": true
       }
     ]
   },
