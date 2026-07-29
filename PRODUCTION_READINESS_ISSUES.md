@@ -299,28 +299,6 @@ Recorded so nobody re-audits them:
 
 ---
 
-### ISSUE-057 — Phones download the desktop hero image; all 10 carousel images mount at once
-- **Status:** Open
-- **Category:** Mobile / Performance
-- **Problem:** `HeroCarousel` renders its desktop layout (`hidden sm:flex`) **and** its mobile layout (`sm:hidden`) into the DOM simultaneously, each marking slide 0 as `priority`. Next therefore emits **two unconditional `<link rel="preload" as="image">` tags for the same hero PNG at two different size tiers, with no `media` attribute** — so a phone eagerly downloads the 828 px/1920 px desktop variant it will never display, on the LCP critical path. The same duplication mounts all 10 `<Image>` elements (5 unique PNGs, 190–260 KB each) at once.
-- **Evidence:** server-rendered `<head>` of `/de`:
-  ```html
-  <link rel="preload" as="image" imageSrcSet="/_next/image?url=%2Fimages%2Fhero%2Fslide-1.png&w=828&q=75 1x,
-                                              /_next/image?url=%2Fimages%2Fhero%2Fslide-1.png&w=1920&q=75 2x"/>
-  <link rel="preload" as="image" imageSrcSet="/_next/image?url=%2Fimages%2Fhero%2Fslide-1.png&w=640&q=75 1x,
-                                              /_next/image?url=%2Fimages%2Fhero%2Fslide-1.png&w=1200&q=75 2x"/>
-  ```
-  Neither carries `media`. Source: `src/components/home/HeroCarousel.tsx:49` (`hidden sm:flex` desktop block) and `:180` (`sm:hidden` mobile block); `priority={index === 0}` at `:159` and `:236`. Asset sizes: `public/images/hero/slide-{1..5}.png` = 188 KB, 223 KB, 259 KB, 207 KB, 241 KB.
-- **Related:** same duplicate-render anti-pattern as **ISSUE-056** (nav) and **ISSUE-043** (carousel a11y). Fixing the layout duplication once — one responsive layout, or CSS-only switching over a single image set — resolves the preload waste too.
-- **Likely files:** `src/components/home/HeroCarousel.tsx`
-- **Acceptance criteria:**
-  - [ ] Exactly one hero preload is emitted for a given viewport (or two with correct `media` attributes).
-  - [ ] A 390 px client does not fetch the 828/1920 px variants — verify in DevTools Network on a throttled mobile profile.
-  - [ ] Non-visible slides are not eagerly fetched.
-  - [ ] Consider re-encoding the source PNGs as WebP/AVIF: the `GITHUB_PAGES=true` export path uses a custom loader (`src/lib/image-loader.ts`) with **no** optimization, so those builds ship the raw PNGs.
-
----
-
 ### ISSUE-046 — Footer legal links fail contrast; `text-grey-400` fails on light surfaces
 - **Status:** Open
 - **Category:** A11y
@@ -368,6 +346,28 @@ Recorded so nobody re-audits them:
   - [ ] Only one navigation tree is present in the accessibility tree at a given viewport (conditional render, or `inert`/`aria-hidden` on the inactive one — the same change ISSUE-037 needs).
   - [ ] `npm run test:e2e` passes with no locator disambiguation hacks in the spec.
   - [ ] E2E added to the CI gate (see ISSUE-047).
+
+---
+
+### ISSUE-057 — Phones download the desktop hero image; all 10 carousel images mount at once
+- **Status:** Open
+- **Category:** Mobile / Performance
+- **Problem:** `HeroCarousel` renders its desktop layout (`hidden sm:flex`) **and** its mobile layout (`sm:hidden`) into the DOM simultaneously, each marking slide 0 as `priority`. Next therefore emits **two unconditional `<link rel="preload" as="image">` tags for the same hero PNG at two different size tiers, with no `media` attribute** — so a phone eagerly downloads the 828 px/1920 px desktop variant it will never display, on the LCP critical path. The same duplication mounts all 10 `<Image>` elements (5 unique PNGs, 190–260 KB each) at once.
+- **Evidence:** server-rendered `<head>` of `/de`:
+  ```html
+  <link rel="preload" as="image" imageSrcSet="/_next/image?url=%2Fimages%2Fhero%2Fslide-1.png&w=828&q=75 1x,
+                                              /_next/image?url=%2Fimages%2Fhero%2Fslide-1.png&w=1920&q=75 2x"/>
+  <link rel="preload" as="image" imageSrcSet="/_next/image?url=%2Fimages%2Fhero%2Fslide-1.png&w=640&q=75 1x,
+                                              /_next/image?url=%2Fimages%2Fhero%2Fslide-1.png&w=1200&q=75 2x"/>
+  ```
+  Neither carries `media`. Source: `src/components/home/HeroCarousel.tsx:49` (`hidden sm:flex` desktop block) and `:180` (`sm:hidden` mobile block); `priority={index === 0}` at `:159` and `:236`. Asset sizes: `public/images/hero/slide-{1..5}.png` = 188 KB, 223 KB, 259 KB, 207 KB, 241 KB.
+- **Related:** same duplicate-render anti-pattern as **ISSUE-056** (nav) and **ISSUE-043** (carousel a11y). Fixing the layout duplication once — one responsive layout, or CSS-only switching over a single image set — resolves the preload waste too.
+- **Likely files:** `src/components/home/HeroCarousel.tsx`
+- **Acceptance criteria:**
+  - [ ] Exactly one hero preload is emitted for a given viewport (or two with correct `media` attributes).
+  - [ ] A 390 px client does not fetch the 828/1920 px variants — verify in DevTools Network on a throttled mobile profile.
+  - [ ] Non-visible slides are not eagerly fetched.
+  - [ ] Consider re-encoding the source PNGs as WebP/AVIF: the `GITHUB_PAGES=true` export path uses a custom loader (`src/lib/image-loader.ts`) with **no** optimization, so those builds ship the raw PNGs.
 
 ---
 
