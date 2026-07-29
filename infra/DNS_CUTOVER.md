@@ -1,5 +1,7 @@
 # DNS Cutover Plan — graewe.com
 
+> Deploy mechanics, standalone entrypoint, and Azure E2E verification live in [`DEPLOY.md`](./DEPLOY.md).
+
 ## Overview
 
 Migrate DNS from the current TYPO3-based hosting to Azure Static Web Apps with zero downtime for visitors.

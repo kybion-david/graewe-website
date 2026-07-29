@@ -85,7 +85,7 @@ Corporate website for **GRAEWE GmbH Maschinenbau** (extrusion machinery). Replac
 | i18n | `next-intl` — routing + JSON messages |
 | Forms | React Hook Form + Zod (`src/lib/contactSchema.ts` shared by contact form + `/api/contact`); Resend + Turnstile |
 | Tests | Vitest (unit), Playwright (e2e) |
-| Deploy | Azure Static Web Apps (`standalone`) only |
+| Deploy | Azure Static Web Apps (`standalone`) only — see [`infra/DEPLOY.md`](./infra/DEPLOY.md) |
 
 **Critical Next.js 16 quirks**
 
@@ -163,7 +163,7 @@ npm run test
 
 Run `npm run test:e2e` when changing navigation, i18n, calculator, or contact flows.
 
-CI (`.github/workflows/deploy.yml`) gates on type-check, lint, and unit tests.
+CI (`.github/workflows/deploy.yml`) gates on type-check, lint, and unit tests. Azure upload runs on `main` (and on PRs labeled `swa-preview` only).
 
 ## 7. Environment
 
@@ -177,7 +177,7 @@ Copy `.env.example` → `.env.local`. **Contact email requires `RESEND_API_KEY`*
 - Interactive: Produktrechner (modern UI with labeled Wickelbild diagrams, live calc, validation), contact form (Resend + Turnstile/honeypot/rate-limit)
 - SEO: `generateMetadata` via `pageMetadata` (per-page title/description) plus `alternates.canonical` + `alternates.languages` (five locales + `x-default`→`de`) from `src/lib/seo.ts`; `metadataBase` from `NEXT_PUBLIC_SITE_URL`; Open Graph; JSON-LD; `next-sitemap` with `alternateRefs` (no third-party analytics)
 - A11y: skip link, ARIA on menu/language switcher, focus-visible, contrast-safe yellow buttons; contact field errors use text + icon + `aria-invalid`/`aria-describedby` (not colour alone); submit banners use `role="status"` / `role="alert"`
-- Deploy: Azure SWA Terraform + GH Actions only (no GitHub Pages export)
+- Deploy: Azure SWA (`standalone` via Oryx) + GH Actions — production on every `main` push; PR previews only with the `swa-preview` label (Free SKU staging cap). Local/prod entry: `npm run start` → `node .next/standalone/server.js`. Details: [`infra/DEPLOY.md`](./infra/DEPLOY.md)
 
 ## 9. Spec maintenance (required)
 

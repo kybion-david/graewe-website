@@ -332,7 +332,7 @@ Recorded so nobody re-audits them:
 ## P2 — Hardening & polish
 
 ### ISSUE-054 — Azure SWA hosting of a `standalone` Next build is unverified end-to-end
-- **Status:** Open
+- **Status:** Done — E2E verified on Azure default hostname 2026-07-29; standalone start + HSTS + `swa-preview` label gate + `infra/DEPLOY.md`. Residual: Free SKU still 3 staging slots (raise via Terraform when needed); `www.graewe.com` still TYPO3 until DNS cutover.
 - **Category:** Ops
 - **Problem:** `next.config.ts` sets `output: "standalone"` and the app needs SSR — a proxy, a dynamic `/api/contact` route, and dynamic query-param redirects. The deploy workflow hands the repo to `Azure/static-web-apps-deploy@v1` with `app_location: "/"`, `api_location: ""`, `output_location: ""`, letting Oryx run its own build. The workflow is green, but **green means "the action uploaded something"** — nobody has confirmed the deployed site actually runs the proxy or the API route. The Oryx log even warns: `For Next.js apps, staticwebapp.config.json features are not fully supported yet!`
 - **Note 1:** `npm run start` (`next start`) is **the wrong entry point for this config**, and Next says so: `⚠ "next start" does not work with "output: standalone" configuration. Use "node .next/standalone/server.js" instead.` It serves pages anyway, which is why nobody has noticed — but `playwright.config.ts:21` uses `npm run build && npm run start` as its `webServer`, so **e2e does not exercise the artifact that ships**.
@@ -347,14 +347,18 @@ Recorded so nobody re-audits them:
   **The teardown mechanism does work** — verified on runs `30482461415` and `30483207703`, where `deploy.yml`'s `close_pull_request` job reported `Close PR = success` on merge. So this is *not* a backlog of orphaned environments; it is a concurrency cap. Do not go hunting for stale environments to reclaim.
 
   The practical consequence is that the cap is reached whenever enough PRs are open at once, and every affected PR then shows a red `Deploy` check — which is how a real deploy failure gets waved through. Decide whether the Free SKU is right for a repo with this many parallel agents.
-- **Evidence:** `.github/workflows/deploy.yml` `deploy` job; `next.config.ts`; Oryx warning in run `30480939032`; `next start` warning reproduced locally.
+- **Evidence (re-verified 2026-07-29 against `origin/main` + live Azure):**
+  - Oryx on successful main deploy `30489323390`: `Detected standalone folder, so using it for deployment` → `Deployment Complete` → https://lively-meadow-097c4d503.7.azurestaticapps.net
+  - curl E2E on that host: `/` → `307` `/de`; `/en` → `200` + `NEXT_LOCALE=en`; legacy job query → `301` `/de/stellenanzeigen/elektriker-elektroniker`; `POST /api/contact` `{}` → `400` `Missing required fields`; platform HSTS present
+  - Quota failure still real on unrestricted PR deploys (e.g. `30489426955`); teardown still not the issue
+  - `www.graewe.com` still Apache/TYPO3 (cutover not done)
 - **Likely files:** `.github/workflows/deploy.yml`, `next.config.ts`, `staticwebapp.config.json`, `playwright.config.ts`, `infra/DNS_CUTOVER.md`
 - **Acceptance criteria:**
-  - [ ] A staging deploy verified end-to-end **on Azure**: `/` → `/de`, a locale switch, `POST /api/contact`, and a legacy `?tx_tanjoboffers_jobdetail[job]=9` redirect.
-  - [ ] `playwright.config.ts` `webServer` and the documented production command use `node .next/standalone/server.js`.
-  - [ ] `Strict-Transport-Security` added to `globalHeaders`.
-  - [ ] The PR `Deploy` check is green under normal parallel load — either by raising `swa_sku_tier` above `Free`, or by capping how many PRs run preview deploys — so a red check means something again.
-  - [ ] Deploy method documented so the next agent need not re-derive it.
+  - [x] A staging deploy verified end-to-end **on Azure**: `/` → `/de`, a locale switch, `POST /api/contact`, and a legacy `?tx_tanjoboffers_jobdetail[job]=9` redirect. (SWA default hostname = pre-cutover staging; see `infra/DEPLOY.md`)
+  - [x] `playwright.config.ts` `webServer` and the documented production command use `node .next/standalone/server.js` (`package.json` `start` + README / SPEC / DEPLOY.md).
+  - [x] `Strict-Transport-Security` added to `globalHeaders` (Azure already sent HSTS on the default HTTPS host; config now declares it explicitly).
+  - [x] The PR `Deploy` check is meaningful under parallel load — PR Azure uploads run **only** with the `swa-preview` label (≤3 concurrent on Free); `main` uses concurrency group `swa-production` with `cancel-in-progress: false`. SKU remains Free until Terraform apply raises it.
+  - [x] Deploy method documented in `infra/DEPLOY.md`.
 
 ---
 

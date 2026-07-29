@@ -17,7 +17,7 @@ Open [http://localhost:3000](http://localhost:3000) — you'll be redirected to 
 |---------|-------------|
 | `npm run dev` | Start development server |
 | `npm run build` | Production build |
-| `npm run start` | Start production server |
+| `npm run start` | Start the `standalone` production server (`node .next/standalone/server.js`; run `npm run build` first) |
 | `npm run lint` | Run ESLint |
 | `npm run type-check` | TypeScript type checking |
 | `npm run test` | Run unit tests (Vitest) |
