@@ -273,7 +273,7 @@ Recorded so nobody re-audits them:
 ---
 
 ### ISSUE-047 — E2E is not in the CI gate, and covers desktop Chrome only
-- **Status:** Open
+- **Status:** Done — E2E in `quality` job; Mobile Chrome + mobile-320 projects; `viewport-overflow` + `mobile-menu` specs; drawer links call `onClose`. Gate unblocked with ISSUE-059 label/aria fixes already on main.
 - **Category:** Testing / Mobile
 - **Problem:** Two gaps that compound.
   1. `.github/workflows/deploy.yml` gates on type-check, lint and **unit** tests only. Playwright never runs in CI — which is exactly why ISSUE-059 went unnoticed.
@@ -281,10 +281,10 @@ Recorded so nobody re-audits them:
 - **Evidence:** `playwright.config.ts:14-19` (single project), `:21` (`webServer` command). `.github/workflows/deploy.yml` `quality` job steps: Type check, Lint, Unit tests.
 - **Likely files:** `playwright.config.ts`, `tests/e2e/*`, `.github/workflows/deploy.yml`
 - **Acceptance criteria:**
-  - [ ] E2E runs in CI on PRs.
-  - [ ] A `Mobile Chrome` project (e.g. `devices["Pixel 5"]`) plus a 320 px-wide project.
-  - [ ] A spec asserting `document.documentElement.scrollWidth <= window.innerWidth` on a representative route list at both widths.
-  - [ ] A spec covering: open drawer → tap link → navigates **and** closes; tap the current page's own link → closes.
+  - [x] E2E runs in CI on PRs.
+  - [x] A `Mobile Chrome` project (e.g. `devices["Pixel 5"]`) plus a 320 px-wide project.
+  - [x] A spec asserting `document.documentElement.scrollWidth <= window.innerWidth` on a representative route list at both widths.
+  - [x] A spec covering: open drawer → tap link → navigates **and** closes; tap the current page's own link → closes.
 
 ---
 
