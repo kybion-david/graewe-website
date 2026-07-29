@@ -4,7 +4,7 @@ on:
   push:
     branches: [main]
   pull_request:
-    types: [opened, synchronize, reopened, closed]
+    types: [opened, synchronize, reopened, closed, labeled]
     branches: [main]
 
 env:
@@ -35,11 +35,22 @@ jobs:
         run: npm run test
 
   # ── Deploy to Azure Static Web Apps ─────────────
+  # Production: every push to main.
+  # PR previews: only when the PR carries the `swa-preview` label.
+  # Free SKU caps concurrent staging environments at 3; unrestricted PR deploys
+  # flooded the quota and made every Deploy check meaningless (see ISSUE-054).
   deploy:
-    if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')
+    if: |
+      github.event_name == 'push' ||
+      (github.event_name == 'pull_request' &&
+       github.event.action != 'closed' &&
+       contains(join(github.event.pull_request.labels.*.name, ','), 'swa-preview'))
     needs: quality
     runs-on: ubuntu-latest
     name: Deploy
+    concurrency:
+      group: ${{ github.event_name == 'pull_request' && format('swa-preview-pr-{0}', github.event.pull_request.number) || 'swa-production' }}
+      cancel-in-progress: false
     steps:
       - uses: actions/checkout@v4
         with:
@@ -66,7 +77,10 @@ jobs:
 
   # ── Close PR: tear down staging environment ─────
   close_pull_request:
-    if: github.event_name == 'pull_request' && github.event.action == 'closed'
+    if: |
+      github.event_name == 'pull_request' &&
+      github.event.action == 'closed' &&
+      contains(join(github.event.pull_request.labels.*.name, ','), 'swa-preview')
     runs-on: ubuntu-latest
     name: Close PR
     steps:

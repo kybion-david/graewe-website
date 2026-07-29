@@ -18,6 +18,8 @@ export default defineConfig({
     },
   ],
   webServer: {
+    // Must match production: output "standalone" → node .next/standalone/server.js
+    // (npm run start). Do not use next start.
     command: "npm run build && npm run start",
     url: "http://localhost:3000",
     reuseExistingServer: true,

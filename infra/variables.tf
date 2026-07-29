@@ -28,7 +28,7 @@ variable "location" {
 variable "swa_sku_tier" {
   type        = string
   default     = "Free"
-  description = "Static Web App SKU tier (Free or Standard)"
+  description = "Static Web App SKU tier (Free or Standard). Free allows only 3 concurrent staging environments — PR preview deploys are opt-in via the swa-preview label (see infra/DEPLOY.md)."
 }
 
 variable "swa_sku_size" {
