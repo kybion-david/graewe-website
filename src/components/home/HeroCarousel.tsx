@@ -132,14 +132,33 @@ export function HeroCarousel() {
 
   const pauseLabel = userPaused ? t("playAria") : t("pauseAria");
 
+  /*
+    Hover-pause is scoped to the control clusters, not the whole section: the
+    hero band is 1512x560 (~69% of a laptop viewport), so a section-wide
+    handler froze autoplay whenever the pointer merely rested over the copy,
+    the image, or the surrounding whitespace. `(hover: hover)` keeps a tap on
+    a phone — which fires `mouseenter` without a matching `mouseleave` — from
+    latching autoplay off.
+  */
+  const hoverPause = {
+    onMouseEnter: () => {
+      if (window.matchMedia("(hover: hover)").matches) setHovered(true);
+    },
+    onMouseLeave: () => setHovered(false),
+  };
+
   return (
     <section
       className="bg-gradient-to-b from-white to-grey-100 relative overflow-hidden"
       aria-roledescription={t("roleDescription")}
       aria-label={t("carouselLabel")}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      onFocusCapture={() => setFocusWithin(true)}
+      onFocusCapture={(e) => {
+        // Keyboard focus only: clicking a control also focuses its button, and
+        // that used to latch autoplay off until the user clicked elsewhere.
+        if ((e.target as HTMLElement).matches(":focus-visible")) {
+          setFocusWithin(true);
+        }
+      }}
       onBlurCapture={(e) => {
         if (!e.currentTarget.contains(e.relatedTarget as Node | null)) {
           setFocusWithin(false);
@@ -194,7 +213,7 @@ export function HeroCarousel() {
             </div>
 
             {/* Controls — desktop/tablet (under text) */}
-            <div className="mt-10 hidden items-center gap-6 sm:flex">
+            <div className="mt-10 hidden items-center gap-6 sm:flex" {...hoverPause}>
               <SlideControls
                 onPrev={goPrev}
                 onNext={goNext}
@@ -237,7 +256,7 @@ export function HeroCarousel() {
           </div>
 
           {/* Controls — mobile (below image) */}
-          <div className="order-3 flex items-center justify-between sm:hidden">
+          <div className="order-3 flex items-center justify-between sm:hidden" {...hoverPause}>
             <SlideControls
               onPrev={goPrev}
               onNext={goNext}

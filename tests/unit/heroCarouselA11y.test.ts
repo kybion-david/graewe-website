@@ -43,4 +43,22 @@ describe("hero carousel a11y (ISSUE-043)", () => {
     expect(source).toMatch(/className="relative mb-6 grid sm:mb-0"/);
     expect(source).toMatch(/col-start-1 row-start-1/);
   });
+
+  it("keeps hover-pause off the hero section itself", () => {
+    // The <section> spans ~69% of a laptop viewport. A section-wide
+    // mouseenter froze autoplay whenever the pointer merely rested over the
+    // copy, the image, or the surrounding whitespace, so hover-pause belongs
+    // on the control clusters only.
+    const sectionTag = source.slice(
+      source.indexOf("<section"),
+      source.indexOf("<h1"),
+    );
+    expect(sectionTag).not.toMatch(/onMouseEnter/);
+    // Taps fire mouseenter without a matching mouseleave on touch devices.
+    expect(source).toMatch(/hover: hover/);
+  });
+
+  it("pauses on keyboard focus only, so clicking a control cannot latch autoplay off", () => {
+    expect(source).toMatch(/:focus-visible/);
+  });
 });

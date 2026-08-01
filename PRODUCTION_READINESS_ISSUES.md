@@ -200,6 +200,7 @@ Recorded so nobody re-audits them:
 
 ### ISSUE-043 — Hero carousel auto-rotates with no pause control and 4 px-tall dots
 - **Status:** Done — pause/play control; autoplay stops on hover, focus-within, `document.hidden`, and `prefers-reduced-motion`; progress-dot hit areas are ≥24×24 px (`h-6 min-w-6`) with thin visual bars; carousel region + `aria-hidden` on inactive slides; strings in all 5 locales.
+  - **Follow-up (2026-08-01):** the first cut attached hover-pause to the whole `<section>` and focus-pause to any focus event, which made autoplay look broken — measured with Playwright at 1512×806, the hero band is **1512×560 (~69% of the viewport)**, so a pointer resting anywhere over the copy, image, or surrounding whitespace froze it indefinitely (0 advances in 14 s), and a **mouse click** on prev/next latched `focusWithin` on until the user clicked outside the hero. Hover-pause is now scoped to the two control clusters and gated on `(hover: hover)` (a tap fires `mouseenter` with no matching `mouseleave`), and focus-pause is gated on `:focus-visible` so only keyboard focus pauses. Pause-on-hover-of-controls, keyboard-focus pause, and the explicit pause button all still hold.
 - **Category:** A11y / Mobile
 - **Problem:** Three defects in one component.
   1. Advances every 6 s with no pause/stop/hide affordance, and no pause on hover or focus — WCAG 2.2.2 failure.
@@ -209,7 +210,7 @@ Recorded so nobody re-audits them:
 - **Likely files:** `src/components/home/HeroCarousel.tsx`
 - **Acceptance criteria:**
   - [x] A visible pause/play control, or auto-advance removed.
-  - [x] Auto-advance and progress interval stop on hover, on focus within the carousel, when `document.hidden`, and under `prefers-reduced-motion: reduce`.
+  - [x] Auto-advance and progress interval stop on hover (of the controls — not the whole hero band), on keyboard focus within the carousel, when `document.hidden`, and under `prefers-reduced-motion: reduce`.
   - [x] Dot controls have a ≥24×24 px hit area (padding or `::before`; the visual bar can stay thin).
   - [x] Off-screen slides hidden from assistive tech; region marked up as a carousel.
 
