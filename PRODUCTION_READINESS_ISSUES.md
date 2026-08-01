@@ -316,6 +316,27 @@ Recorded so nobody re-audits them:
 
 ---
 
+### ISSUE-060 — `global-error.tsx` ships all five locale catalogs on every page
+- **Status:** Done — copy moved to `src/app/globalErrorCopy.ts` (inlined `error.*` for all five locales); homepage JS **291 KB → 217 KB gzip (−74 KB, −25 %)**. Guarded by `tests/unit/globalErrorCopy.test.ts`; exception documented in `SPEC.md`.
+- **Category:** Performance / Bundle size
+- **Problem:** `src/app/global-error.tsx` is a `"use client"` component that statically imported `de/en/fr/ru/es.json` (248 KB raw) to render **five strings** (`error.code|title|description|retry|backHome`). Turbopack bundled all five catalogs into one 221 KB raw / **74 KB gzip** client chunk that loaded on *every* page — a German visitor downloaded the Russian, French, Spanish and English catalogs on every navigation. It cannot use `useTranslations` because `global-error.tsx` replaces the root layout and renders outside `NextIntlClientProvider`.
+- **Evidence:** measured 2026-08-01 against the live deploy at `d5e3355`, and reproduced locally with two clean builds:
+  ```
+  chunk 0u6.t22bj094..js — 221 KB raw / 75 KB gzip
+    contains simultaneously: "Wickellänge" (de), Cyrillic (ru),
+    "bobinage" (fr), "bobinado" (es), "winding length" (en)
+    loaded on /de, /de/impressum, /de/produktrechner
+  homepage JS, same build + measurement method:
+    baseline 291 KB gzip / 16 chunks  →  fixed 217 KB gzip / 15 chunks
+  ```
+- **Likely files:** `src/app/global-error.tsx`, `src/app/globalErrorCopy.ts`
+- **Acceptance criteria:**
+  - [x] No client chunk contains more than one locale's catalog.
+  - [x] `src/messages/*.json` remains the source of truth; drift fails CI (mutation-tested both guards).
+  - [x] A locale added to `routing` without inlined copy fails CI.
+
+---
+
 ### ISSUE-049 — Product lightbox is not a real dialog
 - **Status:** Done — lightbox is `role="dialog" aria-modal` with `useDismissibleOverlay` (Escape, focus trap, focus return), body scroll lock, bottom nav controls (no overlap at 320px), and swipe navigation; `lightboxAria` in all 5 locales.
 - **Category:** A11y / Mobile

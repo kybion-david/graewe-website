@@ -2,13 +2,7 @@
 
 import { useEffect, useMemo } from "react";
 import { locales, type Locale } from "@/i18n/routing";
-import de from "@/messages/de.json";
-import en from "@/messages/en.json";
-import fr from "@/messages/fr.json";
-import ru from "@/messages/ru.json";
-import es from "@/messages/es.json";
-
-const catalogs: Record<Locale, typeof de> = { de, en, fr, ru, es };
+import { globalErrorCopy } from "./globalErrorCopy";
 
 function localeFromPathname(pathname: string): Locale {
   const segment = pathname.split("/").filter(Boolean)[0];
@@ -30,7 +24,7 @@ export default function GlobalError({
     return localeFromPathname(window.location.pathname);
   }, []);
 
-  const t = catalogs[locale].error;
+  const t = globalErrorCopy[locale];
 
   useEffect(() => {
     console.error(error);
