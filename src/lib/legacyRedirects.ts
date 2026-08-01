@@ -317,6 +317,9 @@ export type StaticWebAppRedirectRoute = {
 export const STATIC_WEB_APP_CONFIG_MAX_BYTES = 20 * 1024;
 
 const STATIC_WEB_APP_GLOBAL_HEADERS = {
+  // Azure injects HSTS on the *.azurestaticapps.net host, but that fallback is
+  // not guaranteed after DNS cutover to www.graewe.com — declare it ourselves.
+  "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
   "X-Content-Type-Options": "nosniff",
   "X-Frame-Options": "SAMEORIGIN",
   "Referrer-Policy": "strict-origin-when-cross-origin",
