@@ -128,6 +128,7 @@ public/images/        # Static assets by section
 | Canonical + hreflang helpers | `src/lib/seo.ts` (`buildLocaleAlternates`, `getSiteUrl`) |
 | Global error boundary copy | `src/app/globalErrorCopy.ts` — **inlined**, mirrors `error.*` (see exception below) |
 | `next/image` widths | `src/lib/imageConfig.ts` → `IMAGE_DEVICE_SIZES`, consumed by `next.config.ts` |
+| Analytics gating | `src/lib/analytics.ts` → `getUmamiConfig()`, rendered by `src/components/analytics/Analytics.tsx` |
 
 Do **not** hardcode user-facing strings in components. Add keys to **all five** locale files.
 
@@ -180,13 +181,17 @@ CI (`.github/workflows/deploy.yml`) gates on type-check, lint, unit tests, and P
 
 Copy `.env.example` → `.env.local`. **Contact email requires `RESEND_API_KEY`** — without it the API returns `503` / `email_unavailable` and the form shows an error (never a fake success). Set production secrets in GitHub (`RESEND_API_KEY`) and vars (`CONTACT_EMAIL_TO`, `CONTACT_EMAIL_FROM`); see cutover checklist in `infra/DNS_CUTOVER.md`. Contact spam protection: Cloudflare Turnstile (`NEXT_PUBLIC_TURNSTILE_SITE_KEY` + `TURNSTILE_SECRET_KEY`) plus honeypot + per-IP rate limit in `src/lib/contactSpam.ts`. Without Turnstile keys, the widget is omitted and only honeypot/rate-limit run.
 
-**Analytics:** None at launch. Do not add Plausible, Umami, etracker, Google Analytics, or similar without also adding consent (if required) and updating Datenschutz + `/cookies`. There is no `NEXT_PUBLIC_ANALYTICS_ID` (or equivalent) env var.
+**Analytics:** Umami (cookieless), gated on `NEXT_PUBLIC_UMAMI_SRC` + `NEXT_PUBLIC_UMAMI_WEBSITE_ID`. The tracker loads only when **both** are set, so local dev and PR previews ship none; production values come from GitHub repo vars `UMAMI_SRC` / `UMAMI_WEBSITE_ID`, passed only on `push` events in `deploy.yml`.
+
+There is **no consent banner and none is needed**: Umami stores nothing on the device, so TDDDG §25 is not triggered and the processing rests on Art. 6(1)(f). That is the whole basis for the current `/cookies` and Datenschutz §4 copy. **Do not swap in a tool that writes cookies or localStorage** (Google Analytics, Matomo with cookies, Microsoft Clarity) without adding a consent gate *before* load and rewriting `cookiesPage.*` + `privacyPage.*` in all five locales. Verified 2026-08-01 in a headless browser: Umami sets no cookie, no `localStorage`, no `sessionStorage`. The only cookie the site sets is `NEXT_LOCALE` (session, language preference, technically necessary).
+
+Hosts, for whenever a CSP lands: `script-src` needs the `NEXT_PUBLIC_UMAMI_SRC` host (`cloud.umami.is` on the US default), `connect-src` needs `gateway.umami.is` — the tracker posts to a **different** host than it loads from.
 
 ## 8. Current status snapshot
 
-- Pages: home, unternehmen (4), produkte (overview + 3 categories + 19 products), success stories, aktuelles (+ articles), produktrechner, gebrauchtmaschinen, downloads, team, kontakt, stellenanzeigen (+ job detail pages), impressum, datenschutz (bodies in `imprintPage` / `privacyPage` for all locales; DE legally binding), sitemap (HTML), cookies (essential-only; no analytics / no consent banner)
+- Pages: home, unternehmen (4), produkte (overview + 3 categories + 19 products), success stories, aktuelles (+ articles), produktrechner, gebrauchtmaschinen, downloads, team, kontakt, stellenanzeigen (+ job detail pages), impressum, datenschutz (bodies in `imprintPage` / `privacyPage` for all locales; DE legally binding), sitemap (HTML), cookies (essential cookie + cookieless analytics; no consent banner)
 - Interactive: Produktrechner (modern UI with labeled Wickelbild diagrams, live calc, validation), contact form (Resend + Turnstile/honeypot/rate-limit)
-- SEO: `generateMetadata` via `pageMetadata` (per-page title/description) plus `alternates.canonical` + `alternates.languages` (five locales + `x-default`→`de`) from `src/lib/seo.ts`; `metadataBase` from `NEXT_PUBLIC_SITE_URL`; Open Graph; JSON-LD; `next-sitemap` with `alternateRefs` (no third-party analytics)
+- SEO: `generateMetadata` via `pageMetadata` (per-page title/description) plus `alternates.canonical` + `alternates.languages` (five locales + `x-default`→`de`) from `src/lib/seo.ts`; `metadataBase` from `NEXT_PUBLIC_SITE_URL`; Open Graph; JSON-LD; `next-sitemap` with `alternateRefs`
 - A11y: skip link, ARIA on menu/language switcher, focus-visible, contrast-safe yellow buttons; contact field errors use text + icon + `aria-invalid`/`aria-describedby` (not colour alone); submit banners use `role="status"` / `role="alert"`
 - Deploy: Azure SWA (`standalone` via Oryx) + GH Actions — production on every `main` push; PR previews only with the `swa-preview` label (Free SKU staging cap). Local/prod entry: `npm run start` → `node .next/standalone/server.js`. Details: [`infra/DEPLOY.md`](./infra/DEPLOY.md)
 

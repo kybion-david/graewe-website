@@ -405,6 +405,48 @@ Recorded so nobody re-audits them:
 
 ---
 
+### ISSUE-064 — Cookieless web analytics (Umami) — supersedes ISSUE-023 and part of ISSUE-009
+- **Status:** Done (code) / **Blocked on owner action** (see prerequisites) — 2026-08-01
+- **Category:** Feature / Legal / compliance
+- **Supersedes:** **ISSUE-023** ("no analytics at launch") and the analytics half of **ISSUE-009**. Those are still marked `Done` and their notes say the site ships *no* analytics. That is no longer the decision — **do not act on those notes**. The owner reversed it deliberately on 2026-08-01, choosing Umami Cloud.
+
+- **Why the reversal is safe without a consent banner:** TDDDG §25 triggers on *storing or accessing information on the visitor's terminal equipment*. Umami does neither, so the section does not apply and the processing rests on Art. 6(1)(f) GDPR. Verified empirically rather than taken from marketing copy — headless Chromium load of `/de` against a production build with the tracker live:
+  ```
+  script in DOM:        true
+  network:              GET  https://cloud.umami.is/script.js
+                        POST https://gateway.umami.is/api/send
+  document.cookie:      "NEXT_LOCALE=de"      <- ours, not Umami's
+  localStorage keys:    []
+  sessionStorage keys:  []
+  ```
+  Note the two **different hosts**: the tracker loads from one and posts to another. A CSP that only allows the script host will silently break collection.
+
+- **What the old site did, for comparison:** `graewe.com` still runs etracker with `data-block-cookies="true"` — already cookieless — *and* gates it behind a TYPO3 consent group (`"required": false`). So the legacy analytics needed no banner but had one anyway, and its numbers only ever counted visitors who clicked accept. Any year-on-year comparison against legacy etracker figures is apples-to-oranges: expect the new numbers to look like a jump that is really just the removal of consent-gating.
+
+- **Implementation:** `src/lib/analytics.ts` (`getUmamiConfig()`) + `src/components/analytics/Analytics.tsx`, mounted in `src/app/[locale]/layout.tsx`. Loads only when **both** `NEXT_PUBLIC_UMAMI_SRC` and `NEXT_PUBLIC_UMAMI_WEBSITE_ID` are non-blank — a half-configured beacon would ship a script that can never report while the privacy policy claims analytics run. `data-do-not-track="true"` is set, so the DNT opt-out promised in the Datenschutz text actually works. `deploy.yml` passes the vars only on `push`, so `swa-preview` PR builds cannot report into the production dataset.
+
+- **Copy rewritten in all five locales** (the previous text asserted the opposite and became false the moment this shipped):
+  - `cookiesPage.intro` — now states cookieless measurement, no banner required
+  - `cookiesPage.noTrackingTitle` / `noTrackingBody` → **renamed** to `analyticsTitle` / `analyticsBody`. The old names asserted the opposite of the new content; a stale key name is how the next edit quietly reintroduces a false claim.
+  - `cookiesPage.essentialBody` — now names `NEXT_LOCALE` outright instead of hedging about cookies the browser "might" set. It is our cookie; the old wording described it as something happening to us.
+  - `privacyPage.cookiesLead` — dropped "etracker or comparable analytics tools are currently not used"
+  - `privacyPage.analyticsTitle` / `analyticsBody` — **new Art. 13 section 4**; `linksTitle` 4→5, `newsletterTitle` 5→6, `infoRightsTitle` 6→7
+
+- **Prerequisites before this is actually live — owner action, cannot be done from the repo:**
+  - [ ] Create the Umami Cloud site and **select the EU region**. The Datenschutz text in all five locales states processing happens *on servers within the European Union*. Pick a US region and that sentence is false in the legally binding DE document.
+  - [ ] Set GitHub repo vars `UMAMI_SRC` (copy the exact URL from the dashboard — the host differs per region) and `UMAMI_WEBSITE_ID`. Until then the site ships no tracker and the new copy describes something that is not running.
+  - [ ] Sign Umami's DPA (Art. 28 processor agreement).
+  - [ ] Have a human review the **DE** Datenschutz §4 wording — `SPEC.md` marks DE as the legally binding version. Retention is phrased by criterion ("only as long as required for statistical evaluation") rather than a fixed period, which is permissible under Art. 13(2)(a) but is worth a conscious sign-off.
+
+- **Acceptance criteria:**
+  - [x] Analytics loads only when fully configured; unit tests mutation-checked against gate removal, unmounting, DNT removal, and the preview-isolation guard.
+  - [x] No cookie, `localStorage` or `sessionStorage` written by the tracker — measured, not assumed.
+  - [x] `cookiesPage` / `privacyPage` copy matches what actually runs, in all five locales.
+  - [x] `SPEC.md` §7 and §8 updated in the same PR.
+  - [ ] Verified live after the repo vars are set (dashboard receives a pageview from the production host).
+
+---
+
 ### ISSUE-049 — Product lightbox is not a real dialog
 - **Status:** Done — lightbox is `role="dialog" aria-modal` with `useDismissibleOverlay` (Escape, focus trap, focus return), body scroll lock, bottom nav controls (no overlap at 320px), and swipe navigation; `lightboxAria` in all 5 locales.
 - **Category:** A11y / Mobile

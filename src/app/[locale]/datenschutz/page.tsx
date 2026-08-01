@@ -73,6 +73,13 @@ export default async function DatenschutzPage({
 
         <section>
           <h2 className="text-lg font-bold text-dark mb-3">
+            {t("analyticsTitle")}
+          </h2>
+          <p>{t("analyticsBody")}</p>
+        </section>
+
+        <section>
+          <h2 className="text-lg font-bold text-dark mb-3">
             {t("linksTitle")}
           </h2>
           <p>{t("linksBody")}</p>
