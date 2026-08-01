@@ -357,6 +357,54 @@ Recorded so nobody re-audits them:
 
 ---
 
+### ISSUE-062 — `deviceSizes` generates three byte-identical image variants
+- **Status:** Done — `deviceSizes` trimmed to `[640, 750, 828, 1080, 1200, 1920]` via `src/lib/imageConfig.ts`, guarded by `tests/unit/imageConfig.test.ts`.
+- **Category:** Performance / Images
+- **Problem:** Next's default `deviceSizes` runs to 3840, but the widest source image in `public/images/` is **1600 px** and the optimizer never upscales. So `w=1920`, `w=2048` and `w=3840` returned identical bytes while occupying three separate entries in the optimizer cache (keyed on url + width + quality + `Accept`). The only effect was redundant cold AVIF/WebP encodes on the LCP path and a hit rate split three ways across widths that render the same.
+- **Evidence:** measured 2026-08-01 against the live deploy:
+  ```
+  bauboom.jpg (1200 px source), Accept: image/avif
+    w=1080 → 130370 bytes
+    w=1200 → 156804
+    w=1920 → 156804   ← identical
+    w=2048 → 156804   ← identical
+    w=3840 → 156804   ← identical
+
+  all 118 rasters under public/images/: max intrinsic width 1600 px, none > 1920
+  ```
+  1920 is retained as the top entry so the one 1600 px source (`news/kalibriertische-1.jpg`) still serves at native resolution on high-DPR displays.
+- **Likely files:** `next.config.ts`, `src/lib/imageConfig.ts`
+- **Acceptance criteria:**
+  - [x] No width above 1920 is emitted in any prerendered page.
+  - [x] Exactly one configured width is ≥ the widest source image; adding a wider image fails CI.
+  - [x] Mutation-tested: re-adding 2048/3840, trimming below the widest source, or unsorting the array each fail CI.
+
+- **Rejected alternative — do not re-propose without reading this.** Raising `images.minimumCacheTTL` (e.g. to one year) was considered and **deliberately rejected**. Every image is referenced by a string path into `/public` (55 refs across 16 files); no static imports, so no content hash in the URL. The optimizer cache key therefore does not change when the bytes at a path change, and per Next 16's own reference (`node_modules/next/dist/docs/01-app/03-api-reference/02-components/image.md:802`) *"there is no mechanism to invalidate the cache at this time"* — a returning browser would hold a stale image for the full TTL with no way to bust it. It also would not have helped the problem it was proposed for: cold encodes happen when `.next/cache/images` is *empty* (after a deploy), and a longer TTL does not populate an empty cache. The safe route to long-lived image caching is converting to static imports, which content-hash the filename and self-invalidate — worth doing only once images start changing regularly.
+
+---
+
+### ISSUE-063 — Hero slides are 578 px wide and upscale ~2× on the LCP element
+- **Status:** Open — needs new source assets; not an engineering fix.
+- **Category:** Content / Image quality
+- **Problem:** All five hero slides are **578 × 370**, but `HeroCarousel` renders them at `sizes="(max-width: 639px) 100vw, 56vw"` — roughly **1075 CSS px** on a 1920 viewport, and double that in device pixels on a high-DPR display. The browser upscales the largest, most prominent image on the homepage. This is also why the hero emits seven `srcset` entries that all collapse to the same 578 px output.
+- **Evidence:** measured 2026-08-01 from the committed files and the live deploy:
+  ```
+  578 x 370   188 KB  public/images/hero/slide-1.png
+  578 x 370   218 KB  public/images/hero/slide-2.png
+  578 x 370   253 KB  public/images/hero/slide-3.png
+  578 x 370   202 KB  public/images/hero/slide-4.png
+  578 x 370   235 KB  public/images/hero/slide-5.png
+
+  /de emits slide-1 at w=384,640,750,828,1080,1200,1920 — all capped to 578 px
+  ```
+- **Likely files:** `public/images/hero/slide-*.png`, `src/components/home/HeroCarousel.tsx`
+- **Acceptance criteria:**
+  - [ ] Hero sources are at least ~2150 px wide (56vw × 1920 × 2 DPR), or the hero layout is capped to the resolution the assets can actually support.
+  - [ ] Re-check `IMAGE_DEVICE_SIZES` afterwards — wider heroes will change the widest-source figure that ISSUE-062's guard test asserts against.
+  - [ ] Weigh the byte cost: correctly sized heroes will be larger than today's 188–253 KB PNGs, so re-encode (and consider JPEG/WebP sources rather than PNG).
+
+---
+
 ### ISSUE-049 — Product lightbox is not a real dialog
 - **Status:** Done — lightbox is `role="dialog" aria-modal` with `useDismissibleOverlay` (Escape, focus trap, focus return), body scroll lock, bottom nav controls (no overlap at 320px), and swipe navigation; `lightboxAria` in all 5 locales.
 - **Category:** A11y / Mobile

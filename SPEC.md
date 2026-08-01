@@ -127,6 +127,7 @@ public/images/        # Static assets by section
 | Per-page meta title/description | `src/lib/pageMetadata.ts` |
 | Canonical + hreflang helpers | `src/lib/seo.ts` (`buildLocaleAlternates`, `getSiteUrl`) |
 | Global error boundary copy | `src/app/globalErrorCopy.ts` — **inlined**, mirrors `error.*` (see exception below) |
+| `next/image` widths | `src/lib/imageConfig.ts` → `IMAGE_DEVICE_SIZES`, consumed by `next.config.ts` |
 
 Do **not** hardcode user-facing strings in components. Add keys to **all five** locale files.
 
