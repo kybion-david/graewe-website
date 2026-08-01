@@ -162,7 +162,7 @@ Pragmatic testing — enough to catch regressions, not so much that tests become
 - **Open Graph / Twitter cards** for social sharing.
 - **JSON-LD** structured data for organization and products.
 - **Sitemap** auto-generated via `next-sitemap`.
-- **Analytics**: None at launch (no Plausible, Umami, etracker, or Google Analytics). Datenschutz + `/cookies` state essential-only cookies and no tracking. Adding analytics later requires policy/consent updates — see `SPEC.md`.
+- **Analytics**: Umami Cloud, cookieless (ISSUE-064, 2026-08-01 — supersedes the earlier "no analytics at launch" decision). No consent banner, because the tracker stores nothing on the visitor's device and so never triggers TDDDG §25. Gated on `NEXT_PUBLIC_UMAMI_SRC` + `NEXT_PUBLIC_UMAMI_WEBSITE_ID`; unset means no tracker ships at all. Datenschutz §4 discloses the US processor and the SCC transfer basis — read `SPEC.md` §7 before changing any of this.
 
 ---
 
@@ -539,7 +539,9 @@ CONTACT_EMAIL_TO=info@graewe.com
 CONTACT_EMAIL_FROM=website@graewe.com
 NEXT_PUBLIC_TURNSTILE_SITE_KEY=
 TURNSTILE_SECRET_KEY=
-# No analytics ID — site ships without third-party analytics
+# Umami analytics (cookieless). Both required — either one blank ships no tracker.
+NEXT_PUBLIC_UMAMI_SRC=
+NEXT_PUBLIC_UMAMI_WEBSITE_ID=
 ```
 
 ### AI Assistant Instructions
