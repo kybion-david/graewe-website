@@ -126,8 +126,18 @@ public/images/        # Static assets by section
 | Legacy URL → canonical redirects | `src/lib/legacyRedirects.ts` |
 | Per-page meta title/description | `src/lib/pageMetadata.ts` |
 | Canonical + hreflang helpers | `src/lib/seo.ts` (`buildLocaleAlternates`, `getSiteUrl`) |
+| Global error boundary copy | `src/app/globalErrorCopy.ts` — **inlined**, mirrors `error.*` (see exception below) |
 
 Do **not** hardcode user-facing strings in components. Add keys to **all five** locale files.
+
+**One exception — `global-error.tsx`.** It replaces the root layout, so it renders
+outside `NextIntlClientProvider` and cannot use `useTranslations`. Importing the
+catalogs to get its five strings instead bundled all five locales (248 KB raw /
+**74 KB gzip**) into a client chunk loaded on *every* page. Its copy therefore lives
+inlined in `src/app/globalErrorCopy.ts`. `src/messages/{locale}.json` → `error.*`
+stays the source of truth; `tests/unit/globalErrorCopy.test.ts` deep-compares the two
+and fails CI on drift, on a locale added to `routing` but not inlined, or if a catalog
+import is reintroduced. Do not extend this exception to other components.
 
 Product detail bodies live in `src/lib/productContent/{de,en,fr,ru,es}.json`. `getProductDetail()` serves the matching locale; unknown locales fall back to `de`.
 

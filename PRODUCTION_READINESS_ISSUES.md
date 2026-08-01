@@ -316,6 +316,46 @@ Recorded so nobody re-audits them:
 
 ---
 
+### ISSUE-060 — `global-error.tsx` ships all five locale catalogs on every page
+- **Status:** Done — copy moved to `src/app/globalErrorCopy.ts` (inlined `error.*` for all five locales); homepage JS **291 KB → 217 KB gzip (−74 KB, −25 %)**. Guarded by `tests/unit/globalErrorCopy.test.ts`; exception documented in `SPEC.md`.
+- **Category:** Performance / Bundle size
+- **Problem:** `src/app/global-error.tsx` is a `"use client"` component that statically imported `de/en/fr/ru/es.json` (248 KB raw) to render **five strings** (`error.code|title|description|retry|backHome`). Turbopack bundled all five catalogs into one 221 KB raw / **74 KB gzip** client chunk that loaded on *every* page — a German visitor downloaded the Russian, French, Spanish and English catalogs on every navigation. It cannot use `useTranslations` because `global-error.tsx` replaces the root layout and renders outside `NextIntlClientProvider`.
+- **Evidence:** measured 2026-08-01 against the live deploy at `d5e3355`, and reproduced locally with two clean builds:
+  ```
+  chunk 0u6.t22bj094..js — 221 KB raw / 75 KB gzip
+    contains simultaneously: "Wickellänge" (de), Cyrillic (ru),
+    "bobinage" (fr), "bobinado" (es), "winding length" (en)
+    loaded on /de, /de/impressum, /de/produktrechner
+  homepage JS, same build + measurement method:
+    baseline 291 KB gzip / 16 chunks  →  fixed 217 KB gzip / 15 chunks
+  ```
+- **Likely files:** `src/app/global-error.tsx`, `src/app/globalErrorCopy.ts`
+- **Acceptance criteria:**
+  - [x] No client chunk contains more than one locale's catalog.
+  - [x] `src/messages/*.json` remains the source of truth; drift fails CI (mutation-tested both guards).
+  - [x] A locale added to `routing` without inlined copy fails CI.
+
+---
+
+### ISSUE-061 — `npm run test` deletes the HSTS header from `staticwebapp.config.json`
+- **Status:** Done — added `Strict-Transport-Security` to `STATIC_WEB_APP_GLOBAL_HEADERS`, and changed `tests/unit/generate-swa-config.test.ts` to *verify* the committed file instead of writing it.
+- **Category:** Security / Testing
+- **Problem:** `tests/unit/generate-swa-config.test.ts:16` called `writeFileSync(configPath, …)`, regenerating the committed `staticwebapp.config.json` from `STATIC_WEB_APP_GLOBAL_HEADERS` (`src/lib/legacyRedirects.ts:319`) — which never contained `Strict-Transport-Security`. So **running the test suite silently stripped HSTS from the repo**, and any subsequent commit would ship it. ISSUE-051's acceptance criterion claimed HSTS was declared; only the committed JSON had it, and only because it was stale. The write also made the assertions tautological — they checked what the test had just written.
+- **Evidence:** on `d5e3355`, `git diff` after a clean `npm run test`:
+  ```diff
+     "globalHeaders": {
+  -    "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
+       "X-Content-Type-Options": "nosniff",
+  ```
+  Production was unaffected: CI's `deploy` job does a fresh `actions/checkout`, and Azure injects HSTS on `*.azurestaticapps.net`. The exposure was a developer committing post-test churn, plus loss of the platform fallback after DNS cutover to `www.graewe.com`.
+- **Likely files:** `src/lib/legacyRedirects.ts`, `tests/unit/generate-swa-config.test.ts`
+- **Acceptance criteria:**
+  - [x] Generator and committed JSON both declare HSTS, and are asserted equal.
+  - [x] No test writes into the working tree (`npm run test` leaves `git status` clean).
+  - [x] Mutation-tested: dropping HSTS from the generator, or from both files, fails CI.
+
+---
+
 ### ISSUE-049 — Product lightbox is not a real dialog
 - **Status:** Done — lightbox is `role="dialog" aria-modal` with `useDismissibleOverlay` (Escape, focus trap, focus return), body scroll lock, bottom nav controls (no overlap at 320px), and swipe navigation; `lightboxAria` in all 5 locales.
 - **Category:** A11y / Mobile
@@ -356,7 +396,7 @@ Recorded so nobody re-audits them:
 - **Acceptance criteria:**
   - [x] A staging deploy verified end-to-end **on Azure**: `/` → `/de`, a locale switch, `POST /api/contact`, and a legacy `?tx_tanjoboffers_jobdetail[job]=9` redirect. (SWA default hostname = pre-cutover staging; see `infra/DEPLOY.md`)
   - [x] `playwright.config.ts` `webServer` and the documented production command use `node .next/standalone/server.js` (`package.json` `start` + README / SPEC / DEPLOY.md).
-  - [x] `Strict-Transport-Security` added to `globalHeaders` (Azure already sent HSTS on the default HTTPS host; config now declares it explicitly).
+  - [x] `Strict-Transport-Security` added to `globalHeaders` (Azure already sent HSTS on the default HTTPS host; config now declares it explicitly). ⚠️ This was only half-true until ISSUE-061 — the header was added to the committed JSON but never to the generator, and the test suite rewrote the JSON from the generator, silently deleting it again.
   - [x] The PR `Deploy` check is meaningful under parallel load — PR Azure uploads run **only** with the `swa-preview` label (≤3 concurrent on Free); `main` uses concurrency group `swa-production` with `cancel-in-progress: false`. SKU remains Free until Terraform apply raises it.
   - [x] Deploy method documented in `infra/DEPLOY.md`.
 
