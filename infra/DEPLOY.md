@@ -14,7 +14,7 @@ Until DNS cutover, **treat the `*.azurestaticapps.net` hostname as the staging/p
 ## What ships
 
 1. `next.config.ts` sets `output: "standalone"`.
-2. `npm run build` runs `next build`, then copies `.next/static` and `public` into `.next/standalone/` (required for the Node server).
+2. `npm run build` runs `next build`, then **`next-sitemap`**, then copies `.next/static` and `public` into `.next/standalone/` (required for the Node server). The sitemap step must stay *before* the `public` copy — `next-sitemap` writes `sitemap*.xml` and `robots.txt` into `public/`, so running it afterwards (it used to be a `postbuild` hook) left the deployed artifact with whatever stale copy was committed to git.
 3. GitHub Actions (`.github/workflows/deploy.yml`) hands the repo to `Azure/static-web-apps-deploy@v1` with `app_location: "/"`, empty `api_location` / `output_location`.
 4. Oryx builds on the runner, detects `.next/standalone`, and packages that artifact for the SWA Node backend (`Detected standalone folder, so using it for deployment` — e.g. run `30489323390`).
 5. Local / e2e production entry point is **`npm run start` → `node .next/standalone/server.js`** — not `next start`.
