@@ -10,7 +10,10 @@ import { IMAGE_DEVICE_SIZES } from "@/lib/imageConfig";
  * silently drift out of step with them.
  */
 
-const IMAGES_DIR = path.join(__dirname, "../../public/images");
+/** All of `public/`, not just `public/images/` — `deviceSizes` applies to every optimized image. */
+const PUBLIC_DIR = path.join(__dirname, "../../public");
+
+const RASTER_EXTENSIONS = [".png", ".jpg", ".jpeg", ".gif", ".webp", ".avif"];
 
 function walk(dir: string): string[] {
   return readdirSync(dir, { withFileTypes: true }).flatMap((entry) => {
@@ -50,8 +53,13 @@ function intrinsicWidth(file: string): number | null {
   return null;
 }
 
-const sourceWidths = walk(IMAGES_DIR)
-  .map(intrinsicWidth)
+const rasterFiles = walk(PUBLIC_DIR).filter((file) =>
+  RASTER_EXTENSIONS.includes(path.extname(file).toLowerCase()),
+);
+
+const measured = rasterFiles.map((file) => ({ file, width: intrinsicWidth(file) }));
+const sourceWidths = measured
+  .map(({ width }) => width)
   .filter((width): width is number => width !== null && width > 0);
 
 const widestSource = Math.max(...sourceWidths);
@@ -59,8 +67,17 @@ const widestSource = Math.max(...sourceWidths);
 describe("IMAGE_DEVICE_SIZES", () => {
   it("reads a plausible set of source images", () => {
     // Guards the guards: a broken parser would make every assertion below vacuous.
-    expect(sourceWidths.length).toBeGreaterThan(100);
+    expect(rasterFiles.length).toBeGreaterThan(100);
     expect(widestSource).toBeGreaterThan(0);
+  });
+
+  it("measures every raster asset, with no format silently skipped", () => {
+    // Without this, adding a .webp/.avif the parser cannot read would drop it from
+    // `widestSource` and quietly weaken every assertion below.
+    const unreadable = measured
+      .filter(({ width }) => width === null || width <= 0)
+      .map(({ file }) => path.relative(PUBLIC_DIR, file));
+    expect(unreadable).toEqual([]);
   });
 
   it("is sorted ascending with no duplicates, as Next requires", () => {
