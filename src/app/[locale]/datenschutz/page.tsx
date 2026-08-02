@@ -39,11 +39,27 @@ export default async function DatenschutzPage({
 
         <section>
           <h2 className="text-lg font-bold text-dark mb-3">
+            {t("controllerTitle")}
+          </h2>
+          <p>{t("controllerBody")}</p>
+        </section>
+
+        <section>
+          <h2 className="text-lg font-bold text-dark mb-3">
             {t("collectionTitle")}
           </h2>
           <p>{t("collectionP1")}</p>
           <p className="mt-3">{t("collectionP2")}</p>
-          <p className="mt-3">{t("collectionP3")}</p>
+          <p className="mt-3">{t("hostingBody")}</p>
+        </section>
+
+        <section>
+          <h2 className="text-lg font-bold text-dark mb-3">
+            {t("contactTitle")}
+          </h2>
+          <p>{t("contactP1")}</p>
+          <p className="mt-3">{t("contactP2")}</p>
+          <p className="mt-3">{t("contactP3")}</p>
         </section>
 
         <section>
@@ -80,24 +96,27 @@ export default async function DatenschutzPage({
 
         <section>
           <h2 className="text-lg font-bold text-dark mb-3">
+            {t("videoTitle")}
+          </h2>
+          <p>{t("videoBody")}</p>
+        </section>
+
+        <section>
+          <h2 className="text-lg font-bold text-dark mb-3">
             {t("linksTitle")}
           </h2>
           <p>{t("linksBody")}</p>
           <p className="mt-3">{t("linksMapBody")}</p>
+          <p className="mt-3">{t("linksSocialBody")}</p>
         </section>
 
         <section>
           <h2 className="text-lg font-bold text-dark mb-3">
-            {t("newsletterTitle")}
+            {t("rightsTitle")}
           </h2>
-          <p>{t("newsletterBody")}</p>
-        </section>
-
-        <section>
-          <h2 className="text-lg font-bold text-dark mb-3">
-            {t("infoRightsTitle")}
-          </h2>
-          <p>{t("infoRightsBody")}</p>
+          <p>{t("rightsBody")}</p>
+          <p className="mt-3">{t("rightsObjectionBody")}</p>
+          <p className="mt-3">{t("rightsComplaintBody")}</p>
         </section>
 
         <section>

@@ -455,7 +455,7 @@ Recorded so nobody re-audits them:
 - **Prerequisites — all resolved 2026-08-02:**
   - [x] Umami Cloud site created with the **EU** data region; repo vars `UMAMI_SRC` (`https://cloud.umami.is/script.js`) and `UMAMI_WEBSITE_ID` set. Live and verified on the production host: script present, correct website id, `data-do-not-track` set.
   - [x] DPA — incorporated automatically on ToS acceptance, no separate signature (see above).
-  - [ ] **Still open:** a human should review the **DE** Datenschutz §4 wording — `SPEC.md` marks DE as the legally binding version. Two points deserve a conscious sign-off: retention is phrased by criterion ("only as long as required for statistical evaluation") rather than a fixed period, which is permissible under Art. 13(2)(a); and the third-country sentence deliberately says access "cannot be entirely ruled out" rather than claiming EU storage settles the question, because the processor is US-based.
+  - [ ] **Still open:** a human should review the **DE** Datenschutz wording (analytics moved to §6 — renumbered by **ISSUE-065**, which extends the review to the whole document) — `SPEC.md` marks DE as the legally binding version. Two points deserve a conscious sign-off: retention is phrased by criterion ("only as long as required for statistical evaluation") rather than a fixed period, which is permissible under Art. 13(2)(a); and the third-country sentence deliberately says access "cannot be entirely ruled out" rather than claiming EU storage settles the question, because the processor is US-based.
 
 - **Acceptance criteria:**
   - [x] Analytics loads only when fully configured; unit tests mutation-checked against gate removal, unmounting, DNT removal, and the preview-isolation guard.
@@ -463,6 +463,39 @@ Recorded so nobody re-audits them:
   - [x] `cookiesPage` / `privacyPage` copy matches what actually runs, in all five locales.
   - [x] `SPEC.md` §7 and §8 updated in the same PR.
   - [ ] Verified live after the repo vars are set (dashboard receives a pageview from the production host).
+
+---
+
+### ISSUE-065 — Datenschutzerklärung review: undisclosed Vimeo transfer, invalid consent clause, missing Art. 13/15–21 information
+- **Status:** Done — 2026-08-02
+- **Category:** Legal / compliance
+- **Trigger:** the owner asked for a review of the **legally binding DE version** after ISSUE-064. The review found defects well beyond the analytics section, so the whole document was rewritten in all five locales.
+
+- **What was wrong (each verified against this repo or the deployed host, not assumed):**
+  1. **Vimeo transfer was undisclosed.** `src/components/home/HomeVideo.tsx` embeds a Vimeo player on the home page. It is a proper two-click solution — local thumbnail, `dnt=1`, no `<iframe>` in the deployed HTML of any page — but the click still sends the visitor's IP to a US provider and lets Vimeo write to the device. Nothing in the policy mentioned it. Now §7, with the click named as the Art. 6(1)(a) / TDDDG §25(1) consent.
+  2. **Consent-by-submission.** The old `collectionP3` read *"Mit der Übermittlung Ihrer personenbezogenen Daten an uns erklären Sie sich … einverstanden."* Consent cannot be constructed from the act of sending a form (Art. 4(11), Art. 7). Deleted; the contact form now runs on Art. 6(1)(b)/(f) in §3.
+  3. **No supervisory-authority complaint right** (Art. 13(2)(d) / 77) and no rights beyond Auskunft. §9 now carries Art. 15, 16, 17, 18, 20, 7(3), the Art. 21(1) objection right (which matters because access logs and analytics both run on 6(1)(f)), and the complaint right naming the LfDI Baden-Württemberg.
+  4. **No controller identified** (Art. 13(1)(a)) — the policy never named GRAEWE. Now §1.
+  5. **Server logs had no legal basis and no retention statement.** Now §2, on Art. 6(1)(f) with criterion-based retention.
+  6. **Hosting was undisclosed.** `az staticwebapp list` → `swa-graewe-website-prod`, region **West Europe**, hostname `lively-meadow-097c4d503.7.azurestaticapps.net` (the host the deploy workflow publishes to). Microsoft is a processor and was not named. Now in §2 with SCCs.
+  7. **Cookie claims were wrong in both directions.** `curl -I` against the deployed host returns `ARRAffinity` + `ARRAffinitySameSite` on *every* response, no `Expires` → session cookies. The policy hedged that cookies "may" be set by the browser or infrastructure; they are, always. Both are now named, with the TDDDG §25(2) no. 2 exemption. The Impressum separately claimed *"Wir verwenden Cookies ausschließlich, um Ihnen … mehr Bequemlichkeit bieten zu können"* — false since the app stopped setting any — and that access logs *"sind nicht personenbezogen"*, which is wrong for IP addresses under ECJ C-582/14 (Breyer). Both fixed.
+  8. **A newsletter section for a newsletter that does not exist.** No signup exists anywhere in `src/`. Removed rather than left as a promise.
+  9. **"Online-Bestellungen über unsere Webseite"** — there is no ordering flow — and *"so dass ein Ausspähen dieser Daten durch Dritte ausgeschlossen ist"*, an absolute guarantee TLS does not provide. Both replaced by a factual §3.
+
+- **Deliberately NOT disclosed — Turnstile and Resend.** Both are implemented (`TurnstileWidget.tsx`, `contactEmail.ts`) but **not configured in production**: no `TURNSTILE_SITE_KEY` var, no `TURNSTILE_SECRET_KEY` / `RESEND_API_KEY` secret, no environment-scoped secrets, and the deployed `/de/kontakt` HTML contains no `challenges.cloudflare.com`. They process nothing today, so naming them would repeat exactly the error ISSUE-064 was filed for — asserting a fact not in evidence in a binding document. A processor that processes nothing cannot be under-disclosed. The change point is guarded instead: `.env.example` now warns, above both keys, that setting either requires adding the processor to §3 in all five locales in the same change.
+  - Side finding: because `RESEND_API_KEY` is unset in production, **the contact form cannot deliver mail right now** — it returns `503 email_unavailable`. That is a launch blocker independent of privacy; see the cutover checklist in `infra/DNS_CUTOVER.md`.
+
+- **Completeness method.** Rather than grepping for suspected third parties, every external origin was extracted from the deployed HTML plus the `_next/static` CSS/JS of `/de`, `/de/kontakt`, `/de/produktrechner`, `/de/downloads`, `/de/gebrauchtmaschinen`, `/de/aktuelles`, `/de/produkte`, `/de/success-stories`. Only **`cloud.umami.is`** loads automatically. `facebook.com`, `youtube.com`, `next-machines.com`, `openstreetmap.org` and `google.com` appear as plain `<a>` links (Footer, contact map) with no embeds — stated as such in §8. `player.vimeo.com` appears only in the bundle, behind the click.
+
+- **Structure now:** 1 Verantwortlicher · 2 Zugriffsdaten und Hosting · 3 Kontaktaufnahme und Kontaktformular · 4 Nutzung und Weitergabe · 5 Cookies · 6 Web-Analyse (Umami) · 7 Video (Vimeo) · 8 Links · 9 Ihre Rechte · 10 Sicherheitshinweis. Section numbers live inside the `*Title` strings, so **renumbering means touching five files**; the cross-reference in `cookiesLead` was deliberately changed from "(siehe Abschnitt 4)" to naming the section, so inserting a section can no longer silently break it.
+
+- **Acceptance criteria:**
+  - [x] Every factual sentence traces to something verified in this session; nothing carried over on trust.
+  - [x] All five locales rewritten together, keys renamed rather than reused (`infoRights*` → `rights*`, old `collectionP3` dropped, `hostingBody` / `contact*` / `video*` / `linksSocialBody` added).
+  - [x] Impressum's duplicate privacy block corrected where it contradicts the policy.
+  - [x] `SPEC.md` §7 updated: ARRAffinity, the §4→§6 renumber, the "only disclose processors that actually run" rule, and the warning not to make the Vimeo embed auto-load.
+  - [ ] **Owner action:** have a DPO or counsel read the DE version. This is a rewritten binding document, produced by an AI from code evidence — the facts are verified, the legal judgement calls are not signed off. Specifically: retention stated by criterion rather than fixed periods (Art. 13(2)(a)); Art. 6(1)(f) chosen for access logs; no DPO named (add one to §1 if GRAEWE has designated one).
+  - [ ] **Editorial call:** the Impressum still duplicates a shortened privacy block (`privacyBody`, `securityBody`, `techBody`, `logsBody`, `cookiesBody`). It is now consistent with the policy, but two documents saying the same thing will drift again. Recommend deleting the block from the Impressum and linking to `/datenschutz` — not done here, since it is a content decision.
 
 ---
 
