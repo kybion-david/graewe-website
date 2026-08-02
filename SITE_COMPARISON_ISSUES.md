@@ -199,7 +199,7 @@ Old site checked live on graewe.com.
 
 ### ISSUE-009 — Cookies / consent page & banner missing
 - **Status:** Done
-- **Note:** Chose essential-only approach: `/[locale]/cookies` page + footer link; Datenschutz §3 updated (no etracker); no consent banner. **Analytics half updated by ISSUE-064 (2026-08-01):** cookieless Umami now runs and Datenschutz gained §4. The "no consent banner" conclusion is unchanged and still correct — Umami stores nothing on the device, so TDDDG §25 never triggers.
+- **Note:** Chose essential-only approach: `/[locale]/cookies` page + footer link; Datenschutz §3 updated (no etracker); no consent banner. **Analytics half updated by ISSUE-064 (2026-08-01):** cookieless Umami now runs and Datenschutz gained an analytics section (§4 then, **§6 after the ISSUE-065 rewrite**). The "no consent banner" conclusion is unchanged and still correct — Umami stores nothing on the device, so TDDDG §25 never triggers.
 - **Category:** Missing feature / Legal / compliance
 - **Problem:** Live footer links to Cookies (`/cookies` → opt-in UI `?showOptIn=1`). Live Datenschutz references etracker cookies. New site has no cookies route, no consent banner, and unused `footer.cookies` / `legal.cookies` keys. `/de/cookies` → 404.
 - **Decision needed:** If no tracking is used post-launch, update Datenschutz accordingly and either remove Cookies link or provide a short “we only use essential cookies” page. If analytics is added, implement consent + update policy.
@@ -303,7 +303,7 @@ Old site checked live on graewe.com.
 
 ### ISSUE-017 — Contact page missing map (if still desired)
 - **Status:** Done
-- **Note:** Decision: yes (per `PROJECT.md` Kontakt checklist). Privacy-friendly static OSM map image on `/kontakt` with OSM + Google Maps outbound links; no third-party map scripts on page load. Datenschutz §4 notes the static map + external links. Files: `ContactMap.tsx`, `contactLocation.ts`, `public/images/contact/location-map.png`, messages, `datenschutz/page.tsx`.
+- **Note:** Decision: yes (per `PROJECT.md` Kontakt checklist). Privacy-friendly static OSM map image on `/kontakt` with OSM + Google Maps outbound links; no third-party map scripts on page load. Datenschutz notes the static map + external links (§4 then, **§8 after the ISSUE-065 rewrite**). Files: `ContactMap.tsx`, `contactLocation.ts`, `public/images/contact/location-map.png`, messages, `datenschutz/page.tsx`.
 - **Category:** Missing feature
 - **Problem:** `PROJECT.md` content checklist includes map embed for Kontakt. Live kontakt page shows address block; confirm whether a map was expected. New kontakt has form + address only.
 - **Likely files:** `src/app/[locale]/kontakt/page.tsx`

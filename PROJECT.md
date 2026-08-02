@@ -162,7 +162,7 @@ Pragmatic testing — enough to catch regressions, not so much that tests become
 - **Open Graph / Twitter cards** for social sharing.
 - **JSON-LD** structured data for organization and products.
 - **Sitemap** auto-generated via `next-sitemap`.
-- **Analytics**: Umami Cloud, cookieless (ISSUE-064, 2026-08-01 — supersedes the earlier "no analytics at launch" decision). No consent banner, because the tracker stores nothing on the visitor's device and so never triggers TDDDG §25. Gated on `NEXT_PUBLIC_UMAMI_SRC` + `NEXT_PUBLIC_UMAMI_WEBSITE_ID`; unset means no tracker ships at all. Datenschutz §4 discloses the US processor and the SCC transfer basis — read `SPEC.md` §7 before changing any of this.
+- **Analytics**: Umami Cloud, cookieless (ISSUE-064, 2026-08-01 — supersedes the earlier "no analytics at launch" decision). No consent banner, because the tracker stores nothing on the visitor's device and so never triggers TDDDG §25. Gated on `NEXT_PUBLIC_UMAMI_SRC` + `NEXT_PUBLIC_UMAMI_WEBSITE_ID`; unset means no tracker ships at all. Datenschutz §6 (renumbered by ISSUE-065) states the EU data region, names the US processor and keeps the SCC transfer basis — read `SPEC.md` §7 before changing any of this.
 
 ---
 
