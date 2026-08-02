@@ -441,13 +441,21 @@ Recorded so nobody re-audits them:
   - `privacyPage.cookiesLead` — dropped "etracker or comparable analytics tools are currently not used"
   - `privacyPage.analyticsTitle` / `analyticsBody` — **new Art. 13 section 4**; `linksTitle` 4→5, `newsletterTitle` 5→6, `infoRightsTitle` 6→7
 
-- **Data location — checked, because the first draft got it wrong.** That draft asserted processing happens "on servers within the European Union" and reduced it to a checkbox ("select the EU region"). No such region appears to exist: `docs.umami.is/docs/cloud/regions` is a **404**, collection posts to a single global host (`gateway.umami.is`), and Umami's own DPA names the processor as **Umami Software, Inc., 28 Geary St, Suite 650 #243, San Francisco, California, United States**, with §12 incorporating the EU Commission's **Standard Contractual Clauses** for EEA transfers. The policy now discloses the third-country transfer and its mechanism per Art. 13(1)(f) instead of claiming EU hosting. Had that shipped, the legally binding DE document would have contained a false statement about where personal data goes.
+- **Data location — got it wrong twice; settled on the third pass.** Worth reading before touching §4, because both wrong answers looked well-evidenced at the time.
+  1. First draft asserted EU hosting and reduced the risk to an owner checkbox ("select the EU region") — an unverified fact dressed up as an action item.
+  2. Second draft swung the other way and asserted processing happens **outside** the EU. Its evidence: `docs.umami.is/docs/cloud/regions` returning **404**, `eu.umami.is` not resolving to a regional endpoint, and ingest posting to a single global host. All three are worthless for this question — the docs URL was guessed, and `cloud.umami.is` / `gateway.umami.is` are shared global hosts that reveal nothing about where data is stored.
+  3. Correct answer: Umami Cloud **does** have a data region, selected during signup ([docs](https://docs.umami.is/docs/cloud/sign-up)), and this account is set to **EU**. §4 now states EU storage, names the US processor (**Umami Software, Inc., 28 Geary St, Suite 650 #243, San Francisco, California**), and keeps the **Standard Contractual Clauses** from DPA §12 as the safeguard for possible access from a third country.
 
-- **Prerequisites before this is actually live — owner action, cannot be done from the repo:**
-  - [ ] Create the Umami Cloud site, then set GitHub repo vars `UMAMI_SRC` (copy the exact URL from the dashboard rather than assuming the host) and `UMAMI_WEBSITE_ID`. Until then the site ships no tracker while the copy describes something that is not running — so do this **before or with** the merge, not after.
-  - [ ] **Sign Umami's DPA.** This is load-bearing, not paperwork: the Datenschutz text cites the SCCs *as part of the concluded processing agreement*. Without a signed DPA that sentence has no basis.
-  - [ ] If the dashboard does turn out to offer EU-only storage, select it and simplify Datenschutz §4 back to an EU-hosting statement in all five locales.
-  - [ ] Have a human review the **DE** Datenschutz §4 wording — `SPEC.md` marks DE as the legally binding version. Retention is phrased by criterion ("only as long as required for statistical evaluation") rather than a fixed period, which is permissible under Art. 13(2)(a) but is worth a conscious sign-off.
+  Lesson for the next agent: **the data region is dashboard state and cannot be determined from the network.** Probing hosts yields confident-looking wrong answers in both directions. Ask the owner, or look in the account.
+
+  This also means nothing in this repo can detect the region being changed. If the account is ever switched to US, §4 silently becomes false in all five locales.
+
+- **The DPA needs no separate signature.** Its opening clause states it "forms part of the agreement between Umami Software, Inc. … and the customer entity that executes an Order Form, **accepts Umami's Terms of Service** … or otherwise uses the Services as a business customer." Signing up incorporates it, SCCs included via §12 — which is what §4's reference to a *concluded* processing agreement rests on.
+
+- **Prerequisites — all resolved 2026-08-02:**
+  - [x] Umami Cloud site created with the **EU** data region; repo vars `UMAMI_SRC` (`https://cloud.umami.is/script.js`) and `UMAMI_WEBSITE_ID` set. Live and verified on the production host: script present, correct website id, `data-do-not-track` set.
+  - [x] DPA — incorporated automatically on ToS acceptance, no separate signature (see above).
+  - [ ] **Still open:** a human should review the **DE** Datenschutz §4 wording — `SPEC.md` marks DE as the legally binding version. Two points deserve a conscious sign-off: retention is phrased by criterion ("only as long as required for statistical evaluation") rather than a fixed period, which is permissible under Art. 13(2)(a); and the third-country sentence deliberately says access "cannot be entirely ruled out" rather than claiming EU storage settles the question, because the processor is US-based.
 
 - **Acceptance criteria:**
   - [x] Analytics loads only when fully configured; unit tests mutation-checked against gate removal, unmounting, DNT removal, and the preview-isolation guard.
