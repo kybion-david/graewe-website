@@ -80,6 +80,11 @@ jobs:
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
           CONTACT_EMAIL_TO: ${{ vars.CONTACT_EMAIL_TO || 'info@graewe.com' }}
           CONTACT_EMAIL_FROM: ${{ vars.CONTACT_EMAIL_FROM || 'website@graewe.com' }}
+          # Umami analytics — production only. This job also builds `swa-preview` PRs, and a
+          # preview reporting into the same Umami site would corrupt the real numbers. Left
+          # unset on previews, which makes `getUmamiConfig()` return null and ship no tracker.
+          NEXT_PUBLIC_UMAMI_SRC: ${{ github.event_name == 'push' && vars.UMAMI_SRC || '' }}
+          NEXT_PUBLIC_UMAMI_WEBSITE_ID: ${{ github.event_name == 'push' && vars.UMAMI_WEBSITE_ID || '' }}
 
   # ── Close PR: tear down staging environment ─────
   close_pull_request:

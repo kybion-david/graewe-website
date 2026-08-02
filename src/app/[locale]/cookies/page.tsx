@@ -41,9 +41,9 @@ export default async function CookiesPage({
         <section className="bg-grey-100 rounded-xl p-6">
           <h2 className="text-lg font-bold text-dark mb-3 flex items-center gap-2">
             <span className="w-1 h-5 bg-accent rounded-full" />
-            {t("noTrackingTitle")}
+            {t("analyticsTitle")}
           </h2>
-          <p>{t("noTrackingBody")}</p>
+          <p>{t("analyticsBody")}</p>
         </section>
 
         <p>
