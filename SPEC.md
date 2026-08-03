@@ -120,6 +120,7 @@ public/images/        # Static assets by section
 | Calculator diagrams | `public/images/calculator/{ugl,ggl}.gif` (live Wickelbild assets) |
 | Job openings (slugs / TYPO3 IDs) | `src/lib/jobs.ts` |
 | Job copy (titles, bodies, apply text) | `src/messages/{locale}.json` → `jobs.*` (email-only apply; no on-site application form) |
+| Job page photography | `public/images/jobs/` (shop-floor set from live graewe.com); alt text in `jobs.imageAlt.*` |
 | Imprint / privacy page bodies | `src/messages/{locale}.json` → `imprintPage.*` / `privacyPage.*` |
 | News articles (slugs / TYPO3 IDs / images) | `src/lib/news.ts` + `public/images/news/` |
 | News copy (titles, excerpts, bodies) | `src/messages/{locale}.json` → `news.*` |
