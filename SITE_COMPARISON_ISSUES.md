@@ -154,16 +154,17 @@ Old site checked live on graewe.com.
 ---
 
 ### ISSUE-006 — Contact form missing captcha / spam protection
-- **Status:** Done
-- **Note:** Cloudflare Turnstile (site + server verify) with honeypot + per-IP rate limit; captcha errors localized in all 5 locales (`src/lib/contactSpam.ts`, ContactForm, API route). Configure `NEXT_PUBLIC_TURNSTILE_SITE_KEY` + `TURNSTILE_SECRET_KEY` for production.
+- **Status:** Done in code, **not in production** — see ISSUE-066 before closing this.
+- **Note:** Cloudflare Turnstile (site + server verify) with honeypot + per-IP rate limit; captcha errors localized in all 5 locales (`src/lib/contactSpam.ts`, ContactForm, API route).
+- **Correction (2026-08-03):** the criteria below were ticked against the *code*, which was the wrong test. `NEXT_PUBLIC_TURNSTILE_SITE_KEY` and `TURNSTILE_SECRET_KEY` were never configured, so in production the widget is not rendered and `verifyTurnstileToken()` short-circuits to `{ ok: true }` without contacting Cloudflare. The live spam gate is honeypot + a best-effort per-IP rate limit only. Deferring that was a deliberate decision (enabling Turnstile adds a US processor to the Datenschutzerklärung) — the rationale, the caveats and the cheaper alternatives are in **ISSUE-066**; content-level filtering is **ISSUE-067**.
 - **Category:** Missing feature / Legal / compliance
 - **Problem:** Live contact form requires Captcha (`Captcha *`). New form has no captcha, honeypot, or rate limiting.
 - **Evidence (old):** https://www.graewe.com/kontakt  
 - **Evidence (new):** `src/components/contact/ContactForm.tsx`, `src/app/api/contact/route.ts`
 - **Likely files:** ContactForm, API route, env example for captcha keys.
 - **Acceptance criteria:**
-  - [x] Spam protection comparable to live site (captcha **or** modern equivalent: Turnstile/hCaptcha + server verify).
-  - [x] Failed verification returns clear error; no email send.
+  - [ ] Spam protection comparable to live site (captcha **or** modern equivalent: Turnstile/hCaptcha + server verify). *Implemented, but unticked: not active in production — no keys. ISSUE-066.*
+  - [x] Failed verification returns clear error; no email send. *(code path verified; unreachable in production while the secret is unset)*
   - [x] Works in all locales.
 
 ---
