@@ -360,6 +360,13 @@
       "Achten Sie bitte auch auf die Vollständigkeit Ihrer Anlagen. Die Angabe Ihres Gehaltswunsches wäre wünschenswert. Vielen Dank!"
     ],
     "viewDetails": "Details ansehen",
+    "imageAlt": {
+      "cncControl": "GRAEWE Mitarbeiter bedient die Steuerung einer CNC-Bearbeitungsmaschine",
+      "precisionFiling": "Feinarbeit mit der Feile an einem Bauteil im Schraubstock",
+      "machineAssembly": "Mitarbeiter beim Aufbau eines Maschinengehäuses in der Fertigung",
+      "controlCabinetWiring": "Verdrahtung einer Klemmleiste im Schaltschrankbau",
+      "electricalPanel": "Montage eines Netzteils in einem Schaltkasten"
+    },
     "backToList": "Zurück zur Übersicht",
     "tasksHeading": "Ihre Aufgaben",
     "profileHeading": "Ihr Profil",

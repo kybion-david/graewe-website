@@ -11,6 +11,7 @@ const ROUTES = [
   "/de/sitemap",
   "/de/cookies",
   "/de/produkte/rohrextrusion/extruder",
+  "/de/stellenanzeigen",
   "/de/produktrechner",
   "/en/kontakt",
   "/ru",

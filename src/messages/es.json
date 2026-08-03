@@ -360,6 +360,13 @@
       "Compruebe que la solicitud esté completa. Indicar su expectativa salarial es deseable. ¡Gracias!"
     ],
     "viewDetails": "Ver detalles",
+    "imageAlt": {
+      "cncControl": "Empleado de GRAEWE manejando el control de un centro de mecanizado CNC",
+      "precisionFiling": "Trabajo de limado de precisión sobre una pieza sujeta en un tornillo de banco",
+      "machineAssembly": "Empleado montando la carcasa de una máquina en el taller",
+      "controlCabinetWiring": "Cableado de una regleta de bornes en el montaje de un armario eléctrico",
+      "electricalPanel": "Montaje de una fuente de alimentación en un cuadro eléctrico"
+    },
     "backToList": "Volver al resumen",
     "tasksHeading": "Sus tareas",
     "profileHeading": "Su perfil",

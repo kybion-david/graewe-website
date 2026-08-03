@@ -360,6 +360,13 @@
       "Vérifiez que votre dossier est complet. L’indication de vos prétentions salariales est souhaitée. Merci !"
     ],
     "viewDetails": "Voir les détails",
+    "imageAlt": {
+      "cncControl": "Collaborateur GRAEWE utilisant la commande d’un centre d’usinage CNC",
+      "precisionFiling": "Travail de limage de précision sur une pièce serrée dans un étau",
+      "machineAssembly": "Collaborateur assemblant un bâti de machine dans l’atelier",
+      "controlCabinetWiring": "Câblage d’un bornier lors du montage d’une armoire électrique",
+      "electricalPanel": "Montage d’un bloc d’alimentation dans un coffret électrique"
+    },
     "backToList": "Retour à la vue d’ensemble",
     "tasksHeading": "Vos missions",
     "profileHeading": "Votre profil",

@@ -360,6 +360,13 @@
       "Please ensure your application is complete. Including your salary expectation is appreciated. Thank you!"
     ],
     "viewDetails": "View details",
+    "imageAlt": {
+      "cncControl": "GRAEWE employee operating the controls of a CNC machining centre",
+      "precisionFiling": "Precision filing work on a component held in a vice",
+      "machineAssembly": "Employee assembling a machine housing on the shop floor",
+      "controlCabinetWiring": "Wiring a terminal strip during control cabinet assembly",
+      "electricalPanel": "Fitting a power supply unit into an electrical enclosure"
+    },
     "backToList": "Back to overview",
     "tasksHeading": "Your responsibilities",
     "profileHeading": "Your profile",
