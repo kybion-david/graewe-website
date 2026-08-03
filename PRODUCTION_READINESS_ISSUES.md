@@ -515,8 +515,10 @@ Recorded so nobody re-audits them:
 
 ## P2 — Hardening & polish
 
-### ISSUE-066 — Contact-form spam gate is honeypot-only in production; Turnstile is wired but inert
-- **Status:** Open — deliberately deferred 2026-08-03. Decision below is the owner's, not an oversight.
+### ISSUE-066 — Contact-form spam protection is honeypot-only, by decision; Turnstile ruled out
+- **Status:** **Decided 2026-08-03 (owner).** Honeypot + rate limit are the spam protection for
+  launch. **Turnstile will not be enabled** — the Datenschutz cost is not worth it for this form.
+  Left open only for the optional cheap hardening at the bottom; the Turnstile question is closed.
 - **Category:** Security / spam
 - **Trigger:** found while walking through the `RESEND_API_KEY` setup (ISSUE-065 side finding). The code has three spam defences; only two of them actually run.
 
@@ -539,19 +541,30 @@ Recorded so nobody re-audits them:
   Azure Function. Instances are ephemeral and scale out, so the 5-per-15-min ceiling is per-instance,
   not per-site. Do not count it as a real cap.
 
-- **Why this is deferred rather than fixed.** Blast radius is inbox noise, not compromise: `to` and
-  `from` are both fixed from env (`contactEmail.ts:60-67`) and only reply-to comes from the visitor,
-  so the form cannot be driven as an open relay. Against that, enabling Turnstile adds
-  **Cloudflare, Inc. (US) as a processor** — an Art. 13(1)(f) third-country disclosure plus SCCs in
-  §3 of the Datenschutzerklärung in all five locales, and it likely disturbs §5, which now states
-  that the only cookies set are Azure's two `ARRAffinity` session cookies (possible TDDDG §25(1)
-  consent question). That is the exact change `.env.example` warns about above the Turnstile keys.
-  Taking on a US processor to filter nuisance mail was judged a bad trade for launch.
+- **Why Turnstile is ruled out — the reasoning, so nobody re-opens it casually.** Blast radius is
+  inbox noise, not compromise: `to` and `from` are both fixed from env (`contactEmail.ts:60-67`) and
+  only reply-to comes from the visitor, so the form cannot be driven as an open relay. Against that,
+  enabling Turnstile adds **Cloudflare, Inc. (US) as a processor** — an Art. 13(1)(f) third-country
+  disclosure plus SCCs in §3 of the Datenschutzerklärung in all five locales, and it likely disturbs
+  §5, which now states that the only cookies set are Azure's two `ARRAffinity` session cookies
+  (possible TDDDG §25(1) consent question). That is the exact change `.env.example` warns about above
+  the Turnstile keys. Taking on a US processor, and a fresh consent question in a binding document
+  that was just rewritten, to filter nuisance mail from a B2B contact form is a bad trade. **Do not
+  set the Turnstile keys without re-opening this decision with the owner** — the keys alone would
+  silently put an undisclosed processor into production.
 
-- **Revisit when:** spam actually arrives in `CONTACT_EMAIL_TO` at a rate that annoys whoever reads
-  it. That is the trigger — not a date.
+- **What would change the decision:** spam arriving in `CONTACT_EMAIL_TO` at a rate that actually
+  annoys whoever reads it, *and* the cheap hardening below having already failed to stop it. Turnstile
+  is the last resort here, not the next step.
 
-- **Cheap hardening available now (no processor, no privacy copy, no new disclosure):**
+- **Dead-code note:** the Turnstile implementation (`TurnstileWidget.tsx`, `verifyTurnstileToken`,
+  the localized captcha error strings) stays in the tree, unreachable while the keys are unset. It is
+  tested and costs nothing to keep, and removing it would mean touching five locale files to delete
+  the error strings. If it is still unused a few months after launch, deleting it is reasonable
+  cleanup — but that is a separate decision, and `.env.example`'s warning must survive it in some form.
+
+- **Cheap hardening — the only work left in this issue** (no processor, no privacy copy, no new
+  disclosure). Worth more now than before, since the honeypot is the whole gate:
   1. Rename the honeypot field. `CONTACT_HONEYPOT_FIELD = "website"` (`contactSpam.ts:2`) is one of
      the most-guessed honeypot names, and the input is a plain off-screen `div` at `-9999px` with
      `aria-hidden`. Any non-obvious name (`fax_2`) is strictly better; it is a single constant read
@@ -560,23 +573,24 @@ Recorded so nobody re-audits them:
      Humans never manage it; scripted posts nearly always do.
 
   Both stop the realistic bypass (a headless browser that respects computed visibility) without
-  touching the Datenschutzerklärung at all. Prefer these over Turnstile if the trigger above fires.
+  touching the Datenschutzerklärung at all. Note the timing check is a check on *submission timing*,
+  not on message content — it is unaffected by the ISSUE-067 decision.
 
 - **Likely files:** `src/lib/contactSpam.ts`, `src/components/contact/ContactForm.tsx`,
-  `src/app/api/contact/route.ts`, `.env.example`
-- **Acceptance criteria (if picked up):**
-  - [ ] Either the cheap hardening lands, **or** Turnstile keys are set — and if Turnstile, §3 of
-        `privacyPage.*` names Cloudflare in all five locales in the **same** PR, per `.env.example`.
-  - [ ] If Turnstile is enabled, re-check §5: confirm by measurement whether the widget writes a
-        cookie or `localStorage`, and correct the "only ARRAffinity" claim if it does.
-  - [ ] `verifyTurnstileToken`'s fail-open branch is reconsidered for production (fail-open is right
-        for dev, wrong once keys exist and then go missing).
-  - [ ] ISSUE-006's acceptance criterion is corrected — see the note there.
+  `src/app/api/contact/route.ts`
+- **Acceptance criteria (if the hardening is picked up):**
+  - [ ] Honeypot field renamed away from `website`; the constant is the only place it is defined.
+  - [ ] Submit-timing check rejects sub-threshold posts server-side, with unit tests.
+  - [ ] No new third-party processor introduced — that is the whole point of preferring these.
+  - [x] ISSUE-006's acceptance criterion corrected to reflect production, not code presence.
 
 ---
 
 ### ISSUE-067 — No content-level spam filtering on contact-form submissions
-- **Status:** Open — requested 2026-08-03. Wanted for launch **if cheap**; that constraint is part of the issue.
+- **Status:** **Not doing for launch — decided 2026-08-03 (owner).** Raised, scoped, then dropped the
+  same day: not worth building before there is evidence of a problem. Kept on file rather than
+  withdrawn, because the premise is still true and the analysis below is the reason not to start from
+  scratch if it ever comes back. **Do not implement this unopened** — reopen with the owner first.
 - **Category:** Security / spam
 - **Depends on:** nothing. Independent of DNS handover and of ISSUE-066.
 
@@ -610,9 +624,15 @@ Recorded so nobody re-audits them:
   the `.env.example` rule and needs §3 of the Datenschutzerklärung updated in all five locales in the
   same change. The heuristic option avoids that entirely, which is most of why it is recommended.
 
-- **Likely files:** new `src/lib/contactSpamContent.ts` (+ tests), `src/app/api/contact/route.ts`,
-  `src/lib/contactEmail.ts` (subject prefix)
-- **Acceptance criteria:**
+- **Why it was dropped.** Every filter has a false-positive rate, and a false positive here is a lost
+  sales enquiry — the failure mode is worse than the problem it solves. With no spam observed yet
+  there is nothing to tune against, so any ruleset written today would be guesswork calibrated on
+  imagined traffic. Cheaper to wait for real examples: if spam starts arriving, the messages
+  themselves become the test fixtures, and the heuristics can be written against evidence instead.
+
+- **Likely files (if it ever comes back):** new `src/lib/contactSpamContent.ts` (+ tests),
+  `src/app/api/contact/route.ts`, `src/lib/contactEmail.ts` (subject prefix)
+- **Acceptance criteria (deferred with the issue):**
   - [ ] Scoring runs before send, is unit-tested with both spam and genuine-enquiry fixtures, and is
         locale-agnostic (must not penalise RU or ES submissions for being RU or ES — the site serves
         five locales and a Cyrillic enquiry is a *customer*, not a signal on its own).
@@ -736,7 +756,7 @@ nobody re-files them. None of these were ever merged as open items.
 
 | Existing | Note from this audit |
 |---|---|
-| **ISSUE-006** (captcha) | **Do not close.** The 2026-07-29 note below ("appears done — confirm and close it") was written from code presence alone. Turnstile is wired but **inert in production** — no keys, and `verifyTurnstileToken` fails open without a secret. Honeypot and rate limiting do run. See **ISSUE-066**. |
+| **ISSUE-006** (captcha) | **Closed as won't-do on captcha, 2026-08-03.** The earlier note ("appears done — confirm and close it") was written from code presence alone: Turnstile is wired but **inert in production** — no keys, and `verifyTurnstileToken` fails open without a secret. That is now the accepted end state; honeypot + rate limit are the spam protection. Do not set the Turnstile keys without re-opening **ISSUE-066**. |
 | **ISSUE-019** (`MENÜ` hardcoded) | **Appears done** — now `t("menu")` / `t("menuAria")`. Remaining hardcoded strings are ISSUE-045. |
 | **ISSUE-031** (calculator parity) | The dead `pipeLengthPerRotation` variable is gone; treat the formula question as settled by that work. |
 | **ISSUE-032** (Resend before cutover) | Code and workflow are wired; what remains is the live inbox test. |
